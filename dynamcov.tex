@@ -1,0 +1,2018 @@
+\documentclass[12pt,]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amscd}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{tikz}
+\usetikzlibrary{external}
+\tikzexternalize
+%% This pre-compiles tikz pictures so that they do not have to be compiled every time. 
+%% For this to work you need to activate the flag:
+%%   -shell-escape
+%%
+%% You can also manually run this by calling
+%%   pdflatex -shell-escape filename.tex
+%%
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+\usepackage{wrapfig, framed, caption}
+\usepackage{float}
+\usetikzlibrary{arrows}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage[colorlinks=true, linkcolor=blue, citecolor=blue,
+pagebackref=true]{hyperref}
+\usepackage{fouriernc}
+\usepackage{ulem}
+\usepackage{comment}
+
+\usepackage[capitalise]{cleveref}
+
+\usepackage{refcheck}
+%%making refcheck recognise cref
+%%% Infrastructure
+\makeatletter
+\newcommand{\refcheckize}[1]{%
+  \expandafter\let\csname @@\string#1\endcsname#1%
+  \expandafter\DeclareRobustCommand\csname relax\string#1\endcsname[1]{%
+  \csname @@\string#1\endcsname{##1}\@for\@temp:=##1\do{\wrtusdrf{\@temp}\wrtusdrf{{\@temp}}}}%
+  \expandafter\let\expandafter#1\csname relax\string#1\endcsname
+}
+
+%%%
+
+%%% Now we add the reference commands we want refcheck to be aware of
+\refcheckize{\cref}
+\refcheckize{\Cref}
+
+
+\normalem
+\parskip=5pt
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%     THEOREMS, STATEMENTS, DEFINITIONS  AND SO ON      %%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{theoremY}{Theorem Y}
+\newtheorem*{theoremY*}{Theorem Y}
+\newtheorem{theoremAB}{Theorem AB}
+\newtheorem*{theoremAB*}{Theorem AB}
+
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem*{claim*}{Claim}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{question}[theorem]{Question}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem*{remark*}{Remark}
+\newtheorem{example}{Example}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% THE DEFINITION OF A NEW FAMILY OF FONTS AND RELATED COMMANDS %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\font\tenmsy=msbm10 scaled 1200 \font\sevenmsy=msbm7 scaled 1200
+%\font\fivemsy=msbm5 scaled 1200
+%\newfam\msyfam
+%\textfont\msyfam=\tenmsy \scriptfont\msyfam=\sevenmsy
+%\scriptscriptfont\msyfam=\fivemsy
+%\newcommand{\Bbb}[1]{{\fam\msyfam\relax#1}}
+\renewcommand{\Bbb}[1]{\mathbb{#1}}
+\newcommand{\bbA}{{\Bbb A}}         % often algebraic numbers
+\newcommand{\bbB}{{\Bbb B}}
+\newcommand{\bbC}{{\Bbb C}}         % complex numbers
+\newcommand{\bbD}{{\Bbb D}}
+\newcommand{\bbE}{{\Bbb E}}
+\newcommand{\bbF}{{\Bbb F}}
+\newcommand{\bbG}{{\Bbb G}}
+\newcommand{\bbH}{{\Bbb H}}
+\newcommand{\bbK}{{\Bbb K}}         % integer numbers
+\newcommand{\bbL}{{\Bbb L}}
+\newcommand{\bbM}{{\Bbb M}}
+\newcommand{\bbN}{{\Bbb N}}         % natural numbers
+\newcommand{\bbO}{{\Bbb O}}
+\newcommand{\bbP}{{\Bbb P}}
+\newcommand{\bbQ}{{\Bbb Q}}         % rational numbers
+\newcommand{\bbR}{{\Bbb R}}        % real numbers
+\newcommand{\bbRp}{{\Bbb R}^{+}}    % positive real numbers
+\newcommand{\bbS}{{\Bbb S}}
+\newcommand{\bbT}{{\Bbb T}}
+\newcommand{\bbU}{{\Bbb U}}
+\newcommand{\bbV}{{\Bbb V}}
+\newcommand{\bbW}{\mathcal{W}}
+\newcommand{\bbX}{{\Bbb X}}
+\newcommand{\bbY}{{\Bbb Y}}
+\newcommand{\bbZ}{{\Bbb Z}}         % integer numbers
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%              \cal                      %%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\cA}{{\cal A}}
+\newcommand{\cB}{{\cal B}}
+\newcommand{\cC}{{\cal C}}
+\newcommand{\cD}{{\cal D}}
+\newcommand{\cE}{{\cal E}}
+\newcommand{\cF}{{\cal F}}
+\newcommand{\cG}{{\cal G}}
+\newcommand{\cH}{{\cal H}}
+\newcommand{\cI}{{\cal I}}
+\newcommand{\cJ}{{\cal J}}
+\newcommand{\cK}{{\cal K}}
+\newcommand{\cL}{{\cal L}}
+\newcommand{\cM}{{\cal M}}
+\newcommand{\cN}{{\cal N}}
+\newcommand{\cO}{{\cal O}}
+\newcommand{\cP}{{\cal P}}
+\newcommand{\cQ}{{\cal Q}}
+\newcommand{\cR}{{\cal R}}
+\newcommand{\cS}{{\cal S}}
+\newcommand{\cSM}{{\cal S}^*}
+\newcommand{\cT}{{\cal T}}
+\newcommand{\cU}{{\cal U}}
+\newcommand{\cV}{{\cal V}}
+\newcommand{\cW}{{\cal W}}
+\newcommand{\cX}{{\cal X}}
+\newcommand{\cY}{{\cal Y}}
+\newcommand{\cZ}{{\cal Z}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                       GREEK                         %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\ve}{\varepsilon}
+\newcommand{\Om}{\Omega}
+\newcommand{\U}{\Upsilon}
+\newcommand{\La}{\Lambda}
+
+\newcommand{\tpsi}{\tilde\psi}
+\newcommand{\tphi}{\tilde\phi}
+\newcommand{\tU}{\tilde\Upsilon}
+
+\newcommand{\Pn}{\Phi_n}
+\newcommand{\Pm}{\Phi_m}
+\newcommand{\Pj}{\Phi_j}
+\newcommand{\pn}{\varphi_n}
+
+
+\newcommand{\balpha}{\boldsymbol{\alpha}}
+\newcommand{\bgamma}{\boldsymbol{\gamma}}
+
+\newcommand{\fixx}{\Phi}
+\newcommand{\fixy}{\Theta}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                       VECTORS                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\x}{\mathbf{x}}
+\newcommand{\y}{\mathbf{y}}
+\newcommand{\p}{\mathbf{p}}
+\newcommand{\q}{\mathbf{q}}
+\newcommand{\br}{\mathbf{r}}
+\newcommand{\bv}{\mathbf{v}}
+\newcommand{\0}{\mathbf{0}}
+\newcommand{\ba}{{\overline a}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                 VARIOUS COMMANDS                    %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\ie}{{\it i.e.}\/ }
+\newcommand{\eg}{{\it e.g.}\/ }
+\newcommand{\diam}{\text{diam}}
+\newcommand{\dist}{\operatorname{dist}}
+%\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\vv}[1]{{\mathbf{#1}}}
+\newcommand{\Veronese}{\cV}
+\renewcommand{\le}{\leq}
+\renewcommand{\ge}{\geq}
+\newcommand{\ra}{R_{\alpha}}
+\newcommand{\kgb}{K_{G,B}}
+\newcommand{\kgbl}{K_{G',B^{(l)}}}
+\newcommand{\kgbf}{K^f_{G,B}}
+\newcommand{\hf}{\cH^f}
+\newcommand{\hs}{\cH^s}
+
+\newcommand{\bi}{{\overline {\imath}}}
+\newcommand{\bj}{{\overline  {\jmath}}}
+\newcommand{\bk}{{\overline k}}
+\newcommand{\bo}{{\overline o}}
+
+\newcommand{\an}{(A;n)}
+\newcommand{\ann}{(A';n')}
+\newcommand{\Ln}{(L;n)}
+\newcommand{\Lj}{(L;j)}
+\newcommand{\aj}{(A;j)}
+\newcommand{\ajj}{(A';j')}
+\newcommand{\ajs}{(A;j^*)}
+\newcommand{\aji}{(A;j_i)}
+\newcommand{\ajis}{(A;j_{i^{**}})}
+\newcommand{\as}{(A;s)}
+\newcommand{\at}{(A;t)}
+\newcommand{\can}{\cC\an}
+\newcommand{\caj}{\cC\aj}
+\newcommand{\cajs}{\cC\ajs}
+\newcommand{\caji}{\cC\aji}
+\newcommand{\cajis}{\cC\ajis}
+\newcommand{\cas}{\cC\as}
+\newcommand{\cat}{\cC\at}
+
+\newcommand{\tW}{\widetilde{W}}
+
+\newcommand{\Id}{\text{Id}}
+\newcommand{\Exact}{\mathbf{Exact}}
+\newcommand{\Bad}{\mathbf{Bad}}
+\newcommand{\sing}{\mathbf{Sing}}
+\newcommand{\DI}{\mathbf{DI}}
+\newcommand{\FS}{\mathbf{FS}}
+\newcommand{\ibad}{\mathbf{IBA}}
+\newcommand{\well}{\mathbf{WA}}
+\newcommand{\vwa}{\mathbf{VWA}}
+\newcommand{\nvwa}{\mathbf{NVWA}}
+\newcommand{\bone}{\boldsymbol{1}}
+\newcommand{\recipso}{\mathcal R_0}
+\newcommand{\freeD}{\mathcal{D}'}
+\newcommand{\comp}{^{\mathsf{c}}}
+\newcommand{\nopar}{{\parfillskip=0pt \par}}
+
+
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiter{\set}{\lbrace}{\rbrace}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\parens}{\lparen}{\rparen}
+\DeclarePairedDelimiter{\brackets}{\lbrack}{\rbrack}
+
+\DeclareMathOperator{\Leb}{Leb}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\dimh}{\dim_H}
+\DeclareMathOperator{\vol}{vol}
+\DeclareMathOperator{\Freq}{Freq}
+
+
+\allowdisplaybreaks
+
+%\setlength{\parindent}{0pt} %--Uncomment to not indent paragraphs
+%\linespread{2} %-- Uncomment for double spacing
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                   END OF MACROS                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Dynamical covering sets in self-similar sets}
+
+\author{Balazs Barany \\(BME) \and Henna Koivusalo \\ (Bristol) \and Sascha Troscheit\footnote{Funding!} \\(Uppsala)}
+\date{\today}
+%\author{Author 1 \footnote{funding for Author 1} \\ Author 1 Affiliation \and Author 2 \\ Author 2 Affiliation}
+%
+%\date{\footnotesize{\it Dedication}}
+%
+\begin{document}
+
+\frenchspacing
+\maketitle
+
+\begin{abstract}
+  We compute the Hausdorff dimension of a dynamical covering set on a self-similar set. More
+  precisely, given an iterated function system satisfying the open set condition with a self-similar
+  set $\Lambda$, consider the expanding dynamical system $F$ on $\Lambda$ with the maps in the
+  iterated function system as its local inverses. A dynamical covering set is the limsup set of
+  shrinking balls around a single orbit under $F$. Our proof gives the dimension of such a dynamical
+  covering set for almost every point of $\Lambda$, with respect to any  Bernoulli measure $\mu$ on
+  $\Lambda$.
+\end{abstract}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%	INTRODUCTION
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Introduction} \label{sec:intro}
+
+-History on IFS, self-similar sets, shrinking target and dynamical covering, link to Dvoretzky's problem
+
+-What we know so far on dynamical coverings (Liao-Seuret, Persson'18 (and whatever inside), Persson-Rams, Fan-Schmeling-Troubetzkoy). "Say dada for calling it shrinking target problem"
+
+-How our result is related to their (Allen-Barany which shows that mass transference is good for nothing if the balls are inhomogeneous)
+
+-introduce $\dim_H$ and $\cH^s$
+
+-Results
+
+-?Structure of proof (This here to remove refcheck warnings:
+
+This article is structured as follows ?? \cref{sec:intro,sec:background,sec:upper}
+This is to supress warnings:
+\cref{eq:s0,eq:condonl2,eq:salpha2,eq:famousmn,eq:cover,thm:notfullregion,thm:spectrumregion}
+\clearpage
+
+\subsection{Main result} \label{sec:background}
+
+Let $f_1, \dots, f_N$ be an iterated function system of similarities on $\bbR^d$, with contraction
+ratios $\lambda_i\in(0,1)$. Denote by $\Lambda$ the corresponding self-similar set, satisfying
+\(\Lambda=\bigcup_{i=1}^N f_i(\Lambda).\) We assume throughout that the iterated function system
+satisfies the Open Set Condition, that is, there exists an open and bounded set $U\subset\bbR^d$
+such that $f_i(U)\subset U$ for every $i=1,\ldots,N$ and $f_i(U)\cap f_j(U)=\emptyset$ for every
+$i\neq j$. We assume without loss of generality that $\Lambda\cap U\neq\emptyset$, see Bandt and
+Graf ?? and Schief ?? Denote by $s_0$ the Hausdorff dimension of $\Lambda$, which is the unique
+solution of
+\begin{equation}\label{eq:s0}
+  \sum_{i=1}^N\lambda_i^{s_0}=1,
+\end{equation}
+see \cite{Hutchinson}.
+
+Denote the symbolic space by $\Sigma=\{1, \dots, N\}^\bbN$, with the left shift map $\sigma$. We
+write $\Sigma_n$ for the collection of words of length $n$, and $\Sigma_*=\cup_{n=0}^\infty
+\Sigma_n$. For $\bi=(i_1, \dots, i_n)\in \Sigma_n$, let $f_{\bi}=f_{i_1}\circ\cdots\circ f_{i_n}$
+and $\lambda_\bi=\lambda_{i_1}\cdots \lambda_{i_n}$. Let $\bi|_n$ denote the first $n$ digits of a
+word $\bi\in\Sigma\cup\Sigma_*$, and $|\bi|$ the length of a finite word. Define cylinders for any
+$\bi\in \Sigma_n$ by \([\bi]=\{\bj\in \Sigma\mid \bj|_N=\bi\}.\)
+The symbolic space gives a coding of points of $\Lambda$ via the map $\pi: \Sigma\to \Lambda$,
+\[
+  \pi(\bi)=\lim_{n\to \infty} f_{\bi|_n}(0).
+\]
+Note that the map $\pi\colon\Sigma\to\Lambda$ is "almost" one-to-one, namely, the points with
+multiple preimages in $\Sigma$ are negligible in some proper sense.
+
+In analogy to the work above, one can consider the map $T\colon\Lambda\to\Lambda$ that takes any
+$x\in f_i(\Lambda)\cap U$ to $f_i^{-1}(x)\in \Lambda$. This is an expanding, hyperbolic map on the
+points of unique coding, which conjugates to $\sigma$ by $\pi\circ \sigma=T\circ \pi$.
+
+%We are now ready to determine the dynamical covering set-up.
+Let $\bo\in \Sigma$ and let $\ell\colon\bbN\to \bbN$ be any increasing function diverging to
+$\infty$. We define the {\bf dynamical covering set} $R(\bo, \ell)$ by
+\[
+  R(\bo, \ell)=\pi\left\{\bi\in \Sigma\mid \bi\in\left[(\sigma^n\bo)|_{\ell(n)}\right]\text{ infinitely often}\right\}.
+\]
+Notice that this coincides with the dynamical covering set on $\Lambda$ following the orbit of the
+point $\pi(\bo)$, namely, with the set
+\[
+  \widehat R(\bo, \ell)=\left\{x\in \Lambda\mid x\in B\left(T^n(\pi(\bo)), \lambda_{(\sigma^n\bo)|_{\ell(n)}}\right)\text{ infinitely often}\right\}.
+\]
+
+Let $p=(p_1, \dots, p_N)$ be a probability vector, and $\bbP_p$ the corresponding Bernoulli measure on $\Sigma$. With an abuse of notation, denote the push-forward measure $\pi_*\bbP_p$ on $\Lambda$ by $\bbP$ also.
+
+\begin{theorem}\label{thm:main}
+  Let $\{f_1, \dots, f_N\}$ be an IFS of similarities satisfying the open set condition, and with contraction ratios $\lambda_1, \dots, \lambda_N$. Let $\alpha>0$ and assume that $\ell: \mathbb N\to \mathbb N$ is monotone increasing and it satisfies
+  \begin{equation}\label{eq:condonl}
+    \liminf_{n\to \infty} \frac{\ell(n)}{\log n}=\tfrac 1\alpha.
+  \end{equation}
+  Let $\bbP_p$ be a Bernoulli measure corresponding to a probability vector $p=(p_1, \dots, p_N)$. Then, for $\bbP_{p}$-almost every $\bo \in \Sigma$, the Hausdorff dimension of $R(\bo, \ell)$ is given by the solution $s=s(\alpha)$ to
+  \begin{equation}\label{eq:salpha}
+    s(\alpha)=\inf_{q\in[0,1]} \left\{P_\alpha(q) : \sum_{i=1}^N \lambda_i^{P_{\alpha}(q)}(p_ie^\alpha)^q=1\right\}.
+  \end{equation}
+
+  Furthermore, we have for $\bbP_{p}$-almost every $\bo$ that if $-\log\min\{p_i\}>\alpha>-
+  \sum_{i=1}^m \lambda_i^{s_0}\log  p_i$ then $\cH^{s_0}(R(\bo, \ell))=\cH^{s_0}(\Lambda)$ but
+  $R(\bo, \ell)\neq\Lambda$, and if $\alpha>-\log\min\{p_i\}$ then $R(\bo, \ell)=\Lambda$.
+\end{theorem}
+
+We remark that the statement of \cref{thm:main} remains valid for the set $\widehat R(\bo,\ell)$ with only minor modifications, but we leave the proof to the interested reader.
+
+\begin{theorem}\label{thm:main2}
+  Let $\{f_1, \dots, f_N\}$ be an IFS of similarities satisfying the open set condition, and with
+  contraction ratios $\lambda_1, \dots, \lambda_N$. Let $\alpha>0$ and assume that $\ell: \mathbb
+  N\to \mathbb N$ is monotone increasing and it satisfies
+  \begin{equation}\label{eq:condonl2}
+    \liminf_{n\to \infty} \frac{\ell(n)}{\log n}=\tfrac 1\alpha.
+  \end{equation}
+  Let $\bbP_p$ be a Bernoulli measure corresponding to a probability vector $p=(p_1, \dots, p_N)$. Then, for $\bbP_{p}$-almost every $\bo \in \Sigma$, the Hausdorff dimension of $R(\bo, \ell)^c$ is given by the solution $t=t(\alpha)$ to
+  \begin{equation}\label{eq:salpha2}
+    t(\alpha)=\inf_{q<0} \left\{P_\alpha(q) : \sum_{i=1}^N \lambda_i^{P_{\alpha}(q)}(p_ie^\alpha)^q=1\right\}.
+  \end{equation}
+\end{theorem}
+
+\subsection{Further discussion and example}\label{sec:discuss}
+
+Now, let us study the result of \cref{thm:main} and \cref{thm:main2} with some more details. We
+characterise four regions on the behaviour of the "size" of $R(\bo,\ell)$. Let $P_\alpha(q)$ be the
+unique solution of
+$$
+\sum_{i=1}^N \lambda_i^{P_{\alpha}(q)}(p_ie^\alpha)^q=1.
+$$
+The first region corresponds to "small" values of $\alpha$. Namely, if
+$$
+\alpha<-\sum_{i=1}^N\lambda_i^{P_\alpha(1)}p_ie^\alpha \log p_i\text{ then }s(\alpha)=P_\alpha(1).
+$$
+In particular, there exists a unique $\alpha_0\in(0,\infty)$ such that
+$\alpha_0=-\sum_{i=1}^N\lambda_i^{P_{\alpha_0}(1)}p_ie^{\alpha_0} \log p_i$ and
+$s(\alpha)=P_\alpha(1)$ holds for every $\alpha\in(0,\alpha_0]$. In the special case when
+$\lambda_i\equiv\lambda$, we have that $s(\alpha)=\frac{\alpha}{-\log\lambda}$ for
+$\alpha\in(0,-\sum_ip_i\log p_i)$.
+
+The second region correspond the "spectral behaviour part". More precisely, for every
+$\alpha\in[\alpha_0,-\sum_i\lambda_i^{s_0}\log p_i]$, there exists a unique $q=q(\alpha)\in[0,1]$
+such that
+$$
+\dimh R(\bo,\ell)=P_{\alpha}(q(\alpha))=\inf_{q\in\bbR}P_\alpha(q)=\sup\left\{\frac{-\sum_iq_i\log
+q_i}{-\sum_iq_i\log\lambda_i}:-\sum_iq_i\log p_i\leq\alpha\right\}.
+$$ This optimisation resembles the multifractal spectrum, and it indeed coincides with the Legendre
+transform of the $L^q$-dimension of $\bbP_p$ if $\lambda_i\equiv\lambda$, see Liao and Seuret ??. In
+these regions, $\dim_HR(\bo,\ell)<s_0$ whenever $\alpha<-\sum_i\lambda_i^{s_0}\log p_i$.
+
+The third and the fourth regions are the "large" $\alpha$ cases when typical orbits cover
+$\cH^{s_0}$-almost every point in $\Lambda$. However, in the region $\alpha\in(- \sum_{i=1}^m
+\lambda_i^{s_0}\log  p_i,-\log\min\{p_i\})$ almost surely the whole set $\Lambda$ is not covered,
+whereas if $\alpha>-\log\min\{p_i\}$ then every point in $\Lambda$ is covered $\bbP_p$-almost surely
+infinitely often. This solves the analogue of Dvoretzky's covering problem in the self-similar
+setting.
+
+Similarly, three natural regions can be characterised for the dimension of $R(\bo,\ell)^c$. In the
+first region $\alpha<\-sum_i\lambda_i^{s_0}\log p_i$, $R(\bo,\ell)^c$ has full $\cH^{s_0}$-measure
+in $\Lambda$, and in the region $-\log\min\{p_i\}\alpha>\-sum_i\lambda_i^{s_0}\log p_i$, the
+Hausdorff dimension of $R(\bo,\ell)^c$ is also given by the spectrum defined by
+$\alpha\mapsto\inf_qP_\alpha(q)$ but for "its decreasing" part corresponding to negative $q$ values,
+and it is strictly smaller than $s_0$. After $-\log\min\{p_i\}<\alpha$, $R(\bo,\ell)^c$ is clearly
+empty.
+
+
+Surprisingly, the $s(\alpha)$ defined in \cref{eq:salpha} has an equivalent characterisation as the unique root of
+\begin{equation}\label{eq:probpres}
+  \limsup_{n\to \infty} \tfrac 1n \log \sum_{|\bj|=n}\lambda_{\bj}^{s}\left(1-(1-p_{\bj})^{e^{\alpha n}}\right)=0,
+\end{equation}
+see Section ??. This form of $s(\alpha)$ plays an important role in the proof of \cref{thm:main}: it
+gives a natural description of coverings by taking into account the multiplicity of the visits of
+cylinders by typical $\bbP_p$-orbits.
+
+{\color{red} LOOK AT THIS NICE PICTURE OF $s(\alpha)$}
+
+
+
+
+
+\subsection{Structure of the paper}
+
+We first consider the expressions and bla.
+
+We further prove that the Hausdorff measure is full,
+$\cH^{s_0}(R(\bo,\ell))=\cH^{s_0}(\Lambda)$, for $\mu$-almost every $\bo$ whenever
+$\alpha>s_0$ in ??. Further, for $\alpha$ large enough, we additionally show that
+$R(\bo,\ell)=\Lambda$ for almost all $\bo$, see \cref{thm:fullCover} below. This is also sharp ??
+
+\section{Preliminaries and the study of the probabilistic pressure}
+
+We will repeatedly make use of the following well-known approximations throughout the whole paper:
+\begin{equation}\label{eq:repeat}
+  (1-x)^n\ge 1-nx \text{ and } (1-x)^n\le e^{-xn}.
+\end{equation}
+From the second order Taylor approximation, for small $x$ near $0$, we also always have
+\begin{equation}\label{eq:taylor}
+  (1-x)^n\le 1-nx+\frac{n^2x^2}{2}=1-nx(1-\frac{nx}2).
+\end{equation}
+
+First we show the following proposition, which describes the regions discussed in \cref{sec:discuss}.
+
+\begin{lemma}\label{thm:almostlegendre}
+  Let $P_\alpha(q)$ be the unique solution of $\sum_{i=1}^N
+  \lambda_i^{P_{\alpha}(q)}(p_ie^\alpha)^q=1.$ Then the map $q\mapsto P_\alpha(q)$ is continuous,
+  convex.
+
+  Moreover, if $p_i\neq p_j$ for some $i\neq j$ then the map
+  \[
+    \alpha\in[-\log\max_i\{p_i\},-\log\min_i\{p_i\}]\mapsto\inf_{q\in\bbR}P_\alpha(q)
+  \]
+  is also continuous, convex and its unique maxima is at $\alpha=- \sum_{i=1}^N \lambda_i^{s_0}\log p_i$.
+\end{lemma}
+
+\begin{proof}
+  It is clear from the definition that $q\mapsto P_\alpha(q)$ is continuous, so, we show that the
+  map $q\mapsto P_{\alpha}(q)$ is convex (but not necessarily strictly convex) on $\bbR$. Simple
+  algebraic calculations show that for every $q\in\bbR$
+  \begin{equation}\label{eq:Pder}
+    0=\sum_{i=1}^N\lambda_i^{P_\alpha(q)}(p_ie^\alpha)^q\left(\log p_i+\alpha+P_\alpha'(q)\log\lambda_i\right)
+  \end{equation}
+  and
+  $$
+  0=\sum_{i=1}^N\lambda_i^{P_\alpha(q)}(p_ie^\alpha)^q\left(\log
+  p_i+\alpha+P_\alpha'(q)\log\lambda_i\right)^2+P_\alpha''(q)\sum_{i=1}^N\lambda_i^{P_\alpha(q)}(p_ie^\alpha)^q
+  \log\lambda_i,
+  $$
+  thus,
+  $$
+  P_\alpha''(q)=\frac{\sum_{i=1}^N\lambda_i^{P_\alpha(q)}(p_ie^\alpha)^q\left(\log
+  p_i+\alpha+P_\alpha'(q)\log\lambda_i\right)^2}{-\sum_{i=1}^N\lambda_i^{P_\alpha(q)}(p_ie^\alpha)^q
+  \log\lambda_i}\geq0,
+  $$
+  hence, the convexity follows. Clearly, $P_\alpha''(q)=0$ for some $q\in\bbR$ if and only if
+  $P_\alpha'(q)=\frac{\log(p_ie^\alpha)}{-\log\lambda_i}$ for every $i$ and every $q\in\bbR$. In
+  particular, $P_\alpha''\equiv0$ and
+  $\frac{\log(p_ie^\alpha)}{-\log\lambda_i}=\frac{\log(p_je^\alpha)}{-\log\lambda_j}$ for every
+  $i\neq j$.
+
+  Now, let us study the continuity of $\alpha\mapsto\inf_{q\in\bbR}P_\alpha(q)$. It is easy to see
+  that if $\min_i\{p_i\}e^\alpha>1$ then
+  \[
+    P_\alpha'(q)=\frac{\sum_{i=1}^N\lambda_i^{P_\alpha(q)}(p_ie^\alpha)^q\log(p_ie^\alpha)}{-\sum_{i=1}^N\lambda_i^{P_\alpha(q)}(p_ie^\alpha)^q\log\lambda_i}\geq\frac{\log(\min_i\{p_i\}e^\alpha)}{-\log\min_i\{\lambda_i\}}>0\text{
+    for every }q\in\bbR,
+  \]
+  and so $\inf_{q\in\bbR}P_\alpha(q)=\lim_{q\to-\infty}P_\alpha(q)=-\infty$. Similarly, if  $\max_i\{p_i\}e^\alpha<1$ then $P_\alpha'(q)<0$ for every $q\in\bbR$, and hence, $\inf_{q\in\bbR}P_\alpha(q)=\lim_{q\to\infty}P_\alpha(q)=-\infty$. Hence, $\alpha\mapsto\inf_{q\in\bbR}P_\alpha(q)$ defined only on $[-\log\max\{p_i\},-\log\min\{p_i\}]$.
+
+  Let $\cI_{\max}=\{i:p_i=\max\{p_i\}\}$ and $\cI_{\min}=\{i:p_i=\min\{p_i\}\}$. Since
+  $\alpha$ is an element in $[-\log\max\{p_i\},-\log\min\{p_i\}]$, for $q\geq0$ we get
+  $$
+  1=\sum_{i=1}^N\lambda_i^{P_\alpha(q)}(p_ie^\alpha)^q\geq\sum_{i\in \cI_{\max}}\lambda_i^{P_\alpha(q)}.
+  $$
+  Similarly, $1\geq\sum_{i\in \cI_{\min}}\lambda_i^{P_\alpha(q)}$ for $q\leq 0$. Thus,
+  $P_\alpha(q)\geq0$ for every $q\in\bbR$. Let $s_{\min}$ and $s_{\max}$ be the unique solutions of
+  $1=\sum_{i\in \cI_{\min}}\lambda_i^{s_{\min}}$ and $1=\sum_{i\in \cI_{\min}}\lambda_i^{s_{\max}}$
+  respectively
+
+  Under the assumption that $p_i\neq p_j$ for some $i\neq j$, a simple algebraic manipulation shows
+  that if $\lambda_i=\lambda_j$ for every $i\neq j$ then there is no $\alpha$ such that
+  $P_\alpha''\equiv0$. Moreover, if  $\lambda_i\neq\lambda_j$ for some $i\neq j$ then the only
+  possible value of $\alpha$ for which $P_\alpha''\equiv0$ is
+  $$
+  \widehat{\alpha}=\frac{\tfrac{\log p_i}{-\log\lambda_i}-\tfrac{\log
+  p_j}{-\log\lambda_j}}{\tfrac{1}{-\log\lambda_j}-\tfrac{1}{-\log\lambda_i}}.
+  $$
+  However, $\widehat{\alpha}\notin [-\log\max\{p_i\},-\log\min\{p_i\}]$. Indeed, if
+  $\widehat{\alpha}\in [-\log\max\{p_i\},-\log\min\{p_i\}]$ then $P_{\widehat{\alpha}}'\equiv c$ for
+  some $c\in\bbR$. If $P_{\widehat{\alpha}}'\equiv c\neq0$, then $P_{\widehat{\alpha}}(q)=s_0-cq$
+  but then $\inf_{q\in\bbR}P_{\widehat{\alpha}}(q)=-\infty$, which contradicts to
+  $P_{\widehat{\alpha}}(q)\geq0$ for every $q$, and if $c=0$ then $p_ie^{\widehat{\alpha}}=1$ for
+  every $i$ but this contradicts to the assumption $p_i\neq p_j$ for some $i\neq j$. This implies
+  that
+  $$
+  P_\alpha''(q)>0
+  $$
+  for every $\alpha\in [-\log\max\{p_i\},-\log\min\{p_i\}]$.
+
+  Simple algebraic manipulation shows that
+  $$
+  \lim_{q\to\infty}P_\alpha'(q)=\frac{\sum_{i\in\cI_{\max}}\lambda_i^{s_{\max}}\log(p_i
+  e^{\alpha})}{-\sum_{i\in\cI_{\max}}\lambda_i^{s_{\max}}\log\lambda_i}\geq 0\text{ and
+}\lim_{q\to-\infty}P_\alpha'(q)=\frac{\sum_{i\in\cI_{\min}}\lambda_i^{s_{\min}}\log(p_i
+e^{\alpha})}{-\sum_{i\in\cI_{\min}}\lambda_i^{s_{\min}}\log\lambda_i}\leq 0.
+  $$
+  Hence, if $p_i\neq p_j$ for some $i\neq j$ then for every
+  $\alpha\in(-\log\max\{p_i\},-\log\min\{p_i\})$ there exists a continuous function $\alpha\mapsto
+  q(\alpha)$ such that $P_\alpha'(q(\alpha))=0$, and
+  $\inf_{q\in\bbR}P_\alpha(q)=P_{\alpha}(q(\alpha))$. Moreover, the map $\alpha\mapsto
+  P_{\alpha}(q(\alpha))$ is strictly concave,
+  $\lim_{\alpha\to-\log\max\{p_i\}}P_{\alpha}(q(\alpha))=s_{\max}$ and
+  $\lim_{\alpha\to-\log\min\{p_i\}}P_{\alpha}(q(\alpha))=s_{\min}$, which completes the proof.
+\end{proof}
+
+\cref{thm:almostlegendre} shows that $\inf_{q}P_\alpha(q)$ has similar properties to the standard
+Legendre transform of convex functions.
+
+\begin{proposition}\label{thm:legendre}
+  Let $P_\alpha(q)$ be the unique solution of $\sum_{i=1}^N \lambda_i^{P_{\alpha}(q)}(p_ie^\alpha)^q=1.$ Then
+  \begin{equation}\label{eq:regions}
+    \inf_{q\in[0,1]} \left\{P_\alpha(q)\right\}=\begin{cases}
+      P_{\alpha}(1), & \mbox{if } \alpha\leq-\sum_{i=1}^N\lambda_i^{P_\alpha(1)}p_ie^\alpha \log p_i \\
+      \inf_{q\in\bbR} \left\{P_\alpha(q)\right\}, & \mbox{if } - \sum_{i=1}^N \lambda_i^{P_{\alpha}(0)}\log p_i>\alpha>-\sum_{i=1}^N\lambda_i^{P_{\alpha}(1)}p_ie^\alpha \log p_i \\
+      P_{\alpha}(0)=s_0, & \mbox{otherwise}.
+    \end{cases}
+  \end{equation}
+  Moreover, the map $\alpha\mapsto\inf_{q\in[0,1]}P_\alpha(q)$ is also continuous, and strictly smaller than $s_0=\dim_H\Lambda$ whenever $- \sum_{i=1}^N \lambda_i^{s_0}\log p_i>\alpha$.
+\end{proposition}
+
+\begin{proof}
+  Let us prove first \cref{eq:regions}. First, let us suppose that $P_\alpha''\equiv0$, and so,
+  there exists $c\in\bbR$ such that $\frac{\log(p_ie^\alpha)}{-\log\lambda_i}=c$ for every $i$. Then
+  $\alpha\leq-\sum_{i=1}^N\lambda_i^{P_\alpha(1)}p_ie^\alpha \log
+  p_i=-\sum_{i=1}^N\lambda_i^{s_0}\log p_i$ holds if and only if $c\leq0$ and so
+  $\inf_{q\in[0,1]}P_{\alpha}(q)=P_\alpha(1)$, which proves the claim in this case.
+
+  We may suppose now that $P_\alpha''(q)>0$ for all $q\in\bbR$. Hence, there exists at most one
+  $q'\in\bbR$ such that $P_{\alpha}'(q')=0$. Thus, if
+  $\alpha\leq-\sum_{i=1}^N\lambda_i^{P_\alpha(1)}p_ie^\alpha \log p_i$ then $P_{\alpha}'(1)\leq0$ by
+  \cref{eq:Pder}, and by convexity $1\leq q'$, and so, $P_{\alpha}'(q)\leq0$ for every $q\in[0,1]$,
+  which clearly implies that $\inf_{q\in[0,1]} \left\{P_\alpha(q)\right\}=P_\alpha(1)$. The case
+  $\alpha\geq-\sum_{i=1}^N\lambda_i^{P_\alpha(0)}\log p_i$ is similar, and the remaining case
+  follows by the uniqueness of the infimal point of convex functions.
+\end{proof}
+
+Note that if $p_i=1/N$ for every $i$, then the middle region in \cref{eq:regions} is empty. Now, we
+show the following variational principle result:
+
+\begin{lemma}\label{thm:varprinc}
+  For every $\alpha>0$,
+  $$
+  \sup\left\{\frac{-\sum_{i=1}^Nq_i\log q_i}{-\sum_{i=1}^Nq_i\log\lambda_i} : \sum_{i=1}^Nq_i\log p_i+\alpha\geq0\right\}=\inf_{q>0}P_\alpha(q),
+  $$
+  and the supremum is attained for the probability vector $q_{i,\alpha}^*=\lambda_i^{P_\alpha(q^*)}(p_ie^{\alpha})^{q^*}$.
+
+  Moreover, for every $\alpha>0$,
+  $$
+  \sup\left\{\frac{-\sum_{i=1}^Nq_i\log q_i}{-\sum_{i=1}^Nq_i\log\lambda_i} : \sum_{i=1}^Nq_i\log p_i+\alpha\leq0\right\}=\inf_{q<0}P_\alpha(q).
+  $$
+\end{lemma}
+
+\begin{proof}
+  First, let us observe that by the concavity of the logarithm for every $q>0$ and for every
+  probability vector $\{q_i\}_{i=1}^N$ such that $\sum_{i=1}^Nq_i\log p_i+\alpha\geq0$ we get
+  \begin{align}
+    0&=\log\sum_{i=1}^N\lambda_i^{P_\alpha(q)}(p_ie^{\alpha})^q\geq\sum_{i=1}^Nq_i\left(\log\left((p_ie^\alpha)^q\lambda_i^{P_\alpha(q)}\right)-\log q_i\right)\nonumber\\
+     &=q\left(\sum_{i=1}^Nq_i\log p_i+\alpha\right)+P_{\alpha}(q)\sum_{i=1}^Nq_i\log\lambda_i-\sum_{i=1}^Nq_i\log q_i\nonumber\\
+     &\geq P_{\alpha}(q)\sum_{i=1}^Nq_i\log\lambda_i-\sum_{i=1}^Nq_i\log q_i,\nonumber
+  \end{align}
+  and so,
+  \begin{equation}\label{eq:corolary}
+    P_\alpha(q)\geq\frac{-\sum_{i=1}^Nq_i\log q_i}{-\sum_{i=1}^Nq_i\log\lambda_i}.
+  \end{equation}
+
+  Now, suppose that $P_{\alpha}''(q)=0$ for every $q\in\bbR$, and in particular,
+  $P_\alpha'(q)=\frac{\log p_i+\alpha}{-\log\lambda_i}=c$ for every $i$ and $q$. Then $c\geq0$ if
+  and only if $\alpha\geq-\sum_i\lambda_i^{s_0}\log p_i$ and in this case
+  $$
+  \inf_{q>0}P_{\alpha}(q)=P_{\alpha}(0)=s_0=\sup\frac{-\sum_{i=1}^Nq_i\log q_i}{-\sum_{i=1}^Nq_i\log\lambda_i}.
+  $$
+  If $c<0$ then $\inf_{q>0}P_\alpha(q)=-\infty$, and $\sum_{i=1}^Nq_i\log
+  p_i+\alpha=-c\sum_{i=1}^Nq_i\log \lambda_i<0$, thus, the claim of the lemma is trivial.
+
+  If $P_\alpha''(q)>0$ for every $q\in\bbR$ then by \cref{thm:legendre}, there exists a unique
+  $q^*\in\bbR$ such that $\inf_{q\in\bbR}P_\alpha(q)=P_\alpha(q^*)$. If $q^*\leq0$ then
+  $\inf_{q>0}P_\alpha(q)=P_\alpha(0)$, and $\sum_{i=1}^N\lambda_i^{P_\alpha(0)}\log p_i+\alpha\geq0$
+  by \cref{thm:legendre}. If $q^*>0$ then $P_\alpha'(q^*)=0$ and by \cref{eq:Pder}
+  \[
+    0=\sum_{i=1}^N\lambda_i^{P_\alpha(q^*)}(p_ie^{\alpha})^{q^*}\log p_i+\alpha,
+  \]
+  and then by \cref{eq:corolary}
+  \[
+    P_\alpha(q^*)\geq\frac{-\sum_{i=1}^N\lambda_i^{P_\alpha(q^*)}(p_ie^{\alpha})^{q^*}\log
+    \lambda_i^{P_\alpha(q^*)}(p_ie^{\alpha})^{q^*}}{-\sum_{i=1}^N\lambda_i^{P_\alpha(q^*)}(p_ie^{\alpha})^{q^*}\log\lambda_i}=P_{\alpha}(q^*)-q^*P_{\alpha}'(q^*)=P_{\alpha}(q^*).
+  \]
+  The proof of the second claim is similar and left for the reader.
+\end{proof}
+
+The three cases in \cref{thm:legendre} defines naturally measures on $\Sigma$. Namely, in the first
+case let us denote by $\bbQ_1$ the Bernoulli measure on $\Sigma$ associated to the probability vector
+$\{\lambda_i^{P_\alpha(1)}p_ie^{\alpha}\}_{i=1}^N$, let us denote by $\bbQ_0$ the Bernoulli measure
+on $\Sigma$ associated to the probability vector $\{\lambda_i^{s_0}\}_{i=1}^N$, and let $\bbQ_{q^*}$
+be associated to
+$\{q_{i,\alpha}^*=\lambda_i^{P_\alpha(q^*(\alpha))}(p_ie^{\alpha})^{q^*(\alpha)}\}_{i=1}^N$, where
+$q^*(\alpha)$ is the
+unique solution for $P_\alpha(q^*(\alpha))=\inf_qP_\alpha(q)$.
+
+We will turn now to study the relation of \cref{eq:probpres} and $P_\alpha(q)$. Let $\ell\colon\bbN\to\bbN$ be a monotone increasing function as in \cref{thm:main}. Let us write
+\begin{equation}\label{eq:famousmn}
+  m(n)=\left\lfloor \frac{\# \ell^{-1}(n)}{n} \right\rfloor.
+\end{equation}
+Note that $\limsup_{n\to\infty}\frac{\log m(n)}{n}=\alpha$.
+
+For any $s\geq0$, we define the {\bf probabilistic pressure} as
+$$
+L\colon s\mapsto\limsup_{n\to \infty} \tfrac 1n \log \sum_{|\bj|=n}\lambda_{\bj}^{s}\left(1-(1-p_{\bj})^{m(n)}\right).
+$$
+It is clear that the map above is continuous and strictly monotone decreasing. Moreover, it tends to $-\infty$ as $s\to\infty$ and at $s=0$ it is non-negative. Indeed,
+\[
+  \begin{split}
+    \sum_{|\bj|=n}\left(1-(1-p_{\bj})^{m(n)}\right)&\geq \sum_{|\bj|=n}p_{\bj}=1.
+  \end{split}
+\]
+Hence, there is a unique solution of $L(s)=0$, which we denote by $s(\alpha)$ with a slight abuse of notation.
+
+Next, we show that the two formalisations of the dimension of the random covering set are
+equivalent. Before doing so, we define two sets , which play an important role in that and further
+in the paper. Let $\epsilon>0$ and
+\begin{equation}\label{eq:GV}
+  \cG_n^\epsilon=\{\bj\in \Sigma_n\mid 1-(1-p_\bj)^{m(n)}\le (1-\epsilon)^n \} \text{ and
+  }\cV_n^\epsilon=\{\bj\in \Sigma_n \mid 1-(1-p_\bj)^{m(n)}>(1-\epsilon)^n \}.
+\end{equation}
+By the approximations \eqref{eq:repeat} we immediately obtain
+\begin{equation}\label{eq:setest}
+  \{\bj\in \Sigma_n\mid p_{\bj}m(n)\le (1-\epsilon)^n\}\subset \cG_n^\epsilon \subset \{ \bj\in
+  \Sigma_n\mid p_\bj m(n)\le \frac1\epsilon(1-\epsilon)^n \},
+\end{equation}
+and so,
+\begin{equation}\label{eq:setest2}
+  \{ \bj\in \Sigma_n\mid p_\bj m(n)> \frac1\epsilon(1-\epsilon)^n \}\subset \cV_n^\epsilon \subset
+  \{\bj\in \Sigma_n\mid p_{\bj}m(n)> (1-\epsilon)^n\}.
+\end{equation}
+
+
+
+
+\begin{lemma}\label{thm:twospec}
+  Let $s(\alpha)$ be the unique solution of $L(s(\alpha))=0$. Then $\inf_{q\in[0,1]}P_\alpha(q)=s(\alpha)$.
+\end{lemma}
+
+\begin{proof}
+  Let us first suppose that $0<\alpha<-\sum_{i=1}^N\lambda_i^{P_\alpha(1)}p_ie^\alpha \log p_i$. By
+  \cref{eq:repeat}, for every $s\geq0$
+  \[\begin{split}
+    L(s)=\limsup_{n\to \infty} \tfrac 1n \log
+    \sum_{|\bj|=n}\lambda_{\bj}^{s}\left(1-(1-p_{\bj})^{m(n)}\right)&\leq\limsup_{n\to \infty}
+    \tfrac 1n \log \sum_{|\bj|=n}\lambda_{\bj}^{s}m(n)p_{\bj}\\
+    &=\log\sum_{i=1}^N\lambda_i^sp_i+\limsup_{n\to\infty}\tfrac1n\log m(n)\\
+    &=\log\sum_{i=1}^N\lambda_i^sp_i+\alpha,
+  \end{split}\]
+  where in the last equality we have used the monotonicity of $\ell$ and \cref{eq:condonl}. Thus, in
+  particular, $L(P_\alpha(1))\leq0$.
+
+  Choose $\epsilon>0$ such that $\alpha+\sum_{i=1}^N\lambda_i^{P_\alpha(1)}p_ie^\alpha \log
+  p_i<2\log(1-\epsilon)\leq0$. For sufficiently large $n\geq1$, $m(n)\leq e^{\alpha
+  n}(1-\epsilon)^{-n}$. Then by \cref{eq:taylor} and the definition of $\cG_n^\epsilon$.
+  \[
+    \begin{split}
+    L(P_\alpha(1))&\geq\limsup_{n\to \infty} \tfrac 1n \log \sum_{\bj\in
+    \cG_n^\epsilon}\lambda_{\bj}^{P_\alpha(1)}\left(1-(1-p_{\bj})^{m(n)}\right)\\
+		  &\geq\limsup_{n\to \infty} \tfrac 1n \log \sum_{\bj\in \cG_n^\epsilon}\lambda_{\bj}^{P_\alpha(1)}m(n)p_{\bj}\left(1-\frac{m(n)p_{\bj}}{2}\right)\\
+		  &\geq\limsup_{n\to \infty} \tfrac 1n \log \sum_{\bj\in \cG_n^\epsilon}\lambda_{\bj}^{P_\alpha(1)}m(n)p_{\bj}\left(1-\frac{(1-\epsilon)^n}{2\epsilon}\right)\\
+		  &\geq\limsup_{n\to \infty} \left(\tfrac 1n \log\left( \sum_{\bj\in \cG_n^\epsilon}\lambda_{\bj}^{P_\alpha(1)}e^{\alpha n}p_{\bj}\right)+\tfrac 1n \log (m(n)/e^{\alpha n})\right)\\
+		  &\geq\limsup_{n\to \infty} \left(\tfrac 1n \log \bbQ_1\left(\left\{\bi\in\Sigma:\tfrac1n\log p_{\bi|_n}+\frac{\log m(n)}{n}\leq\log(1-\epsilon)\right\}\right)+\tfrac 1n \log (m(n)/e^{\alpha n})\right)\\
+		  &\geq\limsup_{n\to \infty} \left(\tfrac 1n \log \bbQ_1\left(\left\{\bi\in\Sigma:\tfrac1n\log p_{\bi|_n}+\alpha\leq2\log(1-\epsilon)\right\}\right)+\tfrac 1n \log (m(n)/e^{\alpha n})\right)=0,
+    \end{split}
+  \]
+  where the last equality follows by the fact that the expected value of $\log p_{i_1}$ w.r.t.
+  $\bbQ_1$ is $\sum_{i=1}^N\lambda_i^{P_\alpha(1)}p_ie^\alpha \log p_i$ and the choice of
+  $\epsilon$.
+
+  Now suppose that $-\sum_{i=1}^N\lambda_i^{P_\alpha(1)}p_ie^\alpha \log
+  p_i\leq\alpha\leq-\sum_{i=1}^N\lambda_i^{P_\alpha(0)}\log p_i$. Let $\varepsilon>0$ be arbitrary.
+  Then $m(n)\leq e^{\alpha n}(1-\epsilon)^{-n}$ for every sufficiently large $n\geq1$ and by
+  \cref{thm:varprinc} and \cref{eq:setest2}
+  \[
+    \begin{split}
+&L(P_\alpha(q^*(\alpha)))
+\\
+&\leq\limsup_{n\to \infty} \tfrac 1n \log\left( \sum_{\bj\in \cG_n^\epsilon}\lambda_{\bj}^{P_\alpha(q^*(\alpha))}m(n)p_{\bj}+\sum_{\bj\in \cV_n^\epsilon}\lambda_{\bj}^{P_\alpha(q^*(\alpha))}\right)\\
+&\leq\limsup_{n\to \infty} \tfrac 1n \log\left( \sum_{\bj\in \cG_n^\epsilon}\lambda_{\bj}^{P_\alpha(q^*(\alpha))}(m(n)p_{\bj})^{q^*(\alpha)}(1-\epsilon)^{n(1-q^*(\alpha))}+\sum_{\bj\in \cV_n^\epsilon}\lambda_{\bj}^{P_\alpha(q^*(\alpha))}\right)\\
+&\leq \limsup_{n\to \infty} \tfrac 1n \log\left((1-\epsilon)^{n(1-2q^*(\alpha))}\bbQ_{q^*}(\{\bi:\bi|_n\in\cG_n^\epsilon\})\right.\\
+&\left.\hspace{4cm}+ \sum_{\substack{k_1,\ldots,k_N\geq0\\k_1+\cdots+k_N=n\\n\alpha+\sum_{i}k_i\log p_i>n2\log(1-\epsilon)}}\binom{n}{k_1,\ldots,k_N}\left(\lambda_1^{k_1}\cdots\lambda_N^{k_N}\right)^{P_{\alpha}(q^*(\alpha))}\right)\\
+&=\limsup_{n\to \infty} \tfrac 1n
+\log\left(e^{o(n)}(1-\epsilon)^{nq^*}\bbQ_{q^*}(\{\bi:\bi|_n\in\cG_n^\epsilon\})\right.\\
+&\left.\hspace{4cm}+ \binom{n+N-1}{N}e^{n(h_{\bbQ_{q^*(\alpha-2\log(1-\epsilon))}}+P_{\alpha}(q^*(\alpha))\sum_{i}q_{i,\alpha-2\log(1-\epsilon)}^*\log\lambda_i)}\right)\\
+&\leq\max\left\{ (1-q^*(\alpha))\log(1-\epsilon),\left(P_\alpha(q^*(\alpha))-P_{\alpha-2\log(1-\epsilon)}(q^*(\alpha-2\log(1-\epsilon)))\right)\log\min\{\lambda_i\}\right\}.
+    \end{split}
+  \]
+  and since $\epsilon>0$ was arbitrary, we get that $L(P_\alpha(q^*(\alpha)))\leq0$.
+
+  For the other inequality, observe that for every $\epsilon>0$ there exists a subsequence $n_k$ such that
+  \begin{equation}\label{eq:this}
+    \frac{(1-\epsilon)^{n_k}}{\epsilon}<\min\{p_i\}e^{-\alpha n_k}m(n_k)<p_1^{q_{1,\alpha}^*n_k}\cdots p_N^{q_{N,\alpha}^*n_k}m(n_k),
+  \end{equation}
+  and so, every finite word $\bi$ with $|\bi|=n_k$ and $\#_i\bi=q_{i,\alpha}^*n_k$ belongs to
+  $\cV_{n_k}^\epsilon$. Hence,
+  \[
+    \begin{split}
+      L(P_\alpha(q^*(\alpha)))&\geq\limsup_{n\to \infty} \tfrac 1n \log\left( \sum_{\bj\in \cV_n^\epsilon}\lambda_{\bj}^{P_\alpha(q^*(\alpha))}(1-\epsilon)^n\right)\\
+			      &\geq\limsup_{k\to \infty} \tfrac{1}{n_k} \log\left( \binom{n_k}{q_{1,\alpha}^*n_k,\ldots,q_{N,\alpha}^*n_k}\left(\lambda_{1}^{q_{1,\alpha}^*n_k}\cdots\lambda_{N}^{q_{N,\alpha}^*n_k}\right)^{P_\alpha(q^*(\alpha))}(1-\epsilon)^{n_k}\right)\\
+			      &\geq\log(1-\epsilon),
+    \end{split}
+  \]
+  and since $\epsilon>0$ was arbitrary $L(P_\alpha(q^*(\alpha)))\geq0$.
+
+  Finally, suppose that $\alpha>-\sum_{i=1}^N\lambda_i^{P_\alpha(0)}\log p_i$. Since
+  $L(s)\leq\log\sum_{i=1}^N\lambda_i^s$, we can further conclude that 
+  $L(P_\alpha(0))\leq0$. On the other hand, similarly to \cref{eq:this} one can show that
+  $(1-\epsilon)^{n_k}/\epsilon<p_1^{\lambda_1^{s_0}n_k}\cdots p_N^{\lambda_1^{s_0}n_k}m(n_k)$ over a
+  subsequence $n_k$, and so, similar argument leads us to the inequality $L(P_\alpha(0))\geq0$.
+\end{proof}
+
+\section{Upper bounds}\label{sec:upper}
+
+\subsection{Upper bound for the random covering set}
+
+We will prove the upper bound to the Hausdorff dimension in \cref{thm:main}. Notice that, for all
+$m\in \bbN$
+\begin{equation}\label{eq:cover}
+  R(\bo, \ell)=\limsup_{n\to\infty}\pi[\sigma^n(\bo)|_{\ell_n}]\subset \bigcup_{n\ge
+  m}\bigcup_{\substack{|\bi|=n\\ \sigma^k(\bo)|_{\ell_k}=\bi\text{ for some $k$}}}\pi[\bi],
+\end{equation}
+and (up to an absolute constant) $\diam \pi[\bi]=\lambda_{\bi}$, the Hausdorff dimension of $R(\bo,
+\ell)$ is bounded from above by all those $t$ for which
+\[
+  \sum_{n=1}^\infty \sum_{|\bi|=n}\lambda_{\bi}^t\cdot\mathbb 1\{\bi=\sigma^k(\bo)|_n \text{ for some $k$ for which }n=\ell(k)\}<\infty.
+\]
+It is difficult to bound this series for a fixed $\bo$, but as we are only looking for bounds that
+hold for $\bbP_p$-almost every $\bo$, we aim to prove, instead, that
+\begin{equation}\label{eq:expectationest}
+  \begin{split}
+&\bbE\left(\sum_{n=1}^\infty \sum_{|\bi|=n}\lambda_{\bi}^t\cdot\mathbb 1\{\bi=\sigma^k(\bo)|_n
+\text{ for some $k$ for which }n=\ell(k)\}\right)\\
+&\qquad=\sum_{n=1}^\infty \sum_{|\bi|=n}\lambda_\bi^t\bbP (\bi=\sigma^k(\bo)|_n \text{ for some $k$
+for which }n=\ell(k))<\infty.
+  \end{split}
+\end{equation}
+Here the expectation is with respect to the Bernoulli measure $\bbP_p$. For any fixed $n$ there are
+$\#\ell^{-1}(n)$ values of $k$ for which $n=\ell(k)$. Among these options, there are
+\[
+  \left\lfloor\frac{\#\ell^{-1}(n)}{n}\right\rfloor=m(n)
+\]
+such that correspond to disjoint stretches of $\bo$. This is due to the fact that, denoting by
+$\min\ell^{-1}(n)=:M$ for any fixed $n$, there are approximately $m(n)$ elements $p$ in the
+collection
+\[
+  P_\ell(n)=\{M+\ell, M+\ell+n, \dots, M+\ell+qn\mid q\in \mathbb N\text{ maximal s.t. } M+\ell+qn\in \ell^{-1}(n)\},
+\]
+where $\ell\in\{0,\ldots,n-1\}$. These correspond to disjoint stretches $\sigma^p(\bo)$. Hence we
+have, for any fixed $n$, $\bi$
+\begin{align}
+  \bbP (\bi=\sigma^k(\bo)|_n \text{ for some $k$ for which }n=\ell(k))
+  &\le \sum_{\ell=0}^{n-1}\bbP(\bi=\sigma^p(\bo)|_n \text{ for some }p\in P_\ell(n))\nonumber\\
+  &\le n\left(1-(1-p_{\bi})^{m(n)}\right).\label{eq:standard}
+\end{align}
+Hence, when $t> s(\alpha)$, as $L$ is strictly decreasing,
+\[
+  \limsup _{n\to \infty} \tfrac 1n \log \sum_{|\bj|=n}\lambda_{\bj}^{s}(1-(1-p_{\bj})^{m(n)})<0,
+\]
+then
+\[
+  \sum_{n=1}^\infty n\sum_{|\bi|=n}\lambda_\bi^t(1-(1-p_{\bi})^{m(n)})<\infty,
+\]
+and in particular \eqref{eq:expectationest} and hence the upper bound to the Hausdorff dimension of
+$R(\bo, \ell)$ holds.
+
+\subsection{Upper bound for the complement}\label{sec:upperforcomp}
+
+Notice that,
+\[
+  R(\bo, \ell)^c= \bigcup_{m}\bigcap_{n\ge m}\bigcup_{\substack{|\bi|=n\\
+  \sigma^k(\bo)|_{\ell_k}\neq\bi\text{ for every $k$}}}\pi[\bi],
+\]
+Let $\epsilon>0$ be arbitrary but fixed. Let $n_k$ be the subsequence for which
+$$
+m(n_p)e^{\alpha n_p}\geq(1+\epsilon)^{-n_p}.
+$$
+So for every $m\geq1$
+\[
+  R(\bo, \ell)^c\subset \bigcup_{p=m}^\infty\bigcup_{\substack{|\bi|=n_p\\
+  \sigma^k(\bo)|_{\ell_k}\neq\bi\text{ for every $k$}}}\pi[\bi].
+\]
+So, similarly to the previous case, the Hausdorff dimension of $R(\bo, \ell)^c$ is bounded from above by $t$ if
+$$
+\sum_{p=1}^\infty\sum_{|\bi|=n_p}\lambda_{\bi}^t\cdot\mathbb 1\{\bi\neq\sigma^k(\bo)|_{n_p} \text{
+for every $k$ for which }n_p=\ell(k)\}<\infty.
+$$
+To show that $\dim_HR(\bo,\ell)^c\leq t$ for $\bbP_p$-almost every $\bo$, it is enough to show that
+\[
+  \bbE\left(\sum_{p=1}^\infty\sum_{|\bi|=n_p}\lambda_{\bi}^t\cdot\mathbb
+  1\{\bi\neq\sigma^k(\bo)|_{n_p} \text{ for every $k$ for which
+}n_p=\ell(k)\}\right)\leq\sum_{p=1}^\infty\sum_{|\bi|=n_p}\lambda_{\bi}^t\cdot(1-p_{\bi})^{m(n_p)}<\infty.
+\]
+For $\epsilon>0$, let us now define
+\begin{equation}\label{eq:modifGV}
+  \mathcal{G'}_n^\epsilon=\{\bj\in\Sigma_n:p_{\bi}m(n)\geq(1+\epsilon)^n\}\text{ and
+  }\mathcal{V'}_n^\epsilon=\{\bj\in\Sigma_n:p_{\bi}m(n)<(1+\epsilon)^n\}.
+\end{equation}
+Then by choosing
+$t=(1+\epsilon)P_{\alpha+2\log(1+\epsilon)}(q^*(\alpha)+2\log(1+\epsilon))=(1+\epsilon)\inf_{q<0}P_{\alpha+2\log(1+\epsilon)}(q)$
+and \cref{eq:repeat}
+\[\begin{split}
+  \sum_{|\bi|=n_p}\lambda_{\bi}^t\cdot(1-p_{\bi})^{m(n_p)}
+  &\leq\sum_{\bi\in\mathcal{G'}_{n_p}^\epsilon}\lambda_{\bi}^te^{-p_{\bi}m(n_p)}+\sum_{\bi\in\mathcal{V'}_{n_p}^\epsilon}\lambda_{\bi}^t\\
+  &\leq e^{-(1+\epsilon)^{n_p}}N^{n_p}+\sum_{\substack{k_1,\ldots,k_N\geq0\\ k_1+\cdots+k_N=n_p \\ n_p\alpha+\sum_{i}k_i\log p_i<2n_p\log(1+\epsilon)}}\binom{n}{k_1,\ldots,k_N}\left(\lambda_1^{k_1}\cdots\lambda_N^{k_N}\right)^t\\
+  &\leq e^{-(1+\epsilon)^{n_p}}N^{n_p}+\binom{n_p+N-1}{n_p}e^{n_p\left(h_{\bbQ_{q^*(\alpha+2\log(1+\epsilon))}+t\sum_{i}q_{i,\alpha+2\log(1+\epsilon)}^*\log\lambda_i}\right)}\\
+  &\leq e^{-(1+\epsilon)^{n_p}}N^{n_p}+\binom{n_p+N-1}{n_p}\left(\max_i\{\lambda_i\}\right)^{n_p\epsilon P_{\alpha+2\log(1+\epsilon)}(q^*(\alpha+2\log(1+\epsilon))}.
+\end{split}\]
+The right-hand side forms a convergent series, and since $\epsilon>0$ was arbitrary and the map
+$\alpha\to\inf_{q}P_\alpha(q)$ is continuous, the upper bound in \cref{thm:main2} follows.
+
+\section{Lower bounds for "large" \texorpdfstring{$\alpha$}{a}}
+
+
+%  \section{Preliminary results}\label{sec:prels}
+%
+%  Denote by $\bi<\bj$ when a finite word $\bi$ appears as the initial segment of a finite or infinite $\bj$.
+%
+%
+%  \[
+%    L(t)=\limsup _{n\to \infty} \tfrac 1n \log \sum_{|\bj|=n}\lambda_{\bj}^{t}(1-(1-p_{\bj})^{m(n)}).
+%  \]
+%
+%
+%  Write
+%  \begin{equation*}%\label{eq:famousmn}
+%    m(n)=\left\lfloor \frac{\# \ell^{-1}(n)}{n} \right\rfloor.
+%  \end{equation*}
+%
+%
+%  \begin{lemma}
+%    There is a unique $s$ such that $L(s)=0$. For any $t<s$, $L(t)\ge 0$ and for any $t>s$, $L(t)\le 0$.
+%  \end{lemma}
+%
+%  \begin{proof}
+%    We will first show that $L(0)\ge 0$. Let $\epsilon>0$ and
+%    \[
+%      \cG_n^\epsilon=\{\bj\in \Sigma_n\mid 1-(1-p_\bj)^{m(n)}\le (1-\epsilon)^n \} \text{ and }\cV_n^\epsilon=\{\bj\in \Sigma_n \mid 1-(1-p_\bj)^{m(n)}>(1-\epsilon)^n \}.
+%    \]
+%    By the approximations \eqref{eq:repeat} we obtain immediately
+%    \begin{equation*}%\label{eq:setest}
+%      \{\bj\in \Sigma_n\mid p_{\bj}m(n)\le (1-\epsilon)^n\}\subset \cG_n^\epsilon \subset \{ \bj\in \Sigma_n\mid p_\bj m(n)\le \frac1\epsilon(1-\epsilon)^n \}.
+%    \end{equation*}
+%    From the second order Taylor approximation, for small $x$ near $0$, we also always have
+%    \begin{equation*}%\label{eq:taylor}
+%      (1-x)^n\le 1-nx+\frac{n^2x^2}{2}=1-nx(1-\frac{nx}2).
+%    \end{equation*}
+%    In the following, apply first \eqref{eq:setest} then \eqref{eq:taylor} to obtain
+%    \begin{align*}
+%      L(0)=\sum_{|\bj|=n}1-(1-p_\bj)^{m(n)}&=\sum_{\bj\in\cG_n^\epsilon}1-(1-p_\bj)^{m(n)}+ \sum_{\bj\in\cV_n^\epsilon}1-(1-p_\bj)^{m(n)}\\
+%					   &\ge \sum_{\cG_n^\epsilon}p_\bj m(n)(1-\frac{(1-\epsilon)^n}{2\epsilon})+(1-\epsilon)^n \# \cV_n^\epsilon.
+%    \end{align*}
+%    Here, for any positive, fixed $\epsilon>0$, for large enough $n$, the last line is clearly non-negative.
+%
+%
+%    Furthermore, at $t=s_0$ from \eqref{eq:s0}, we have
+%    \[
+%      L(s_0)=\limsup \tfrac 1n\log \sum_{|\bj|=n}\lambda^{s_0}_{\bj}(1-(1-p_\bj)^{m(n)})\le \log \sum_{j=i}^m\lambda_j^{s_0}=0.
+%    \]
+%
+%    Finally, $L(t)$ is clearly strictly decreasing in $t$. All of this guarantees the existence of a unique $s: L(s)=0$.
+%  \end{proof}
+%
+%  We now turn our attention to that of large $\alpha$ and begin by proving that for $\alpha$
+%  sufficiently large not only is $R(\bo, \ell)$ of full dimension but also of full Hausdorff measure.
+%  \begin{theorem}\label{thm:fullMeasure}
+%    Let $\alpha > -\log_{i=1}^m \lambda_i^{s_0} \log p_i$ and assume that $\ell(n)$ satisfies
+%    $\lim_{n\to\infty}\ell(n)/\log n = 1/\alpha$. Then, $\cH^{s_0}(R(\bo,\ell)) =
+%    \cH^{s_0}(\Lambda)$, where $s_0 = \dimh \Lambda$, for $\bbP_p$-almost all $\bo\in\Sigma$.
+%    In particular, $\dimh R(\bo, \ell) = s_0$.
+%  \end{theorem}
+%  \begin{proof}
+%    Let $\bbE$ denote the expectation with respect to $\bbP_p$.
+%    Let $M_n$ denote the least integer such that $\ell(k)=n$. Note that $M_n$ may not exist for small
+%    $n$, but we ignore this without loss of generality by taking subsequences below.
+%    We first bound the probability that
+%    \begin{align*}
+%      P_n&:=\bbP_p\left(\sum_{\bi\in\Sigma_n}\lambda_{\bi}^{s_0}\cdot \mathbb{1}\left\{\bo\in\Sigma :
+%      \sigma^k\bo|_n \neq\bi, M_n \leq k < M_{n+1}\right\} > \frac{1}{n}\right)
+%      \\[0.5em]
+%	 &\leq
+%	 n\cdot\bbE\left( \sum_{\bi\in\Sigma_n}\lambda_{\bi}^{s_0}\cdot
+%	   \mathbb{1}\left\{\bo\in\Sigma :
+%	 \sigma^k\bo|_n \neq\bi, M_n \leq k < M_{n+1}\right\}\right)
+%	 \\[0.5em]
+%	 &=
+%	 n \sum_{\bi\in\Sigma_n}\lambda_{\bi}^{s_0}\cdot
+%	 \bbP_p\left\{\bo\in\Sigma :
+%	 \sigma^k\bo|_n \neq\bi, M_n \leq k < M_{n+1}\right\}
+%	 \\[0.5em]
+%	 &\leq
+%	 n \sum_{\bi\in\Sigma_n}\lambda_{\bi}^{s_0}\cdot
+%	 \left(1-p_{\bi}\right)^{(M_{n+1}-M_n)/n}
+%	 \;\leq\;
+%	 n \sum_{\bi\in\Sigma_n}\lambda_{\bi}^{s_0}\cdot
+%	 \left(1-p_{\bi}\right)^{(c/n) e^{\alpha n}}
+%	\end{align*}
+%	by Markov's inequality for some $c>0$ and $n$ large enough.
+%	By definition of $s_0$, the collection of $q_j = \lambda_j^{s_0}$ define a Bernoulli probability
+%	measure on $\Sigma$, which we will denote by $\mu$.
+%	Let $\epsilon>0$ be such that $\alpha = -(1+\epsilon)
+%	\sum_{j=1}^m q_j \log p_j$. Then, $e^{-n\alpha}=
+%	\left(p_1^{q_1}p_2^{q_2}\dots p_m^{q_m}\right)^{(1+\epsilon) n}$.
+%	By standard large deviation estimates,
+%	\[
+%	  \mu\left([\bi] : \bi\in\Sigma_n, p_{\bi}e^{\alpha n}\leq n^2\right)
+%	  \leq\mu\left( \left|\frac{1}{n}\sum_{k=1}^n \log p_{i_k} -  \sum_{j=1}^m q_j \log p_j\right|
+%	  \geq \frac{2\log n}{n} + \epsilon\right)
+%	  \leq C\gamma^n.
+%	\]
+%	for some $C>0$ and $\gamma\in(0,1)$.
+%	We now decompose $\Sigma_n$ and obtain
+%	\begin{align*}
+%	  P_n & \leq
+%	  n
+%	  \sum_{\substack{\bi\in\Sigma_n\\p_{\bi}e^{\alpha n}\leq n^2}}\lambda_{\bi}^{s_0}\cdot
+%	  \left(1-p_{\bi}\right)^{(c/n) e^{\alpha n}}
+%	  +
+%	  n\sum_{\substack{\bi\in\Sigma_n\\p_{\bi}e^{\alpha n}>n^2}}\lambda_{\bi}^{s_0}\cdot
+%	  \left(1-p_{\bi}\right)^{(c/n) e^{\alpha n}}
+%	  \\[0.5em]
+%	      & \leq
+%	      n\sum_{\substack{\bi\in\Sigma_n\\p_{\bi}e^{\alpha n}\leq n^2}}\lambda_{\bi}^{s_0}
+%	      \;+\;
+%	      n\sum_{\substack{\bi\in\Sigma_n\\p_{\bi}e^{\alpha n}>n^2}}\lambda_{\bi}^{s_0}\cdot
+%	      \exp\left(-\tfrac{c}{n}p_{\bi} e^{\alpha n}\right)
+%	      \\[0.5em]
+%	      & \leq
+%	      nC\gamma^n
+%	      +
+%	      n\cdot\exp\left(-cn\right)
+%	      \quad\leq\quad
+%	      C' (\gamma')^n
+%	\end{align*}
+%	for some $C'>0$ and $\gamma'<1$.
+%	In particular, for large enough $K\in\bbN$,
+%	\[
+%	  \prod_{n\geq K} (1-P_n) \geq \prod_{n\geq K} (1-C'(\gamma')^n) =: P > 0.
+%	\]
+%	Now notice that
+%	\[
+%	  R(\bo,\ell)^c = \bigcup_{N\in\bbN}\, \bigcap_{n\geq N}\left(\bigcup_{k=M_n}^{M_{n+1}-1}
+%	  \pi([\sigma^k\bo|_n]) \right)^c
+%	\]
+%	and with probability at least $P$, we have
+%	\[
+%	  \cH^{s_0}(R(\bo,\ell)^c)
+%	  \leq \sum_{N\in\bbN} \inf_{n\geq N}\sum_{\bi\in\Sigma_n}\lambda_{\bi}^{s_0}\cdot
+%	  \mathbb{1}\left\{\bo\in\Sigma : \sigma^k\bo|_n \neq\bi, M_n \leq k < M_{n+1}\right\}
+%	  \leq \sum_{N\in\bbN} \inf_{n\geq N}n^{-1} = 0.
+%	\]
+%	Finally, observer that the event $\cH^{s_0}(R(\bo,\ell)^c)=0$ is invariant under finitely many
+%	permutations of the digits of $\bo$. Hence, by the Hewitt--Savage 0--1 law,
+%	\[
+%	  \bbP_p(\cH^{s_0}(R(\bo,\ell)^c)=0)=1.
+%	\]
+%	This proves that $\cH^{s_0}(R(\bo,\ell)) = \cH^{s_0}(\Lambda)$ for $\bbP_p$-almost every
+%	$\bo\in\Sigma$.
+%      \end{proof}
+%      \begin{remark}
+%	We note that the theorem above does not answer the question of full measure when $\alpha$ is at
+%	the critical value. The situation here is more subtle, and we expect higher order asymptotics on
+%	$\ell(n)$ are necessary to establish an exact transition, see e.g.\ ?? for similar questions
+%	involving shrinking target sets.
+%      \end{remark}
+%
+
+\subsection{The region \texorpdfstring{$\alpha>-\log\min\{p_i\}$}{large a}}
+
+We begin this section with a proof that for high $\alpha$, the dynamical covering set turns out to be the entire attractor $\Lambda$. This is captured by the
+following theorem.
+\begin{theorem}\label{thm:fullCover}
+  For the statement of this theorem, assume for simplicity that $\ell=\lfloor \frac{\log n}{\alpha}\rfloor$ {\color{red} LIMINF} with
+  $\alpha>-\log \min\{p_i\}$. Then, for
+  $\bbP_p$-almost all $\bo\in\Sigma$,
+  \[
+    R(\bo, \ell) =  \Lambda.
+  \]
+
+\end{theorem}
+
+\begin{proof}
+  We use a Borel-Cantelli argument to show that for typical $\bo$, for every cylinder $[\bj]$ where
+  $\bj\in\Sigma_n$ there exists a $k$ such that $\ell_k = n$ and $\sigma^k(\bo)|_{\ell_k}=\bj$. This then
+  shows that $R(\bo, \ell) = \Lambda$.
+
+  First write $M_k$ for the least integer such that $\ell_{M_k}=k$. This gives $M_k \sim e^{\alpha k}$.
+  We want to estimate the probability of the event that there exists at least one cylinder $\bj\in\Sigma_n$ that
+  does not appear in $\bo$ between $M_n$ and $M_{n+1}$. Denote this probability by $P_n$. Clearly, it is bounded by
+  \begin{align*}
+    P_n
+    &\leq \sum_{\bj\in\Sigma_n}\bbP_p\{\bo\in\Sigma : \sigma^k\bo|_{n}\neq \bj, M_n\leq k <
+    M_{n+1}\}\\
+    &\leq \sum_{\bj\in\Sigma_n}\bbP_p\left\{\bo\in\Sigma : \sigma^{M_n+nk}\bo|_{n}\neq \bj, 0\leq k
+    <\frac{M_{n+1}-M_n}{n}\right\}\\
+    &=\sum_{\bj\in\Sigma_n}\left( \prod_{k=0}^{(M_{n+1}-M_n)/n-1} \left(1-\bbP_p\left\{\bo\in\Sigma :
+    \sigma^{M_n+nk}\bo|_{n}= \bj\right\} \right)\right)\\
+    &=\sum_{\bj\in\Sigma_n}\left( 1-\bbP_p([\bj]) \right)^{(M_{n+1}-M_n)/n}\\
+    &\leq m^n \left( 1-(\min_i p_i)^n \right)^{(c/n) e^{\alpha n}}
+    =m^n \exp\log\left( 1-(\min_i p_i)^n \right)^{(c/n) e^{\alpha n}}\\
+    &=m^n \exp \left(-(c/n)e^{\alpha n}((\min_i p_i)^n+O((\min_i p_i)^{2n}))\right).
+  \end{align*}
+  By assumption, $\min_i p_i = e^{-\beta}$ for some $\alpha>\beta$ and so, for some $C\in\mathbb R$,
+  \[
+    P_n \leq m^n \exp\left(-(c/n)e^{\alpha n}(e^{-\beta n}+C e^{-2\beta n})\right)
+    \leq m^n e^{-(c'/n)e^{(\alpha-\beta)n}},
+  \]
+  for some $c'>0$ as $e^{(\alpha-2\beta)n}\ll e^{(\alpha-\beta)n}$.
+  Note that this bound decreases superexponentially and $\sum_n P_n < \infty$. By the Borel-Cantelli
+  lemmas we see that for almost every $\bo$ there exists a level $K_{\bo}$ such that for every cylinder $[\bj]$ where
+  $\bj\in\Sigma_n$, $n>K_{\bo}$ there exists a $k$ such that $\ell_k = n$ and
+  $\sigma^k(\bo)|_{\ell_k}=\bj$. It follows that $R(\bo, \ell)=\Lambda$, as required.
+\end{proof}
+
+%  \begin{theorem}\label{thm:notfullCover}
+%    For the statement of this theorem, assume for simplicity that $\ell=\lfloor \frac{\log n}{\alpha}\rfloor$ with
+%    $\alpha<-\log \min\{p_i\}$. Then, for
+%    $\bbP_p$-almost all $\bo\in\Sigma$,
+%    \[
+%      R(\bo, \ell) \neq  \Lambda.
+%    \]
+%
+%    \end{theorem}
+%
+%
+%    \begin{proof}
+%      Without loss of generality, we may assume that $p_1=\min\{p_i\}$. Let $U$ be the open set with
+%      respect to the OSC holds. First, we will construct a point $x\in\Lambda$ such that it is uniquely
+%      coded and its local dimension with respect to $\pi_*\bbP_p$ is $\log p_1/\log\lambda_1$. More
+%      precisely, if $x=\pi(\bi)$ then $x\in f_{\bi|_n}(U)$ for every $n\geq0$. Since OSC is equivalent
+%      to the SOSC, there exists a finite word $\bj$ such that $f_{\bj}(\overline{U})\subset U$.  Let
+%  $\eta\colon\bbN\to\bbN$ be an arbitrary monotone increasing sequence such that $\eta_{k}-\eta_{k-1}\geq|\bj|$ and $\frac1n\log\eta_n\to\infty$. Then we define $\bi\in\Sigma$ such that
+%  $$
+%  \sigma^{k}\bi|_{1}=1\text{ if $k\notin\bigcup_{n=1}^{\infty}\{\eta_n,\ldots,\eta_n+|\bj|-1\}$ and }\sigma^{\eta_n}\bi|_{|\bj|}=\bj\text{ for every $n\geq1$.}
+%  $$
+%  Then by the construction, $\pi(\bi)$ is indeed uniquely coded, moreover, $\frac1n\log\bbP_p([\bi|_n])\to\log p_1$ and $\frac1n\log\lambda_{\bi|_n}\to\log\lambda_1$ as $n\to\infty$.
+%
+%  It is enough to show that $\pi(\bi)\notin R(\bo,\ell)$ almost surely. It is easy to see by the unique coding of $\pi(\bi)$ that $\pi(\bi)\in R(\bo,\ell)$ if and only if
+%  $$
+%  \sigma^k\bo|_n=\bi|_n\text{ for some $k$ with $n=\ell(k)$ for infinitely many $n\in\bbN$}
+%  $$
+%  Then by similar argument to \cref{eq:standard}, we get
+%  \[\begin{split}
+%  \sum_{n=1}^\infty\bbP_p\left(\left\{\bo:\sigma^k\bo|_n=\bi|_n\text{ for some $k$ with $n=\ell(k)$}\right\}\right)&\leq\sum_{n=1}^\infty n(1-(1-p_{\bi|_n})^{m(n)})\\
+%  &\leq\sum_{n=1}^\infty nm(n)p_{\bi|_n},
+%  \end{split}\]
+%  where $m(n)$ is defined in \cref{eq:famousmn}. Since $\frac1n\log(nm(n)p_{\bi|_n})\to\alpha+\log p_1<0$, the series above converges and so, by Borel-Cantelli's lemma, $\bbP_p(\{\bo:\pi(\bi)\in R(\bo,\ell)\})=0$, and the claim follows.
+%\end{proof}
+
+
+\subsection{The region \texorpdfstring{$-\sum_i\lambda_i^{s_0}\log
+p_i<\alpha<-\log\min\{p_i\}$}{intermediate probabilities}}\label{sec:lbver1}
+
+In this region, we will study the Hausdorff dimension of $R(\bo,\ell)^c$ via the Bernoulli measures
+of the set $R(\bo,\ell)$ with respect to measures for which $\sum_iq_i\log p_i+\alpha<0$.
+
+\begin{theorem}\label{thm:berR0}
+  Let $-\sum_i\lambda_i^{s_0}\log p_i<\alpha<-\log\min\{p_i\}$ and further assume that $\ell(n)$ satisfies
+  $\liminf_{n\to\infty}\ell(n)/\log n = 1/\alpha$. Let $\nu$ be a Bernoulli measure with probability
+  vector $\{q_i\}$ such that $\sum_iq_i\log p_i+\alpha<0$. Then, $\nu(R(\bo,\ell)) =0$ for
+  $\bbP$-almost every $\bo$.
+\end{theorem}
+
+First, we discuss the corollary of this result.
+
+\begin{corollary}\label{thm:notfullregion}
+  Let $-\sum_i\lambda_i^{s_0}\log p_i<\alpha<-\log\min\{p_i\}$, where $s_0=\dim_H\Lambda$ and assume
+  that $\ell(n)$ satisfies
+  $\lim_{n\to\infty}\ell(n)/\log n = 1/\alpha$. Then, $\dim_H(R(\bo,\ell)^c)
+  =\inf_{q<0}P_\alpha(q)<s_0$ and $\cH^{s_0}(R(\bo,\ell))=\cH^{s_0}(\Lambda)$, where $s_0 = \dimh
+  \Lambda$ for $\bbP$-almost every $\bo$.
+\end{corollary}
+
+\begin{proof}
+  By \cref{sec:upperforcomp}, $\dim_H(R(\bo,\ell)^c) \leq\inf_{q<0}P_\alpha(q)<s_0$ and so, the
+  claim for the Hausdorff measure of $R(\bo,\ell)$ follows.
+
+  By \cref{thm:berR0},
+  $$
+  \dim_H(R(\bo,\ell)^c)\geq\sup\left\{\frac{-\sum_{i=1}^Nq_i\log q_i}{-\sum_{i=1}^Nq_i\log\lambda_i}
+  : \sum_{i=1}^Nq_i\log p_i+\alpha>0\right\}=\inf_{q>0}P_\alpha(q),
+  $$
+  where in the last equality, we have used \cref{thm:varprinc}.
+\end{proof}
+
+\begin{proof}[Proof of \cref{thm:berR0}]
+  The proof is similar to \cref{sec:upper}. That is, by Borel-Cantelli's lemma, it is enough to show
+  that for $\bbP$-almost every $\bo$
+  \[
+    \sum_{n=1}^\infty \sum_{|\bi|=n}q_{\bi}\cdot\mathbb 1\{\bi=\sigma^k(\bo)|_n \text{ for some $k$
+    for which }n=\ell(k)\}<\infty.
+  \]
+  Similarly to \cref{eq:expectationest} and \cref{eq:standard}, it is enough to show that
+  \[
+    \sum_{n=1}^\infty \sum_{|\bi|=n}q_{\bi}\cdot n(1-(1-p_{\bi}))^{m(n)}<\infty.
+  \]
+  Let $\epsilon>0$ be such that $\sum_{i=1}^Nq_i\log p_i+\alpha<2\log(1-\epsilon)<0$. Recalling the
+  definition of $\mathcal{G}_n^\epsilon$ and $\mathcal{V}_n^\epsilon$ from \cref{eq:GV} together
+  with \cref{eq:setest} and \cref{eq:setest2}, we get for sufficiently large $n$ that
+  \[\begin{split}
+    \sum_{|\bi|=n}q_{\bi}\cdot n(1-(1-p_{\bi}))^{m(n)}
+    &\leq \sum_{\bi\in\mathcal{G}_n^\epsilon}q_{\bi}m(n)p_{\bi}+\sum_{\bi\in\mathcal{V}_n^\epsilon}q_{\bi}\\
+    &\leq \tfrac1\epsilon(1-\epsilon)^n+\nu\left(\left\{\bi: p_{\bi|_n}m(n)>(1-\epsilon)^n\right\}\right)\\
+    &\leq \tfrac1\epsilon(1-\epsilon)^n+\nu\left(\left\{\bi: p_{\bi|_n}e^{n\alpha}>(1-\epsilon)^{2n}\right\}\right)\\
+    &\leq \tfrac1\epsilon(1-\epsilon)^n+e^{-\delta n},
+  \end{split}\]
+  where the last inequality follows by the large deviation principle. Then $\sum_{n=1}^\infty
+  \sum_{|\bi|=n}q_{\bi}\cdot n(1-(1-p_{\bi}))^{m(n)}<\infty$ clearly follows.
+\end{proof}
+
+\subsection{The region \texorpdfstring{$-\sum_i\lambda_i^{P_\alpha(1)}p_ie^\alpha\log
+p_i<\alpha<-\sum_i\lambda_i^{s_0}\log p_i$}{low values}}
+
+Similarly to \cref{sec:lbver1}, we will study the Hausdorff dimension of $R(\bo,\ell)$ via the
+Bernoulli measures of the set $R(\bo,\ell)^c$ with respect to measures for which $\sum_iq_i\log
+p_i+\alpha>0$.
+
+\begin{theorem}\label{thm:berRc0}
+  Let $\alpha>0$ be such that $\alpha<-\sum_i\lambda_i^{s_0}\log p_i$ and further assume that $\ell(n)$ satisfies
+  $\liminf_{n\to\infty}\ell(n)/\log n = 1/\alpha$. Let $\nu$ be a Bernoulli measure with probability
+  vector $\{q_i\}$ such that $\sum_iq_i\log p_i+\alpha>0$. Then, $\nu(R(\bo,\ell)^c) =0$ for
+  $\bbP$-almost every $\bo$.
+\end{theorem}
+
+This result has the immediate corollary
+
+\begin{corollary}\label{thm:spectrumregion}
+  Let $\alpha>0$ be such that $-\sum_i\lambda_i^{P_\alpha(1)}p_ie^\alpha\log
+  p_i<\alpha<-\sum_i\lambda_i^{s_0}\log p_i$ and assume that $\ell(n)$ satisfies
+  $\lim_{n\to\infty}\ell(n)/\log n = 1/\alpha$. Then, $\dim_H(R(\bo,\ell))
+  =\inf_{q\in[0,1]}P_\alpha(q)$ and also $\cH^{s_0}(R(\bo,\ell)^c)=\cH^{s_0}(\Lambda)$, where $s_0 =
+  \dimh \Lambda$ for $\bbP$-almost every $\bo$.
+\end{corollary}
+
+\begin{proof}
+  By \cref{sec:upper} and \cref{thm:twospec}, $\dim_H(R(\bo,\ell))
+  \leq\inf_{q\in[0,1]}P_\alpha(q)<s_0$ and so, the claim for the Hausdorff measure of
+  $R(\bo,\ell)^c$ follows.
+
+  By \cref{thm:berRc0} and \cref{thm:varprinc},
+  $$
+  \dim_H(R(\bo,\ell))\geq\sup\left\{\frac{-\sum_{i=1}^Nq_i\log q_i}{-\sum_{i=1}^Nq_i\log\lambda_i} :
+  \sum_{i=1}^Nq_i\log p_i+\alpha>0\right\}=\inf_{q>0}P_\alpha(q),
+  $$
+  where in the last equality, we have used again \cref{thm:varprinc}.
+\end{proof}
+
+\begin{proof}[Proof of \cref{thm:berRc0}]
+  The proof will be similar to \cref{sec:upperforcomp}.  Let $n_k$ be the subsequence for which
+  $$
+  m(n_p)e^{-\alpha n_p}\geq(1+\epsilon)^{-n_p},
+  $$
+  and by Borel-Cantelli's lemma, it is enough to show that for $\bbP$-almost every $\bo$
+  $$
+  \sum_{p=1}^\infty\sum_{|\bi|=n_p}q_{\bi}\cdot\mathbb 1\{\bi\neq\sigma^k(\bo)|_{n_p} \text{ for
+  every $k$ for which }n_p=\ell(k)\}<\infty.
+  $$
+  To show this for $\bbP_p$-almost every $\bo$, it is enough to show that
+  \begin{equation}\label{eq:conv}
+    \bbE\left(\sum_{p=1}^\infty\sum_{|\bi|=n_p}q_{\bi}\cdot\mathbb 1\{\bi\neq\sigma^k(\bo)|_{n_p}
+    \text{ for every $k$ for which
+}n_p=\ell(k)\}\right)\leq\sum_{p=1}^\infty\sum_{|\bi|=n_p}q_{\bi}\cdot(1-p_{\bi})^{m(n_p)}<\infty.
+  \end{equation}
+  Choose $\epsilon>0$ such that $\sum_iq_i\log p_i+\alpha>2\log(1+\epsilon)>0$, and by recall the
+  definition of $\mathcal{G'}_n^\epsilon$ and $\mathcal{V'}_n^\epsilon$ from \cref{eq:modifGV}, we
+  get
+  \[\begin{split}
+    \sum_{|\bi|=n_p}q_{\bi}\cdot(1-p_{\bi})^{m(n_p)}
+    &\leq\sum_{\bi\in\mathcal{G'}_{n_p}^\epsilon}q_{\bi}e^{-p_{\bi}m(n_p)}+\sum_{\bi\in\mathcal{V'}_{n_p}^\epsilon}q_{\bi}\\
+    &\leq e^{-(1+\epsilon)^{n_p}}+\nu\left(\left\{\bi\in\Sigma: \alpha+\tfrac1n_p\log p_{\bi}<2\log(1+\epsilon)\right\}\right)\\
+    &\leq e^{-(1+\epsilon)^{n_p}}+e^{-n_p\delta}
+  \end{split}\]
+  where the last inequality follows by the large deviation principle. Then \cref{eq:conv} clearly follows.
+\end{proof}
+
+\section{Lower bound for "small" \texorpdfstring{$\alpha$}{a}}
+
+In this section, our standing assumption is that
+$\alpha<-\sum_{i=1}^N\lambda_i^{P_\alpha(1)}p_ie^{\alpha}\log p_i$. The strategy of proof of the
+lower bound from \cref{thm:main} in this case is standard: We construct a Cantor subset to $R(\bo,
+\ell)$, and then a measure on this Cantor set. We prove a well-distribution property of the measure
+(finite energy estimate), which proves the claim. By far the most difficult part of this proof is
+the definition of the measure.
+
+\subsection{Cantor subset for the lower bound}\label{sec:cantor}
+
+Let $\{n_p\}$ be a sequence such that $\limsup_{n\to\infty}\frac{\log
+m(n)}{n}=\lim_{p\to\infty}\frac{\log m(n_p)}{n_p}=\alpha$. Set $n: \Sigma_*\to \bbN$ satisfy the
+following for $\bi, \bj\in \Sigma_*$
+\begin{itemize}
+  \item $n(\bi)\in\{n_p\}$,
+  \item if $\bi\neq \bj$, then $n(\bi)\neq n(\bj)$,
+  \item if $|\bj|>|\bi|$, then $n(\bj) > n(\bi)$
+  \item $n(\bi) > |\bi|$, and we can take this difference as large as we like.
+\end{itemize}
+
+
+Denote, for each $n\in \bbN$, $M_n:=\min\ell^{-1}(n)$, and
+\[
+  P(n)=\{M_n, M_n+n, \dots, M_n +(q-1)n\mid q\in \mathbb N\text{ maximal s.t. } M_n+qn\in \ell^{-1}(n)\}.
+\]
+Denote, for $\bi\in \Sigma_*$
+\[
+  \# P(n(\bi))= m(n(\bi))=: m(\bi).
+\]
+Set inductively, for $\bi\in\Sigma_*, n\in \bbN$,
+\[
+  \Xi_0^{\bi}=\{\bi\} \text{ and }\Xi_n^\bi=\{\bj\in \Sigma_*\mid n(\bi')=|\bj|\text{ and
+  }\bj|_{|\bi'|}=\bi'\text{ for some }\bi'\in \Xi_{n-1}^\bi\},
+\]
+the set of children of $\bi$ at the $n$th construction level. Observe that
+$[\bi]=\bigcup\{[\bj]:\bj\in\Xi_n^\bi\}$ for every $n\geq0$, hence $\{\Xi_n^\bi\}_{n\in\bbN}$ form a
+very sparse subtree of $\Sigma_*$, which still covers the whole set $\Sigma$. Now, we will choose
+the random subset which are actually visited by the random cover process.
+
+Let $\cC_1$ be the collection of finite words, which have been visited by the "children of the empty set". That is,
+$$
+\cC_1:=\{(\sigma^p\bo)|_{n(\emptyset)} :p\in P(n(\emptyset))\}\subseteq\Xi_1^\emptyset
+$$
+Now, let us define the $n$th generation by induction, namely,
+$$
+\cC_n:=\bigcup_{\bi\in\cC_{n-1}}\{(\sigma^p\bo)|_{n(\bi)} :p\in P(n(\bi))\text{ }\&\text{
+}\bj|_{|\bi|}=\bi\}\subseteq\Xi_n^\emptyset.
+$$
+Observe that
+$$
+\{(\sigma^p\bo)|_{n(\bi)} :p\in P(n(\bi))\text{ }\&\text{ }\bj|_{|\bi|}=\bi\}\subseteq\Xi_1^\bi.
+$$
+Then the random Cantor subset $C$ of $R(\bo,\ell)$ we consider is defined as intersection of the
+nested sequence of compact sets $C_n\subset\Sigma$, where
+\[
+  C_{n}=\bigcup _{\bi\in\cC_n}[\bi].
+\]
+In particular, we will construct a random measure $\mu=\mu_{\bo}$ for $\bbP$-almost every  $\bo$ on
+$C=\bigcap_{n=1}^\infty C_n$ such that $0<\mu(C)<\infty$ almost surely and the
+$(s(\alpha)-\epsilon)$-energy of $\mu$ is finite for every $\epsilon>0$ almost surely. In the
+remaining part of the section, we suppress the notation $\mu_\bo$, but the reader shall keep in mind
+that the measure is actually depends on $\bo$. 
+
+
+\subsection{Construction of a random measure on the Cantor set}
+
+For every $\bi\in \Sigma_*$ we will define an $L^2$-martingale that'll be used to determine the
+measure of $[\bi]$. First we'll need some notation. Let $s_\bi$ be such that
+\[
+  \sum_{|\bj|=n(\bi), \bj|_{|\bi|}=\bi}\lambda^{s_\bi}_{\sigma^{|\bi|}(\bj)}(1-(1-p_\bj)^{m(\bi)})=1.
+\]
+Then recall the definition of $P(n)$ from \cref{sec:cantor} and let $\mathbb 1_{\bj}^\bi$ denote the
+characteristic function of the set
+\[
+  \{\bo\in \Sigma\mid \exists p\in P(n(\bi))\text{ s.t. }\sigma^p(\bo)|_{\ell(p)}=\bj\text{ and }\bj|_{|\bi|}=\bi\}.
+\]
+Note that since $p\in P(n(\bi))$, $\ell(p)=n(\bi)$.
+
+We set for every $\bi\in\Sigma_*$, $X_\bi^{(0)}=1$. Then, for $n\in \bbN$ we define inductively for
+every $\bi\in\Sigma_*$ by
+\[
+  X_{\bi}^{(n+1)}=\sum_{|\bj|=n(\bi)}\lambda^{s_\bi}_{\sigma^{|\bi|}(\bj)}\cdot\mathbb 1^\bi_\bj\cdot X_\bj^{(n)}.
+\]
+In particular,
+\[
+  X_{\bi}^{(1)}=\sum_{|\bj|=n(\bi)}\lambda^{s_{\bi}}_{\sigma^{|\bi|}(\bj)}\cdot\mathbb 1^\bi_\bj.
+\]
+Note that by choice of $s_{\bi}$, $\bbE ( X_\bi^{(1)})=1$.
+
+
+
+
+
+Let us now set up a filtration of sigma-algebras. Let
+\[
+  a_n^\bi=\max\{\max \ell^{-1}(n(\bj))+n(\bj)\mid \bj \in \Xi^\bi_{n-1}\}, \text{ with }a_0^\bi=0.
+\]
+Then let $\cF_n^\bi$ be the sigma-algebra generated by the cylinders of length at most $a_n^\bi$ on
+$\Sigma$, with $\cF_0^\bi$ the trivial sigma-algebra.
+
+\begin{proposition}
+  For each $\bi\in \Sigma_*$ the collection $(\cF_n^\bi)$ is a filtration, i.e. $\cF_{n}^\bi\supset
+  \cF_{n-1}^\bi$. Further,
+  \[
+    \cF_n^\bi = \bigcup_{|\bj|=n(\bi), \bi<\bj}\cF_{n-1}^\bj.
+  \]
+\end{proposition}
+
+\begin{proof}
+  The first claim follows immediately from $a_{n}^\bi> a_{n-1}^\bi$.
+
+  For the second claim, we prove by induction that
+  \[
+    \Xi_{n}^\bi=\bigcup_{|\bj|=n(\bi), \bi<\bj}\Xi_{n-1}^\bj.
+  \]
+  The case $n=1$ is immediate from definitions. Assume the claim holds up to $n$. Then
+  \begin{align*}
+    \Xi_{n+1}^\bi
+    & = \{\bj\mid |\bj|=n(\bi'), \bi'<\bj \text{ for some }\bi'\in \Xi_{n}^\bi\}\\
+    &=\bigcup_{|\bj|=n(\bi), \bi<\bj}\{\bj'\mid n(\bi')=|\bj'|, \bi'<\bj'\text{ for
+    some }\bi'\in \Xi^{\bj}_n\}\\
+    &=\bigcup_{|\bj|=n(\bi), \bi<\bj}\Xi^{\bj}_n,
+  \end{align*}
+  by the induction hypothesis and the definition of $\Xi_n^\bj$. Hence,
+  \[
+    a^\bi_n=\max \{a_{n-1}^\bj\mid |\bj|=n(\bi), \bi < \bj\},
+  \]
+  which proves the claim.
+\end{proof}
+
+\begin{proposition}
+  Let $\alpha<-\sum_{i=1}^m \lambda_i^{s(\alpha)}p_ie^\alpha\log p_i$, then for all long enough $\bi\in \Sigma_*$
+  \begin{equation}
+    \left( \frac{n(\bi)}{p_\bi e^{\alpha|\bi|}}\right)^{\frac{1}{n(\bi) - |\bi|}}\le \sum_{j=1}^m
+    \lambda_j^{s_\bi}p_j e^{\alpha}\le  \left( \frac{3 n(\bi)}{p_\bi
+    e^{\alpha|\bi|}}\right)^{\frac{1}{n(\bi) - |\bi|}}.
+    \label{eq:goodSumBound}
+  \end{equation}
+  Further, for any $\epsilon>0$ we can choose $n(\emptyset)$ so large that 
+  \[
+    0 \leq s(\alpha)-s_{\bi}<\epsilon \text{ for all } \bi \in \Sigma_*.
+  \]
+\end{proposition}
+
+\begin{proof}
+  Let $\bi\in \Sigma_*$. Recall that
+  \[
+    \lim_{n\to \infty} \frac{\ell(n)}{\log n}=\tfrac 1\alpha\text{ and that }m(\bi)=\left\lfloor
+    \frac{\#\ell^{-1}(n(\bi))}{n(\bi)}\right\rfloor.
+  \]
+  Hence, it is not hard to see that, for any $\delta>0$ we can find $|\bi|$ large enough
+  \begin{equation}\label{eq:mi}
+    (1-\delta) \frac{e^{\alpha n(\bi)}}{n(\bi)} \le m(\bi)\le (1+\delta)  \frac{e^{\alpha n(\bi)}}{n(\bi)}.
+  \end{equation}
+  By the definition of $s_\bi$
+  and using the approximations \eqref{eq:mi} and \eqref{eq:repeat}, we obtain
+  \[
+    1=\sum_{|\ba|=n(\bi) - |\bi|}\lambda_{\ba}^{s_\bi}(1-(1-p_\bi p_{\ba})^{m(\bi)})\le (1+\delta)
+    \frac{p_\bi e^{\alpha}}{n(\bi)}\left ( \sum_{i=1}^m \lambda_i^{s_\bi}p_ie^{\alpha}\right)^{n(\bi) - |\bi|},
+  \]
+  which rearranges to
+  \[
+    \left( \frac{n(\bi)}{(1+\delta)p_\bi e^{\alpha|\bi|}}\right)^{\frac{1}{n(\bi) - |\bi|}} \le
+    \sum_{i=1}^m \lambda_i^{s_\bi}p_i e^{\alpha}.
+  \]
+  Choosing $n(\bi)$ large, relative to $|\bi|$, if necessary,
+  \[
+    \left( \frac{n(\bi)}{p_\bi e^{\alpha|\bi|}}\right)^{\frac{1}{n(\bi) - |\bi|}}> 1
+  \]
+  so that $s(\alpha) \geq s_{\bi}$.
+
+
+  Fix $\epsilon>0$. Then denote
+  \[
+    \cG_\bi^\epsilon :=\{\bj \in \Sigma_{n(\bi) - |\bi|}\mid p_\bj e^{\alpha |\bj|}\le (1-\epsilon)^{n(\bi) - |\bi|}\}.
+  \]
+  We estimate,
+  \begin{align}
+    1&=\sum_{|\bj|=n(\bi)-|\bi|}\lambda^{s_\bi}_{\bj}(1-(1-p_{\bi}p_\bj)^{m(\bi)})\nonumber\\
+     &\geq\lambda_{\max}^{(n(\bi)-|\bi|)(s_{\bi}-s(\alpha))}\sum_{\bj\in\cG_{\bi}^\epsilon}\lambda_{\bj}^{s(\alpha)}(1-(1-p_{\bi}p_\bj)^{m(\bi)})\label{eq:loweroneminusboundstart}
+     \\
+     &\geq\lambda_{\max}^{(n(\bi)-|\bi|)(s_{\bi}-s(\alpha))}\sum_{\bj\in\cG_{\bi}^\epsilon}\lambda_{\bj}^{s(\alpha)}m(\bi)p_{\bi}p_{\bj}\left(1-\frac{m(\bi)p_{\bi}p_{\bj}}{2}\right)\nonumber\\
+     \intertext{by \cref{eq:taylor}, and}
+     &\geq\lambda_{\max}^{(n(\bi)-|\bi|)(s_{\bi}-s(\alpha))}\sum_{\bj\in\cG_\bi^\epsilon}\lambda_{\bj}^{s(\alpha)}(1-\delta)\frac{e^{\alpha
+       n(\bi)}}{n(\bi)}p_{\bi}p_{\bj}\left(1-\frac{(1+\delta) e^{\alpha n(\bi)}p_{\bi}p_{\bj}}{2
+       n(\bi)}\right)\nonumber\\
+       \intertext{by the definition of $\cG^\epsilon_{\bi}$. So,}
+     &\geq\lambda_{\max}^{(n(\bi)-|\bi|)(s_{\bi}-s(\alpha))}\sum_{\bj\in\cG_\bi^\epsilon}\lambda_{\bj}^{s(\alpha)}(1-\delta)\frac{e^{\alpha
+     n(\bi)}}{n(\bi)}p_{\bi}p_{\bj}\left(1-\frac{(1+\delta) e^{\alpha
+       |\bi|}p_{\bi}(1-\epsilon)^{n(\bi)-|\bi|}}{2
+   n(\bi)}\right)\nonumber
+   \intertext{and by choosing $n(\bi)$ large enough,}
+     &\geq\lambda_{\max}^{(n(\bi)-|\bi|)(s_{\bi}-s(\alpha))}\sum_{\bj\in\cG_\bi^\epsilon}\lambda_{\bj}^{s(\alpha)}(1-\delta)\frac{e^{\alpha
+     n(\bi)}}{2n(\bi)}p_{\bi}p_{\bj}\nonumber\\
+     &\geq\lambda_{\max}^{(n(\bi)-|\bi|)(s_{\bi}-s(\alpha))}(1-\delta)\frac{e^{\alpha|\bi|}p_{\bi}}{2n(\bi)}\sum_{\bj\in\cG_\bi^\epsilon}\lambda_{\bj}^{s(\alpha)}e^{\alpha
+     (n(\bi)-|\bi|)}p_{\bj}\label{eq:loweroneminusbound}
+  \end{align}
+  The sum in \cref{eq:loweroneminusbound} is the $\bbQ_1$ measure of $\cG^\epsilon_{\bi}$.
+  Similar to \cref{thm:twospec}, we will estimate the measure of its complement.
+  \begin{align}
+  &\bbQ_1\left(\left\{\bj\in\Sigma_{n(\bi)-|\bi|}: p_{\bj}e^{\alpha |\bj|} > (1-\epsilon)^{|\bj|}
+  \right\}\right)\nonumber\\
+  &=\bbQ_1\left(\left\{\bj\in\Sigma_{n(\bi)-|\bi|}: \frac{1}{|\bj|}\sum_{k=1}^{|\bj|}(\log p_{j_k} -
+      \bbE_{\bbQ_1}(\log p_i)) >
+      \log(1-\epsilon)-\alpha-
+      \bbE_{\bbQ_1}(\log p_i))
+  \right\}\right)\nonumber\\
+  &\leq C e^{-\beta |\bj|}\nonumber
+  \end{align}
+  for some $C,\beta>0$, by Cram\'er's theorem and because
+  \[
+    \log(1-\epsilon)-\alpha- \bbE_{\bbQ_1}(\log p_i)) = \log(1-\epsilon) - \alpha -
+    \sum_{i=1}^N\lambda_i^{s(\alpha)}p_ie^\alpha \log p_i > 0
+  \]
+  for $\epsilon>0$ sufficiently small.
+
+  Now, taking logarithms in \cref{eq:loweroneminusbound} and dividing by
+  $(n(\bi)-|\bi|)\log\lambda_{\max}$, we obtain
+  \begin{equation}
+    (s_{\bi}-s(\alpha))
+    +\frac{\log(1-\delta)+\alpha|\bi|+\log p_{\bi}-\log 2n(\bi)+\log(1-C
+    e^{-\beta(n(\bi)-|\bi|)})}{(n(\bi)-|\bi|)\log \lambda_{\max}} \geq 0
+    \label{eq:differenceBound}
+  \end{equation}
+  Since we chose $n(\bi) \gg |\bi|$, this gives $s_{\bi} \geq s(\alpha)+ o(1)$ for all sufficiently
+  long $\bi$. This finishes the proof of the second claim.
+
+
+  We finish the proof by showing the upper bound in \cref{eq:goodSumBound}.
+  A computation similar to that from \cref{eq:loweroneminusboundstart} to \cref{eq:loweroneminusbound}
+  gives
+  \begin{align*}
+    1
+    &\geq
+    (1-\delta)\frac{e^{\alpha|\bi|}p_{\bi}}{2n(\bi)}\sum_{\bj\in\cG_\bi^\epsilon}\lambda_{\bj}^{s_{\bi}}e^{\alpha
+    (n(\bi)-|\bi|)}p_{\bj}\\
+    &=
+    (1-\delta)\frac{e^{\alpha|\bi|}p_{\bi}}{2n(\bi)}
+    \left(\sum_{\bj\in\Sigma_{n(\bi)-|\bi|}}\lambda_{\bj}^{s_{\bi}}e^{\alpha (n(\bi)-|\bi|)}p_{\bj} -\sum_{\bj\in(\cG_\bi^\epsilon)^c}\lambda_{\bj}^{s_{\bi}}e^{\alpha (n(\bi)-|\bi|)}p_{\bj}\right)\\
+    &=(1-\delta)\frac{e^{\alpha|\bi|}p_{\bi}}{2n(\bi)}\left(\left(\sum_{j=1}^N\lambda_{j}^{s_{\bi}}e^{\alpha }p_{j}\right)^{n(\bi)-|\bi|} -\sum_{\bj\in(\cG_\bi^\epsilon)^c}\lambda_{\bj}^{s_{\bi}}e^{\alpha (n(\bi)-|\bi|)}p_{\bj}\right)\\
+    &=(1-\delta)\frac{e^{\alpha|\bi|}p_{\bi}}{2n(\bi)}\left(\left(\sum_{j=1}^N\lambda_{j}^{s_{\bi}}e^{\alpha }p_{j}\right)^{n(\bi)-|\bi|} -\lambda_{\min}^{(s_\bi-s(\alpha))(n(\bi)-|\bi|)}\sum_{\bj\in(\cG_\bi^\epsilon)^c}\lambda_{\bj}^{s(\alpha)}e^{\alpha (n(\bi)-|\bi|)}p_{\bj}\right)
+    \\
+    &\geq (1-\delta)\frac{e^{\alpha|\bi|}p_{\bi}}{2n(\bi)}\left(\left(\sum_{j=1}^N\lambda_{j}^{s_{\bi}}e^{\alpha }p_{j}\right)^{n(\bi)-|\bi|} -\lambda_{\min}^{(s_\bi-s(\alpha))(n(\bi)-|\bi|)}Ce^{-\beta(n(\bi)-|\bi|)}\right)
+  \end{align*}
+  by Cram\'er's theorem, as above.
+  Now, rearranging gives
+  \begin{align*}
+    \sum_{j=1}^N\lambda_{j}^{s_{\bi}}e^{\alpha}p_{j} 
+     &\leq
+     \left(
+       \frac{2n(\bi)}{(1-\delta)e^{\alpha|\bi|}p_{\bi}}+
+       \lambda_{\min}^{(s_\bi-s(\alpha))(n(\bi)-|\bi|)}Ce^{-\beta(n(\bi)-|\bi|)}
+     \right)^{1/(n(\bi)-|\bi|)}\\
+     &\leq \left(
+       \frac{3n(\bi)}{e^{\alpha|\bi|}p_{\bi}}
+     \right)^{1/(n(\bi)-|\bi|)},
+  \end{align*}
+  where we have used that $n(\bi)\gg|\bi|$ and \cref{eq:differenceBound}.
+\end{proof}
+
+
+
+\begin{proposition}\label{thm:martingale}
+  For all $\bi\in \Sigma_*$, the sequence of random variables $(X_\bi^{(n)})$ is a martingale with
+  respect to the sequence of sigma-algebras $\cF_n^\bi$.
+\end{proposition}
+
+
+\begin{proof}
+  We will argue by induction. Let $n=1$ and $\bi\in \Sigma_*$. Then, since $|\bi|\le \min \ell^{-1}(n(\bi))$,
+  \[
+    \bbE (X_\bi^{(1)}\mid \cF_0^\bi)=\bbE(X_\bi^{(1)})=1=X_\bi^{(0)}.
+  \]
+  Assume, inductively, that for all $\bi\in\Sigma_*$ and for $n$ the claim holds, that is,
+  \[
+    \bbE(X_\bi^{(n)}\mid \cF_{n-1}^\bi)=X_{\bi}^{(n-1)}.
+  \]
+  Since $a_1^\bi=\max\ell^{-1}(n(\bi))<a_{n}^\bi$, the random variable $\mathbb 1_{\bj}^\bi$ is
+  measurable with respect to the sigma-algebra $\cF_n^{\bi}$, and hence
+  \begin{align}
+    \bbE(X_{\bi}^{(n+1)}\mid \cF_n^{\bi})
+    &=\sum_{|\bj|=n(\bi),
+    \bi<\bj}\lambda_{\sigma_{|\bi|}(\bj)}^{s_\bi}\bbE(\mathbb 1^{\bi}_\bj X_{\bj}^{(n)}\mid
+    \cF_n^{\bi})\nonumber\\
+    &=\sum_{|\bj|=n(\bi), \bi<\bj}\lambda_{\sigma_{|\bi|}(\bj)}^{s_\bi}\mathbb 1^{\bi}_\bj\bbE( X_{\bj}^{(n)}\mid \cF_n^{\bi}).\label{eq:mart}
+  \end{align}
+  Notice now that the random variable $X_\bj^{(n)}$ is independent of digits of $\bo$ beyond index
+  $a_{n-1}^\bj$. Hence conditioning on $\cF_n^\bi$ is equivalent to conditioning on $\cF_{n-1}^\bi$, and
+  \[
+    \bbE(X_\bj^{(n)}\mid \cF_n^{\bi})=\bbE(X_\bj^{(n)}\mid \cF_{n-1}^{\bi})=X_\bj^{(n-1)},
+  \]
+  where we've made use of the induction hypothesis. Continuing with this from \eqref{eq:mart},
+  \[
+    \sum_{|\bj|=n(\bi), \bi<\bj}\lambda_{\sigma_{|\bi|}(\bj)}^{s_\bi}\mathbb 1^{\bi}_\bj\bbE( X_{\bj}^{(n)}\mid \cF_n^{\bi})=\sum_{|\bj|=n(\bi), \bi<\bj}\lambda_{\sigma_{|\bi|}(\bj)}^{s_\bi}\mathbb 1^{\bi}_\bj X_{\bj}^{(n-1)}=X_\bi^{(n)}.
+  \]
+  This proves the martingale property.
+\end{proof}
+
+\begin{proposition}\label{thm:L2}
+  There is $c>0$ such that for all $n\in \bbN, \bi\in \Sigma_*$, we have
+  \[
+    \bbE((X_\bi^{(n)})^2)<c.
+  \]
+\end{proposition}
+\begin{proof}
+  We will find $\tilde \lambda<1$ such that for all $n\in \bbN$,
+  \[
+    \max_{\bi\in \Sigma_*}\bbE((X_\bi^{(n)})^2)\le 1+\max_{\bi\in \Sigma_*}\bbE((X_\bi^{(n-1)})^2)\tilde\lambda,
+  \]
+  from which it follows by induction that for all $n\in\bbN$,
+  \[
+    \max_{\bi\in \Sigma_*}\bbE((X_\bi^{(n)})^2)\le \frac{1}{1-\tilde\lambda}.
+  \]
+
+  Fix $\bi\in \Sigma_*$ and $n\in\bbN$. Then
+  \begin{align}
+    \bbE((X_\bi^{(n+1)})^2) 
+    &=\sum_{|\bj|=n(\bi),
+    \bi<\bj}\lambda^{2s_\bi}_{\sigma^{|\bi|}(\bj)}\bbE(\mathbb{1}^{\bi}_\bj(X_\bj^{(n)})^2)\nonumber\\
+    &\hspace{10em}+\sum_{\bj_1\neq \bj_2, |\bj_k|=n(\bi), \bi<\bj_k}\lambda^{s_\bi}_{\sigma^{|\bi|}}(\bj_1)\lambda^{s_\bi}_{\sigma^{|\bi|}}(\bj_2)
+    \bbE(\mathbb 1^{\bi}_{\bj_1}\mathbb 1^{\bi}_{\bj_2}X_{\bj_1}^{(n)}X_{\bj_2}^{(n)})\label{eq:mart2}\\
+    &=:S_1+S_2.\nonumber
+  \end{align}
+  Note that since $n(\bi)\neq n(\bj)$, $\mathbb 1^\bi_\bj$ is independent of $X_{\bj}^{(n)}$. Hence,
+  $S_1$ in the sum above is equal to
+  \[
+    S_1 = \sum_{|\bj|=n(\bi), \bi<\bj}
+    \lambda^{2s_\bi}_{\sigma^{|bi|}(\bj)}(1-(1-p_\bj)^{m(\bi)})\bbE((X_{\bj}^{(n)})^2)\le
+    \lambda_{\max}^{(n(\bi)-|\bi|)(s(\alpha)-\epsilon)}\max_{|\bj|=n(\bi), \bi<\bj}\bbE((X_{\bj}^{(n)})^2),
+  \]
+  where we have used the definition of $s_\bi$. Lemma \cref{thm:uniforms} shows 
+  that $s_\bi \to s(\alpha)$ as $|\bi|\to
+  \infty$ uniformly and so choosing $n(\bi)$ large enough if necessary,
+  we can find $\tilde\lambda$ such that $\lambda_{\max}^{s_\bi(n(\bi)-|\bi|)}\le \tilde \lambda<1$.
+
+  For the second term in the sum \eqref{eq:mart2} we note first of all that since $n(\bi)\neq
+  n(\bj_k)$,  $\mathbb 1^\bi_{\bj_1}\mathbb 1^\bi_{\bj_2}$ is independent of $X_{\bj_k}^{(n)}$. Since,
+  furthermore, $\bbE(X_{\bj_k}^{(n)})=1$ by definition, we obtain for $S_2$
+  \begin{align*}
+    &\sum_{\bj_1\neq \bj_2, |\bj_k|=n(\bi), \bi<\bj_k}\lambda^{s_\bi}_{\sigma^{|\bi|}}(\bj_1)\lambda^{s_\bi}_{\sigma^{|\bi|}}(\bj_2)
+    \bbE(\mathbb 1^{\bi}_{\bj_1}\mathbb 1^{\bi}_{\bj_2}X_{\bj_1}^{(n)}X_{\bj_2}^{(n)})\\[1.0em]
+    &=\sum_{\bj_1\neq \bj_2, |\bj_k|=n(\bi), \bi<\bj_k}\lambda^{s_\bi}_{\sigma^{|\bi|}(\bj_1)}\lambda^{s_\bi}_{\sigma^{|\bi|}(\bj_2)}(1-(1-p_{\bj_1})^{m(\bi)} - (1-p_{\bj_2})^{m(\bi)} + (1-p_{\bj_2}-p_{\bj_2})^{m(\bi)}).
+  \end{align*}
+  Here, from the elementary computation
+  \begin{align*}
+    1-p_{\bj_1} - p_{\bj_2}&\le 1-p_{\bj_1} - p_{\bj_2}+p_{\bj_1}p_{\bj_2}\\
+    \Leftrightarrow (1-p_{\bj_1} - p_{\bj_2})^{m(\bi)}&\le (1-p_{\bj_1})^{m(\bi)} (1- p_{\bj_2})^{m(\bi)}\\
+    \Leftrightarrow 1-(1-p_{\bj_1})^{m(\bi)}-(1- p_{\bj_2})^{m(\bi)}+(1-p_{\bj_1} - p_{\bj_2})^{m(\bi)}&\le (1-(1-p_{\bj_1})^{m(\bi)}) (1-(1- p_{\bj_2})^{m(\bi)})
+  \end{align*}
+  we can deduce that
+  \[
+    S_2\le \left(\sum_{|\bj|=n(\bi), \bi<\bj}\lambda^{s_\bi}_{\sigma^{|\bi|}(\bj)} (1-(1-p_{\bj})^{m(\bi)})\right)^2,
+  \]
+  which equals $1$ by definition of $s_\bi$. Thus, $S_1+S_2\le 1+\max\bbE((X_\bj^{(n)})^2)\tilde
+  \lambda$, as in the claim.
+\end{proof}
+
+
+The upshot of the content of this section is the following: For each $\bi\in \Sigma_*$ there is a
+limiting value $X_\bi$, which we'll be able to use for the definition of the mass distribution on
+the Cantor subset of $R(\bo, \ell)$ from \cref{sec:cantor}.
+
+\begin{proposition}\label{thm:summability}
+  For all $\bi\in \Sigma_*$, there is $X_\bi$ such that $X_\bi^{(n)}\to X_\bi$ as $n\to \infty$ almost
+  surely and in $L^2$, Furthermore, $\bbE(X_\bi)=1$ for all $\bi$, and
+  \[
+    X_\bi=\sum_{|\bj|=n(\bi), \bi<\bj} \lambda_{\sigma^{|\bi|}(\bj)}^{s_\bi}\mathbb 1_\bj^\bi X_\bj.
+  \]
+\end{proposition}
+\begin{proof}
+  This is immediate from the martingale convergence theorem, and \cref{thm:L2} and \cref{thm:martingale}.
+\end{proof}
+
+
+We will define a random measure $\mu=\mu_\bo$ on $\Sigma$ using the weights $X_\bi$ from the last
+section, for cylinders of the following form: Consider $[\bi_1\bi_2\dots\bi_n]$ where
+$n(\emptyset)=\bi_1$, $n(\bi_1)=\bi_1\bi_2$, and so on, up to $n(\bi_1\dots\bi_{n-1})=|\bi_1\dots
+\bi_n|$. For any cylinder of this form, set
+\[
+  \mu([\bi_1\dots\bi_n]):=\lambda_{\bi_1}^{n(\emptyset)}\lambda_{\bi_2}^{s_{{\bi_1}}}\cdots
+  \lambda_{\bi_n}^{s_{\bi_1\dots\bi_{n-1}}}\mathbb 1_{\bi_1}^{\emptyset} \dots \mathbb
+  1_{\bi_{1}\dots \bi_n}^{\bi_1\dots \bi_{n-1}}X_{\bi_1\dots \bi_n}.
+\]
+By \cref{thm:summability} and Kolmogorov's extension theorem, for almost every $\bo$ the measure
+$\mu$ is a well-defined measure. By construction it is supported on the random Cantor set defined in
+\cref{sec:cantor} and satisfies $\mu(\Sigma)=\mu(R(\bo, \ell))=X_\emptyset$. Note that $\mu$ can be
+a zero measure. For the remainder of this section we study properties of $\mu$.
+
+
+\subsection{Properties of the random measure on the Cantor set}
+
+We establish properties on $s_{\bi}$.
+
+\begin{lemma}
+  For all $\delta>0$ there is $N\in \bbN$ and $C>0$ such that for all $\bj\in \Sigma_*$ with $|\bj|\ge N$,
+  \[
+    \bbE(\mu([\bj]))\le C \lambda_{\min}^{-\delta |\bj|}\bbP_q([\bj]),
+  \]
+  where $\bbP_q$ is the Bernoulli measure with the probability vector $q_i=\lambda_i^{s_1}p_ie^\alpha$.
+\end{lemma}
+
+\begin{proof}
+
+\end{proof}
+
+\begin{proposition}\label{thm:rightsubset}
+  Let $\alpha<\sum_{i=1}^m \lambda_i^{s_1}p_ie^\alpha\log p_i$, i.e. assume we are in the case where
+  $s=s_1$ from ??. Then there exists $\epsilon>0$ such that for all small enough $\delta>0$, for $\bbP$-almost every $\bo$,
+  \[
+    \mu_{\bo}\left( \bigcap_{k=0}^\infty \bigcup_{n=k}^\infty \{\bj\in \Sigma \mid p_{\sigma^n(\bj)|_{\delta n}}e^{\alpha \delta n}\ge (1-\epsilon)^{\delta n} \} \right)=0.
+  \]
+
+\end{proposition}
+
+Denote, for the $\epsilon$ and any $\delta$ from \cref{thm:rightsubset},
+\[
+  E_k^\delta:=\bigcap_{n=k}^\infty \{ \bj\in \Sigma\mid p_{\sigma^n(\bj)|_{\delta n}}e^{\alpha \delta n} < (1-\epsilon)^{\delta n}  \}
+\]
+It is an immediate consequence of \cref{thm:rightsubset} that
+\[
+  \bbE(E_n^\delta)>0
+\]
+for all large enough $n$.
+
+\begin{proposition}\label{thm:finiteenergy}
+  Let $\alpha<\sum_{i=1}^m \lambda_i^{s_1}p_ie^\alpha\log p_i$, i.e. assume we are in the case where
+  $s=s_1$ from ??. Let $\epsilon>0$. Then, there is $\delta>0$ such that for all $n\in
+  \bbN$
+  \[
+    \bbE \left(\iint\frac{d\mu(\bi)\,d\mu|_{E_n^\delta}(\bj)}{|\pi(\bi) - \pi(\bj)|^{s_1-\epsilon}}\right)<\infty.
+  \]
+\end{proposition}
+
+
+\section{Proof of the lower bound in Theorem \ref{thm:main}}
+
+This is a consequence of \cref{thm:finiteenergy} from the previous section.
+
+Consider the event $\Omega=\{\bo\in \Sigma\mid X_{\emptyset}>0\}$. Since $\bbE(X_\emptyset)=1$, it is the case that $ \bbP(\Omega)>0$.
+
+Fix $\epsilon>0$. We know from \cite{Falconer} that if , the point $\bo$ belongs to the typical set
+in terms of satisfying the statement of \cref{thm:finiteenergy} and $\mu$ is non-trivial, then
+$\dim_H R(\bo, \ell)>s-\epsilon$. Recall that $\mu(R(\bo, \ell))=X_\emptyset$. Then, by \cref{thm:finiteenergy},
+\[
+  \bbP(\dim_H R(\bo, \ell)>s-\epsilon\mid \Omega)=1,
+\]
+and so in particular,
+\[
+\bbP(\dim_H R(\bo, \ell)>s-\epsilon\}>0.
+\]
+Note that for all $t>0$, $\{\bo\in \Sigma\mid \dim_H R(\bo, \ell)>t\}$ is a tail event and hence has probability $0$ or $1$ by the Kolmogorov $0-1$-law. This proves that, almost surely, $\dim_H R(\bo, \ell)>s-\epsilon$.
+
+Letting $\epsilon \to 0$ along a subsequence finishes the proof of the lower bound.
+
+
+\section{Plots}
+
+\definecolor{col1}{HTML}{20a39e}
+\definecolor{col2}{HTML}{ffba49}
+\definecolor{col3}{HTML}{ef5b5b}
+
+\begin{figure}[htp]
+  \begin{center}
+    \begin{tikzpicture}
+      \begin{axis}[
+	domain=0:1.99,
+	samples=100,
+	axis lines=middle,
+	xlabel={$\alpha$}, ylabel={$\dimh$},
+	xmin=0, xmax=2, ymin=0, ymax=0.95,
+	%        grid=major,
+	width=\textwidth/2, height=6cm
+	]
+	%%% Define the variables here
+	\pgfmathsetmacro{\sZero}{0.786971}
+	\pgfmathsetmacro{\sOne}{0.615567}
+	\pgfmathsetmacro{\tOne}{0.442654}
+	\pgfmathsetmacro{\tTwo}{1.82135}
+	\pgfmathsetmacro{\tThree}{0.176507}
+	\pgfmathsetmacro{\tFour}{0.260725}
+
+	\addplot[col1, ultra thick] {0.00774617 + 1.50563 *x + 3.45146* x^2 - 0.910021* x^3 - 0.377264* x^4};
+	\addplot[col1, thick, dashed] { 1.50563 *x };
+	\addplot[col2, ultra thick] {0.786971 + 0.0210774* (-0.442654 + x) - 1.7915* (-0.442654 + x)^2 +
+	    4.93679 *(-0.442654 + x)^3 - 32.0515* (-0.442654 + x)^4 +
+	    141.756 *(-0.442654 + x)^5 - 329.497* (-0.442654 + x)^6 +
+	    428.456 *(-0.442654 + x)^7 - 316.514* (-0.442654 + x)^8 +
+	  124.451 *(-0.442654 + x)^9 - 20.2559* (-0.442654 + x)^10};
+	\addplot[col3,ultra thick]{\sZero};%full line of dimension height
+	\addplot[dashed] coordinates {(\tOne,0) (\tOne,1)};%t1
+	\addplot[dashed] coordinates {(\tTwo,0) (\tTwo,1)};%t2
+	\addplot[dashed] coordinates {(\tThree,0) (\tThree,1)};%t3
+	\addplot[dashed] coordinates {(\tFour,0) (\tFour,1)};%t4
+	\addplot[dashed] coordinates {(0,\sOne) (2,\sOne)};%phase transition y intercept
+      \end{axis}
+    \end{tikzpicture}
+    \begin{tikzpicture}
+      \begin{axis}[
+	domain=0:1.7,
+	samples=100,
+	axis lines=middle,
+	xlabel={$\alpha$}, ylabel={$\dimh$},
+	xmin=0, xmax=2, ymin=0, ymax=0.95,
+	%        grid=major,
+	width=\textwidth/2, height=6cm
+	]
+	%%% Define the variables here
+	\pgfmathsetmacro{\sZero}{0.786971}
+	\pgfmathsetmacro{\sOne}{0.615567}
+	\pgfmathsetmacro{\tOne}{0.442654}
+	\pgfmathsetmacro{\tTwo}{1.82135}
+	\pgfmathsetmacro{\tThree}{0.176507}
+	\pgfmathsetmacro{\tFour}{0.260725}
+
+	\addplot[col1, ultra thick,domain=0:\tFour] {0.00774617 + 1.50563 *x + 3.45146* x^2 - 0.910021* x^3 - 0.377264* x^4};
+	\addplot[col2, ultra thick,domain=\tFour:\tOne] {0.786971 + 0.0210774* (-0.442654 + x) - 1.7915* (-0.442654 + x)^2 +
+	    4.93679 *(-0.442654 + x)^3 - 32.0515* (-0.442654 + x)^4 +
+	    141.756 *(-0.442654 + x)^5 - 329.497* (-0.442654 + x)^6 +
+	    428.456 *(-0.442654 + x)^7 - 316.514* (-0.442654 + x)^8 +
+	  124.451 *(-0.442654 + x)^9 - 20.2559* (-0.442654 + x)^10};
+	\addplot[col3,ultra thick,dash pattern=on 1pt off .5pt,domain=\tOne:\tTwo]{\sZero};
+	\addplot[col3,ultra thick,domain=\tTwo:2]{\sZero};
+	\addplot[dashed] coordinates {(\tOne,0) (\tOne,1)};%t1
+	\addplot[dashed] coordinates {(\tTwo,0) (\tTwo,1)};%t2
+	\addplot[dashed] coordinates {(\tThree,0) (\tThree,1)};%t3
+	\addplot[dashed] coordinates {(\tFour,0) (\tFour,1)};%t4
+	\addplot[dashed] coordinates {(0,\sOne) (2,\sOne)};%phase transition y intercept
+	\addplot[dashed] coordinates {(0,\sZero) (\tOne,\sZero)};%ambient space
+      \end{axis}
+    \end{tikzpicture}
+    \caption{This is the natural measure.}
+  \end{center}
+\end{figure}
+
+
+\begin{figure}[htp]
+  \begin{center}
+    \begin{tikzpicture}
+      \begin{axis}[
+	domain=0:1.95,
+	samples=100,
+	axis lines=middle,
+	xlabel={$\alpha$}, ylabel={$\dimh$},
+	xmin=0, xmax=2, ymin=0, ymax=0.95,
+	%        grid=major,
+	width=\textwidth/2, height=6cm
+	]
+	%%% Define the variables here
+
+	\pgfmathsetmacro{\sZero}{0.791002}
+	\pgfmathsetmacro{\sOne}{0.445581}
+	\pgfmathsetmacro{\tOne}{1.38513}
+	\pgfmathsetmacro{\tTwo}{1.60944}
+	\pgfmathsetmacro{\tThree}{0.223144}
+	\pgfmathsetmacro{\tFour}{0.759745}
+
+	\addplot[col1, ultra thick] {0.0000429021 + 0.528817 *x + 0.0595684 *x^2 + 0.00187359* x^3 +
+	  0.0258721* x^4};
+	\addplot[col1, thick, dashed] { 0.528817 *x };
+	\addplot[col2, ultra thick] {0.788466 + 0.00611217* (x - 1.38513) - 2.69672* (x - 1.38513)^2 -
+	    10.6174* (x - 1.38513)^3 - 65.167* (x - 1.38513)^4 -
+	    292.99 *(x - 1.38513)^5 - 754.17* (x - 1.38513)^6 -
+	    1123.49 *(x - 1.38513)^7 - 965.325* (x - 1.38513)^8 -
+	  444.938* (x - 1.38513)^9 - 85.2819* (x - 1.38513)^10};
+	\addplot[col3,ultra thick]{\sZero};%full line of dimension height
+	\addplot[dashed] coordinates {(\tOne,0) (\tOne,1)};%t1
+	\addplot[dashed] coordinates {(\tTwo,0) (\tTwo,1)};%t2
+	\addplot[dashed] coordinates {(\tThree,0) (\tThree,1)};%t3
+	\addplot[dashed] coordinates {(\tFour,0) (\tFour,1)};%t4
+	\addplot[dashed] coordinates {(0,\sOne) (2,\sOne)};%phase transition y intercept
+      \end{axis}
+    \end{tikzpicture}
+    \begin{tikzpicture}
+      \begin{axis}[
+	domain=0:1.7,
+	samples=100,
+	axis lines=middle,
+	xlabel={$\alpha$}, ylabel={$\dimh$},
+	xmin=0, xmax=2, ymin=0, ymax=0.95,
+	%        grid=major,
+	width=\textwidth/2, height=6cm
+	]
+	%%% Define the variables here
+
+	\pgfmathsetmacro{\sZero}{0.791002}
+	\pgfmathsetmacro{\sOne}{0.445581}
+	\pgfmathsetmacro{\tOne}{1.38513}
+	\pgfmathsetmacro{\tTwo}{1.60944}
+	\pgfmathsetmacro{\tThree}{0.223144}
+	\pgfmathsetmacro{\tFour}{0.759745}
+
+	\addplot[col1, ultra thick,domain=0:\tFour] {0.0000429021 + 0.528817 *x + 0.0595684 *x^2 + 0.00187359* x^3 +
+	  0.0258721* x^4};
+	\addplot[col2, ultra thick,domain=\tFour:\tOne] {0.788466 + 0.00611217* (x - 1.38513) - 2.69672* (x - 1.38513)^2 -
+	    10.6174* (x - 1.38513)^3 - 65.167* (x - 1.38513)^4 -
+	    292.99 *(x - 1.38513)^5 - 754.17* (x - 1.38513)^6 -
+	    1123.49 *(x - 1.38513)^7 - 965.325* (x - 1.38513)^8 -
+	  444.938* (x - 1.38513)^9 - 85.2819* (x - 1.38513)^10};
+	\addplot[col3,ultra thick,dash pattern=on 1pt off .5pt,domain=\tOne:\tTwo]{\sZero};
+	\addplot[col3,ultra thick,domain=\tTwo:2]{\sZero};
+	\addplot[dashed] coordinates {(\tOne,0) (\tOne,1)};%t1
+	\addplot[dashed] coordinates {(\tTwo,0) (\tTwo,1)};%t2
+	\addplot[dashed] coordinates {(\tThree,0) (\tThree,1)};%t3
+	\addplot[dashed] coordinates {(\tFour,0) (\tFour,1)};%t4
+	\addplot[dashed] coordinates {(0,\sOne) (2,\sOne)};%phase transition y intercept
+	\addplot[dashed] coordinates {(0,\sZero) (\tOne,\sZero)};%ambient space
+      \end{axis}
+    \end{tikzpicture}
+    \caption{Another extreme example with the skewing twoards the higher probability}
+  \end{center}
+\end{figure}
+
+
+
+
+
+
+
+
+\begin{figure}[htp]
+  \begin{center}
+    \begin{tikzpicture}
+      \begin{axis}[
+	domain=0:1.95,
+	samples=100,
+	axis lines=middle,
+	xlabel={$\alpha$}, ylabel={$\dimh$},
+	xmin=0, xmax=2, ymin=0, ymax=1.0,
+	%        grid=major,
+	width=\textwidth/2, height=6cm
+	]
+	%%% Define the variables here
+	\pgfmathsetmacro{\sZero}{0.86716}
+	\pgfmathsetmacro{\sOne}{0.612375}
+	\pgfmathsetmacro{\tOne}{0.983145}
+	\pgfmathsetmacro{\tTwo}{1.60944}
+	\pgfmathsetmacro{\tThree}{0.223144}
+	\pgfmathsetmacro{\tFour}{0.531937}
+
+	\addplot[col1, ultra thick] {1.14723 *x};
+	\addplot[col1, thick, dashed] { 1.14723 *x };
+	\addplot[col2, ultra thick] {0.867273 - 0.00530145 *(x - 0.983145) - 1.34083* (x - 0.983145)^2 -
+	    0.141135* (x - 0.983145)^3 - 0.0813123* (x - 0.983145)^4 -
+	    3.34492 *(x - 0.983145)^5 - 5.20196 *(x - 0.983145)^6 +
+	    13.3493 *(x - 0.983145)^7 + 18.676 *(x - 0.983145)^8 -
+	  21.2202 *(x - 0.983145)^9 - 29.3726 *(x - 0.983145)^10};
+	\addplot[col3,ultra thick]{\sZero};%full line of dimension height
+	\addplot[dashed] coordinates {(\tOne,0) (\tOne,1)};%t1
+	\addplot[dashed] coordinates {(\tTwo,0) (\tTwo,1)};%t2
+	\addplot[dashed] coordinates {(\tThree,0) (\tThree,1)};%t3
+	\addplot[dashed] coordinates {(\tFour,0) (\tFour,1)};%t4
+	\addplot[dashed] coordinates {(0,\sOne) (2,\sOne)};%phase transition y intercept
+      \end{axis}
+    \end{tikzpicture}
+    \begin{tikzpicture}
+      \begin{axis}[
+	domain=0:1.7,
+	samples=100,
+	axis lines=middle,
+	xlabel={$\alpha$}, ylabel={$\dimh$},
+	xmin=0, xmax=2, ymin=0, ymax=1.00,
+	%        grid=major,
+	width=\textwidth/2, height=6cm
+	]
+	%%% Define the variables here
+	\pgfmathsetmacro{\sZero}{0.86716}
+	\pgfmathsetmacro{\sOne}{0.612375}
+	\pgfmathsetmacro{\tOne}{0.983145}
+	\pgfmathsetmacro{\tTwo}{1.60944}
+	\pgfmathsetmacro{\tThree}{0.223144}
+	\pgfmathsetmacro{\tFour}{0.531937}
+
+	\addplot[col1, ultra thick,domain=0:\tFour] {1.14723 *x};
+	\addplot[col2, ultra thick,domain=\tFour:\tOne] {0.867273 - 0.00530145 *(x - 0.983145) - 1.34083* (x - 0.983145)^2 -
+	    0.141135* (x - 0.983145)^3 - 0.0813123* (x - 0.983145)^4 -
+	    3.34492 *(x - 0.983145)^5 - 5.20196 *(x - 0.983145)^6 +
+	    13.3493 *(x - 0.983145)^7 + 18.676 *(x - 0.983145)^8 -
+	  21.2202 *(x - 0.983145)^9 - 29.3726 *(x - 0.983145)^10};
+	\addplot[col3,ultra thick,dash pattern=on 1pt off .5pt,domain=\tOne:\tTwo]{\sZero};
+	\addplot[col3,ultra thick,domain=\tTwo:2]{\sZero};
+	\addplot[dashed] coordinates {(\tOne,0) (\tOne,1)};%t1
+	\addplot[dashed] coordinates {(\tTwo,0) (\tTwo,1)};%t2
+	\addplot[dashed] coordinates {(\tThree,0) (\tThree,1)};%t3
+	\addplot[dashed] coordinates {(\tFour,0) (\tFour,1)};%t4
+	\addplot[dashed] coordinates {(0,\sOne) (2,\sOne)};%phase transition y intercept
+	\addplot[dashed] coordinates {(0,\sZero) (\tOne,\sZero)};%ambient space
+      \end{axis}
+    \end{tikzpicture}
+    \caption{The homogeneous contraction case}
+  \end{center}
+\end{figure}
+
+
+
+
+
+
+
+
+\begin{figure}[htp]
+  \begin{center}
+    \begin{tikzpicture}
+      \begin{axis}[
+	domain=0:1.95,
+	samples=100,
+	axis lines=middle,
+	xlabel={$\alpha$}, ylabel={$\dimh$},
+	xmin=0, xmax=2, ymin=0, ymax=0.95,
+	%        grid=major,
+	width=\textwidth/2, height=6cm
+	]
+	%%% Define the variables here
+	\pgfmathsetmacro{\sZero}{0.791002}
+	\pgfmathsetmacro{\sOne}{0.791002}
+	\pgfmathsetmacro{\tOne}{0.693147}
+	\pgfmathsetmacro{\tTwo}{0.693147}
+	\pgfmathsetmacro{\tThree}{0.693147}
+	\pgfmathsetmacro{\tFour}{0.693147}
+
+	\addplot[col1, ultra thick] {0.00101662 + 0.760572 *x + 0.496951* x^2 - 0.425069* x^3 + 0.717325* x^4};
+	\addplot[col1, thick, dashed] { 0.760572 *x };
+	%\addplot[col2, ultra thick] {0.867273 - 0.00530145 *(x - 0.983145) - 1.34083* (x - 0.983145)^2 -
+	%0.141135* (x - 0.983145)^3 - 0.0813123* (x - 0.983145)^4 -
+	%3.34492 *(x - 0.983145)^5 - 5.20196 *(x - 0.983145)^6 +
+	%13.3493 *(x - 0.983145)^7 + 18.676 *(x - 0.983145)^8 -
+	%21.2202 *(x - 0.983145)^9 - 29.3726 *(x - 0.983145)^10};
+	\addplot[col3,ultra thick]{\sZero};%full line of dimension height
+	\addplot[dashed] coordinates {(\tOne,0) (\tOne,1)};%t1
+	\addplot[dashed] coordinates {(\tTwo,0) (\tTwo,1)};%t2
+	\addplot[dashed] coordinates {(\tThree,0) (\tThree,1)};%t3
+	\addplot[dashed] coordinates {(\tFour,0) (\tFour,1)};%t4
+	%\addplot[dashed] coordinates {(0,\sOne) (2,\sOne)};%phase transition y intercept
+      \end{axis}
+    \end{tikzpicture}
+    \begin{tikzpicture}
+      \begin{axis}[
+	domain=0:1.7,
+	samples=100,
+	axis lines=middle,
+	xlabel={$\alpha$}, ylabel={$\dimh$},
+	xmin=0, xmax=2, ymin=0, ymax=0.95,
+	%        grid=major,
+	width=\textwidth/2, height=6cm
+	]
+	%%% Define the variables here
+	\pgfmathsetmacro{\sZero}{0.791002}
+	\pgfmathsetmacro{\sOne}{0.791002}
+	\pgfmathsetmacro{\tOne}{0.693147}
+	\pgfmathsetmacro{\tTwo}{0.693147}
+	\pgfmathsetmacro{\tThree}{0.693147}
+	\pgfmathsetmacro{\tFour}{0.693147}
+
+	\addplot[col1, ultra thick,domain=0:\tFour] {0.00101662 + 0.760572 *x + 0.496951* x^2 - 0.425069* x^3 + 0.717325* x^4};
+
+	\addplot[col3,ultra thick,domain=\tTwo:2]{\sZero};
+	\addplot[dashed] coordinates {(\tOne,0) (\tOne,1)};%t1
+	\addplot[dashed] coordinates {(0,\sZero) (\tOne,\sZero)};%ambient space
+      \end{axis}
+    \end{tikzpicture}
+    \caption{The degenerate inhomogeneous case}
+  \end{center}
+\end{figure}
+
+
+\begin{thebibliography}{99}
+  \bibitem{Hutchinson}
+  Hutchinson??
+
+  \bibitem{Falconer}
+  Falconer??
+
+\end{thebibliography}
+
+\end{document}
