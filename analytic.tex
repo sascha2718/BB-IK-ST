@@ -192,7 +192,6 @@ pagebackref=true]{hyperref}
 \newcommand{\diam}{\text{diam}}
 \newcommand{\dist}{\operatorname{dist}}
 %\newcommand{\set}[1]{\left\{#1\right\}}
-\newcommand{\vv}[1]{{\mathbf{#1}}}
 \newcommand{\Veronese}{\cV}
 \renewcommand{\le}{\leq}
 \renewcommand{\ge}{\geq}
@@ -202,11 +201,17 @@ pagebackref=true]{hyperref}
 \newcommand{\kgbf}{K^f_{G,B}}
 \newcommand{\hf}{\cH^f}
 \newcommand{\hs}{\cH^s}
+\newcommand{\eps}{\varepsilon}
 
-\newcommand{\bi}{{\overline {\imath}}}
-\newcommand{\bj}{{\overline  {\jmath}}}
-\newcommand{\bk}{{\overline k}}
-\newcommand{\bo}{{\overline o}}
+\newcommand{\cev}[1]{\reflectbox{\ensuremath{\vec{\reflectbox{\ensuremath{#1}}}}}}
+\newcommand{\bi}{\vec{\imath}\,}
+\newcommand{\bj}{\vec{\jmath}\,}
+\newcommand{\bk}{{\vec{k}}}
+\newcommand{\bo}{{\vec{o}}}
+\newcommand{\bbi}{\,\cev{\imath}}
+\newcommand{\bbj}{\,\cev{\jmath}}
+\newcommand{\bbk}{{\cev{k}}}
+\newcommand{\bbo}{{\cev{o}}}
 
 \newcommand{\an}{(A;n)}
 \newcommand{\ann}{(A';n')}
@@ -299,6 +304,54 @@ Fund.} \\(Uppsala)}
 
 
 \section{Introduction} \label{sec:intro}
+We first set up some notation. We consider an IFS $\Phi=\{f_i\}_{i=1}^N$ of maps $f_i:\bbR\to\bbR$
+that are analytic $f_i \in C^\omega([-\eps,1+\eps])$ on $-\eps,1+\eps]$ for some, fixed, $\eps>0$.
+We assume that the maps $f_i$ are strictly contracting on $[0,1]$ and further that 
+\[
+  c_{\min} \leq \min_{x\in[0,1]}
+  |f'(x)| \leq \max_{x\in[0,1]}|f'(x)| \leq c_{\max} 
+\]
+for some $0<c_{\min} \leq c_{\max}<1$.
+
+We write $\Sigma = \{1,\dots, N\}^{\bbN}$ for all infinite words on the alphabet $\{1,\dots,N\}$ and
+write $\Sigma_* = \bigcup_{k=0}^\infty \Sigma_k$ for all finite words, where $\Sigma_k =
+\{1,\dots,N\}^k$ are words of length $k$.
+We write $\bi=(i_1,i_2,i_3,\dots) \in\Sigma$ for specific infinite words and set $\bi|_n =
+(i_1,i_2,\dots,i_n)\in \Sigma_n$ for words of length $n$. We write $[\bi|_n] = \{\bj\in\Sigma :
+(j_1,\dots,j_n) = (i_1,\dotsi_n)\}$ for the cylinders of finite words $\bi|_n$. 
+
+Given a finite word $\bi=(i_1,\dots,i_n)\in\Sigma_*$ we write
+\[
+  f_{\bi} = f_{i_1}\circ \dots \circ f_{i_n}.
+\]
+Similarly, for any given $\bi\in\Sigma_*$, we write $\bbi = (i_n,i_{n-1},\dots, i_1)$ and then
+\[
+  f_{\bbi} = f_{i_n}\circ \dots \circ f_{i_1}.
+\]
+We write $|\bi|$ for the length of $\bi$ and for $\bi,\bj\in\Sigma\cup\Sigma_*$ write $\bi\wedge\bj$
+for the longest $\bk\in\Sigma\cup\Sigma_*$ such that $\bk=(k_1,\dots, k_n) = (i_1,\dots,
+i_n)=(j_1,\dots,j_n)$.
+
+\begin{definition}
+  Let $\bi\in \Sigma\cup\Sigma_*$. We define the \emph{lineariser} $H_{\bi}$ by
+  \[
+    H_{\bi}(x) = \sum_{k=1}^{|\bi|}
+  \frac{f''_{i_n}}{f'_{i_n}}(f_{\bbi|_{n-1}}(x))f'_{\bbi|_{n-1}}(x)
+  \]
+\end{definition}
+
+\begin{definition}
+  Strongly exponentially separated
+\end{definition}
+
+Our main result is
+\begin{theorem}
+  If, for all distinct $\bi,\bj \in\Sigma\cup\Sigma_*$ we have
+  \[
+    \sup_{x\in[0,1]} |H_{\bi}(x) - H_{\bj}(x)| > 0,
+  \]
+  then $\Phi$ is strongly exponentially separated.
+\end{theorem}
 
 
 \begin{thebibliography}{99}
