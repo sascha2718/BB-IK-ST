@@ -250,6 +250,8 @@ pagebackref=true]{hyperref}
 \newcommand{\comp}{^{\mathsf{c}}}
 \newcommand{\nopar}{{\parfillskip=0pt \par}}
 
+\newcommand{\rfootnote}[1]{\footnote{\color{red}#1}}
+
 
 \DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
 \DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
@@ -277,7 +279,8 @@ pagebackref=true]{hyperref}
 
 \title{Exponential separation for analytic self-conformal sets}
 
-\author{Balazs Barany \\(BME) \and Istvan Kolossvary\\ (Renyi Institute) \and Sascha
+\author{Balazs Barany\footnote{Balazs has grants}\\(BME) \and Istvan Kolossvary\footnote{Istvan also
+  has grants}\\ (Renyi Institute) \and Sascha
 Troscheit\footnote{ST acknowledges travel funding from the Lisa \& Carl-Gustav Esseens Mathematics
 Fund.} \\(Uppsala)}
 \date{\today}
@@ -306,6 +309,7 @@ Fund.} \\(Uppsala)}
 \section{Introduction} \label{sec:intro}
 We first set up some notation. We consider an IFS $\Phi=\{f_i\}_{i=1}^N$ of maps $f_i:\bbR\to\bbR$
 that are analytic $f_i \in C^\omega([-\eps,1+\eps])$ on $-\eps,1+\eps]$ for some, fixed, $\eps>0$.
+For convenience we define $I=[0,1]$ and $I_{\eps}=[-\eps,1+\eps]$.
 We assume that the maps $f_i$ are strictly contracting on $[0,1]$ and further that 
 \[
   c_{\min} \leq \min_{x\in[0,1]}
@@ -336,12 +340,17 @@ i_n)=(j_1,\dots,j_n)$.
   Let $\bi\in \Sigma\cup\Sigma_*$. We define the \emph{lineariser} $H_{\bi}$ by
   \[
     H_{\bi}(x) = \sum_{k=1}^{|\bi|}
-  \frac{f''_{i_n}}{f'_{i_n}}(f_{\bbi|_{n-1}}(x))f'_{\bbi|_{n-1}}(x)
+  \frac{f''_{i_n}}{f'_{i_n}}(f_{\bbi|_{n-1}}(x))\cdot f'_{\bbi|_{n-1}}(x)
   \]
 \end{definition}
 
 \begin{definition}
-  Strongly exponentially separated
+  We say that the IFS $\Phi$ satisfies the \emph{strong exponential separation condition (SESC)} if
+  there exists $c>0$ such that 
+  \[
+    |f_{\bi}(0)-f_{\bj}(0)| \geq c^n
+  \]
+  for all $\bi,\bj\in\Sigma_n$ and $n\in\bbN$, where $\bi\neq\bj$.
 \end{definition}
 
 Our main result is
@@ -350,9 +359,131 @@ Our main result is
   \[
     \sup_{x\in[0,1]} |H_{\bi}(x) - H_{\bj}(x)| > 0,
   \]
-  then $\Phi$ is strongly exponentially separated.
+  then $\Phi$ satisfies the SESC.
 \end{theorem}
 
+
+
+
+
+
+\section{A proof}\label{sec:proof}
+We first observe that without loss of generality, we may assume $x\in[0,1]$ and
+$0<\gamma<|f'_i(x)|<\lambda<1$.\rfootnote{generality? this just seems a definition of upper and lower
+bounds?}
+We first show
+\begin{proposition}
+  $H_{\bi}$ is analytic on $I_{\eps}$
+\end{proposition}
+\begin{proof}
+  For all $x\in [-1,1]$ there exists an open complex neighbourhood $U \supseteq I$ such that
+  $f_k(x)$ is analytic on $U$ and $|f_k'(z)|<\lambda$ for all $z\in U$ and $k\in\Sigma_1$.
+  Hence $f_k(U) \subseteq U$ for all such $k$ and 
+  \[
+    \frac{f_k''}{f_k'},\quad f_{\bi}, \quad\text{and} \quad f'_{\bi}
+  \]
+  are analytic on $U$ for all $\bi\in\Sigma_*$ and $k\in\Sigma_1$.
+  Since there exists $C>0$ such that 
+  \[
+\left|\frac{f_k''}{f_k'}\right| \leq C
+  \]
+  for all $k\in\Sigma_1$ and $z\in U$ by ??, we conclude that $H_{\bi|_n}$ is analytic on $U$ for
+  all $\bi\in\Sigma$ and $n\in\bbN$. Further $H_{\bi|_n}$ converges uniformly to $H_{\bi}$ on $U$
+  and $H_{\bi}$ is analytic on $U$ by Morera's theorem [??].
+\end{proof}
+
+
+\begin{lemma}
+  Let $f$ and $g$ be real analytic maps on $J\subseteq I$
+  and let $\eta>0$ with $\sqrt{\eta}<|J|/2$.
+  Denote
+  \[
+    C = \max\left\{\sup_{x\in J} |f''(x)|,\, \sup_{x\in J}|g''(x)\right\}.
+  \]
+  If $\sup_{x\in J} |f(x)-g(x)| \leq \eta$, then $\sup_{x\in J} |f'(x)-g'(x)|\leq (2+C)\sqrt{\eta}$.
+\end{lemma}
+\begin{proof}
+  We compute
+  \[
+    f(x) = f(y) + f'(y)(x-y)+ \frac{f''(\xi)}{2}(x-y)^2,
+  \]
+  where $\xi\in(x,y)$.
+  Let $y$ be arbitrary and let $x$ be such that $|x-y|=\sqrt{\eta}$ and $y\in J$.
+  Then,
+  \begin{align*}
+    \eta &> |f(y)-f(x)| =
+    \left|f(x)-g(x)+(f'(x)-g'(x))(x-y)+(f''(\xi_1)-g''(\xi_2))\frac{(x-y)^2}{2}\right|\\
+	 &\geq |f'(x)-g'(x)|\cdot|x-y|-|f(x)-f(y)|-(|f''(\xi_1)|+|f''(\xi_2)|)\frac{(x-y)^2}{2}
+  \end{align*}
+  Thus,
+  \[
+    |f'(x)-g'(x)| \leq \frac{\eta+\eta+C \eta}{\sqrt{eta}} = (2+C)\sqrt{\eta}
+  \]
+  as required.
+\end{proof}
+A simple calculation shows that for every finite word $\bi\in\Sigma_*$, $H_{\bi}$ reduces to
+\[
+  H_{\bi}(x) = \frac{f''_{\bbi}(x)}{f'_{\bbi}(x)}.
+\]
+To simplify notation we will often write $f^{(k)}$ to refer to the $k$-th derivative of $f$.
+Now let $g_k:\bbR^k\to \bbR$ be such that $g_1(x)=x$ and 
+\[
+  g_{k+1}(y_{k+1},\dots,y_1)=\sum_{l=1}^k (g_k)'_{y_l}(y_k,\dots,y_1)\cdot y_{l+1} +
+  g_k(y_k,\dots,y_1)\cdot y_1.
+\]
+This follows from simple induction as
+\[
+  \frac{f_{\bi}^{(k+1)}}{f_{\bi}'(x)} - \frac{f_{\bi}^{(k)}}{f_{\bi}'(x)^2}\cdot f_{\bi}''(x)
+  =\sum_{l=0}^{k-2}(g_k)'_{y_l}(H_{\bbi}^{(k-2)},\dots,H_{\bbi}(x)) \cdot H_{\bbi}^{(l+1)}(x).
+\]
+We note here that $g_k$ is a $k$-variable polynomial.
+
+Recall Fa\`a di Bruno's formula:
+\[
+  (f\circ g)^{(k)}(x) = \sum_{\pi\in \Pi_k} f^{(|\pi|)}(g(x)) \cdot \prod_{B\in\pi}
+  g^{(|B|)}(x),
+\]
+where $\Pi_k$ is the set of all partitions of $\{1,\dots,k\}$, and $B\in \pi$ refers to the
+elements, or blocks, of the partition $\pi$.
+
+Denote by $\phi_{i_k}(x):= \log|f'_{i_k}(x)|$. Then,
+\[
+  H_{\bi}(x) = \sum_{n=1}^\infty (\phi_{i_n}\circ f_{\bbi|_{n-1}})'(x)
+\]
+and 
+\begin{align}
+  H_{\bi}^{(k)}(x) 
+  &=\sum_{n=1}^\infty (\phi_{i_n}\circ f_{\bbi|_{n-1}})^{(k+1)}(x) \nonumber\\
+  &=\sum_{\pi\in\Pi_{k+1}} \sum_{n=1}^\infty \phi_{i_n}^{(|\pi|)}(f_{\bbi|_{n-1}}(x))\cdot
+  \prod_{B\in\pi} f_{\bbi|_{n-1}}^{(|B|)}(x)\nonumber\\
+  &=\sum_{\pi\in\Pi_{k+1}} \sum_{n=1}^\infty \phi_{i_n}^{(|\pi|)}(f_{\bbi|_{n-1}}(x))\cdot
+  \prod_{B\in\pi}
+  g_{|B|-1}(H_{\bi|_{n-1}}^{(|B|-2)}(x),\dots,H_{\bi|_{n-1}}(x))\cdot(f'_{\bbi|_{n-1}}(x))^{|\pi|}.\label{eq:ugly}
+\end{align}
+\begin{lemma}
+  There exists $C_k$ such that for all $x\in [0,1)$ and all $\bi\in\Sigma$,
+  \[
+    |H_{\bi}^{(k)}(x)|\leq C_k
+  \]
+\end{lemma}
+\begin{proof}
+  By induction, let $D_k:=\max_{k\in\Sigma_1}\max_{x\in[0,1)} |\phi_k^{(k)}(x)|$ and so
+  $|H_{\bi}(x)| \leq D_1/(1-\lambda)=:C_0$.
+  Suppose that the statement is true for $k$, let $E_k:= \sup_{y_i\in[-C_i,C_i]}g_k(y_k,\dots,y_1)$.
+  By \ref{eq:ugly},
+  \[
+    |H_{\bi}^{(k)}(x)| \leq \sum_{\pi\in\Pi_{k+1}}\sum_{n=1}^\infty D_{|\pi|} \cdot \prod_{B\in\pi}
+    E_{|B|-1} \cdot \lambda^{(n-1)|\pi|}
+    = \sum_{\pi\in\Pi_{k+1}} \frac{D_{|\pi|}\prod_{B\in\pi}E_{|B|-1}}{1-\lambda^{|\pi|}}
+  \]
+  and the statement follows.
+\end{proof}
+\begin{corollary}
+  For all $k\geq 1$, for all $x,y\in I$ and for all $\bi\in\Sigma$,
+  \[
+    |H_{\bi}^{(k)}(x) - H_{\bi}^{(k)}(y)| \leq C_{k+1}\cdot |x-y|
+  \]
+\end{corollary}
 
 \begin{thebibliography}{99}
   \bibitem{Hutchinson}
