@@ -34,19 +34,19 @@ pagebackref=true]{hyperref}
 %\usepackage{refcheck}
 %%making refcheck recognise cref
 %%% Infrastructure
-\makeatletter
-\newcommand{\refcheckize}[1]{%
-  \expandafter\let\csname @@\string#1\endcsname#1%
-  \expandafter\DeclareRobustCommand\csname relax\string#1\endcsname[1]{%
-  \csname @@\string#1\endcsname{##1}\@for\@temp:=##1\do{\wrtusdrf{\@temp}\wrtusdrf{{\@temp}}}}%
-  \expandafter\let\expandafter#1\csname relax\string#1\endcsname
-}
+%\makeatletter
+%\newcommand{\refcheckize}[1]{%
+%  \expandafter\let\csname @@\string#1\endcsname#1%
+%  \expandafter\DeclareRobustCommand\csname relax\string#1\endcsname[1]{%
+%  \csname @@\string#1\endcsname{##1}\@for\@temp:=##1\do{\wrtusdrf{\@temp}\wrtusdrf{{\@temp}}}}%
+%  \expandafter\let\expandafter#1\csname relax\string#1\endcsname
+%}
 
 %%%
 
 %%% Now we add the reference commands we want refcheck to be aware of
-\refcheckize{\cref}
-\refcheckize{\Cref}
+%\refcheckize{\cref}
+%\refcheckize{\Cref}
 
 
 \normalem
@@ -355,6 +355,7 @@ i_n)=(j_1,\dots,j_n)$.
 
 Our main result is
 \begin{theorem}
+  \label{thm:main}
   If, for all distinct $\bi,\bj \in\Sigma\cup\Sigma_*$ we have
   \[
     \sup_{x\in[0,1]} |H_{\bi}(x) - H_{\bj}(x)| > 0,
@@ -393,7 +394,7 @@ We first show
 \end{proof}
 
 
-\begin{lemma}
+\begin{lemma}\label{thm:analyticity}
   Let $f$ and $g$ be real analytic maps on $J\subseteq I$
   and let $\eta>0$ with $\sqrt{\eta}<|J|/2$.
   Denote
@@ -460,7 +461,7 @@ and
   \prod_{B\in\pi}
   g_{|B|-1}(H_{\bi|_{n-1}}^{(|B|-2)}(x),\dots,H_{\bi|_{n-1}}(x))\cdot(f'_{\bbi|_{n-1}}(x))^{|\pi|}.\label{eq:ugly}
 \end{align}
-\begin{lemma}
+\begin{lemma}\label{thm:kbound}
   There exists $C_k$ such that for all $x\in [0,1)$ and all $\bi\in\Sigma$,
   \[
     |H_{\bi}^{(k)}(x)|\leq C_k
@@ -479,11 +480,123 @@ and
   and the statement follows.
 \end{proof}
 \begin{corollary}
+  \label{thm:difcor}
   For all $k\geq 1$, for all $x,y\in I$ and for all $\bi\in\Sigma$,
   \[
     |H_{\bi}^{(k)}(x) - H_{\bi}^{(k)}(y)| \leq C_{k+1}\cdot |x-y|
   \]
 \end{corollary}
+\begin{lemma}\label{thm:difbound}
+  For all $k\geq 0$ there exists $C_k>0$ such that 
+  \[
+    |H_{\bi}^{(k)}(x) - H_{\bj}^{(k)}(x)| \leq C_k \lambda^{|\bi\wedge\bj|}
+  \]
+  for all $x\in I$ and $\bi,\bj\in\Sigma$.
+\end{lemma}
+\begin{proof}
+  Let $m = |\bi\wedge\bj|$. Again, by \cref{eq:ugly} and \cref{thm:kbound},
+  \begin{align}
+    &|H_{\bi}^{(k)}(x) - H_{\bj}^{(k)}(x)| 
+    \nonumber\\
+    =&
+    \left|
+    \sum_{\pi\in\Pi_{k+1}}\sum_{n=m+1}^\infty \phi_{i_n}^{(|\pi|)}(f_{\bbi|_{n-1}})\cdot
+    \prod_{B\in\pi} g_{|B|-1}(H_{\bi|_{n-1}},\dots,H_{\bi|_{n-1}}(x)) \cdot
+    f_{\bbi|_{n-1}}'(x)^{|\pi|}
+  \right.
+    \nonumber\\
+    &
+    \left. -
+    \sum_{\pi\in\Pi_{k+1}}\sum_{n=m+1}^\infty \phi_{j_n}^{(|\pi|)}(f_{\bbj|_{n-1}})\cdot
+    \prod_{B\in\pi} g_{|B|-1}(H_{\bj|_{n-1}},\dots,H_{\bj|_{n-1}}(x)) \cdot
+    f_{\bbj|_{n-1}}'(x)^{|\pi|}
+      \right|\nonumber\\
+    &\leq
+    \sum_{\pi\in\Pi_{k+1}}\sum_{n=m+1}^\infty 2D_{|\pi|}\cdot \prod_{B\in\pi} E_{|B|-1}
+    \cdot\lambda^{n|\pi|} \leq C_{k+1} \lambda^m.\nonumber
+  \end{align}
+\end{proof}
+We proceed with proving our main theorem, \cref{thm:main}.
+\begin{proof}[Proof of \cref{thm:main}]
+  Suppose that $\Phi$ is superexponentially concentrated, that is there exists a sequence
+  $(\eta_n)_n$ such that $\log(\eta_n)/n\to-\infty$ and for all $n\in\bbN$ there exist distinct
+  words $\bi,\bj\in\Sigma_n$ such that
+  \[
+    \sup_{x\in[0,1]}|f_{\bi}(x)-f_{\bj}(x)| \leq \eta_n.
+  \]
+  Since 
+  \[
+    |f_{\bi}''(x)| = |H_{\bi}(x)\cdot f_{\bi}'(x)|\leq C_0 \lambda^n
+  \]
+  we have
+  \[
+    \sup_{x\in[0,1]}|f_{\bi}'(x) - f_{\bj}'(x)| \leq (2+C_0 \lambda^n)\sqrt{\eta_n}
+  \]
+  and since
+  \[
+    |f_{\bi}'''(x)| = |g_2(H_{\bi}'(x),H_{\bi}(x))\cdot f_{\bi}'(x)| \leq E_2\cdot \lambda^n
+  \]
+  we have 
+  \[
+    \sup_{x\in[0,1]}|f_{\bi}''(x) - f_{\bj}''(x)| \leq (2+E_2\lambda^n)\sqrt{2+C_0 \lambda^n}\cdot
+    \eta_n^{1/4}.
+  \]
+  We obtain
+  \begin{align*}
+    \left|\frac{f_{\bi}''(x)}{f_{\bi}'(x)} - \frac{f_{\bj}''(x)}{f_{\bj}'(x)}\right|
+    &\leq
+    \frac{|f_{\bi}''(x)|}{|f_{\bi}(x)||f_{\bj}'(x)|}\cdot|f_{\bi}'(x) - f_{\bj}'(x)|
+    +\frac{1}{|f'_{\bj}(x)|} \cdot |f_{\bi}''(x) - f_{\bj}''(x)|
+    \\
+    & 
+    \leq \frac{C_0}{\gamma^n}(2+C_0\lambda^n)\cdot \eta_n^{1/2} +\frac{1}{\gamma^n}(2+E_2
+    \lambda^n)\sqrt{2+C_0 \lambda^n} \cdot \eta_n^{1/4} \;=:\;\eta_n'.
+  \end{align*}
+  For such $\bi\neq\bj$, let $m = \max\{m\leq n : i_m \neq j_m\}$. Then $\bi = \bi'\bk$ and $\bj =
+  \bj'\bk$ with $|\bk| = m-1$ and $i_m\neq j_m$.
+
+  By definition,
+  \[
+    H_{\bbi}(x) - H_{\bbj}(x) = f_{\bk}'(x)\cdot (H_{\bbi'}(f_{\bk}(x)) - H_{\bbj'}(f_{\bk}(x)))
+  \]
+  and so
+  \[
+    |H_{\bbi}(x) - H_{\bbj}(x)| \leq \frac{1}{|f'_n(x)|} \eta_n' \leq \gamma^{-n} \cdot \eta_n'
+    =:\eta_n'' \leq \eta''_{|\bbi|}
+  \]
+  In particular, for every $n\geq 1$ there exists $1\leq m\leq n$, $\bi^{(n)},\bj^{(n)}\in\Sigma_m$,
+  and $\bk^{(n)}\in\Sigma_{n-m}$ such that $i_1 \neq j_1$ and
+  \[
+    |H_{\bi^{(n)}}(f_{\bk^{(n)}}(x)) - H_{\bj^{(n)}}(f_{\bk^{(n)}}(x))| \leq \eta''_n
+  \]
+  for all $x\in I$.
+
+  We now claim that $|\bk^{(n)}| \to \infty$ and argue by contradiction, i.e.\ we assume there
+  exists a constant $C>0$ and infinitely many $n$ such that $\bk^{(n)} \leq C$. 
+  Since $|\bi^{(n)}|+ |\bk^{(n)}| = |\bj^{(n)}+|\bk^{(n)}| = n$ we conclude, by compactness, that
+  there exists a subsequence $n_l$ such that $\bi^{(n_l)} \to \bi^*\in\Sigma$,
+  $\bj^{(n_l)}\to\bj^*\in\Sigma$ and $\bk^{(n_l)}\to \bk^*\in\Sigma$ with $i_1^*\neq j_1^*$.
+  By \cref{thm:difbound} and \cref{thm:difcor} and that 
+  \[
+    H_{\bi^*}(f_{\bk^*}(x))\equiv H_{\bj^*}(f_{\bk^*}(x)) 
+  \]
+  for all $x\in I$, using analyticity gives $H_{\bi}(x) \equiv H_{\bj}(x)$ for all $x\in I$. This
+  contradicts the main assumption.
+
+  Now combining \cref{thm:analyticity} and \cref{thm:kbound} we conclude that for all $k$ there
+  exists $\widetilde{C}_k>0$ such that for all $n\geq 1$ we have
+  \[
+    |H_{\bi^{(n)}}^{(k)}(f_{\bk^{(n)}}(x)) - H_{\bj^{(n)}}^{(k)}(f_{\bk^{(n)}}(x))|
+  \leq \widetilde{C}_k \cdot \frac{1}{(f'_{\bk^{(n)}}(x))^k}\cdot\eta_n^{1/2^k}
+  \]
+  for all $x\in[0,1]$.
+  By compactness, there exists $\bk^*\in\Sigma$ as well as $\bi^*,\bj^*\in\Sigma\cup\Sigma_*$ and a
+  subsequence $n_l$ such that $\bi^{(n_l)}\to \bi^*$ and $\bj^{(n_l)}\to \bj^*$ as well as
+  $f_{\bk^{(n_l)}}(x) \to \pi(\bk^*)$, where $i_1^*\neq j_1^*$ and
+  $H_{\bi^*}^{(k)}(\pi(\bk^*))=H_{\bj^*}^{(k)}(\pi(\bk^*))$ for all $k$.
+  Since $H_{\bi^*}$ and $H_{\bj^*}$ are analytic we get $H_{\bi^*}(x)\equiv H_{\bj^*}(x)$ for all
+  $x\in[0,1]$. However, this claim also contradicts out main assumption, proving the main theorem.
+\end{proof}
 
 \begin{thebibliography}{99}
   \bibitem{Hutchinson}
