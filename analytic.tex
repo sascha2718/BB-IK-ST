@@ -31,7 +31,7 @@ pagebackref=true]{hyperref}
 
 \usepackage[capitalise]{cleveref}
 
-%\usepackage{refcheck}
+\usepackage{refcheck}
 %%making refcheck recognise cref
 %%% Infrastructure
 %\makeatletter
@@ -207,10 +207,11 @@ pagebackref=true]{hyperref}
 \newcommand{\bi}{\vec{\imath}\,}
 \newcommand{\bj}{\vec{\jmath}\,}
 \newcommand{\bk}{{\vec{k}}}
+\newcommand{\bu}{{\vec{u}}}
 \newcommand{\bo}{{\vec{o}}}
 \newcommand{\bbi}{\,\cev{\imath}}
 \newcommand{\bbj}{\,\cev{\jmath}}
-\newcommand{\bbk}{{\cev{k}}}
+\newcommand{\bbu}{{\cev{u}}}
 \newcommand{\bbo}{{\cev{o}}}
 
 \newcommand{\an}{(A;n)}
@@ -308,12 +309,12 @@ Fund.} \\(Uppsala)}
 
 \section{Introduction} \label{sec:intro}
 We first set up some notation. We consider an IFS $\Phi=\{f_i\}_{i=1}^N$ of maps $f_i:\bbR\to\bbR$
-that are analytic $f_i \in C^\omega([-\eps,1+\eps])$ on $-\eps,1+\eps]$ for some, fixed, $\eps>0$.
-For convenience we define $I=[0,1]$ and $I_{\eps}=[-\eps,1+\eps]$.
+that are analytic $f_i \in C^\omega([-\eps,1+\eps])$ on $I_{\eps}=[-\eps,1+\eps]$ for some, fixed, $\eps>0$.
+For convenience we also write define $I=[0,1]$.
 We assume that the maps $f_i$ are strictly contracting on $[0,1]$ and further that 
 \[
-  c_{\min} \leq \min_{x\in[0,1]}
-  |f'(x)| \leq \max_{x\in[0,1]}|f'(x)| \leq c_{\max} 
+  c_{\min} < \min_{x\in[0,1]}
+  |f'(x)| \leq \max_{x\in[0,1]}|f'(x)| < c_{\max} 
 \]
 for some $0<c_{\min} \leq c_{\max}<1$.
 
@@ -322,7 +323,7 @@ write $\Sigma_* = \bigcup_{k=0}^\infty \Sigma_k$ for all finite words, where $\S
 \{1,\dots,N\}^k$ are words of length $k$.
 We write $\bi=(i_1,i_2,i_3,\dots) \in\Sigma$ for specific infinite words and set $\bi|_n =
 (i_1,i_2,\dots,i_n)\in \Sigma_n$ for words of length $n$. We write $[\bi|_n] = \{\bj\in\Sigma :
-(j_1,\dots,j_n) = (i_1,\dotsi_n)\}$ for the cylinders of finite words $\bi|_n$. 
+(j_1,\dots,j_n) = (i_1,\dots, i_n)\}$ for the cylinders of finite words $\bi|_n$. 
 
 Given a finite word $\bi=(i_1,\dots,i_n)\in\Sigma_*$ we write
 \[
@@ -333,13 +334,13 @@ Similarly, for any given $\bi\in\Sigma_*$, we write $\bbi = (i_n,i_{n-1},\dots, 
   f_{\bbi} = f_{i_n}\circ \dots \circ f_{i_1}.
 \]
 We write $|\bi|$ for the length of $\bi$ and for $\bi,\bj\in\Sigma\cup\Sigma_*$ write $\bi\wedge\bj$
-for the longest $\bk\in\Sigma\cup\Sigma_*$ such that $\bk=(k_1,\dots, k_n) = (i_1,\dots,
+for the longest $\bu\in\Sigma\cup\Sigma_*$ such that $\bu=(k_1,\dots, k_n) = (i_1,\dots,
 i_n)=(j_1,\dots,j_n)$.
 
 \begin{definition}
-  Let $\bi\in \Sigma\cup\Sigma_*$. We define the \emph{lineariser} $H_{\bi}$ by
+  Let $\bi\in \Sigma\cup\Sigma_*$. We define the \emph{protolineariser(?)} $H_{\bi}$ by
   \[
-    H_{\bi}(x) = \sum_{k=1}^{|\bi|}
+    H_{\bi}(x) = \sum_{n=1}^{|\bi|}
   \frac{f''_{i_n}}{f'_{i_n}}(f_{\bbi|_{n-1}}(x))\cdot f'_{\bbi|_{n-1}}(x)
   \]
 \end{definition}
@@ -353,10 +354,16 @@ i_n)=(j_1,\dots,j_n)$.
   for all $\bi,\bj\in\Sigma_n$ and $n\in\bbN$, where $\bi\neq\bj$.
 \end{definition}
 
+We write $\phi_{i_k}(x):= \log|f'_{i_k}(x)|$ and get, equivalently,
+\begin{equation}
+  H_{\bi}(x) = \sum_{n=1}^\infty (\phi_{i_n}\circ f_{\bbi|_{n-1}})'(x)
+  \label{eq:alternativeH}
+\end{equation}
+
 Our main result is
 \begin{theorem}
   \label{thm:main}
-  If, for all distinct $\bi,\bj \in\Sigma\cup\Sigma_*$ we have
+  If, for all distinct $\bi,\bj \in\Sigma$ we have
   \[
     \sup_{x\in[0,1]} |H_{\bi}(x) - H_{\bj}(x)| > 0,
   \]
@@ -369,73 +376,66 @@ Our main result is
 
 
 \section{A proof}\label{sec:proof}
-We first observe that without loss of generality, we may assume $x\in[0,1]$ and
-$0<\gamma<|f'_i(x)|<\lambda<1$.\rfootnote{generality? this just seems a definition of upper and lower
-bounds?}
 We first show
 \begin{proposition}
-  $H_{\bi}$ is analytic on $I_{\eps}$
+  $H_{\bi}$ is analytic on $I_{\eps}$.
 \end{proposition}
 \begin{proof}
-  For all $x\in [-1,1]$ there exists an open complex neighbourhood $U \supseteq I$ such that
-  $f_k(x)$ is analytic on $U$ and $|f_k'(z)|<\lambda$ for all $z\in U$ and $k\in\Sigma_1$.
-  Hence $f_k(U) \subseteq U$ for all such $k$ and 
+  There exists an open bounded complex neighbourhood $U \supseteq I$ such that
+  $z\mapsto f_j(z)$ is analytic on $U$ and $c_{\min}<|f_j'(z)|<c_{\max}$ for all $z\in U$ and $j\in\Sigma_1$.
+  Hence $f_j(U) \subseteq U$ and 
   \[
-    \frac{f_k''}{f_k'},\quad f_{\bi}, \quad\text{and} \quad f'_{\bi}
+    \frac{f_j''}{f_j'},\quad f_{\bi}, \quad\text{and} \quad f'_{\bi}
   \]
-  are analytic on $U$ for all $\bi\in\Sigma_*$ and $k\in\Sigma_1$.
+  are analytic on $U$ for all $\bi\in\Sigma_*$ and $j\in\Sigma_1$.
   Since there exists $C>0$ such that 
   \[
-\left|\frac{f_k''}{f_k'}\right| \leq C
+\left|\frac{f_j''}{f_j'}\right| \leq C
   \]
-  for all $k\in\Sigma_1$ and $z\in U$ by ??, we conclude that $H_{\bi|_n}$ is analytic on $U$ for
+  for all $j\in\Sigma_1$ and $z\in U$, we conclude that $H_{\bi|_n}$ is analytic on $U$ for
   all $\bi\in\Sigma$ and $n\in\bbN$. Further $H_{\bi|_n}$ converges uniformly to $H_{\bi}$ on $U$
-  and $H_{\bi}$ is analytic on $U$ by Morera's theorem [??].
+and $H_{\bi}$ is analytic on $U$ by Morera's theorem \cite[Theorem 10.17]{Rudin87}.
 \end{proof}
 
 
 \begin{lemma}\label{thm:analyticity}
-  Let $f$ and $g$ be real analytic maps on $J\subseteq I$
-  and let $\eta>0$ with $\sqrt{\eta}<|J|/2$.
+  Let $f$ and $g$ be real analytic maps on $J$
+  and let $\eta>0$ with $2\sqrt{\eta}<|J|$.
   Denote
   \[
-    C = \max\left\{\sup_{x\in J} |f''(x)|,\, \sup_{x\in J}|g''(x)\right\}.
+    Q = \max\left\{\sup_{x\in J} |f''(x)|,\, \sup_{x\in J}|g''(x)|\right\}.
   \]
-  If $\sup_{x\in J} |f(x)-g(x)| \leq \eta$, then $\sup_{x\in J} |f'(x)-g'(x)|\leq (2+C)\sqrt{\eta}$.
+  If $\sup_{x\in J} |f(x)-g(x)| \leq \eta$, then $\sup_{x\in J} |f'(x)-g'(x)|\leq (2+Q)\sqrt{\eta}$.
 \end{lemma}
 \begin{proof}
   We compute
   \[
-    f(x) = f(y) + f'(y)(x-y)+ \frac{f''(\xi)}{2}(x-y)^2,
+    f(y) = f(x) + f'(x)(y-x)+ \frac{f''(\xi)}{2}(y-x)^2,
   \]
   where $\xi\in(x,y)$.
-  Let $y$ be arbitrary and let $x$ be such that $|x-y|=\sqrt{\eta}$ and $y\in J$.
+  Let $x$ be arbitrary and take $y\in J$ such that $|x-y|=\sqrt{\eta}$.
   Then,
   \begin{align*}
-    \eta &> |f(y)-f(x)| =
-    \left|f(x)-g(x)+(f'(x)-g'(x))(x-y)+(f''(\xi_1)-g''(\xi_2))\frac{(x-y)^2}{2}\right|\\
-	 &\geq |f'(x)-g'(x)|\cdot|x-y|-|f(x)-f(y)|-(|f''(\xi_1)|+|f''(\xi_2)|)\frac{(x-y)^2}{2}
+    \eta &> |f(y)-g(y)| =
+    \left|f(x)-g(x)+(f'(x)-g'(x))(y-x)+(f''(\xi_1)-g''(\xi_2))\frac{(y-x)^2}{2}\right|\\
+	 &\geq |f'(x)-g'(x)|\cdot|y-x|-|f(x)-g(x)|-(|f''(\xi_1)|+|g''(\xi_2)|)\frac{(y-x)^2}{2}
   \end{align*}
   Thus,
   \[
-    |f'(x)-g'(x)| \leq \frac{\eta+\eta+C \eta}{\sqrt{eta}} = (2+C)\sqrt{\eta}
+    |f'(x)-g'(x)| \leq \frac{\eta+\eta+Q \eta}{\sqrt{\eta}} = (2+Q)\sqrt{\eta}
   \]
   as required.
 \end{proof}
-A simple calculation shows that for every finite word $\bi\in\Sigma_*$, $H_{\bi}$ reduces to
+
+To simplify notation we will often write $f^{(k)}$ to refer to the $k$-th derivative of $f$.
+A simple calculation now shows that for every finite word $\bi\in\Sigma_*$, $H_{\bi}$ reduces to
 \[
   H_{\bi}(x) = \frac{f''_{\bbi}(x)}{f'_{\bbi}(x)}.
 \]
-To simplify notation we will often write $f^{(k)}$ to refer to the $k$-th derivative of $f$.
 Now let $g_k:\bbR^k\to \bbR$ be such that $g_1(x)=x$ and 
 \[
   g_{k+1}(y_{k+1},\dots,y_1)=\sum_{l=1}^k (g_k)'_{y_l}(y_k,\dots,y_1)\cdot y_{l+1} +
   g_k(y_k,\dots,y_1)\cdot y_1.
-\]
-This follows from simple induction as
-\[
-  \frac{f_{\bi}^{(k+1)}}{f_{\bi}'(x)} - \frac{f_{\bi}^{(k)}}{f_{\bi}'(x)^2}\cdot f_{\bi}''(x)
-  =\sum_{l=0}^{k-2}(g_k)'_{y_l}(H_{\bbi}^{(k-2)},\dots,H_{\bbi}(x)) \cdot H_{\bbi}^{(l+1)}(x).
 \]
 We note here that $g_k$ is a $k$-variable polynomial.
 
@@ -447,11 +447,49 @@ Recall Fa\`a di Bruno's formula:
 where $\Pi_k$ is the set of all partitions of $\{1,\dots,k\}$, and $B\in \pi$ refers to the
 elements, or blocks, of the partition $\pi$.
 
-Denote by $\phi_{i_k}(x):= \log|f'_{i_k}(x)|$. Then,
-\[
-  H_{\bi}(x) = \sum_{n=1}^\infty (\phi_{i_n}\circ f_{\bbi|_{n-1}})'(x)
-\]
-and 
+
+\begin{lemma}
+  \label{thm:ugly}
+  The $k$-th derivative of the preprotolineariserything(?) is
+  \[
+  H_{\bi}^{(k)}(x) 
+  =\sum_{\pi\in\Pi_{k+1}} \sum_{n=1}^\infty \phi_{i_n}^{(|\pi|)}(f_{\bbi|_{n-1}}(x))\cdot
+  \prod_{B\in\pi}
+  g_{|B|-1}(H_{\bi|_{n-1}}^{(|B|-2)}(x),\dots,H_{\bi|_{n-1}}(x))\cdot(f'_{\bbi|_{n-1}}(x))^{|\pi|}.
+  \]
+\end{lemma}
+\begin{proof}
+  We first show
+  \begin{equation}
+    \label{eq:fandg}
+    \frac{f_{\bi}^{(k)}(x)}{f_{\bi}'(x)}
+    =
+    g_{k-1}(H_{\bbi}^{(k-2)}(x), \dots, H_{\bbi}(x)).
+  \end{equation}
+  Taking derivatives,
+  \[
+    \frac{f_{\bi}^{(k+1)}(x)}{f_{\bi}'(x)} - \frac{f_{\bi}^{(k)}(x)}{(f_{\bi}'(x))^2}\cdot f_{\bi}''(x)
+    =\sum_{l=0}^{k-2}(g_{k-1})'_{y_l}(H_{\bbi}^{(k-2)},\dots,H_{\bbi}(x)) \cdot H_{\bbi}^{(l+1)}(x).
+  \]
+  We will argue by induction. By the inductive hypothesis for $k$, the second summand of the left hand
+  side reduces to
+  \[
+    \frac{f_{\bi}^{(k)}(x)}{f_{\bi}'(x)}\cdot \frac{f_{\bi}''(x)}{f_{\bi}(x)}
+    =g_{k-1}(H_{\bbi}^{(k-2)}(x),\dots, H_{\bbi}(x)) \cdot H_{\bbi}(x).
+  \]
+  Rearranging proves the inductive step,
+  \begin{align*}
+    \frac{f_{\bi}^{(k+1)}(x)}{f_{\bi}'(x)}
+  &=
+  g_{k-1}(H_{\bbi}^{(k-2)}(x),\dots, H_{\bbi}(x)) \cdot H_{\bbi}(x)
+  +
+  \sum_{l=0}^{k-2}(g_{k-1})'_{y_l}(H_{\bbi}^{(k-2)},\dots,H_{\bbi}(x)) \cdot H_{\bbi}^{(l+1)}(x)
+  \\
+  &=
+  g_{k}(H_{\bbi}^{(k-1)}(x), \dots, H_{\bbi}(x)).
+  \end{align*}
+
+Using \cref{eq:alternativeH,eq:fandg}, and Fa\`a di Bruno's formula,
 \begin{align}
   H_{\bi}^{(k)}(x) 
   &=\sum_{n=1}^\infty (\phi_{i_n}\circ f_{\bbi|_{n-1}})^{(k+1)}(x) \nonumber\\
@@ -459,23 +497,32 @@ and
   \prod_{B\in\pi} f_{\bbi|_{n-1}}^{(|B|)}(x)\nonumber\\
   &=\sum_{\pi\in\Pi_{k+1}} \sum_{n=1}^\infty \phi_{i_n}^{(|\pi|)}(f_{\bbi|_{n-1}}(x))\cdot
   \prod_{B\in\pi}
-  g_{|B|-1}(H_{\bi|_{n-1}}^{(|B|-2)}(x),\dots,H_{\bi|_{n-1}}(x))\cdot(f'_{\bbi|_{n-1}}(x))^{|\pi|}.\label{eq:ugly}
+  g_{|B|-1}(H_{\bi|_{n-1}}^{(|B|-2)}(x),\dots,H_{\bi|_{n-1}}(x))\cdot(f'_{\bbi|_{n-1}}(x))^{|\pi|}\nonumber
 \end{align}
+which concludes the proof.
+\end{proof}
 \begin{lemma}\label{thm:kbound}
-  There exists $C_k$ such that for all $x\in [0,1)$ and all $\bi\in\Sigma$,
+  There exists $C_k$ such that for all $x\in I$ and all $\bi\in\Sigma$,
   \[
-    |H_{\bi}^{(k)}(x)|\leq C_k
+    |H_{\bi}^{(k)}(x)|\leq C_k.
   \]
 \end{lemma}
 \begin{proof}
-  By induction, let $D_k:=\max_{k\in\Sigma_1}\max_{x\in[0,1)} |\phi_k^{(k)}(x)|$ and so
-  $|H_{\bi}(x)| \leq D_1/(1-\lambda)=:C_0$.
-  Suppose that the statement is true for $k$, let $E_k:= \sup_{y_i\in[-C_i,C_i]}g_k(y_k,\dots,y_1)$.
-  By \ref{eq:ugly},
+  By induction, let 
+  \[
+    D_k:=\max_{k\in\Sigma_1}\max_{x\in[0,1)} |\phi_k^{(k)}(x)|
+  \]
+  and so
+  $|H_{\bi}(x)| \leq D_1/(1-c_{\max})=:C_0$.
+  Suppose that the statement is true for $k$, let 
+  \[
+    E_k:= \sup_{\substack{y_{j+1}\in[-C_j,C_j]\\0\,\leq\, j \,\leq\, k-1}}g_k(y_k,\dots,y_1).
+  \]
+  By \cref{thm:ugly},
   \[
     |H_{\bi}^{(k)}(x)| \leq \sum_{\pi\in\Pi_{k+1}}\sum_{n=1}^\infty D_{|\pi|} \cdot \prod_{B\in\pi}
-    E_{|B|-1} \cdot \lambda^{(n-1)|\pi|}
-    = \sum_{\pi\in\Pi_{k+1}} \frac{D_{|\pi|}\prod_{B\in\pi}E_{|B|-1}}{1-\lambda^{|\pi|}}
+    E_{|B|-1} \cdot c_{\max}^{(n-1)|\pi|}
+    = \sum_{\pi\in\Pi_{k+1}} \frac{D_{|\pi|}\prod_{B\in\pi}E_{|B|-1}}{1-c_{\max}^{|\pi|}}
   \]
   and the statement follows.
 \end{proof}
@@ -486,119 +533,135 @@ and
     |H_{\bi}^{(k)}(x) - H_{\bi}^{(k)}(y)| \leq C_{k+1}\cdot |x-y|
   \]
 \end{corollary}
+We show the following useful H\"older type bound.
 \begin{lemma}\label{thm:difbound}
-  For all $k\geq 0$ there exists $C_k>0$ such that 
+  For all $k\geq 0$, $x\in I$ and $\bi,\bj\in\Sigma$ ,
   \[
-    |H_{\bi}^{(k)}(x) - H_{\bj}^{(k)}(x)| \leq C_k \lambda^{|\bi\wedge\bj|}
+    |H_{\bi}^{(k)}(x) - H_{\bj}^{(k)}(x)| \leq 2C_k c_{\max}^{|\bi\wedge\bj|},
   \]
-  for all $x\in I$ and $\bi,\bj\in\Sigma$.
+  where $C_k>0$ are as defined in \cref{thm:kbound}.
 \end{lemma}
 \begin{proof}
-  Let $m = |\bi\wedge\bj|$. Again, by \cref{eq:ugly} and \cref{thm:kbound},
+  Let $m = |\bi\wedge\bj|$. Again, by \cref{thm:ugly,thm:kbound},
   \begin{align}
     &|H_{\bi}^{(k)}(x) - H_{\bj}^{(k)}(x)| 
     \nonumber\\
     =&
     \left|
-    \sum_{\pi\in\Pi_{k+1}}\sum_{n=m+1}^\infty \phi_{i_n}^{(|\pi|)}(f_{\bbi|_{n-1}})\cdot
-    \prod_{B\in\pi} g_{|B|-1}(H_{\bi|_{n-1}},\dots,H_{\bi|_{n-1}}(x)) \cdot
+    \sum_{\pi\in\Pi_{k+1}}\sum_{n=m+1}^\infty \phi_{i_n}^{(|\pi|)}(f_{\bbi|_{n-1}}(x))\cdot
+    \prod_{B\in\pi} g_{|B|-1}(H_{\bi|_{n-1}}^{(|B|-2)}(x),\dots,H_{\bi|_{n-1}}(x)) \cdot
     f_{\bbi|_{n-1}}'(x)^{|\pi|}
   \right.
-    \nonumber\\
-    &
-    \left. -
-    \sum_{\pi\in\Pi_{k+1}}\sum_{n=m+1}^\infty \phi_{j_n}^{(|\pi|)}(f_{\bbj|_{n-1}})\cdot
-    \prod_{B\in\pi} g_{|B|-1}(H_{\bj|_{n-1}},\dots,H_{\bj|_{n-1}}(x)) \cdot
-    f_{\bbj|_{n-1}}'(x)^{|\pi|}
-      \right|\nonumber\\
-    &\leq
-    \sum_{\pi\in\Pi_{k+1}}\sum_{n=m+1}^\infty 2D_{|\pi|}\cdot \prod_{B\in\pi} E_{|B|-1}
-    \cdot\lambda^{n|\pi|} \leq C_{k+1} \lambda^m.\nonumber
+  \nonumber\\
+     &
+     \left. -
+       \sum_{\pi\in\Pi_{k+1}}\sum_{n=m+1}^\infty \phi_{j_n}^{(|\pi|)}(f_{\bbj|_{n-1}}(x))\cdot
+       \prod_{B\in\pi} g_{|B|-1}(H_{\bj|_{n-1}}^{(|B|-2)}(x),\dots,H_{\bj|_{n-1}}(x)) \cdot
+       f_{\bbj|_{n-1}}'(x)^{|\pi|}
+       \right|\nonumber\\
+     &\leq
+     \sum_{\pi\in\Pi_{k+1}}\sum_{n=m+1}^\infty 2D_{|\pi|}\cdot \prod_{B\in\pi} E_{|B|-1}
+     \cdot c_{\max}^{n|\pi|} \leq 2 C_{k} c_{\max}^m.\nonumber
+     \qedhere
   \end{align}
 \end{proof}
 We proceed with proving our main theorem, \cref{thm:main}.
-\begin{proof}[Proof of \cref{thm:main}]
-  Suppose that $\Phi$ is superexponentially concentrated, that is there exists a sequence
-  $(\eta_n)_n$ such that $\log(\eta_n)/n\to-\infty$ and for all $n\in\bbN$ there exist distinct
-  words $\bi,\bj\in\Sigma_n$ such that
-  \[
-    \sup_{x\in[0,1]}|f_{\bi}(x)-f_{\bj}(x)| \leq \eta_n.
-  \]
-  Since 
-  \[
-    |f_{\bi}''(x)| = |H_{\bi}(x)\cdot f_{\bi}'(x)|\leq C_0 \lambda^n
-  \]
-  we have
-  \[
-    \sup_{x\in[0,1]}|f_{\bi}'(x) - f_{\bj}'(x)| \leq (2+C_0 \lambda^n)\sqrt{\eta_n}
-  \]
-  and since
-  \[
-    |f_{\bi}'''(x)| = |g_2(H_{\bi}'(x),H_{\bi}(x))\cdot f_{\bi}'(x)| \leq E_2\cdot \lambda^n
-  \]
-  we have 
-  \[
-    \sup_{x\in[0,1]}|f_{\bi}''(x) - f_{\bj}''(x)| \leq (2+E_2\lambda^n)\sqrt{2+C_0 \lambda^n}\cdot
-    \eta_n^{1/4}.
-  \]
-  We obtain
-  \begin{align*}
-    \left|\frac{f_{\bi}''(x)}{f_{\bi}'(x)} - \frac{f_{\bj}''(x)}{f_{\bj}'(x)}\right|
+
+
+
+
+
+\subsection{Proof of \texorpdfstring{\cref{thm:main}}{Main Theorem}}
+We will prove our main theorem by contradiction and suppose that $\Phi$ is superexponentially
+concentrated, that is there exists a sequence
+$(\eta_n)_n$ such that $\log(\eta_n)/n\to-\infty$ and there exist a subsequence $n_{\ell}\in\bbN$ there exist distinct
+words $\bi,\bj\in\Sigma_{n_\ell}$ such that
+\[
+  \sup_{x\in[0,1]}|f_{\bi}(x)-f_{\bj}(x)| \leq \eta_{n_\ell}.
+\]
+By \cref{thm:kbound},
+\[
+  |f_{\bi}''(x)| = |H_{\bi}(x)\cdot f_{\bi}'(x)|\leq C_0 \cdot c_{\max}^{n_\ell}
+\]
+and by \cref{thm:analyticity},
+\[
+  \sup_{x\in[0,1]}|f_{\bi}'(x) - f_{\bj}'(x)| \leq (2+C_0 c_{\max}^{n_\ell})\sqrt{\eta_{n_\ell}}.
+\]
+By the definition of $E_k$ and \cref{eq:fandg},
+\[
+  |f_{\bi}'''(x)| = |g_2(H_{\bi}'(x),H_{\bi}(x))\cdot f_{\bi}'(x)| \leq E_2\cdot c_{\max}^{n_\ell}.
+\]
+Combining them gives
+\[
+  \sup_{x\in[0,1]}|f_{\bi}''(x) - f_{\bj}''(x)| \leq (2+E_2c_{\max}^{n_\ell})\sqrt{2+C_0
+  c_{\max}^{n_\ell}}\cdot
+  \eta_{n_\ell}^{1/4}.
+\]
+We obtain
+\begin{align*}
+  \left|\frac{f_{\bi}''(x)}{f_{\bi}'(x)} - \frac{f_{\bj}''(x)}{f_{\bj}'(x)}\right|
     &\leq
     \frac{|f_{\bi}''(x)|}{|f_{\bi}(x)||f_{\bj}'(x)|}\cdot|f_{\bi}'(x) - f_{\bj}'(x)|
     +\frac{1}{|f'_{\bj}(x)|} \cdot |f_{\bi}''(x) - f_{\bj}''(x)|
     \\
     & 
-    \leq \frac{C_0}{\gamma^n}(2+C_0\lambda^n)\cdot \eta_n^{1/2} +\frac{1}{\gamma^n}(2+E_2
-    \lambda^n)\sqrt{2+C_0 \lambda^n} \cdot \eta_n^{1/4} \;=:\;\eta_n'.
-  \end{align*}
-  For such $\bi\neq\bj$, let $m = \max\{m\leq n : i_m \neq j_m\}$. Then $\bi = \bi'\bk$ and $\bj =
-  \bj'\bk$ with $|\bk| = m-1$ and $i_m\neq j_m$.
+    \leq \frac{C_0}{c_{\min}^{n_\ell}}(2+C_0c_{\max}^{n_\ell})\cdot \eta_{n_\ell}^{1/2}
+    +\frac{1}{c_{\min}^{n_\ell}}(2+E_2
+    c_{\max}^{n_\ell})\sqrt{2+C_0 c_{\max}^{n_\ell}} \cdot \eta_{n_\ell}^{1/4} \;=:\;\eta_{n_\ell}'.
+\end{align*}
+For such $\bi\neq\bj$, let $m = \max\{m\leq {n_\ell} : i_m \neq j_m\}$. Then $\bi = \bi'\bu$ and $\bj =
+\bj'\bu$ with $|\bu| = m-1$ and $i_m\neq j_m$.
 
-  By definition,
-  \[
-    H_{\bbi}(x) - H_{\bbj}(x) = f_{\bk}'(x)\cdot (H_{\bbi'}(f_{\bk}(x)) - H_{\bbj'}(f_{\bk}(x)))
-  \]
-  and so
-  \[
-    |H_{\bbi}(x) - H_{\bbj}(x)| \leq \frac{1}{|f'_n(x)|} \eta_n' \leq \gamma^{-n} \cdot \eta_n'
-    =:\eta_n'' \leq \eta''_{|\bbi|}
-  \]
-  In particular, for every $n\geq 1$ there exists $1\leq m\leq n$, $\bi^{(n)},\bj^{(n)}\in\Sigma_m$,
-  and $\bk^{(n)}\in\Sigma_{n-m}$ such that $i_1 \neq j_1$ and
-  \[
-    |H_{\bi^{(n)}}(f_{\bk^{(n)}}(x)) - H_{\bj^{(n)}}(f_{\bk^{(n)}}(x))| \leq \eta''_n
-  \]
-  for all $x\in I$.
+{\color{red}We stopped here}
+By definition,
+\[
+  H_{\bbi}(x) - H_{\bbj}(x) = f_{\bu}'(x)\cdot (H_{\bbi'}(f_{\bu}(x)) - H_{\bbj'}(f_{\bu}(x)))
+\]
+and so
+\[
+  |H_{\bbi}(x) - H_{\bbj}(x)| \leq \frac{1}{|f'_{n_\ell}(x)|} \eta_{n_\ell}' \leq c_{\min}^{-{n_\ell}}
+  \cdot \eta_{n_\ell}'
+  =:\eta_{n_\ell}'' \leq \eta''_{|\bbi|}
+\]
+In particular, for every $n\geq 1$ there exists $1\leq m\leq n$, $\bi^{(n)},\bj^{(n)}\in\Sigma_m$,
+and $\bu^{(n)}\in\Sigma_{n-m}$ such that $i_1 \neq j_1$ and
+\[
+  |H_{\bi^{(n)}}(f_{\bu^{(n)}}(x)) - H_{\bj^{(n)}}(f_{\bu^{(n)}}(x))| \leq \eta''_n
+\]
+for all $x\in I$.
 
-  We now claim that $|\bk^{(n)}| \to \infty$ and argue by contradiction, i.e.\ we assume there
-  exists a constant $C>0$ and infinitely many $n$ such that $\bk^{(n)} \leq C$. 
-  Since $|\bi^{(n)}|+ |\bk^{(n)}| = |\bj^{(n)}+|\bk^{(n)}| = n$ we conclude, by compactness, that
-  there exists a subsequence $n_l$ such that $\bi^{(n_l)} \to \bi^*\in\Sigma$,
-  $\bj^{(n_l)}\to\bj^*\in\Sigma$ and $\bk^{(n_l)}\to \bk^*\in\Sigma$ with $i_1^*\neq j_1^*$.
-  By \cref{thm:difbound} and \cref{thm:difcor} and that 
-  \[
-    H_{\bi^*}(f_{\bk^*}(x))\equiv H_{\bj^*}(f_{\bk^*}(x)) 
-  \]
-  for all $x\in I$, using analyticity gives $H_{\bi}(x) \equiv H_{\bj}(x)$ for all $x\in I$. This
-  contradicts the main assumption.
+We now claim that $|\bu^{(n)}| \to \infty$ and argue by contradiction, i.e.\ we assume there
+exists a constant $C>0$ and infinitely many $n$ such that $\bu^{(n)} \leq C$. 
+Since $|\bi^{(n)}|+ |\bu^{(n)}| = |\bj^{(n)}+|\bu^{(n)}| = n$ we conclude, by compactness, that
+there exists a subsequence $n_l$ such that $\bi^{(n_l)} \to \bi^*\in\Sigma$,
+$\bj^{(n_l)}\to\bj^*\in\Sigma$ and $\bu^{(n_l)}\to \bu^*\in\Sigma$ with $i_1^*\neq j_1^*$.
+By \cref{thm:difbound} and \cref{thm:difcor} and that 
+\[
+  H_{\bi^*}(f_{\bu^*}(x))\equiv H_{\bj^*}(f_{\bu^*}(x)) 
+\]
+for all $x\in I$, using analyticity gives $H_{\bi}(x) \equiv H_{\bj}(x)$ for all $x\in I$. This
+contradicts the main assumption.
 
-  Now combining \cref{thm:analyticity} and \cref{thm:kbound} we conclude that for all $k$ there
-  exists $\widetilde{C}_k>0$ such that for all $n\geq 1$ we have
-  \[
-    |H_{\bi^{(n)}}^{(k)}(f_{\bk^{(n)}}(x)) - H_{\bj^{(n)}}^{(k)}(f_{\bk^{(n)}}(x))|
-  \leq \widetilde{C}_k \cdot \frac{1}{(f'_{\bk^{(n)}}(x))^k}\cdot\eta_n^{1/2^k}
-  \]
-  for all $x\in[0,1]$.
-  By compactness, there exists $\bk^*\in\Sigma$ as well as $\bi^*,\bj^*\in\Sigma\cup\Sigma_*$ and a
-  subsequence $n_l$ such that $\bi^{(n_l)}\to \bi^*$ and $\bj^{(n_l)}\to \bj^*$ as well as
-  $f_{\bk^{(n_l)}}(x) \to \pi(\bk^*)$, where $i_1^*\neq j_1^*$ and
-  $H_{\bi^*}^{(k)}(\pi(\bk^*))=H_{\bj^*}^{(k)}(\pi(\bk^*))$ for all $k$.
-  Since $H_{\bi^*}$ and $H_{\bj^*}$ are analytic we get $H_{\bi^*}(x)\equiv H_{\bj^*}(x)$ for all
-  $x\in[0,1]$. However, this claim also contradicts out main assumption, proving the main theorem.
-\end{proof}
+Now combining \cref{thm:analyticity} and \cref{thm:kbound} we conclude that for all $k$ there
+exists $\widetilde{C}_k>0$ such that for all $n\geq 1$ we have
+\[
+  |H_{\bi^{(n)}}^{(k)}(f_{\bu^{(n)}}(x)) - H_{\bj^{(n)}}^{(k)}(f_{\bu^{(n)}}(x))|
+  \leq \widetilde{C}_k \cdot \frac{1}{(f'_{\bu^{(n)}}(x))^k}\cdot\eta_n^{1/2^k}
+\]
+for all $x\in[0,1]$.
+By compactness, there exists $\bu^*\in\Sigma$ as well as $\bi^*,\bj^*\in\Sigma\cup\Sigma_*$ and a
+subsequence $n_l$ such that $\bi^{(n_l)}\to \bi^*$ and $\bj^{(n_l)}\to \bj^*$ as well as
+$f_{\bu^{(n_l)}}(x) \to \pi(\bu^*)$, where $i_1^*\neq j_1^*$ and
+$H_{\bi^*}^{(k)}(\pi(\bu^*))=H_{\bj^*}^{(k)}(\pi(\bu^*))$ for all $k$.
+Since $H_{\bi^*}$ and $H_{\bj^*}$ are analytic we get $H_{\bi^*}(x)\equiv H_{\bj^*}(x)$ for all
+$x\in[0,1]$. However, this claim also contradicts out main assumption, proving the main theorem.
 
 \begin{thebibliography}{99}
+  \bibitem{Rudin87}
+  W. Rudin. 
+  \textit{Real and complex analysis.}
+  McGraw-Hill Book Co., New York, third edition, (1987).
+
   \bibitem{Hutchinson}
   Hutchinson??
 
