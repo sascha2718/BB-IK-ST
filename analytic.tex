@@ -6,9 +6,9 @@
 \usepackage{amsmath}
 \usepackage{amsthm}
 \usepackage{enumerate}
-\usepackage{tikz}
-\usetikzlibrary{external}
-\tikzexternalize
+%\usepackage{tikz}
+%\usetikzlibrary{external}
+%\tikzexternalize
 %% This pre-compiles tikz pictures so that they do not have to be compiled every time. 
 %% For this to work you need to activate the flag:
 %%   -shell-escape
@@ -32,21 +32,21 @@ pagebackref=true]{hyperref}
 \usepackage[capitalise]{cleveref}
 
 \usepackage{refcheck}
-%%making refcheck recognise cref
-%%% Infrastructure
-%\makeatletter
-%\newcommand{\refcheckize}[1]{%
-%  \expandafter\let\csname @@\string#1\endcsname#1%
-%  \expandafter\DeclareRobustCommand\csname relax\string#1\endcsname[1]{%
-%  \csname @@\string#1\endcsname{##1}\@for\@temp:=##1\do{\wrtusdrf{\@temp}\wrtusdrf{{\@temp}}}}%
-%  \expandafter\let\expandafter#1\csname relax\string#1\endcsname
-%}
+%making refcheck recognise cref
+%% Infrastructure
+\makeatletter
+\newcommand{\refcheckize}[1]{%
+  \expandafter\let\csname @@\string#1\endcsname#1%
+  \expandafter\DeclareRobustCommand\csname relax\string#1\endcsname[1]{%
+  \csname @@\string#1\endcsname{##1}\@for\@temp:=##1\do{\wrtusdrf{\@temp}\wrtusdrf{{\@temp}}}}%
+  \expandafter\let\expandafter#1\csname relax\string#1\endcsname
+}
 
 %%%
 
 %%% Now we add the reference commands we want refcheck to be aware of
-%\refcheckize{\cref}
-%\refcheckize{\Cref}
+\refcheckize{\cref}
+\refcheckize{\Cref}
 
 
 \normalem
@@ -654,7 +654,82 @@ subsequence $n_l$ such that $\bi^{(n_l)}\to \bi^*$ and $\bj^{(n_l)}\to \bj^*$ as
 $f_{\bu^{(n_l)}}(x) \to \pi(\bu^*)$, where $i_1^*\neq j_1^*$ and
 $H_{\bi^*}^{(k)}(\pi(\bu^*))=H_{\bj^*}^{(k)}(\pi(\bu^*))$ for all $k$.
 Since $H_{\bi^*}$ and $H_{\bj^*}$ are analytic we get $H_{\bi^*}(x)\equiv H_{\bj^*}(x)$ for all
-$x\in[0,1]$. However, this claim also contradicts out main assumption, proving the main theorem.
+$x\in[0,1]$. However, this claim also contradicts our main assumption, proving the main theorem.
+\qed
+
+\section{More things}
+We now continue with some more statements that follow from our main theorem, and how it relates to
+other notions.
+We define
+\begin{definition}
+  We say that the analytic IFS $\Phi = \{f_i\}_{i\in\Sigma_1}$ is \emph{conjugated} to a
+  self-similar IFS if there exists an analytic, invertible $g:[0,1]\to\bbR$ and $\lambda_i
+  \in(-1,1), t_i\in\bbR$ with $i\in\Sigma_1$ such that 
+  \[
+    f_{j}(x) = g^{-1}(\lambda_j g(x) + t_j)
+  \]
+  for all $j\in\Sigma_1$.
+\end{definition}
+Similarly,
+\begin{definition}
+  We say that the analytic IFS $\Phi = \{f_i\}_{i\in\Sigma_1}$ is \emph{sub-conjugated} to a
+  self-similar IFS if there exist distinct words $\bi,\bj\in\Sigma_*$ such that 
+  $\{f_{\bi},f_{\bj}\}$ is conjugated to a self-similar IFS.
+\end{definition}
+Our second main theorem is
+\begin{theorem}
+  Let $\Phi$ be sub-conjugated to a self-similar IFS. Then there exist $\bi,\bj\in\Sigma$ with
+  $i_1\neq j_1$ such that, for all $x,y\in[0,1]$,
+  \[
+    H_{\bi}(x) \equiv H_{\bj}(x).
+  \]
+\end{theorem}
+\begin{proof}
+  By considering subsystems, we may assume without loss of generality that $\Phi =
+  \{f_i\}_{i\in\Sigma_1}$ is conjugated to a self-similar IFS.
+  We show that $H_{\bi}(x) \equiv H_{\bj}(x)$ for all $\bi,\bj\in\Sigma$.
+  
+  Let $p_{\bi}$ be the fixed point for some $\bi\in\Sigma_*$. Then,
+  \[
+    g(f_{\bi}(x)) = \lambda_{\bi} g(x) + t_{\bi}
+    \quad\text{and}\quad
+    g(p_{\bi}) = \frac{t_{\bi}}{1-\lambda_{\bi}}.
+  \]
+  We have
+  \[
+    g'(f_{\bi}(x))\cdot f_{\bi}'(x) = \lambda_{\bi} g'(x)
+    \quad\text{and}\quad
+    |g'(p_{\bi})||f'_{\bi}(p_{\bi})-\lambda_{\bi}| = 0.
+  \]
+  Since $|g'(p_{\bi})|>0$ we must have $f'_{\bi}(p_{\bi}) = \lambda_{\bi}$.
+  Differentiating again we get
+  \[
+    g''(f_{\bi}(x))\cdot f'_{\bi}(x)^2 +g'(f_{\bi}(x))\cdot f''_{\bi}(x) = \lambda_{\bi} g''(x)
+  \]
+  and
+  \[
+    \frac{g''(p_{\bi})}{g'(p_{\bi})} =
+    \frac{f_{\bi}''(p_{\bi})}{f_{\bi}'(p_{\bi})(1-f'_{\bi}(p_{\bi}))}
+    =\frac{H_{\bbi}(p_{\bi})}{1-f'_{\bi}(p_{\bi})}.
+  \]
+  Now let $\bi,\bj\in\Sigma$ be arbitrary but fixed. Let $\bk_n = \bi|_n \bbj|_n$, where $\bbj|_n =
+  j_nj_{n-1}\dots j_1$.
+  Then $p_{\bk_n}\to \pi(\bi)$ as $n\to\infty$ and so
+  \[
+    \frac{g''(p_{\bk_n})}{g'(p_{\bk_n})} 
+    =\frac{H_{\bj|_n \bbi|_n}(p_{\bk_n})}{1-f'_{\bk_n}(p_{\bk_n})}
+    \to
+    H_{\bj}(\pi(\bi))\quad \text{as}\quad n\to\infty.
+  \]
+  However, the left-hand side converges to $g''(\pi(\bi))/g'(\pi(\bi))$ and so we get $H_{\bj}(x) =
+  H_{\bk}(x)$ for any choice of $\bj,\bk$. Since $\bi$ was also arbitrary, we get $H_{\bj}(x) =
+  H_{\bk}(x)$ on an uncountable set and by analyticity, $H_{\bi}(x)\equiv H_{\bk}(x)$ for all $x\in I$
+  and all $\bj,\bk\in \Sigma\cup \Sigma_*$.
+\end{proof}
+
+\section{Remarks}
+
+
 
 \begin{thebibliography}{99}
   \bibitem{Rudin87}
