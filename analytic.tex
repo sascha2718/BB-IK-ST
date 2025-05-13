@@ -9,7 +9,7 @@
 %\usepackage{tikz}
 %\usetikzlibrary{external}
 %\tikzexternalize
-%% This pre-compiles tikz pictures so that they do not have to be compiled every time. 
+%% This pre-compiles tikz pictures so that they do not have to be compiled every time.
 %% For this to work you need to activate the flag:
 %%   -shell-escape
 %%
@@ -17,7 +17,7 @@
 %%   pdflatex -shell-escape filename.tex
 %%
 \usepackage{pgfplots}
-\pgfplotsset{compat=1.17}
+\pgfplotsset{compat=1.16}
 \usepackage{wrapfig, framed, caption}
 \usepackage{float}
 \usetikzlibrary{arrows}
@@ -330,10 +330,10 @@ H-1111 Budapest, Hungary.}\par\nopagebreak
 We first set up some notation. We consider an IFS $\Phi=\{f_i\}_{i=1}^N$ of maps $f_i:\bbR\to\bbR$
 that are analytic $f_i \in C^\omega([-\eps,1+\eps])$ on $I_{\eps}=[-\eps,1+\eps]$ for some, fixed, $\eps>0$.
 For convenience we also write define $I=[0,1]$.
-We assume that the maps $f_i$ are strictly contracting on $[0,1]$ and further that 
+We assume that the maps $f_i$ are strictly contracting on $[0,1]$ and further that
 \[
   c_{\min} < \min_{x\in[0,1]}
-  |f'(x)| \leq \max_{x\in[0,1]}|f'(x)| < c_{\max} 
+  |f'(x)| \leq \max_{x\in[0,1]}|f'(x)| < c_{\max}
 \]
 for some $0<c_{\min} \leq c_{\max}<1$.
 
@@ -342,7 +342,7 @@ write $\Sigma_* = \bigcup_{k=0}^\infty \Sigma_k$ for all finite words, where $\S
 \{1,\dots,N\}^k$ are words of length $k$.
 We write $\bi=(i_1,i_2,i_3,\dots) \in\Sigma$ for specific infinite words and set $\bi|_n =
 (i_1,i_2,\dots,i_n)\in \Sigma_n$ for words of length $n$. We write $[\bi|_n] = \{\bj\in\Sigma :
-(j_1,\dots,j_n) = (i_1,\dots, i_n)\}$ for the cylinders of finite words $\bi|_n$. 
+(j_1,\dots,j_n) = (i_1,\dots, i_n)\}$ for the cylinders of finite words $\bi|_n$.
 
 Given a finite word $\bi=(i_1,\dots,i_n)\in\Sigma_*$ we write
 \[
@@ -356,6 +356,11 @@ We write $|\bi|$ for the length of $\bi$ and for $\bi,\bj\in\Sigma\cup\Sigma_*$ 
 for the longest $\bu\in\Sigma\cup\Sigma_*$ such that $\bu=(k_1,\dots, k_n) = (i_1,\dots,
 i_n)=(j_1,\dots,j_n)$.
 
+Let $\pi\colon\Sigma\to\bbR$ be the usual natural projection, that is,
+\[
+\pi(\bi)=\lim_{n\to\infty}f_{i_1}\circ \dots \circ f_{i_n}(0).
+\]
+
 \begin{definition}
   Let $\bi\in \Sigma\cup\Sigma_*$. We define the \emph{protolineariser(?)} $H_{\bi}$ by
   \[
@@ -366,7 +371,7 @@ i_n)=(j_1,\dots,j_n)$.
 
 \begin{definition}
   We say that the IFS $\Phi$ satisfies the \emph{strong exponential separation condition (SESC)} if
-  there exists $c>0$ such that 
+  there exists $c>0$ such that
   \[
     |f_{\bi}(0)-f_{\bj}(0)| \geq c^n
   \]
@@ -402,12 +407,12 @@ We first show
 \begin{proof}
   There exists an open bounded complex neighbourhood $U \supseteq I$ such that
   $z\mapsto f_j(z)$ is analytic on $U$ and $c_{\min}<|f_j'(z)|<c_{\max}$ for all $z\in U$ and $j\in\Sigma_1$.
-  Hence $f_j(U) \subseteq U$ and 
+  Hence $f_j(U) \subseteq U$ and
   \[
     \frac{f_j''}{f_j'},\quad f_{\bi}, \quad\text{and} \quad f'_{\bi}
   \]
   are analytic on $U$ for all $\bi\in\Sigma_*$ and $j\in\Sigma_1$.
-  Since there exists $C>0$ such that 
+  Since there exists $C>0$ such that
   \[
 \left|\frac{f_j''}{f_j'}\right| \leq C
   \]
@@ -451,7 +456,7 @@ A simple calculation now shows that for every finite word $\bi\in\Sigma_*$, $H_{
 \[
   H_{\bi}(x) = \frac{f''_{\bbi}(x)}{f'_{\bbi}(x)}.
 \]
-Now let $g_k:\bbR^k\to \bbR$ be such that $g_1(x)=x$ and 
+Now let $g_k:\bbR^k\to \bbR$ be such that $g_1(x)=x$ and
 \[
   g_{k+1}(y_{k+1},\dots,y_1)=\sum_{l=1}^k (g_k)'_{y_l}(y_k,\dots,y_1)\cdot y_{l+1} +
   g_k(y_k,\dots,y_1)\cdot y_1.
@@ -471,7 +476,7 @@ elements, or blocks, of the partition $\pi$.
   \label{thm:ugly}
   The $k$-th derivative of the preprotolineariserything(?) is
   \[
-  H_{\bi}^{(k)}(x) 
+  H_{\bi}^{(k)}(x)
   =\sum_{\pi\in\Pi_{k+1}} \sum_{n=1}^\infty \phi_{i_n}^{(|\pi|)}(f_{\bbi|_{n-1}}(x))\cdot
   \prod_{B\in\pi}
   g_{|B|-1}(H_{\bi|_{n-1}}^{(|B|-2)}(x),\dots,H_{\bi|_{n-1}}(x))\cdot(f'_{\bbi|_{n-1}}(x))^{|\pi|}.
@@ -510,7 +515,7 @@ elements, or blocks, of the partition $\pi$.
 
 Using \cref{eq:alternativeH,eq:fandg}, and Fa\`a di Bruno's formula,
 \begin{align}
-  H_{\bi}^{(k)}(x) 
+  H_{\bi}^{(k)}(x)
   &=\sum_{n=1}^\infty (\phi_{i_n}\circ f_{\bbi|_{n-1}})^{(k+1)}(x) \nonumber\\
   &=\sum_{\pi\in\Pi_{k+1}} \sum_{n=1}^\infty \phi_{i_n}^{(|\pi|)}(f_{\bbi|_{n-1}}(x))\cdot
   \prod_{B\in\pi} f_{\bbi|_{n-1}}^{(|B|)}(x)\nonumber\\
@@ -527,13 +532,13 @@ which concludes the proof.
   \]
 \end{lemma}
 \begin{proof}
-  By induction, let 
+  By induction, let
   \[
     D_k:=\max_{k\in\Sigma_1}\max_{x\in[0,1)} |\phi_k^{(k)}(x)|
   \]
   and so
   $|H_{\bi}(x)| \leq D_1/(1-c_{\max})=:C_0$.
-  Suppose that the statement is true for $k$, let 
+  Suppose that the statement is true for $k$, let
   \[
     E_k:= \sup_{\substack{y_{j+1}\in[-C_j,C_j]\\0\,\leq\, j \,\leq\, k-1}}g_k(y_k,\dots,y_1).
   \]
@@ -563,7 +568,7 @@ We show the following useful H\"older type bound.
 \begin{proof}
   Let $m = |\bi\wedge\bj|$. Again, by \cref{thm:ugly,thm:kbound},
   \begin{align}
-    &|H_{\bi}^{(k)}(x) - H_{\bj}^{(k)}(x)| 
+    &|H_{\bi}^{(k)}(x) - H_{\bj}^{(k)}(x)|
     \nonumber\\
     =&
     \left|
@@ -623,7 +628,7 @@ We obtain
     \frac{|f_{\bi}''(x)|}{|f_{\bi}(x)||f_{\bj}'(x)|}\cdot|f_{\bi}'(x) - f_{\bj}'(x)|
     +\frac{1}{|f'_{\bj}(x)|} \cdot |f_{\bi}''(x) - f_{\bj}''(x)|
     \\
-    & 
+    &
     \leq \frac{C_0}{c_{\min}^{n_\ell}}(2+C_0c_{\max}^{n_\ell})\cdot \eta_{n_\ell}^{1/2}
     +\frac{1}{c_{\min}^{n_\ell}}(2+E_2
     c_{\max}^{n_\ell})\sqrt{2+C_0 c_{\max}^{n_\ell}} \cdot \eta_{n_\ell}^{1/4} \;=:\;\eta_{n_\ell}'.
@@ -631,7 +636,6 @@ We obtain
 For such $\bi\neq\bj$, let $m = \max\{m\leq {n_\ell} : i_m \neq j_m\}$. Then $\bi = \bi'\bu$ and $\bj =
 \bj'\bu$ with $|\bu| = m-1$ and $i_m\neq j_m$.
 
-{\color{red}We stopped here}
 By definition,
 \[
   H_{\bbi}(x) - H_{\bbj}(x) = f_{\bu}'(x)\cdot (H_{\bbi'}(f_{\bu}(x)) - H_{\bbj'}(f_{\bu}(x)))
@@ -640,37 +644,37 @@ and so
 \[
   |H_{\bbi}(x) - H_{\bbj}(x)| \leq \frac{1}{|f'_{n_\ell}(x)|} \eta_{n_\ell}' \leq c_{\min}^{-{n_\ell}}
   \cdot \eta_{n_\ell}'
-  =:\eta_{n_\ell}'' \leq \eta''_{|\bbi|}
+  =:\eta_{n_\ell}'' \leq \eta''_{|\bbi|}.
 \]
-In particular, for every $n\geq 1$ there exists $1\leq m\leq n$, $\bi^{(n)},\bj^{(n)}\in\Sigma_m$,
-and $\bu^{(n)}\in\Sigma_{n-m}$ such that $i_1 \neq j_1$ and
+In particular, for every $\ell\geq 1$ there exists $1\leq m\leq n_\ell$, $\bi^{(n_\ell)},\bj^{(n_\ell)}\in\Sigma_m$,
+and $\bu^{(n_\ell)}\in\Sigma_{n_\ell-m}$ such that $i_1 \neq j_1$ and
 \[
-  |H_{\bi^{(n)}}(f_{\bu^{(n)}}(x)) - H_{\bj^{(n)}}(f_{\bu^{(n)}}(x))| \leq \eta''_n
+  |H_{\bi^{(n_\ell)}}(f_{\bu^{(n_\ell)}}(x)) - H_{\bj^{(n_\ell)}}(f_{\bu^{(n_\ell)}}(x))| \leq \eta''_{n_\ell}
 \]
 for all $x\in I$.
 
-We now claim that $|\bu^{(n)}| \to \infty$ and argue by contradiction, i.e.\ we assume there
-exists a constant $C>0$ and infinitely many $n$ such that $\bu^{(n)} \leq C$. 
-Since $|\bi^{(n)}|+ |\bu^{(n)}| = |\bj^{(n)}+|\bu^{(n)}| = n$ we conclude, by compactness, that
-there exists a subsequence $n_l$ such that $\bi^{(n_l)} \to \bi^*\in\Sigma$,
-$\bj^{(n_l)}\to\bj^*\in\Sigma$ and $\bu^{(n_l)}\to \bu^*\in\Sigma$ with $i_1^*\neq j_1^*$.
-By \cref{thm:difbound} and \cref{thm:difcor} and that 
+We now claim that $|\bu^{(n_\ell)}| \to \infty$ and argue by contradiction, i.e.\ we assume there
+exists a constant $C>0$ and infinitely many $\ell$ such that $|\bu^{(n_\ell)}| \leq C$.
+Since $|\bi^{(n_\ell)}|+ |\bu^{(n_\ell)}| = |\bj^{(n_\ell)}|+|\bu^{(n_\ell)}| = n_\ell$ we conclude, by compactness, that
+there exists a subsequence $n_\ell'$ such that $\bi^{(n_\ell')} \to \bi^*\in\Sigma$,
+$\bj^{(n_\ell')}\to\bj^*\in\Sigma$ and $\bu^{(n_\ell')}=\bu^*\in\Sigma$ with $i_1^*\neq j_1^*$.
+By \cref{thm:difbound} and \cref{thm:difcor} and that
 \[
-  H_{\bi^*}(f_{\bu^*}(x))\equiv H_{\bj^*}(f_{\bu^*}(x)) 
+  H_{\bi^*}(f_{\bu^*}(x))\equiv H_{\bj^*}(f_{\bu^*}(x))
 \]
 for all $x\in I$, using analyticity gives $H_{\bi}(x) \equiv H_{\bj}(x)$ for all $x\in I$. This
 contradicts the main assumption.
 
 Now combining \cref{thm:analyticity} and \cref{thm:kbound} we conclude that for all $k$ there
-exists $\widetilde{C}_k>0$ such that for all $n\geq 1$ we have
+exists $\widetilde{C}_k>0$ such that for all $\ell\geq 1$ we have
 \[
-  |H_{\bi^{(n)}}^{(k)}(f_{\bu^{(n)}}(x)) - H_{\bj^{(n)}}^{(k)}(f_{\bu^{(n)}}(x))|
-  \leq \widetilde{C}_k \cdot \frac{1}{(f'_{\bu^{(n)}}(x))^k}\cdot\eta_n^{1/2^k}
+  |H_{\bi^{(n_\ell)}}^{(k)}(f_{\bu^{(n_\ell)}}(x)) - H_{\bj^{(n_\ell)}}^{(k)}(f_{\bu^{(n_\ell)}}(x))|
+  \leq \widetilde{C}_k \cdot \frac{1}{(f'_{\bu^{(n_\ell)}}(x))^k}\cdot\left(\eta_{n_\ell}''\right)^{2^{-k}}\leq\widetilde{C}_k \cdot \frac{1}{c_{\min}^{k n_\ell}}\cdot\left(\eta_{n_\ell}''\right)^{2^{-k}}
 \]
 for all $x\in[0,1]$.
 By compactness, there exists $\bu^*\in\Sigma$ as well as $\bi^*,\bj^*\in\Sigma\cup\Sigma_*$ and a
-subsequence $n_l$ such that $\bi^{(n_l)}\to \bi^*$ and $\bj^{(n_l)}\to \bj^*$ as well as
-$f_{\bu^{(n_l)}}(x) \to \pi(\bu^*)$, where $i_1^*\neq j_1^*$ and
+subsequence $n_\ell'$ such that $\bi^{(n_\ell')}\to \bi^*$ and $\bj^{(n_\ell')}\to \bj^*$ as well as
+$f_{\bu^{(n_\ell')}}(x) \to \pi(\bu^*)$, where $i_1^*\neq j_1^*$ and
 $H_{\bi^*}^{(k)}(\pi(\bu^*))=H_{\bj^*}^{(k)}(\pi(\bu^*))$ for all $k$.
 Since $H_{\bi^*}$ and $H_{\bj^*}$ are analytic we get $H_{\bi^*}(x)\equiv H_{\bj^*}(x)$ for all
 $x\in[0,1]$. However, this claim also contradicts our main assumption, proving the main theorem.
@@ -683,32 +687,68 @@ We define
 \begin{definition}
   We say that the analytic IFS $\Phi = \{f_i\}_{i\in\Sigma_1}$ is \emph{conjugated} to a
   self-similar IFS if there exists an analytic, invertible $g:[0,1]\to\bbR$ and $\lambda_i
-  \in(-1,1), t_i\in\bbR$ with $i\in\Sigma_1$ such that 
+  \in(-1,1), t_i\in\bbR$ with $i\in\Sigma_1$ such that
   \[
     f_{j}(x) = g^{-1}(\lambda_j g(x) + t_j)
   \]
   for all $j\in\Sigma_1$.
 \end{definition}
+
+Let $f$ be an analytic contraction on $[-\varepsilon,1+\varepsilon]$ with fixed point $p$. Then
+\[
+H_f(x)=\sum_{k=0}^\infty\frac{f''(f^{[k]}(x))}{f'(f^{[k]}(x))}(f^{[k]})'(x)
+\]
+\[
+\int_p^x H_f(y)dy=\sum_{k=0}^\infty\left(\log\left(f'(f^{[k]}(x))\right)-\log f'(p)\right)=\log\left(\prod_{k=0}^\infty\frac{f'(f^{[k]}(x))}{f'(p)}\right)
+\]
+Thus,
+\[
+e^{\int_p^x H_f(y)dy}=\lim_{n\to\infty}\frac{(f^{[n]})'(x)}{f'(p)^n}.
+\]
+\[
+g(x):=\int_p^xe^{\int_p^z H_f(y)dy}dz=\lim_{n\to\infty}\frac{f^{[n]}(x)-p}{f'(p)^n}
+\]
+Moreover,
+\[
+g(p)=0\text{ and }g'(p)=1.
+\]
+
+In particular, $g$ is the solution of the second-degree ordinary differential equation
+\[
+g''(x)=H_f(x)g'(x)
+\]
+
+For $a\neq0$ and $b\in\bbR$, let $\hat{g}(x)=ag(x)+b$. And then
+\[
+\hat{g}(f(x))=ag(f(x))+b=af'(p) g(x)+b=f'(p)\hat{g}(x)+b(1-f'(p)).
+\]
+Thus, $f$ is conjugated to the linear map $x\mapsto f'(p)x+b(1-f'(p))$.
+
+Let $\{f_i\}_{i}$ be an IFS such that $H_{f_i}\equiv H_{f_j}\equiv H$ for every $i\neq j$. Let $p_i$ be the fixed point of $f_i$, and let
+$g$ be an arbitrary solution of the equation $g''=Hg'$. Then
+$$
+g(f_i(x))=f_i'(p_i)x+g(p_i)(1-f_i'(p_i)).
+$$
+
+-----------------------------
+
+
 Similarly,
 \begin{definition}
   We say that the analytic IFS $\Phi = \{f_i\}_{i\in\Sigma_1}$ is \emph{sub-conjugated} to a
-  self-similar IFS if there exist distinct words $\bi,\bj\in\Sigma_*$ such that 
+  self-similar IFS if there exist distinct words $\bi,\bj\in\Sigma_*$ such that
   $\{f_{\bi},f_{\bj}\}$ is conjugated to a self-similar IFS.
 \end{definition}
 Our second main theorem is
 \begin{theorem}
-  Let $\Phi$ be sub-conjugated to a self-similar IFS. Then there exist $\bi,\bj\in\Sigma$ with
-  $i_1\neq j_1$ such that, for all $x,y\in[0,1]$,
+  The IFS $\Phi$ is conjugated to a self-similar IFS if and only if for every $\bi,\bj\in\Sigma$ 
   \[
-    H_{\bi}(x) \equiv H_{\bj}(x).
+    H_{\bi}(x) \equiv H_{\bj}(x)
   \]
+  for all $x\in[0,1]$.
 \end{theorem}
 \begin{proof}
-  By considering subsystems, we may assume without loss of generality that $\Phi =
-  \{f_i\}_{i\in\Sigma_1}$ is conjugated to a self-similar IFS.
-  We show that $H_{\bi}(x) \equiv H_{\bj}(x)$ for all $\bi,\bj\in\Sigma$.
-  
-  Let $p_{\bi}$ be the fixed point for some $\bi\in\Sigma_*$. Then,
+  Let $p_{\bi}$ be the fixed point of $f_{\bi}$ for some $\bi\in\Sigma_*$. Then,
   \[
     g(f_{\bi}(x)) = \lambda_{\bi} g(x) + t_{\bi}
     \quad\text{and}\quad
@@ -735,7 +775,7 @@ Our second main theorem is
   j_nj_{n-1}\dots j_1$.
   Then $p_{\bk_n}\to \pi(\bi)$ as $n\to\infty$ and so
   \[
-    \frac{g''(p_{\bk_n})}{g'(p_{\bk_n})} 
+    \frac{g''(p_{\bk_n})}{g'(p_{\bk_n})}
     =\frac{H_{\bj|_n \bbi|_n}(p_{\bk_n})}{1-f'_{\bk_n}(p_{\bk_n})}
     \to
     H_{\bj}(\pi(\bi))\quad \text{as}\quad n\to\infty.
@@ -746,13 +786,30 @@ Our second main theorem is
   and all $\bj,\bk\in \Sigma\cup \Sigma_*$.
 \end{proof}
 
+\begin{corollary}
+The IFS $\Phi$ is sub-conjugated to a self-similar IFS if and only if there exist $\bi,\bj\in\Sigma_*$ with $i_1\neq j_1$ such that 
+\[
+    H_{(\bi)^\infty}(x) \equiv H_{(\bj)^\infty}(x)
+  \]
+  for all $x\in[0,1]$.
+\end{corollary}
+
+\begin{proof}
+Suppose that $\Phi$ is sub-conjugated to 
+
+By considering subsystems, we may assume without loss of generality that $\Phi =
+  \{f_i\}_{i\in\Sigma_1}$ is conjugated to a self-similar IFS.
+  We show that $H_{\bi}(x) \equiv H_{\bj}(x)$ for all $\bi,\bj\in\Sigma$.
+  
+\end{proof}
+
 \section{Remarks}
 
 
 
 \begin{thebibliography}{99}
   \bibitem{Rudin87}
-  W. Rudin. 
+  W. Rudin.
   \textit{Real and complex analysis.}
   McGraw-Hill Book Co., New York, third edition, (1987).
 
