@@ -283,8 +283,7 @@ pagebackref=true]{hyperref}
 %                   END OF MACROS                     %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\title{Exponential separation for analytic self-conformal sets %Verifying exponential separation condition for analytic self-conformal sets
-}
+\title{On exponential separation of analytic self-conformal sets on the real line}
 
 \author{Bal\'azs B\'ar\'any\footnote{Balazs has grants}\\(BME) \and Istv\'an
   Kolossv\'ary\footnote{IK is supported by the European Research Council Marie Sk\l odowska--Curie Actions Postdoctoral Fellowship $\#101109013$ and the Hungarian NRDI Office grant K142169.}\\ (R\'enyi Institute) \and Sascha
@@ -320,16 +319,14 @@ H-1111 Budapest, Hungary.}\par\nopagebreak
 \maketitle
 
 \begin{abstract}
-%  We show some stuff related to the dimension drop conjecture for analytical IFSs in the line. {\color{red}Something like this?} We show that the set of analytic IFS-s on the unit interval which satisfy the {\color{red}(strong?)} exponential separation condition (ESC) contains an open and dense set in the $\mathcal{C}^2$ topology. This is achieved by lifting the analytic IFS to an appropriate IFS on the space of analytic functions and proving that the strong separation property (SSP) for the lifted IFS implies the ESC for the original one. We give explicit conditions on the original IFS under which the SSP can be checked for the lifted one.  
-{\color{blue} Slightly different title, Verifying the exponential separation condition for analytic self-conformal sets (on the real line)}
 In a recent preprint Rapaport showed that the there is no dimension drop for
 exponentially separated analytic IFSs on the real line. We show that the set of such exponentially
 separated IFSs in the space of analytic IFSs contains an open and dense set in the $\mathcal{C}^2$
 topology. Moreover, we give a sufficient condition for the IFS to be exponentially separated which
-allows us to construct completely explicit examples which are exponentially separated. The key
+allows us to construct explicit examples which are exponentially separated. The key
 technical tool is the introduction of the \emph{dual IFS} which we believe has significant interest
 in its own right. As an application we also characterise when an analytic IFS is conjugate to a
-self-similar IFS. {\color{red}Do we want to include something like this? Furthermore, we show that every analytic IFS is conjugate to another analytic IFS which has at least one linear map.}
+self-similar IFS. 
 \end{abstract}
 
 
@@ -354,18 +351,93 @@ MSC2020 classification, keywords, funding. Some minor adjustments and
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction and main results} \label{sec:intro}
+The geometric properties of attractors of iterated function has been extensively studied in the last
+decades.
+An iterated function system $\Phi$ is a finite collection of strictly contracting self-maps
+$\{f_i\}_{i\in\mathcal{I}}$ on a complete separable metric space $X$. By a result of Hutchinson
+\cite{Hutchinson_Attractor_81}, there exists a unique non-empty compact set $\Lambda$ satisfying the
+invariance
+\begin{equation}\label{eq:Hutchinson}
+  \Lambda = \bigcup_{i\in\mathcal{I}} f_i(\Lambda).
+\end{equation}
+Similarly, one can consider measures invariant under this relation, in the following sense:
+Given a non-degenerate probability vector $\mathbf{p}=(p_i)_{i\in\mathcal{I}}$, \ie
+$\sum_{i\in\mathcal{I}}p_i=1$ and all $p_i>0$, there exists a unique Borel probability measure
+$\mu_{\mathbf{p}}$ with compact support such that
+\begin{equation*}
+\mu_{\mathbf{p}}=\sum_{i \in \mathcal{I}} p_i \cdot \mu_{\mathbf{p}} \circ f_i^{-1}.
+\end{equation*}
+The size of such sets and measures, as measured through dimension, is one of the main focus points of fractal
+geometry. Answering questions in such generality is generally unfeasible and one often restricts to
+the simpler setting of $X=\mathbb{R}^d$ and where the $f_i$ are simpler mappings such as
+similarities, affinities, or conformal maps.
+
+Hutchinson \cite{Hutchinson_Attractor_81} considered the Hausdorff dimension of the attractor of
+IFSs consisting of similarities on $\mathbb{R}^d$ under a separation condition, the open set
+condition (OSC), and provided a formula for the dimension of the sets depending solely on the
+contraction ratios of the similarities.  He also showed that this value provides an upper bound for
+the dimension regardless of the overlaps of images of $\Lambda$ under the $f_i$.  Bowen
+\cite{Bowen75} and Ruelle \cite{Ruelle2004} extended this result to attractors of
+$\mathcal{C}^{1+\alpha}$ conformal mappings, with the natural upper bound known as the conformality
+dimension. Similar question can be asked for the measure, see Cawley and Mauldin
+\cite{CawleyMauldin92} and Patschke \cite{Patzschke97}, for the self-similar and self-conformal
+setting. 
+
+The actual value of the Hausdorff dimension of the attractor may drop below this natural upper
+bound. This occurs, for instance, when the maps have exact overlaps and it is an open problem (the
+dimension drop conjecture) whether this is the only mechanism for a dimension drop to occur, see
+Simon \cite{Simon1996}.  It was since verified that the conformality dimension coincides with the
+Hausdorff dimension, at least typically, for several notions of typicality.
+
+Simon, Solomyak, and Urba\'nski \cite{SimonSolomyakUrbanski1,SimonSolomyakUrbanski2} considered
+parametrised families of $C^{1+\alpha}$ and showed that under some technical assumptions
+(transversality condition) there is no dimension drop for the set and measure for almost every
+parameter with respect to the Lebesgue measure. Relying on transversality methods, Simon and
+Solomyak \cite{SimonSolomyak02} showed that for self-similar sets the set of exceptions where a
+dimension drop occurs on a meagre set in the Baire category sense. 
+
+Other approaches, involving different notions of dimension or separation conditions were also
+considered, see
+Zerner \cite{Zerner1996}; Lau and Ngai \cite{LauNgai1999}; Ngai and Wang \cite{NgaiWang2001}; Fraser,
+Henderson, Olson, and Robinson \cite{FHOR2015}; and Angelevska, K\"aenm\"aki, and Troscheit
+\cite{AngelevskaKaenmakiTroscheit2020}; and references therein.
+
+A major breakthrough was made by Hochman \cite{Hochman_SelfSimESC_Annals} who showed that no
+dimension drop occurs for self-similar sets and measures on the line under the
+assumption of the exponential separation condition (ESC).
+The ESC is a condition that is satisfied under many natural assumption and also holds for many typical
+systems including those described above. 
+This was generalised to higher dimensions by Hochman \cite{Hochman2017} and for special non-linear
+maps, M\"obius transformations, by Hochman and Solomyak \cite{HochmanSolomyak_Invent17}.
+
+
+Recently, Rapaport \cite{Rapaport_SelfConfESC25arXiv} extended the concept of the ESC to general
+analytic self-conformal iterated function systems. Furthermore, under this condition, Rapaport
+showed that the dimension of the set and the measure does not drop.
+For analytically parametrised systems of analytic self-conformal IFSs, Rapaport verified that the
+ESC holds for almost every choice of parameter in the sense of packing dimension.
+However, he could not provide any concrete examples other than those already known.
+
+The purpose of this article is to provide verifiable sufficient conditions that guarantee that the
+ESC holds. Further, we show that this property holds for an open and dense set of IFSs with respect to the
+$\mathcal{C}^2$ topology.
+
+\subsection{Notation and Main Result}
+
 
 {\color{red}
+  History history IFS IFS Hutchinson blah blah, but attractor exists in general. Need separability
+  and completeness (Polish?) to do this in general.
+
+  Throughout we fix $\epsilon>0$ and define the class $\mathcal{C}^\omega_\epsilon([0,1])$ to be all
+  analytic functions on the $2\epsilon$ complex neighbourhood $(0,1)$. Note that these functions are
+  conformal. We set $S^\omega_\epsilon([0,1])$.
 Start by defining self-conformal sets $\Lambda$ and measures $\mu_{\mathbf{p}}$ on $I=[0,1]$, Hutchinson~\cite{Hutchinson_Attractor_81}. How to treat the complex neighbourhood of $I$? How do you want to introduce dimension of measure? (We don't actually use these later, so should be as brief as possible) Should probably also define similarity and analytic map here
 
 We first set up some notation. We consider an IFS $\Phi=\{f_i\}_{i=1}^N$ of maps $f_i:\bbR\to\bbR$
 that are analytic $f_i \in C^\omega([-\eps,1+\eps])$ on $I_{\eps}=[-\eps,1+\eps]$ for some, fixed, $\eps>0$.
 For convenience we also write define $I=[0,1]$.
 
-Given a non-degenerate probability vector $\mathbf{p}=(p_i)_{i\in\mathcal{I}}$, \ie $\sum_{i\in\mathcal{I}}p_i=1$ and all $p_i>0$,
-\begin{equation*}
-\mu_{\mathbf{p}}=\sum_{i \in \mathcal{I}} p_i \cdot \mu_{\mathbf{p}} \circ f_i^{-1} .
-\end{equation*}
 
 \begin{equation*}
 	\dim \nu\coloneqq\inf \left\{\dim_{\mathrm{H}} A: \nu(A)=1\right\} .
@@ -445,19 +517,6 @@ exact overlaps. In fact, the \emph{dimension drop conjecture} asserts that in th
 
 A full account of the progression on this problem is beyond the scope of this article {\color{red}any surveys to cite?}, however, a major breakthrough came with the seminal work of Hochman~\cite{Hochman_SelfSimESC_Annals}, who showed that equality holds in~\cref{eq:DimUpperBound} whenever $\Phi$ is a self-similar IFS that satisfies the ESC. There are also explicit sufficient conditions under which the ESC is known to hold. It was shown in~\cite{Hochman_SelfSimESC_Annals} that if the parameters defining $\Phi$ are algebraic and $\Phi$ has no exact overlaps then the ESC holds. The algebraic condition has since been relaxed in certain settings, see~\cite{FengFeng_DimHomoIFSAlgebraicTrans_arxiv, Rapaport_ExactOverlapsAlgebraicContr, RapaportVarju_Duke24, Varju_BernConv_Annals19}.
 
-A different direction to generalise the result of~\cite{Hochman_SelfSimESC_Annals} is to consider the $L^q$ dimension of a self-similar measure which is a standard tool in multifractal analysis that quantifies irregularities in the distribution of a measure. Given $q>1$, the $L^q$ dimension of a Borel probability measure $\nu$ on $\mathbb{R}$ is 
-\begin{equation*}
-D(\nu, q)\coloneqq\liminf _{n \rightarrow \infty} \frac{-\log \sum_{j \in \mathbb{Z}} \nu\left(\left[j \cdot 2^{-n},(j+1) \cdot 2^{-n}\right)\right)}{(q-1) n} .
-\end{equation*}
-Similarly to~\cref{eq:DimUpperBound}, there is a natural upper bound 
-\begin{equation}\label{eq:LqUpperBound}
-	D(\mu_{\mathbf{p}}, q) \leq \min \left\{\frac{T(\mu_{\mathbf{p}}, q)}{q-1} ,1\right\}
-\end{equation}
-which always holds, where $T(\mu_{\mathbf{p}}, q)$ is the unique solution to the equation
-\begin{equation*}
-	\sum_{i \in \mathcal{I}} p_i^q\left|r_i\right|^{-T(\mu_{\mathbf{p}}, q)}=1 .
-\end{equation*}
-Building on the methods of~\cite{Hochman_SelfSimESC_Annals}, Shmerkin~\cite{Shmerkin_LqSelfSim_Annals}  showed that there is equality in~\cref{eq:LqUpperBound} for all self-similar measures and $q>1$ whenever the ESC holds. 
 
 
 {\color{red} We agreed not to mention higher dimensional analogues at all.
@@ -465,7 +524,17 @@ Building on the methods of~\cite{Hochman_SelfSimESC_Annals}, Shmerkin~\cite{Shme
 }
 
 
-There are fewer results concerning the dimension drop conjecture beyond the self-similar setting. {\color{red} Mention Hochman and Solomyak~\cite{HochmanSolomyak_Invent17}?} Angelevska, K\"{a}enm\"{a}ki and Troscheit showed in~\cite{TroscheitKaenmakiAngelewska_SelfConf} that if a self-conformal set has positive Hausdorff measure $\mathcal{H}^s(\Lambda)>0$ for $s=\dim_{\mathrm{H}}\Lambda<1$, then $s$ is equal to the conformal similarity dimension $s(\Phi)$ if and only if there are no exact overlaps. {\color{red} What about self-conformal measures?} They also showed that having positive Hausdorff measure is actually equivalent to $(i)$ the set being Ahlfors regular, $(ii)$ the set satisfying the \emph{weak separation condition}. This condition together with no exact overlaps is known to be strictly stronger than the ESC. Recently Rapaport~\cite{Rapaport_SelfConfESC25arXiv} managed to make significant progress by extending the scope of~\cite{TroscheitKaenmakiAngelewska_SelfConf, Hochman_SelfSimESC_Annals} to analytic IFSs satisfying the ESC.
+There are fewer results concerning the dimension drop conjecture beyond the self-similar setting.
+{\color{red} Mention Hochman and Solomyak~\cite{HochmanSolomyak_Invent17}?} Angelevska,
+K\"{a}enm\"{a}ki and Troscheit showed in~\cite{AngelevskaKaenmakiTroscheit2020} that if a
+self-conformal set has positive Hausdorff measure $\mathcal{H}^s(\Lambda)>0$ for
+$s=\dim_{\mathrm{H}}\Lambda<1$, then $s$ is equal to the conformal similarity dimension $s(\Phi)$ if
+and only if there are no exact overlaps. {\color{red} What about self-conformal measures?} They also
+showed that having positive Hausdorff measure is actually equivalent to $(i)$ the set being Ahlfors
+regular, $(ii)$ the set satisfying the \emph{weak separation condition}. This condition together
+with no exact overlaps is known to be strictly stronger than the ESC. Recently
+Rapaport~\cite{Rapaport_SelfConfESC25arXiv} managed to make significant progress by extending the
+scope of~\cite{AngelevskaKaenmakiTroscheit2020}, \cite{Hochman_SelfSimESC_Annals} to analytic IFSs satisfying the ESC.
 
 \begin{theorem}[\cite{Rapaport_SelfConfESC25arXiv}]\label{thm:RapaportMain}
 Assume the analytic IFS $\Phi$ is uniformly contracting and its attractor is not a singleton. If $\Phi$ satisfies the ESC, then there is equality in~\cref{eq:DimUpperBound}.
@@ -640,6 +709,21 @@ Cylinder sets certainly overlap heavily since $f_1$ and $f_2$ have common fixed 
 \end{equation*}
 Since $1/2-2\cdot 1\cdot 3/13>0$, it follows from~\cref{prop:example} that $\Phi$ satisfies the SESC and from~\cref{thm:SubConjugation} that it is not sub-conjugated to any self-similar IFS. {\color{red} Do we want to try to calculate/approximate the conformal similarity dimension of the attractor?}
 
+\subsubsection{$L^q$ stuff??}
+
+A different direction to generalise the result of~\cite{Hochman_SelfSimESC_Annals} is to consider the $L^q$ dimension of a self-similar measure which is a standard tool in multifractal analysis that quantifies irregularities in the distribution of a measure. Given $q>1$, the $L^q$ dimension of a Borel probability measure $\nu$ on $\mathbb{R}$ is 
+\begin{equation*}
+D(\nu, q)\coloneqq\liminf _{n \rightarrow \infty} \frac{-\log \sum_{j \in \mathbb{Z}} \nu\left(\left[j \cdot 2^{-n},(j+1) \cdot 2^{-n}\right)\right)}{(q-1) n} .
+\end{equation*}
+Similarly to~\cref{eq:DimUpperBound}, there is a natural upper bound 
+\begin{equation}\label{eq:LqUpperBound}
+	D(\mu_{\mathbf{p}}, q) \leq \min \left\{\frac{T(\mu_{\mathbf{p}}, q)}{q-1} ,1\right\}
+\end{equation}
+which always holds, where $T(\mu_{\mathbf{p}}, q)$ is the unique solution to the equation
+\begin{equation*}
+	\sum_{i \in \mathcal{I}} p_i^q\left|r_i\right|^{-T(\mu_{\mathbf{p}}, q)}=1 .
+\end{equation*}
+Building on the methods of~\cite{Hochman_SelfSimESC_Annals}, Shmerkin~\cite{Shmerkin_LqSelfSim_Annals}  showed that there is equality in~\cref{eq:LqUpperBound} for all self-similar measures and $q>1$ whenever the ESC holds. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{The dual IFS acting on analytic functions}\label{sec:DualIFSFull}
