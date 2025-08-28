@@ -682,6 +682,13 @@ exceptional set of parameters or not.
 In the following, we give an easy to verify sufficient condition and demonstrate on
 an explicit analytic IFS that it satisfies the SESC. 
 
+Let
+\begin{equation}\label{eq:maxmincontract}
+  c_{\min} := \inf\big\{ |f'(x)|:\, f\in\Phi, x\in[0,1] \big\} \quad\text{and}\quad
+  c_{\max}:=\sup\big\{ |f'(x)|:\, f\in\Phi, x\in[0,1] \big\}.
+\end{equation}
+We note that by compactness arguments $0<c_{\min} \leq c_{\max} <1$.
+
 \begin{proposition}\label{prop:example}
 Let $\Phi=(f_i)_{i\in\mathcal{I}}\in\mathfrak{S}_N$ be an IFS. Suppose that there exists $\alpha>0$
 such that for each $i\neq j\in\mathcal{I}$ there exists $x_{i,j}\in[0,1]$ with
@@ -691,10 +698,9 @@ such that for each $i\neq j\in\mathcal{I}$ there exists $x_{i,j}\in[0,1]$ with
 \end{equation*}
 Let
 \begin{equation*}
-  c_{\max}:=\sup_{\substack{x\in[0,1] \\ i\in\mathcal{I}}} \left|f_i'(x)\right|\text{ and
-  }\beta:=\sup_{\substack{x\in[0,1] \\ i\in\mathcal{I}}} \left| \frac{f_i''(x)}{f_i'(x)} \right|.
+  \beta:=\sup_{\substack{x\in[0,1] \\ i\in\mathcal{I}}} \left| \frac{f_i''(x)}{f_i'(x)} \right|.
 \end{equation*}
-Then $0<c_{\max}<1$, $\beta>0$ and if $\alpha > 2\beta\cdot c_{\max}/(1-c_{\max})$, we have
+Then $\beta>0$ and if $\alpha > 2\beta\cdot c_{\max}/(1-c_{\max})$, we have
 $
 \sup_{x\in[0,1]} |H_{\bi}(x) - H_{\bj}(x)| > 0 
 $
@@ -703,12 +709,6 @@ the SESC by~\cref{thm:main}.
 \end{proposition}
 
 \begin{proof}
-  Let 
-  $$
-  c_{\min}:=\inf_{\substack{x\in[0,1] \\ i\in\mathcal{I}}} \left|f_i'(x)\right|.
-  $$
-  By a standard compactness argument, $0<c_{\min}\leq c_{\max}<1$ and $\beta>0$.
-
   Let $\bi,\bj \in\Sigma\cup\Sigma^*$ with $|\bi|=|\bj|$ be distinct such that $|\bi\wedge \bj|=k$. It
   follows from~\cref{eq:H_i(x)} that
   \begin{equation*}
@@ -760,32 +760,31 @@ verified that the IFS itself satisfies the ESC.
 %attractor?}
 
 
-\subsubsection{Dimension theoretic consequences revisited}
-
-
-{\color{red} Continue here!}
-
-The example in \cref{eq:exampleIFS} 
-
-A different direction to generalise the result of~\cite{Hochman_SelfSimESC_Annals} is to consider
-the $L^q$ dimension of a self-similar measure which is a standard tool in multifractal analysis that
-quantifies irregularities in the distribution of a measure. Given $q>1$, the $L^q$ dimension of a
-Borel probability measure $\nu$ on $\mathbb{R}$ is 
-\begin{equation*}
-D(\nu, q)\coloneqq\liminf _{n \rightarrow \infty} \frac{-\log \sum_{j \in \mathbb{Z}}
-\nu\left(\left[j \cdot 2^{-n},(j+1) \cdot 2^{-n}\right)\right)}{(q-1) n} .
-\end{equation*}
-Similarly to~\cref{eq:DimUpperBound}, there is a natural upper bound 
-\begin{equation}\label{eq:LqUpperBound}
-	D(\mu_{\mathbf{p}}, q) \leq \min \left\{\frac{T(\mu_{\mathbf{p}}, q)}{q-1} ,1\right\}
-\end{equation}
-which always holds, where $T(\mu_{\mathbf{p}}, q)$ is the unique solution to the equation
-\begin{equation*}
-	\sum_{i \in \mathcal{I}} p_i^q\left|r_i\right|^{-T(\mu_{\mathbf{p}}, q)}=1 .
-\end{equation*}
-Building on the methods of~\cite{Hochman_SelfSimESC_Annals},
-Shmerkin~\cite{Shmerkin_LqSelfSim_Annals}  showed that there is equality in~\cref{eq:LqUpperBound}
-for all self-similar measures and $q>1$ whenever the ESC holds. 
+%\subsubsection{Dimension theoretic consequences revisited}
+%
+%
+%
+%The example in \cref{eq:exampleIFS} 
+%
+%A different direction to generalise the result of~\cite{Hochman_SelfSimESC_Annals} is to consider
+%the $L^q$ dimension of a self-similar measure which is a standard tool in multifractal analysis that
+%quantifies irregularities in the distribution of a measure. Given $q>1$, the $L^q$ dimension of a
+%Borel probability measure $\nu$ on $\mathbb{R}$ is 
+%\begin{equation*}
+%D(\nu, q)\coloneqq\liminf _{n \rightarrow \infty} \frac{-\log \sum_{j \in \mathbb{Z}}
+%\nu\left(\left[j \cdot 2^{-n},(j+1) \cdot 2^{-n}\right)\right)}{(q-1) n} .
+%\end{equation*}
+%Similarly to~\cref{eq:DimUpperBound}, there is a natural upper bound 
+%\begin{equation}\label{eq:LqUpperBound}
+%	D(\mu_{\mathbf{p}}, q) \leq \min \left\{\frac{T(\mu_{\mathbf{p}}, q)}{q-1} ,1\right\}
+%\end{equation}
+%which always holds, where $T(\mu_{\mathbf{p}}, q)$ is the unique solution to the equation
+%\begin{equation*}
+%	\sum_{i \in \mathcal{I}} p_i^q\left|r_i\right|^{-T(\mu_{\mathbf{p}}, q)}=1 .
+%\end{equation*}
+%Building on the methods of~\cite{Hochman_SelfSimESC_Annals},
+%Shmerkin~\cite{Shmerkin_LqSelfSim_Annals}  showed that there is equality in~\cref{eq:LqUpperBound}
+%for all self-similar measures and $q>1$ whenever the ESC holds. 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -850,6 +849,7 @@ the function $H_{\bi}$ introduced in~\cref{eq:H_i(x)}.
       for all $x\in[0,1]$.
   \end{enumerate}
 \end{theorem}
+\cref{thm:SubConjugation} is proved in~\cref{sec:ProofConjugation}.
 
 
 Let us return to the discussion of the dimension drop conjecture. Recall
@@ -862,8 +862,8 @@ exist. The idea of Baker was further developed in~\cite{Baker_SuperExpCloseIFS2_
 and~\cite{Chen_SuperExpNoExactOVerlapExample}. It follows from the work of
 Rapaport~\cite{Rapaport_ExactOverlapsAlgebraicContr} that the examples
 in~\cite{Baker_SuperExpCloseIFS_AdvMath, Baker_SuperExpCloseIFS2_ProcAMS,
-Chen_SuperExpNoExactOVerlapExample} further support the dimension drop conjecture. It is not known
-whether the example of B\'ar\'any and K\"{a}enm\"{a}ki disproves the conjecture or not. It is
+Chen_SuperExpNoExactOVerlapExample} further support the dimension drop conjecture. 
+It is
 natural to ask whether analytic IFSs exist which have super-exponential condensation but no exact
 overlaps. We conjecture that this only occurs if the IFS is sub-conjugated to a self-similar IFS.
 
@@ -872,57 +872,47 @@ Any analytic IFS which has super-exponential condensation but no exact overlaps 
 sub-conjugated to a self-similar IFS.
 \end{conjecture}
 
+We remark that analytic IFS with an exact overlap are sub-conjugated to self-similar IFSs, see
+{\color{red} Link to relevant section ??}
 
 
 
-{\color{red} Also motivate C2 topology here again}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{The key idea: the dual IFS induce by analytic functions}\label{sec:DualIFSFull}
-In terms of the dual IFS, for an analytic IFS $\Phi$ to be conjugated to a self-similar IFS means
-precisely that its dual attractor $\Lambda^*$ is a single analytic function $H$. If $\Phi$ is a
-self-similar IFS to begin with, then $H\equiv 0$, otherwise $H$ can be different. {\color{red} What
-happens to conjugation of $H_{\bi}$?} \cref{thm:SubConjugation} is proved
-in~\cref{sec:ProofConjugation}.
+\section{The key idea: the dual IFS induced by analytic functions}\label{sec:DualIFSFull}
+The central idea of our work is to construct a `dual' IFS on the space of analytic functions, derived from
+the mappings in the original IFS on $[0,1]$.
+We believe this notion is of general interest in its own right and a systematic study of it could
+assist in tackling other problems in the future as well.
 
-We assume throughout that the IFS $\Phi$ is \emph{uniformly contracting}, \ie there exist
-$0<c_{\min} \leq c_{\max}<1$ such that 
-\[
-  c_{\min} < \inf\big\{ |f'(x)|:\, f\in\Phi, x\in[0,1] \big\} \leq \sup\big\{ |f'(x)|:\, f\in\Phi,
-  x\in[0,1] \big\} < c_{\max}.
-\]
-We
-believe this notion is of general interest in its own right.
-We
-Given an analytic IFS $\Phi=\{f_i\}_{i=1}^N$, we `lift' each map $f_i$ to an operator $F_i:
-\mathcal{C}^{\omega}([0,1]) \to \mathcal{C}^{\omega}([0,1])$ acting on the space of analytic
+
+Let $\mathcal{C}_\epsilon^\omega([0,1])$ be the set of complex analytic maps $f$ on
+$\mathcal{B}_{\epsilon}$ such that $f\colon I \to \mathbb{R}$.
+We equip $\mathcal{C}_\epsilon^\omega([0,1])$ with the supremum norm $\|.\|_\infty$ and note that it is a complete
+and separable metric space.
+Given an analytic IFS $\Phi=(f_i)_{i=1}^N\in\mathfrak{S}_N$, we `lift' each map $f_i$ to an operator $F_i:
+\mathcal{C}^{\omega}_\epsilon([0,1]) \to \mathcal{C}_\epsilon^{\omega}([0,1])$ acting on the space of analytic
 functions by the formula
-\begin{equation*}
-	(F_i h)(x)\coloneqq f'_i(x)\cdot h(f_i(x)) + \frac{f''_i}{f'_i}(x).
-\end{equation*}
-We call $\Phi^*\coloneqq\{F_i\}_{i=1}^N$ the \emph{dual IFS} of $\Phi$. The operator $F_i$ can be
-considered as a similarity map and $\Phi^*$ as self-similar IFS on this space. Indeed, $F_i$ is a
-translation of the linear operator $h\mapsto f'_i(x)\cdot h(f_i(x))$. We argue
-in~\cref{sec:DualIFSFull} that it has a well-defined attractor $\Lambda^*$ and prove some basic
-properties of the dual IFS. With this interpretation the function $H_{\bi}(x)$ introduced
-in~\cref{eq:H_i(x)} is an analog of the natural projection $\pi(\bi)$, furthermore,
-Theorem~\ref{thm:main} can be restated in the following elegant form.
-\begin{theorem}\label{thm:DualSSC}
-An analytic IFS $\Phi$ satisfies the SESC if its dual IFS $\Phi^*$ satisfies the SSC (which is
-formally defined in this setting in~\cref{def:SSCLiftedIFS}).
-\end{theorem}
-We believe that a systematic study of the dual IFS could assist in tackling other problems in the future as well.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-Recall from the discussion in~?? that to any analytic IFS $\Phi=\{f_i\}_{i\in\Sigma_1}$ we can
-associate to it its dual IFS $\Phi^*=\{F_i\}_{i\in\Sigma_1}$ by the formula
 \begin{equation}\label{eq:LiftedIFS}
 	(F_i h)(x)\coloneqq f'_i(x)\cdot h(f_i(x)) + \frac{f''_i}{f'_i}(x).
 \end{equation}
+We call $\Phi^*\coloneqq\{F_i\}_{i=1}^N$ the \emph{dual IFS} of $\Phi$. The operator $F_i$ can be
+considered an affinity map and $\Phi^*$ as self-affine IFS on $\mathcal{C}_\epsilon^\omega$.
+Indeed, $F_i$ is a
+translation of the linear operator $h\mapsto f'_i(x)\cdot h(f_i(x))$. 
+With this interpretation the function $H_{\bi}(x)$ introduced
+in~\cref{eq:H_i(x)} is an analog of the natural projection $\pi(\bi)$, furthermore,
+Theorem~\ref{thm:main} can be restated in the following elegant form.
+\begin{theorem}\label{thm:DualSSC}
+  An IFS $\Phi\in\mathfrak{S}_N$ satisfies the SESC if its dual IFS $\Phi^*$ satisfies the SSC (which is
+formally defined in this setting in~\cref{def:SSCLiftedIFS}).
+\end{theorem}
+
+
+
 Our objective now is to establish some basic properties about the dual IFS. Each $F_i$ is clearly a
-contraction in the supremum norm since $\|F_ig-F_ih\|_{\infty}\leq \|f'_i\|_{\infty}\cdot
+strict contraction in the supremum norm since $\|F_ig-F_ih\|_{\infty}\leq \|f'_i\|_{\infty}\cdot
 \|g-h\|_{\infty}$. For $\bi\in\Sigma_*$, an induction argument readily gives that the composition
 $F_{\bi}h=F_{i_1}\circ\ldots\circ F_{i_{|\bi|}}h$ is equal to
 \begin{equation}\label{eq:IteratesLiftedIFS}
@@ -931,47 +921,41 @@ $F_{\bi}h=F_{i_1}\circ\ldots\circ F_{i_{|\bi|}}h$ is equal to
 	\frac{f''_{i_n}}{f'_{i_n}}(f_{\bi_{n-1}^1}(x)).
 \end{equation}
 Observe that for $h$ equal to the constant $0$ function, $(F_{\bi}0)(x)\equiv H_{\bi}(x)$ introduced
-in~\cref{eq:H_i(x)}. This motivates us to call $H_{\bi}(x)$ the {\color{red} \emph{natural dual OR
-dual natural projection??}.} We first justify calling $\Phi^*$ an IFS by showing that it has an
-attractor. By convention, if $A\subset \mathcal{C}^{\omega}([0,1])$, then
+in~\cref{eq:H_i(x)}. This motivates us to call $H_{\bi}(x)$ the \emph{dual natural projection}.
+We first justify calling $\Phi^*$ an IFS by showing that it has an
+attractor. By convention, if $A\subset \mathcal{C}^{\omega}_\epsilon([0,1])$, then
 \begin{equation*}
 F_iA \coloneqq \{F_i h:\, h\in A\}.
 \end{equation*}
 \begin{lemma}\label{lem:ExistanceAttractor}
-If $\Phi^*$ is the dual IFS of an analytic IFS $\Phi$, then there exists a unique, non-empty,
-compact set $\Lambda^*\subset \mathcal{C}^{\omega}([0,1])$, which we call the \emph{attractor} of
+  Let $\Phi^*$ be the dual IFS of an analytic IFS $\Phi\in\mathfrak{S}_N$. There exists a unique, non-empty,
+compact set $\Lambda^*\subset \mathcal{C}^{\omega}_\epsilon([0,1])$, which we call the \emph{attractor} of
 $\Phi^*$, that satisfies
 \begin{equation*}
-\Lambda^*=\bigcup_{i\in\Sigma_1} F_i\Lambda^*,
+\Lambda^*=\bigcup_{i\in\Sigma_1} F_i\Lambda^*.
 \end{equation*} 
 \end{lemma} 
-\begin{proof}
-{\color{red} WRITE PROOF. Hint: If we consider the $\varepsilon>0$ neighbourhood $V$ of $[0,1]$ on
-the complex plane then the analytic maps on $V$ form a separable and complete metric space with
-respect to the supremum distance. So Hutchinson~\cite{Hutchinson_Attractor_81} can be applied
-directly...}
-\end{proof}
+This can be proved analogously to \cite{Hutchinson_Attractor_81} by noting that all $F_i$ are strict
+contractions with respect to the supremum norm and that $\mathcal{C}_\epsilon^\omega([0,1])$ is
+complete and separable. We omit details.
 
-{\color{red} Could maybe mention in a remark that IFSs on more general spaces have been studied,
-perhaps this article could be cited: Applications of Fixed Point Theorems in the Theory of
-Generalized IFS (Theorem 3.5). Bessenyei Mih\'aly  P\'enzes Evelin}
-
-We next define cylinder sets. For two real numbers $a,b$, their convex hull is the interval
+We now define cylinder sets for the dual IFS. For two real numbers $a,b$, their convex hull is the interval
 $\mathrm{conv}(a,b)=[\min\{a,b\},\max\{a,b\}]$. Slightly abusing notation, a constant
-$k\in\mathbb{R}$ also denotes the constant function on $\mathcal{C}^{\omega}([0,1])$. A
-\emph{cylinder set} on $\mathcal{C}^{\omega}([0,1])$ is given by 
-$$(k,K)\coloneqq \big\{g\in\mathcal{C}^{\omega}([0,1]):\, k<g(x)<K\big\}.$$
-Since each $F_i$ is contraction, there exists $k<K$ such that
+$k\in\mathbb{R}$ also denotes the constant function on $\mathcal{C}_\epsilon^{\omega}([0,1])$. A
+\emph{cylinder set} on $\mathcal{C}_\epsilon^{\omega}([0,1])$ is given by 
+$$(k,K)\coloneqq \big\{g\in\mathcal{C}_\epsilon^{\omega}([0,1]):\, k<g(x)<K\big\}.$$
+Since each $F_i$ is a contraction, there exists $k<K$ such that
 \begin{equation*}
-	k<\min_{i\in\Sigma_1} \{\min_{x\in[0,1]}(F_ik)(x), \min_{x\in[0,1]}(F_iK)(x)\} \;\text{ and
-	}\; K>\max_{i\in\Sigma_1} \{\max_{x\in[0,1]}(F_ik)(x), \max_{x\in[0,1]}(F_iK)(x)\},
+  k<\min_{i\in\mathcal{I}} \{\min_{x\in[0,1]}(F_ik)(x), \min_{x\in[0,1]}(F_iK)(x)\} \;\text{ and
+  }\; K>\max_{i\in\mathcal{I}} \{\max_{x\in[0,1]}(F_ik)(x), \max_{x\in[0,1]}(F_iK)(x)\},
 \end{equation*} 
-moreover, $F_i(\overline{(k,K)})\subseteq (k,K)^{\circ}$ for every $i=1,\ldots,N$. {\color{red}why
-$\circ$? is $(k,K)$ already open?} The image of any cylinder $(k,K)$ under $F_{\bi}$ for any
-$\bi\in\Sigma_*$ has {\color{red}width/height}
+moreover, $F_i(\overline{(k,K)})\subseteq (k,K)$ for every $i\in\mathcal{I}$.
+The image of any cylinder $(k,K)$ under $F_{\bi}$ for any
+$\bi\in\Sigma_*$ has width
 \begin{equation*}
-	\max_{x\in[0,1]} |f'_{\bi}(x)|\cdot (K-k) < c_{\max}^{|\bi|} (K-k).
+	\max_{x\in[0,1]} |f'_{\bi}(x)|\cdot (K-k) < c_{\max}^{|\bi|} (K-k),
 \end{equation*}
+where $c_{\max}$ is as in \cref{eq:maxmincontract}.
 We say that two cylinder sets $ F_{\bi}(k,K)$ and $F_{\bj}(k,K)$ are \emph{disjoint}, which we
 denote by $F_{\bi}(k,K)\cap F_{\bj}(k,K)=\varnothing$, if there exists $x\in[0,1]$ such that
 \begin{equation}\label{eq:DisjointCylinders}
@@ -979,12 +963,14 @@ denote by $F_{\bi}(k,K)\cap F_{\bj}(k,K)=\varnothing$, if there exists $x\in[0,1
 	(F_{\bj}K)(x)\big)= \varnothing.
 \end{equation}
 If they are not disjoint, we write $F_{\bi}(k,K)\cap F_{\bj}(k,K)\neq\varnothing$.
-See~\cref{fig:Cylinders} {\color{red}??} for an illustration.
+See~\cref{fig:Cylinders} for an illustration.
 
-\begin{figure}[h]\label{fig:Cylinders}
+\begin{figure}[t]
 \includegraphics[width=\linewidth]{FigureTikz.pdf}
-\caption{Illustration of disjoint cylinders on the left and ones which are not disjoint on the right.}
+\caption{Illustration of disjoint cylinders on the left and ones which are not disjoint on the right.}\label{fig:Cylinders}
 \end{figure}
+
+{\color{red} Continue here}
 
 \begin{definition}\label{def:SSCLiftedIFS}
 We say that the attractor $\Lambda^*$ of a dual IFS $\Phi^*$ satisfies the \emph{strong separation
@@ -1012,6 +998,13 @@ here. Last point should be also including finite words. Show that 2 and 3 are eq
 b to c through periodic words.}
 \end{proof}
 
+We assume throughout that the IFS $\Phi$ is \emph{uniformly contracting}, \ie there exist
+$0<c_{\min} \leq c_{\max}<1$ such that 
+
+In terms of the dual IFS, for an analytic IFS $\Phi$ to be conjugated to a self-similar IFS means
+precisely that its dual attractor $\Lambda^*$ is a single analytic function $H$. If $\Phi$ is a
+self-similar IFS to begin with, then $H\equiv 0$, otherwise $H$ can be different. {\color{red} What
+happens to conjugation of $H_{\bi}$?} 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Properties of the natural dual projection \texorpdfstring{$H_{\bi}$}{H}}
