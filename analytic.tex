@@ -656,7 +656,7 @@ We note that the assumption that the attractor is not a singleton is equivalent 
 $f,g\in\Phi$ with distinct fixed points.
 Combining our \cref{thm:ESCOpenDense} with~\cref{thm:RapaportMain} immediately gives the following corollary.
 
-\begin{corollary}
+\begin{corollary}\label{cor:dim}
   The set $\{\Phi \colon \Phi \text{ satisfies equality in \cref{eq:DimUpperBound}}\}\subseteq
   \mathfrak{S}_N$ contains an open and dense subset in the $\mathcal{C}^2$ topology.
 \end{corollary}
@@ -674,18 +674,16 @@ result of Solomyak and Takahashi~\cite{SolomyakTakahashi_IMRN21}, showed that un
 non-degeneracy condition, given a one-parameter family of analytic IFSs, the set of parameters for
 which the ESC fails has zero Hausdorff dimension. Concrete families of IFSs can be constructed to
 which this result applies, however, it still does not explicitly say whether an IFS is in the
-exceptional set of parameters or not. This is the starting point of the current paper.
-
-
-We give an easy to check sufficient condition for the dual IFS to satisfy the SSC and demonstrate on
+exceptional set of parameters or not. 
+In the following, we give an easy to verify sufficient condition and demonstrate on
 an explicit analytic IFS that it satisfies the SESC. 
 
 \begin{proposition}\label{prop:example}
-Assume $\Phi=\{f_i\}_{i\in\Sigma_1}$ is an analytic IFS for which
+Let $\Phi=(f_i)_{i\in\mathcal{I}}\in\mathfrak{S}_N$ be such that
 \begin{equation*}
-\sup_{\substack{x\in[0,1] \\ i\in\Sigma_1}} \left| \frac{f_i''(x)}{f_i'(x)} \right| \leq \beta
+\sup_{\substack{x\in[0,1] \\ i\in\mathcal{I}}} \left|f_i'(x)\right|\leq c_{\max}<1\text{ and }\sup_{\substack{x\in[0,1] \\ i\in\mathcal{I}}} \left| \frac{f_i''(x)}{f_i'(x)} \right| \leq \beta
 \end{equation*}
-for some $\beta>0$, furthermore, for each $i\neq j\in\Sigma_1$ there exists $x_{i,j}\in[0,1]$ such that
+for some $c_{\max}, \beta>0$, furthermore, for each $i\neq j\in\mathcal{I}$ there exists $x_{i,j}\in[0,1]$ such that
 \begin{equation*}
 %\inf_{\substack{x\in[0,1] \\ i\neq j\in\Sigma_1}}
 \left| \frac{f_i''(x_{i,j})}{f_i'(x_{i,j})} - \frac{f_j''(x_{i,j})}{f_j'(x_{i,j})} \right| \geq \alpha >0. 
@@ -699,6 +697,10 @@ the SESC by~\cref{thm:main}.
 \end{proposition}
 
 \begin{proof}
+	By a standard compactness argument, there exists $c_{\min}>0$ such that
+	$$
+	\inf_{\substack{x\in[0,1] \\ i\in\mathcal{I}}} \left|f_i'(x)\right|\geq c_{\min}>0.
+	$$
 Let $\bi,\bj \in\Sigma\cup\Sigma^*$ with $|\bi|=|\bj|$ be distinct such that $|\bi\wedge \bj|=k$. It
 follows from~\cref{eq:H_i(x)} that
 \begin{equation*}
@@ -722,25 +724,31 @@ Since $i_{k+1}\neq j_{k+1}$, for the particular choice of $x_{i_{k+1},j_{k+1}}$,
 by our assumption.
 \end{proof}
 
-Now we give an explicit example. Consider the IFS $\Phi=\{f_1,f_2,f_3\}$ with
-\begin{equation*}
+To demonstrate \cref{prop:example} on an example. Consider the IFS $\Phi=(f_1,f_2,f_3)$ with
+\begin{equation}\label{eq:exampleIFS}
 f_1(x)\coloneqq \frac{x}{8}, \quad f_2(x)\coloneqq \frac{x}{8} + \frac{x^2}{32}, \text{ and } \quad
 f_3(x)\coloneqq \frac{x}{16} + \frac{x^2}{32} + \frac{29}{32}. 
-\end{equation*}
+\end{equation}
 Cylinder sets certainly overlap heavily since $f_1$ and $f_2$ have common fixed point at $x=0$,
 while $f_3$ has fixed point at $x=1$. Simple calculations show that $c_{\max}=3/16$, moreover,
 \begin{equation*}
-\sup_{\substack{x\in[0,1] \\ i\in\Sigma_1}} \left| \frac{f_i''(x)}{f_i'(x)} \right| \leq
+\sup_{\substack{x\in[0,1] \\ i\in\mathcal{I}}} \left| \frac{f_i''(x)}{f_i'(x)} \right| \leq
 \sup_{x\in[0,1]} \max\Big\{\frac{1}{1+x},\, \frac{1}{2+x} \Big\} = 1 \quad\text{ and }\quad
-\min_{i\neq j\in\Sigma_1}\left| \frac{f_i''(0)}{f_i'(0)} - \frac{f_j''(0)}{f_j'(0)} \right| \geq
+\min_{i\neq j\in\mathcal{I}}\left| \frac{f_i''(0)}{f_i'(0)} - \frac{f_j''(0)}{f_j'(0)} \right| \geq
 \frac{1}{2} .
 \end{equation*}
-Since $1/2-2\cdot 1\cdot 3/13>0$, it follows from~\cref{prop:example} that $\Phi$ satisfies the SESC
-and from~\cref{thm:SubConjugation} that it is not sub-conjugated to any self-similar IFS.
-{\color{red} Do we want to try to calculate/approximate the conformal similarity dimension of the
-attractor?}
+Since $1/2-2\cdot 1\cdot 3/13>0$, it follows from~\cref{prop:example} that $\Phi$ satisfies the SESC, and by \cref{cor:dim}, $\dim_{\rm H}\Lambda=s(\Phi)$, where $s(\Phi)$ is the conformality dimension of $\Phi$, defined in the previous section. 
 
-\subsubsection{Lq stuff}
+Let us note that Solomyak~\cite{Solomyak24} has already gave an example of a non-linear conformal IFS of linear fractional transformations with such a common fixed point structure for which the dimension of the attractor does not drop. However, he studied the system via sufficiently large subsystems, and it was not verified that the IFS itself satisfies the ESC.
+
+% and from~\cref{thm:SubConjugation} that it is not sub-conjugated to any self-similar IFS.
+%{\color{red} Do we want to try to calculate/approximate the conformal similarity dimension of the
+%attractor?}
+
+
+\subsubsection{Dimension theoretic consequences revisited}
+
+The example in \cref{eq:exampleIFS} 
 
 A different direction to generalise the result of~\cite{Hochman_SelfSimESC_Annals} is to consider
 the $L^q$ dimension of a self-similar measure which is a standard tool in multifractal analysis that
