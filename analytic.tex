@@ -556,10 +556,6 @@ a topological sense.
   SESC contains an open and
   dense subset in the $\mathcal{C}^2$ topology.
 \end{theorem}
-We note that the $\mathcal{C}^2$ topology is a natural choice, being the finest topology for which
-can differentiate strictly conformal maps sufficiently from linear maps, see also
-\cref{sec:ConjLinSys}.
-
 Our second main result provides a sufficient condition under which an analytic IFS satisfies the
 SESC. We demonstrate in~\cref{sec:examples} that it can be used to construct completely explicit
 examples of analytic IFSs that satisfy the SESC. In order to state the result, we introduce more
@@ -597,10 +593,15 @@ We can now state our second main result.
 \end{equation}
 then $\Phi$ satisfies the SESC.
 \end{theorem}
+Apart from its practical use, \cref{thm:main} is also a crucial step in
+proving~\cref{thm:ESCOpenDense} and shows that the $\mathcal{C}^2$ topology
+is the natural choice for typicality.
+This is because \cref{eq:H_iSSC} cannot be satisfied for linear maps, having $f''_i =0$, and the $\mathcal{C}^2$
+is the finest topology for which we can distinguish strictly conformal maps sufficiently, see also
+\cref{sec:ConjLinSys}.
 
 We shall see in~\cref{thm:DualSSC} that~\cref{eq:H_iSSC} has an elegant interpretation as an analog
-of the SSC on a larger space of IFSs which we further elaborate on in~\cref{sec:DualIFSFull}. Apart
-from its practical use, \cref{thm:main} is also a crucial step in proving~\cref{thm:ESCOpenDense}.
+of the SSC on a larger space of IFSs which we further elaborate on in~\cref{sec:DualIFSFull}. 
 Theorem~\ref{thm:main} is proved in~\cref{sec:ProofSufficientCond}, while the proof of
 \cref{thm:ESCOpenDense} is postponed until \cref{sec:ProofESCOpenDense}.
 
@@ -663,7 +664,10 @@ Combining our \cref{thm:ESCOpenDense} with~\cref{thm:RapaportMain} immediately g
 This can be interpreted as follows; a typical analytic self-conformal IFS, in a strong topological
 sense, has no dimension drop.
 
-{\color{red} Continue here!}
+Another potential direction to consider is that of $L^q$ dimensions, a more fine-grained notion that
+captures the measure's regularity.  Building on the methods of~\cite{Hochman_SelfSimESC_Annals},
+Shmerkin~\cite{Shmerkin_LqSelfSim_Annals} showed that a natural analogue of \cref{thm:RapaportMain}
+exists for the $L^q$ dimension of self-similar measures.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Concrete examples}\label{sec:examples}
@@ -679,16 +683,18 @@ In the following, we give an easy to verify sufficient condition and demonstrate
 an explicit analytic IFS that it satisfies the SESC. 
 
 \begin{proposition}\label{prop:example}
-Let $\Phi=(f_i)_{i\in\mathcal{I}}\in\mathfrak{S}_N$ be such that
-\begin{equation*}
-\sup_{\substack{x\in[0,1] \\ i\in\mathcal{I}}} \left|f_i'(x)\right|\leq c_{\max}<1\text{ and }\sup_{\substack{x\in[0,1] \\ i\in\mathcal{I}}} \left| \frac{f_i''(x)}{f_i'(x)} \right| \leq \beta
-\end{equation*}
-for some $c_{\max}, \beta>0$, furthermore, for each $i\neq j\in\mathcal{I}$ there exists $x_{i,j}\in[0,1]$ such that
+Let $\Phi=(f_i)_{i\in\mathcal{I}}\in\mathfrak{S}_N$ be an IFS. Suppose that there exists $\alpha>0$
+such that for each $i\neq j\in\mathcal{I}$ there exists $x_{i,j}\in[0,1]$ with
 \begin{equation*}
 %\inf_{\substack{x\in[0,1] \\ i\neq j\in\Sigma_1}}
-\left| \frac{f_i''(x_{i,j})}{f_i'(x_{i,j})} - \frac{f_j''(x_{i,j})}{f_j'(x_{i,j})} \right| \geq \alpha >0. 
+\left| \frac{f_i''(x_{i,j})}{f_i'(x_{i,j})} - \frac{f_j''(x_{i,j})}{f_j'(x_{i,j})} \right| \geq \alpha . 
 \end{equation*}
-If $\alpha > 2\beta\cdot c_{\max}/(1-c_{\max})$, then 
+Let
+\begin{equation*}
+  c_{\max}:=\sup_{\substack{x\in[0,1] \\ i\in\mathcal{I}}} \left|f_i'(x)\right|\text{ and
+  }\beta:=\sup_{\substack{x\in[0,1] \\ i\in\mathcal{I}}} \left| \frac{f_i''(x)}{f_i'(x)} \right|.
+\end{equation*}
+Then $0<c_{\max}<1$, $\beta>0$ and if $\alpha > 2\beta\cdot c_{\max}/(1-c_{\max})$, we have
 $
 \sup_{x\in[0,1]} |H_{\bi}(x) - H_{\bj}(x)| > 0 
 $
@@ -697,15 +703,17 @@ the SESC by~\cref{thm:main}.
 \end{proposition}
 
 \begin{proof}
-	By a standard compactness argument, there exists $c_{\min}>0$ such that
-	$$
-	\inf_{\substack{x\in[0,1] \\ i\in\mathcal{I}}} \left|f_i'(x)\right|\geq c_{\min}>0.
-	$$
-Let $\bi,\bj \in\Sigma\cup\Sigma^*$ with $|\bi|=|\bj|$ be distinct such that $|\bi\wedge \bj|=k$. It
-follows from~\cref{eq:H_i(x)} that
-\begin{equation*}
-H_{\bi}(x)-H_{\bj}(x) = f_{\bi_k^1}'(x)\cdot \big( H_{\bi_{k+1}^{|\bi|}}(f_{\bi_k^1}(x)) -
-H_{\bj_{k+1}^{|\bj|}}(f_{\bi_k^1}(x)) \big)
+  Let 
+  $$
+  c_{\min}:=\inf_{\substack{x\in[0,1] \\ i\in\mathcal{I}}} \left|f_i'(x)\right|.
+  $$
+  By a standard compactness argument, $0<c_{\min}\leq c_{\max}<1$ and $\beta>0$.
+
+  Let $\bi,\bj \in\Sigma\cup\Sigma^*$ with $|\bi|=|\bj|$ be distinct such that $|\bi\wedge \bj|=k$. It
+  follows from~\cref{eq:H_i(x)} that
+  \begin{equation*}
+    H_{\bi}(x)-H_{\bj}(x) = f_{\bi_k^1}'(x)\cdot \big( H_{\bi_{k+1}^{|\bi|}}(f_{\bi_k^1}(x)) -
+    H_{\bj_{k+1}^{|\bj|}}(f_{\bi_k^1}(x)) \big)
 \end{equation*}
 for every $x\in[0,1]$. As a result,
 \begin{equation*}
@@ -724,7 +732,7 @@ Since $i_{k+1}\neq j_{k+1}$, for the particular choice of $x_{i_{k+1},j_{k+1}}$,
 by our assumption.
 \end{proof}
 
-To demonstrate \cref{prop:example} on an example. Consider the IFS $\Phi=(f_1,f_2,f_3)$ with
+We demonstrate \cref{prop:example} on an example. Consider the IFS $\Phi=(f_1,f_2,f_3)$ with
 \begin{equation}\label{eq:exampleIFS}
 f_1(x)\coloneqq \frac{x}{8}, \quad f_2(x)\coloneqq \frac{x}{8} + \frac{x^2}{32}, \text{ and } \quad
 f_3(x)\coloneqq \frac{x}{16} + \frac{x^2}{32} + \frac{29}{32}. 
@@ -737,12 +745,15 @@ while $f_3$ has fixed point at $x=1$. Simple calculations show that $c_{\max}=3/
 \min_{i\neq j\in\mathcal{I}}\left| \frac{f_i''(0)}{f_i'(0)} - \frac{f_j''(0)}{f_j'(0)} \right| \geq
 \frac{1}{2} .
 \end{equation*}
-Since $1/2-2\cdot 1\cdot 3/13>0$, it follows from~\cref{prop:example} that $\Phi$ satisfies the SESC, and by \cref{cor:dim}, $\dim_{\rm H}\Lambda=s(\Phi)$, where $s(\Phi)$ is the conformality dimension of $\Phi$, defined in the previous section. 
+Since $1/2-2\cdot 1\cdot 3/13>0$, it follows from~\cref{prop:example} that $\Phi$ satisfies the
+SESC, and by \cref{cor:dim}, we obtain $\dim_{\rm H}\Lambda=s(\Phi)$, where $s(\Phi)$ is the
+conformality dimension of $\Phi$, and $\dim \mu_{\mathbf{p}} =  H(\mathbf{p})/\chi$ for
+every $\mathbf{p}$, defined in the previous section. 
 
 Let us note that Solomyak~\cite{Solomyak24} has already gave an example of a non-linear conformal
-IFS of linear fractional transformations with such a common fixed point structure for which the
-dimension of the attractor does not drop. However, he studied the system via sufficiently large
-subsystems, and it was not verified that the IFS itself satisfies the ESC.
+IFS of linear fractional transformations with such a common fixed point structure.
+However, he studied the dimension of the attractor via sufficiently large subsystems, and it was not
+verified that the IFS itself satisfies the ESC.
 
 % and from~\cref{thm:SubConjugation} that it is not sub-conjugated to any self-similar IFS.
 %{\color{red} Do we want to try to calculate/approximate the conformal similarity dimension of the
@@ -750,6 +761,9 @@ subsystems, and it was not verified that the IFS itself satisfies the ESC.
 
 
 \subsubsection{Dimension theoretic consequences revisited}
+
+
+{\color{red} Continue here!}
 
 The example in \cref{eq:exampleIFS} 
 
@@ -777,67 +791,66 @@ for all self-similar measures and $q>1$ whenever the ESC holds.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Conjugation to self-similar systems}\label{sec:ConjLinSys}
-
-It is natural to ask whether with a change of coordinates an analytic IFS transforms to a self-similar one.
-{\color{red} Also motivate C2 topology here again}
+As we remarked above, the assumption of \cref{thm:main} cannot be satisfied for linear systems and
+$H_{\bi}(x)=0$ for all $\bi\in \Sigma$ and $x \in I$.
+Crucially, the functions $H_{\bi}(x)$ have a stronger relation to the linearity and linearisability
+of an analytic IFS, although the definition may not at first glance reveal this.
+The functions $H_{\bi}$ can be used to determine whether an analytic IFS can be transformed into a
+self-similar one through a change of coordinates.
+The problem of being conjugated to a linear IFS played a significant role in the study of Fourier
+decay of self-conformal measures, see
+\cite{AlgomEtal_LogFourierDecaySelfConf_JLMS,BakerBanaji_PolyFourierDecay} and \cite[Corollary 1.2 part
+3.]{AlgomEtal_PointwiseNormalityFDecaySelfSonf_AdvMath21}.
 
 \begin{definition}\label{def:conjugation}
-We say that the analytic IFS $\Phi = \{f_i\}_{i\in\Sigma_1}$ is 
-\begin{itemize}
-\item \emph{conjugated} to another IFS $\Psi$ if there exists an analytic, invertible
-  $g:[0,1]\to\bbR$ such that $\Psi=\{g\circ f_i\circ g^{-1}\}_{i\in\Sigma_1}$. In particular, $\Phi$
+  We say that the IFS $\Phi = (f_i)_{i\in\mathcal{I}} \in\mathfrak{S}_N$ is 
+\emph{conjugated} to another IFS $\Psi$ if there exists an analytic, invertible
+  $g:[0,1]\to\bbR$ such that $\Psi=\{g\circ f_i\circ g^{-1}\}_{i\in\Sigma_1}$. 
+\end{definition}
+In particular, $\Phi$
   is conjugated to a self-similar IFS if there exist $\lambda_i
 \in(-1,1)\setminus\{0\}$, $t_i\in\bbR$ with $i\in\Sigma_1$ such that
 \[
 f_{j}(x) = g^{-1}(\lambda_j g(x) + t_j)
 \]
-for all $j\in\Sigma_1$;
-\item \emph{sub-conjugated} to a self-similar IFS if there exist distinct words $\bi,\bj\in\Sigma_*$ such that
-$\{f_{\bi},f_{\bj}\}$ is conjugated to a self-similar IFS.
-\end{itemize}
+for all $j\in\Sigma_1$.
+\begin{definition}\label{def:subconjugation}
+  We say that the IFS $\Phi = (f_i)_{i\in\mathcal{I}} \in\mathfrak{S}_N$ is 
+  \emph{sub-conjugated} to a self-similar IFS if there exist distinct words $\bi,\bj\in\Sigma_*$ of
+  the same length such that $\{f_{\bi},f_{\bj}\}$ is conjugated to a self-similar IFS.
 \end{definition}
 
 \begin{remark}
-Note that we assume the conjugating function $g$ to be analytic in~\cref{def:conjugation}. One could
-impose the weaker condition that $f\in\mathcal{C}^r([0,1])$ for all $f\in\Phi$ for some $2\leq r\leq
-\infty$ instead. Under this assumption, the authors of~\cite{AlgomEtal_NonLinHyperbolicIFS} show the
-existence of a $\mathcal{C}^r$-smooth IFS which is not $\mathcal{C}^r$-conjugate to self-similar
-even though $f'\equiv c_{\Phi}$ on $\Lambda$ and $f''\equiv 0$ for every $f\in\Phi$. This behaviour
-is not possible in the analytic setting since the assumption that $f''(x)=0$ on $\Lambda$ together
-with analyticity already forces $f$ to be an affine function. 
+  Note that we assume the conjugating function $g$ to be analytic in~\cref{def:conjugation}. One could
+  impose the weaker condition that $f\in\mathcal{C}^r([0,1])$ for all $f\in\Phi$ for some $2\leq r\leq
+  \infty$ instead. Under this assumption, the authors of~\cite{AlgomEtal_NonLinHyperbolicIFS} show the
+  existence of a $\mathcal{C}^r$-smooth IFS which is not $\mathcal{C}^r$-conjugate to self-similar
+  even though $f'\equiv c_{\Phi}$ on $\Lambda$ and $f''\equiv 0$ for every $f\in\Phi$. This behaviour
+  is not possible in the analytic setting since the assumption that $f''(x)=0$ on $\Lambda$ together
+  with analyticity already forces $f$ to be an affine function. 
 \end{remark}
 
 We give a characterisation of when an analytic IFS is (sub-)conjugated to a self-similar IFS using
 the function $H_{\bi}$ introduced in~\cref{eq:H_i(x)}.
 
 \begin{theorem}\label{thm:SubConjugation}
-Assume that $\Phi$ is a uniformly contracting analytic IFS whose attractor is not a singleton. Then
-$\Phi$ is conjugated to another analytic IFS which has at least one affine map. Moreover, $\Phi$ is 
-\begin{enumerate}
-\item conjugated to a self-similar IFS if and only if for every $\bi,\bj\in\Sigma$,
-\[
-H_{\bi}(x) \equiv H_{\bj}(x)
-\]
-for all $x\in[0,1]$;
-\item sub-conjugated to a self-similar IFS if and only if there exist $\bi,\bj\in\Sigma_*$ with
-  $i_1\neq j_1$ such that 
-\[
-H_{(\bi)^\infty}(x) \equiv H_{(\bj)^\infty}(x)
-\]
-for all $x\in[0,1]$.
-\end{enumerate}
+  Any $\Phi\in\mathfrak{S}_N$ is conjugated to another analytic IFS which has at least one affine map. 
+  Moreover, $\Phi$ is 
+  \begin{enumerate}
+    \item conjugated to a self-similar IFS if and only if for every $\bi,\bj\in\Sigma$,
+      \[
+	H_{\bi}(x) \equiv H_{\bj}(x)
+      \]
+      for all $x\in[0,1]$;
+    \item sub-conjugated to a self-similar IFS if and only if there exist distinct $\bi,\bj\in\Sigma_*$
+      of the same length such that 
+      \[
+	H_{(\bi)^\infty}(x) \equiv H_{(\bj)^\infty}(x)
+      \]
+      for all $x\in[0,1]$.
+  \end{enumerate}
 \end{theorem}
 
-In terms of the dual IFS, for an analytic IFS $\Phi$ to be conjugated to a self-similar IFS means
-precisely that its dual attractor $\Lambda^*$ is a single analytic function $H$. If $\Phi$ is a
-self-similar IFS to begin with, then $H\equiv 0$, otherwise $H$ can be different. {\color{red} What
-happens to conjugation of $H_{\bi}$?} \cref{thm:SubConjugation} is proved
-in~\cref{sec:ProofConjugation}.
-
-{\color{red} Some motivation/references for conjugation would be nice here. Like Algom etal
-JLMS~\cite{AlgomEtal_LogFourierDecaySelfConf_JLMS}; BakerBanaji~\cite{BakerBanaji_PolyFourierDecay}
-for PolyFourierDecay or Compare part 1. with~\cite[Corollary 1.2 part
-3.]{AlgomEtal_PointwiseNormalityFDecaySelfSonf_AdvMath21} and discussion afterwards!}
 
 Let us return to the discussion of the dimension drop conjecture. Recall
 that the ESC implies that the IFS has no exact overlaps. For some time it was an important open
@@ -852,7 +865,7 @@ in~\cite{Baker_SuperExpCloseIFS_AdvMath, Baker_SuperExpCloseIFS2_ProcAMS,
 Chen_SuperExpNoExactOVerlapExample} further support the dimension drop conjecture. It is not known
 whether the example of B\'ar\'any and K\"{a}enm\"{a}ki disproves the conjecture or not. It is
 natural to ask whether analytic IFSs exist which have super-exponential condensation but no exact
-overlaps. We conjecture that only if the IFS is sub-conjugated to a self-similar IFS.
+overlaps. We conjecture that this only occurs if the IFS is sub-conjugated to a self-similar IFS.
 
 \begin{conjecture}
 Any analytic IFS which has super-exponential condensation but no exact overlaps must be
@@ -862,10 +875,17 @@ sub-conjugated to a self-similar IFS.
 
 
 
+{\color{red} Also motivate C2 topology here again}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{The key idea: the dual IFS induce by analytic functions}\label{sec:DualIFSFull}
+In terms of the dual IFS, for an analytic IFS $\Phi$ to be conjugated to a self-similar IFS means
+precisely that its dual attractor $\Lambda^*$ is a single analytic function $H$. If $\Phi$ is a
+self-similar IFS to begin with, then $H\equiv 0$, otherwise $H$ can be different. {\color{red} What
+happens to conjugation of $H_{\bi}$?} \cref{thm:SubConjugation} is proved
+in~\cref{sec:ProofConjugation}.
+
 We assume throughout that the IFS $\Phi$ is \emph{uniformly contracting}, \ie there exist
 $0<c_{\min} \leq c_{\max}<1$ such that 
 \[
