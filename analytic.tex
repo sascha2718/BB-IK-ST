@@ -225,7 +225,8 @@ pagebackref=true]{hyperref}
 %\newcommand{\bj}{\vec{\jmath}\,}
 \newcommand{\bj}{\mathbf{j}}
 \newcommand*{\vv}[1]{\vec{\mkern0mu#1}}
-\newcommand{\bk}{{\vec{k}}}
+\newcommand{\bk}{{\mathbf{k}}}
+\newcommand{\bh}{{\mathbf{h}}}
 %\newcommand{\bu}{{\vec{u}}}
 \newcommand{\bu}{\mathbf{u}}
 \newcommand{\bo}{{\vec{o}}}
@@ -300,7 +301,7 @@ pagebackref=true]{hyperref}
 
 \title{On exponential separation of analytic self-conformal sets on the real line}
 
-\author{Bal\'azs B\'ar\'any\footnote{Balazs has grants}\\(BME) \and Istv\'an
+\author{Bal\'azs B\'ar\'any\footnote{BB acknowledges support from grant NKFI~K142169, and grant NKFI KKP144059 "Fractal geometry and applications" Research Group.}\\(BME) \and Istv\'an
   Kolossv\'ary\footnote{IK is supported by the European Research Council Marie Sk\l odowska--Curie Actions Postdoctoral Fellowship $\#101109013$ and the Hungarian NRDI Office grant K142169.}\\ (R\'enyi Institute) \and Sascha
 Troscheit\footnote{ST acknowledges travel funding from the Lisa \& Carl--Gustav Esseens Mathematics
 Fund.} \\(Uppsala)}
@@ -314,7 +315,7 @@ Fund.} \\(Uppsala)}
   B.~B\'ar\'any, \textsc{Department of Stochastics, HUN-REN-BME Stochastics Research Group,
   Institute of Mathematics, Budapest University of Technology and Economics, M\H{u}egyetem rkp.~3.,
 H-1111 Budapest, Hungary.}\par\nopagebreak
-  \textit{E-mail address}, B.~B\'ar\'any: \texttt{balubsheep@gmail.com}
+  \textit{E-mail address}, B.~B\'ar\'any: \texttt{barany.balazs@ttk.bme.hu}
 
   \medskip
 
@@ -345,23 +346,23 @@ self-similar IFS.
 \end{abstract}
 
 
-{{\color{blue}
-\textbf{Things to do:}
-MSC2020 classification, keywords, funding. Some minor adjustments and
-\begin{description}
-\item[\cref{sec:intro}] Introduce notation for conformal IFS, affine and analytic map, dim of
-  measure, self-conformal measure at start. Define $\mathcal{C}^2$ topology. Give motivation for why
-  conjugation is important. 
-\item Prove~\cref{lem:ExistanceAttractor}. Remark about attractor on more general spaces?
-  We need to prove \cref{lem:SSCEequiv}. Finish proof of~\cref{thm:H_iAnalytic}. 
-\item[\cref{sec:ProofSufficientCond}] In proof of~\cref{thm:main} deal with $|\bu^{(n_\ell)}| \to
-  \infty$ case using~\cref{lem:SSCEequiv}.
-\item[\cref{sec:ProofESCOpenDense}] In proof of~\cref{thm:ESCOpenDense}, open property needs to be
-  written down and dense property needs some polishing.
-\item[\cref{sec:ProofConjugation}] Argument for equivalences in proof of~\cref{thm:SubConjugation}
-  need to be written down.
-\end{description}
-}
+%{{\color{blue}
+%\textbf{Things to do:}
+%MSC2020 classification, keywords, funding. Some minor adjustments and
+%\begin{description}
+%\item[\cref{sec:intro}] Introduce notation for conformal IFS, affine and analytic map, dim of
+%  measure, self-conformal measure at start. Define $\mathcal{C}^2$ topology. Give motivation for why
+%  conjugation is important. 
+%\item Prove~\cref{lem:ExistanceAttractor}. Remark about attractor on more general spaces?
+%  We need to prove \cref{lem:SSCEequiv}. Finish proof of~\cref{thm:H_iAnalytic}. 
+%\item[\cref{sec:ProofSufficientCond}] In proof of~\cref{thm:main} deal with $|\bu^{(n_\ell)}| \to
+%  \infty$ case using~\cref{lem:SSCEequiv}.
+%\item[\cref{sec:ProofESCOpenDense}] In proof of~\cref{thm:ESCOpenDense}, open property needs to be
+%  written down and dense property needs some polishing.
+%\item[\cref{sec:ProofConjugation}] Argument for equivalences in proof of~\cref{thm:SubConjugation}
+%  need to be written down.
+%\end{description}
+%}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -399,9 +400,9 @@ condition (OSC), and provided a formula for the dimension of the sets depending 
 contraction ratios of the similarities. In particular, the OSC holds under the stronger assumption
 of the strong separation condition (SSC). We say that the IFS $\Phi=(f_i)_{i\in \mathcal{I}}$
 satisfies the SSC if
-\begin{equation*}
+\begin{equation}\label{eq:SSC}
   f_i(\Lambda)\cap f_j(\Lambda) = \varnothing\quad\text{whenever}\quad i\neq j.
-\end{equation*}
+\end{equation}
 Hutchinson also showed that this value provides an upper bound for
 the dimension regardless of the overlaps of images of $\Lambda$ under the $f_i$.  Bowen
 \cite{Bowen75} and Ruelle \cite{Ruelle2004} extended this result to attractors of
@@ -460,11 +461,11 @@ For convenience we write $I=[0,1]$.
 Throughout we fix $\epsilon>0$ and  we define the class of $\mathcal{S}^\omega_\epsilon(I)$
 consisting of maps $f:\mathbb{R}\to\mathbb{R}$ with the following properties:
 \begin{enumerate}[a)]
-  \item $f$ is complex analytic in the open $2\epsilon$ complex neighbourhood
+  \item\label{it:a} $f$ is complex analytic in the open $\epsilon$ complex neighbourhood
     $\mathcal{B}_{2\epsilon}$ of  $I$,
-  \item $f(I) \subseteq I$ and $f(\mathcal{B}_{2\epsilon}) \subseteq
+  \item\label{it:b} $f(I) \subseteq I$ and $f(\overline{\mathcal{B}_{\epsilon}}) \subseteq
     \mathcal{B}_{\epsilon}$,
-  \item $0<|f'(x)|<1$ for all $x\in\mathcal{B}_{2\epsilon}$.
+  \item\label{it:c} $0<|f'(x)|<1$ for all $x\in\overline{\mathcal{B}_{\epsilon}}$.
 \end{enumerate}
 We write
 \[
@@ -474,9 +475,11 @@ for the $\mathcal{C}^2$ metric and equip the space $\mathcal{S}^\omega_\epsilon(
 $\mathcal{C}^2$ topology induced by the $d_2$. We note that this space is Polish, i.e.\ a complete
 and separable space.
 We also consider the space $\mathfrak{S}_N$ of cardinality $N$ IFSs $\Phi=(f_i)_{i=1}^N$ of maps $f_i\in
-\mathcal{S}^\omega_\epsilon([0,1])$, and we equip it with product topology.
-With slight abuse of terminology, we refer to the product topology as the $\mathcal{C}^2$ topology
-of the space of IFSs.
+\mathcal{S}^\omega_\epsilon([0,1])$. With slight abuse of notation, let
+$$
+d_2((f_i)_{i=1}^N,(g_i)_{i=1}^N)\coloneq\max_{i\in\mathcal{I}}d_2(f_i,g_i)
+$$
+be the $\mathcal{C}^2$ metric on the space of IFSs $\mathfrak{S}_N$.
 
 From the finite alphabet $\mathcal{I}\coloneqq\{1,\ldots,N\}$ we construct infinite words
 $\bi=(i_1,i_2,i_3,\dots) \in\Sigma \coloneqq \mathcal{I}^{\bbN}$ and finite words
@@ -485,7 +488,7 @@ $\Sigma_0=\{\emptyset\}$ is just the empty word. The length of $\bi\in\Sigma_k$ 
 $\bi\in\Sigma$ it is $|\bi|=\infty$. We denote the set of all finite words by $\Sigma_* =
 \bigcup_{k=0}^\infty \Sigma_k$. For any finite word $(i_1,\dots,i_n)\in\Sigma_*$, we write
 \[
-f_{i_1,\dots,i_n} = f_{i_1}\circ \dots \circ f_{i_n},
+f_{i_1,\dots,i_n}\coloneq f_{i_1}\circ \dots \circ f_{i_n},
 \]
 where by convention $f_{\emptyset}=\mathrm{Id}$. The natural projection $\pi\colon\Sigma\to\bbR$ defined by
 \[
@@ -510,7 +513,7 @@ condition for analytic self-conformal IFSs.
   %\sup_{x\in[0,1]}|f_{\bi}(x)-f_{\bj}(x)| \leq \eta_{n},
   %\]
 \end{definition}
-\begin{definition}
+\begin{definition}\label{def:SESC}
   We say that the IFS $\Phi=(f_i)_{i\in\mathcal{I}}$ 
   satisfies the \emph{strong exponential separation condition (SESC)} if there exists $c>0$ such that
   \[
@@ -833,15 +836,15 @@ We give a characterisation of when an analytic IFS is (sub-)conjugated to a self
 the function $H_{\bi}$ introduced in~\cref{eq:H_i(x)}.
 
 \begin{theorem}\label{thm:SubConjugation}
-  Any $\Phi\in\mathfrak{S}_N$ is conjugated to another analytic IFS which has at least one affine map. 
-  Moreover, $\Phi$ is 
+  Any $\Phi\in\mathfrak{S}_N$ is conjugated to another analytic IFS which has at least one similarity map. 
+  Moreover, assuming that the attractor of $\Phi$ is not a singleton then 
   \begin{enumerate}
-    \item conjugated to a self-similar IFS if and only if for every $\bi,\bj\in\Sigma$,
+    \item\label{it:conj1} $\Phi$ is conjugated to a self-similar IFS if and only if for every $\bi,\bj\in\Sigma$,
       \[
 	H_{\bi}(x) \equiv H_{\bj}(x)
       \]
       for all $x\in[0,1]$;
-    \item sub-conjugated to a self-similar IFS if and only if there exist distinct $\bi,\bj\in\Sigma_*$
+    \item\label{it:conj2} $\Phi$ is sub-conjugated to a self-similar IFS if and only if there exist distinct $\bi,\bj\in\Sigma_*$
       of the same length such that 
       \[
 	H_{(\bi)^\infty}(x) \equiv H_{(\bj)^\infty}(x)
@@ -872,8 +875,7 @@ Any analytic IFS which has super-exponential condensation but no exact overlaps 
 sub-conjugated to a self-similar IFS.
 \end{conjecture}
 
-We remark that analytic IFS with an exact overlap are sub-conjugated to self-similar IFSs, see
-{\color{red} Link to relevant section ??}
+We remark that analytic IFS with an exact overlap are sub-conjugated to self-similar IFSs, see \cref{thm:DualConj} and \cref{sec:ProofConjugation}.
 
 
 
@@ -886,64 +888,104 @@ the mappings in the original IFS on $[0,1]$.
 We believe this notion is of general interest in its own right and a systematic study of it could
 assist in tackling other problems in the future as well.
 
+\subsection{Basic definitions and properties}
 
 Let $\mathcal{C}_\epsilon^\omega([0,1])$ be the set of complex analytic maps $f$ on
-$\mathcal{B}_{\epsilon}$ such that $f\colon I \to \mathbb{R}$.
-We equip $\mathcal{C}_\epsilon^\omega([0,1])$ with the supremum norm $\|.\|_\infty$ and note that it is a complete
-and separable metric space.
-Given an analytic IFS $\Phi=(f_i)_{i=1}^N\in\mathfrak{S}_N$, we `lift' each map $f_i$ to an operator $F_i:
+$\mathcal{B}_{\epsilon}$ such that $f\colon I \to \mathbb{R}$. We equip $\mathcal{C}_\epsilon^\omega([0,1])$ with the supremum norm $\|.\|_\infty$ over $\mathcal{B}_\epsilon$. Given an analytic IFS $\Phi=(f_i)_{i=1}^N\in\mathfrak{S}_N$, we `lift' each map $f_i$ to an operator $F_i:
 \mathcal{C}^{\omega}_\epsilon([0,1]) \to \mathcal{C}_\epsilon^{\omega}([0,1])$ acting on the space of analytic
 functions by the formula
 \begin{equation}\label{eq:LiftedIFS}
 	(F_i h)(x)\coloneqq f'_i(x)\cdot h(f_i(x)) + \frac{f''_i}{f'_i}(x).
 \end{equation}
 We call $\Phi^*\coloneqq\{F_i\}_{i=1}^N$ the \emph{dual IFS} of $\Phi$. The operator $F_i$ can be
-considered an affinity map and $\Phi^*$ as self-affine IFS on $\mathcal{C}_\epsilon^\omega$.
-Indeed, $F_i$ is a
-translation of the linear operator $h\mapsto f'_i(x)\cdot h(f_i(x))$. 
-With this interpretation the function $H_{\bi}(x)$ introduced
-in~\cref{eq:H_i(x)} is an analog of the natural projection $\pi(\bi)$, furthermore,
-Theorem~\ref{thm:main} can be restated in the following elegant form.
+considered as a contractive affinity map and $\Phi^*$ as self-affine IFS on $\mathcal{C}_\epsilon^\omega([0,1])$.
+Indeed, $F_i$ is a translation of the linear operator $h\mapsto f'_i(x)\cdot h(f_i(x))$, and each $F_i$ is clearly a
+strict contraction in the supremum norm since $\|F_ig-F_ih\|_{\infty}\leq \|f'_i\|_{\infty}\cdot\|g-h\|_{\infty}$, where $\|f_i\|_\infty<1$ by our assumption \cref{it:c}.
+
+Our objective now is to establish some basic properties about the dual IFS. We first justify calling $\Phi^*$ an IFS by showing that it has an
+attractor. We will use the convention that if $A\subset \mathcal{C}^{\omega}_\epsilon([0,1])$, then
+\begin{equation*}
+	F_iA \coloneqq \{F_i h:\, h\in A\}.
+\end{equation*}
+\begin{lemma}\label{lem:ExistanceAttractor}
+	Let $\Phi^*$ be the dual IFS of an analytic IFS $\Phi\in\mathfrak{S}_N$. There exists a unique, non-empty,
+	compact set $\Lambda^*\subset \mathcal{C}^{\omega}_\epsilon([0,1])$, which we call the \emph{attractor} of
+	$\Phi^*$, that satisfies
+	\begin{equation*}
+		\Lambda^*=\bigcup_{i\in\mathcal{I}} F_i\Lambda^*.
+	\end{equation*} 
+\end{lemma} 
+
+\begin{proof}
+For $L>0$, we define 
+$$
+\mathcal{C}_{\epsilon,L}^{\omega}([0,1])\coloneqq \big\{g\in\mathcal{C}_\epsilon^{\omega}([0,1]):\, |g(x)|\leq L\text{ for every }x\in\mathcal{B}_\epsilon\big\},
+$$
+and $\mathcal{C}_{\epsilon}^{\omega}([0,1])=\bigcup_{L=1}^\infty\mathcal{C}_{\epsilon,L}^{\omega}([0,1])$. It is well-known that the space of continuous and bounded maps is complete with respect to the supremum distance. By applying Morera's Theorem~\cite[Theorem 10.17]{Rudin_AnalysisBook}, it follows that $\mathcal{C}_{\epsilon,L}^{\omega}([0,1])$ is a complete and separable metric space for every $L>1$.	
+	
+Since $\|F_ih\|_\infty\leq\|\frac{f_i''}{f_i'}\|_\infty+\|f_i'\|_\infty\|h\|_\infty$, there exists $L>0$ sufficiently large such that $\|F_ih\|_\infty\leq K$ if $\|h\|_\infty\leq K$. Hence, the claim of the lemma follows by \cite{Hutchinson_Attractor_81}.
+\end{proof}
+
+Using the dual IFS $\Phi^*$ and the attractor $\Lambda^*$ of the dual IFS, Theorem~\ref{thm:main} can be restated in the following elegant form.
 \begin{theorem}\label{thm:DualSSC}
-  An IFS $\Phi\in\mathfrak{S}_N$ satisfies the SESC if its dual IFS $\Phi^*$ satisfies the SSC (which is
-formally defined in this setting in~\cref{def:SSCLiftedIFS}).
+	An IFS $\Phi\in\mathfrak{S}_N$ satisfies the SESC if its dual IFS $\Phi^*$ satisfies the SSC.
 \end{theorem}
 
+\cref{thm:SubConjugation} has also an equivalent formalisation as follows:
 
+\begin{theorem}\label{thm:DualConj}
+	An IFS $\Phi\in\mathfrak{S}_N$ can be conjugated to a self-similar IFS if and only if the attractor of its dual IFS $\Phi^*$ is a singleton. 
+	
+	Moreover, an IFS $\Phi\in\mathfrak{S}_N$ can be sub-conjugated to a self-similar IFS if and only if its dual IFS $\Phi^*$ has an exact overlap.
+\end{theorem}
 
-Our objective now is to establish some basic properties about the dual IFS. Each $F_i$ is clearly a
-strict contraction in the supremum norm since $\|F_ig-F_ih\|_{\infty}\leq \|f'_i\|_{\infty}\cdot
-\|g-h\|_{\infty}$. For $\bi\in\Sigma_*$, an induction argument readily gives that the composition
+Let us recall the strong separation condition (SSC) in the context of dual IFS $\Phi^*$. The SSC holds if $F_i\Lambda^*\cap F_j\Lambda^*=\varnothing$ for every $i\neq j$ in $\mathcal{I}$, that is, there is no $h\in\Lambda^*$ such that $h\in F_i\Lambda^*$ and $h\in F_j\Lambda^*$. We postpone the explicit proof of \cref{thm:DualSSC} till the end of this section.
+
+For $\bi\in\Sigma_*$, an induction argument readily gives that the composition
 $F_{\bi}h=F_{i_1}\circ\ldots\circ F_{i_{|\bi|}}h$ is equal to
 \begin{equation}\label{eq:IteratesLiftedIFS}
 	(F_{\bi}h)(x) = f_{\bi_{|\bi|}^1}'(x)\cdot h(f_{\bi_{|\bi|}^1}(x)) + \sum_{n=1}^{|\bi|}
 	f'_{\bi_{n-1}^1}(x) \cdot 
 	\frac{f''_{i_n}}{f'_{i_n}}(f_{\bi_{n-1}^1}(x)).
 \end{equation}
-Observe that for $h$ equal to the constant $0$ function, $(F_{\bi}0)(x)\equiv H_{\bi}(x)$ introduced
-in~\cref{eq:H_i(x)}. This motivates us to call $H_{\bi}(x)$ the \emph{dual natural projection}.
-We first justify calling $\Phi^*$ an IFS by showing that it has an
-attractor. By convention, if $A\subset \mathcal{C}^{\omega}_\epsilon([0,1])$, then
-\begin{equation*}
-F_iA \coloneqq \{F_i h:\, h\in A\}.
-\end{equation*}
-\begin{lemma}\label{lem:ExistanceAttractor}
-  Let $\Phi^*$ be the dual IFS of an analytic IFS $\Phi\in\mathfrak{S}_N$. There exists a unique, non-empty,
-compact set $\Lambda^*\subset \mathcal{C}^{\omega}_\epsilon([0,1])$, which we call the \emph{attractor} of
-$\Phi^*$, that satisfies
-\begin{equation*}
-\Lambda^*=\bigcup_{i\in\Sigma_1} F_i\Lambda^*.
-\end{equation*} 
-\end{lemma} 
-This can be proved analogously to \cite{Hutchinson_Attractor_81} by noting that all $F_i$ are strict
-contractions with respect to the supremum norm and that $\mathcal{C}_\epsilon^\omega([0,1])$ is
-complete and separable. We omit details.
+Observe that for every $\bi\in\Sigma_*$, taking $h$ equal to the constant $0$ function, $(F_{\bi}0)(x)\equiv H_{\bi}(x)$ introduced
+in~\cref{eq:H_i(x)}. Moreover, for every $\bi\in\Sigma$
+\begin{equation}\label{eq:dualnatproj}
+	H_{\bi}(x)=\lim_{n\to\infty}(F_{\bi_1^n}h)(x)
+\end{equation}
+in uniform sense for every $h\in\mathcal{C}_\epsilon^\omega([0,1])$. With this interpretation the function $H_{\bi}(x)$ introduced
+in~\cref{eq:H_i(x)} is an analog of the natural projection $\pi(\bi)$, and this motivates us to call $H_{\bi}(x)$ the \emph{dual natural projection}. The following is further justification to call $H_{\bi}$ the dual natural projection.
+\begin{lemma}\label{thm:H_iAnalytic}
+	For every $\bi\in\Sigma$, $H_{\bi}\in\mathcal{C}_\epsilon^{\omega}([0,1])$. Moreover, the map $\bi\mapsto H_{\bi}$ is H\"older continuous, that is, there exists $K>0$ such that for every distinct $\bi,\bj\in\Sigma$
+	\begin{equation}\label{eq:Hcont}
+		\|H_{\bi}-H_{\bj}\|_\infty\leq c_{\max}^{|\bi\wedge\bj|}K,
+	\end{equation}
+	In particular, $\Lambda^*=\{H_{\bi}(x):\, \bi\in\Sigma\}$.
+\end{lemma}
+
+\begin{proof}
+ From the properties \cref{it:a,it:b,it:c}, it follows that the maps
+ \[
+ \frac{f_j''}{f_j'},\quad f_{\bi}, \quad\text{and} \quad f'_{\bi}
+ \]
+ are analytic on $\mathcal{B}_{2\epsilon}$ for all $\bi\in\Sigma_*$ and $j\in\mathcal{I}$. Hence, there exists $C>0$ such that
+	\[
+	\left|\frac{f_j''}{f_j'}(z)\right| \leq C\text{ and }0<c_{\min}\leq|f_j'(z)|\leq c_{\max}<1
+	\]
+	for all $j\in\mathcal{I}$ and $z\in\mathcal{B}_{\epsilon}$, $H_{\bi_1^n}$ converges uniformly to $H_{\bi}$ on $\mathcal{B}_{\epsilon}$
+	and $H_{\bi}$ is analytic on $\mathcal{B}_{\epsilon}$ by Morera's theorem~\cite[Theorem 10.17]{Rudin_AnalysisBook}. In particular, there exists $K>0$ such that $\|H_{\bi}\|_\infty\leq K$ for every $\bi\in\Sigma$. Hence,
+	$$
+	\|H_{\bi}-H_{\bj}\|_\infty\leq c_{\max}^{|\bi\wedge\bj|}2K.
+	$$
+	Using the H\"older-continuity, $\{H_{\bi}(x):\, \bi\in\Sigma\}$ is compact, invariant with respect to the dual IFS $\Phi^*$, and by the uniqueness of the attractor \cref{lem:ExistanceAttractor}, the last assertion follows.
+\end{proof}
+
 
 We now define cylinder sets for the dual IFS. For two real numbers $a,b$, their convex hull is the interval
 $\mathrm{conv}(a,b)=[\min\{a,b\},\max\{a,b\}]$. Slightly abusing notation, a constant
 $k\in\mathbb{R}$ also denotes the constant function on $\mathcal{C}_\epsilon^{\omega}([0,1])$. A
 \emph{cylinder set} on $\mathcal{C}_\epsilon^{\omega}([0,1])$ is given by 
-$$(k,K)\coloneqq \big\{g\in\mathcal{C}_\epsilon^{\omega}([0,1]):\, k<g(x)<K\big\}.$$
+$$(k,K)\coloneqq \big\{g\in\mathcal{C}_\epsilon^{\omega}([0,1]):\, k<g(x)<K\text{ for every }x\in[0,1]\big\}.$$
 Since each $F_i$ is a contraction, there exists $k<K$ such that
 \begin{equation*}
   k<\min_{i\in\mathcal{I}} \{\min_{x\in[0,1]}(F_ik)(x), \min_{x\in[0,1]}(F_iK)(x)\} \;\text{ and
@@ -955,7 +997,8 @@ $\bi\in\Sigma_*$ has width
 \begin{equation*}
 	\max_{x\in[0,1]} |f'_{\bi}(x)|\cdot (K-k) < c_{\max}^{|\bi|} (K-k),
 \end{equation*}
-where $c_{\max}$ is as in \cref{eq:maxmincontract}.
+where $c_{\max}$ is as in \cref{eq:maxmincontract}. 
+
 We say that two cylinder sets $ F_{\bi}(k,K)$ and $F_{\bj}(k,K)$ are \emph{disjoint}, which we
 denote by $F_{\bi}(k,K)\cap F_{\bj}(k,K)=\varnothing$, if there exists $x\in[0,1]$ such that
 \begin{equation}\label{eq:DisjointCylinders}
@@ -970,68 +1013,93 @@ See~\cref{fig:Cylinders} for an illustration.
 \caption{Illustration of disjoint cylinders on the left and ones which are not disjoint on the right.}\label{fig:Cylinders}
 \end{figure}
 
-{\color{red} Continue here}
-
-\begin{definition}\label{def:SSCLiftedIFS}
-We say that the attractor $\Lambda^*$ of a dual IFS $\Phi^*$ satisfies the \emph{strong separation
-condition (SSC)} if $F_i\Lambda^*\cap F_j\Lambda^*=\varnothing$ for every $i\neq j$ in $\Sigma_1$,
-\emph{i.e.} there is no $h\in\Lambda^*$ such that $h\in F_i\Lambda^*$ and $h\in F_j\Lambda^*$.
-\end{definition}
-
 \begin{lemma}\label{lem:SSCEequiv}
-For the attractor $\Lambda^*$ of a dual IFS $\Phi^*$ to satisfy the SSC it is equivalent to either of the following: 
+The following statements are equivalent: 
 \begin{enumerate}[a)]
-\item there exists $n\geq1$ such that for every $\bi,\bj\in\Sigma_n$  with $i_1\neq j_1$ we have
+\item\label{it:la} the dual IFS $\Phi^*$ satisfies the SSC;
+\item\label{it:lb} there exist $k<K$ and $n\geq1$ such that $F_{i}(k,K)\subseteq(k,K)$ for every $i\in\mathcal{I}$ and for every $\bi,\bj\in\Sigma_n$ with $i_1\neq j_1$ we have
 \begin{equation*}
-	F_{\bi}(k,K)\cap F_{\bj}(k,K)=\varnothing. 
+	F_{\bi}(k,K)\cap F_{\bj}(k,K)=\varnothing; 
 \end{equation*}
-\item there exists $\delta>0$ such that for all distinct $\bi,\bj \in\Sigma$ we have
-  $\sup_{x\in[0,1]} |H_{\bi}(x) - H_{\bj}(x)| > \delta$.
-\item there exists $\delta>0$ such that for all distinct $\bi,\bj \in\Sigma_*$ we have
+\item\label{it:lc} there exists $\delta>0$ such that for all $\bi,\bj \in\Sigma$ with $i_1\neq j_1$ we have
+  $\sup_{x\in[0,1]} |H_{\bi}(x) - H_{\bj}(x)| > \delta$;
+\item\label{it:ld} there exists $\delta>0$ such that for all $\bi,\bj \in\Sigma_*$ with $i_1\neq j_1$ we have
   $\sup_{x\in[0,1]} |H_{\bi}(x) - H_{\bj}(x)| > \delta$.
 \end{enumerate}
 \end{lemma}
+
+
 \begin{proof}
-  {\color{red}Write proof. Only necessary to be complete \& separable. We should remark in the
-  beginning that analytic systems have these properties but that Polish is the only thing necessary
-here. Last point should be also including finite words. Show that 2 and 3 are equivalent directly.
-b to c through periodic words.}
+	\cref{it:la}$\Leftrightarrow$\cref{it:lb}: Let $k<K$ be such that $F_{i}\overline{(k,K)}\subseteq(k,K)$, and so, $\Lambda^*\subseteq(k,K)$. Thus, the implication \cref{it:la}$\Leftarrow$\cref{it:lb} is clear. For the other direction, let us argue by contradiction. That is, for every $n\geq1$ there exist $\bi,\bj\in\Sigma_n$ with $i_1\neq j_1$ such that $F_{\bi}(k,K)\cap F_{\bj}(k,K)\neq\varnothing$. By the compactness of $\Sigma$, there exist a subsequence $n_\ell$ and $\bi,\bj\in\Sigma$ with $i_1\neq j_1$ such that $F_{\bi_1^{n_\ell}}(k,K)\cap F_{\bj_1^{n_\ell}}(k,K)\neq\varnothing$ for every $\ell\geq1$. In particular, \cref{eq:DisjointCylinders} implies that for every $x\in[0,1]$ there exists $y\in\mathbb{R}$ such that $y\in\mathrm{conv}\big((F_{\bi_1^{n_\ell}}k)(x), (F_{\bi_1^{n_\ell}}K)(x)\big) \cap \mathrm{conv}\big((F_{\bj_1^{n_\ell}}k)(x), (F_{\bj_1^{n_\ell}}K)(x)\big)$. Hence,
+	$$
+	|F_{\bi_1^{n_\ell}}K(x)-F_{\bj_1^{n_\ell}}K(x)|\leq |F_{\bi_1^{n_\ell}}K(x)-y|+|y-F_{\bj_1^{n_\ell}}K(x)|\leq 2c_{\max}^{n_\ell}(K-k).
+	$$
+	Thus, $H_{\bi}=\lim_{\ell\to\infty}F_{\bi_1^{n_\ell}}K=\lim_{\ell\to\infty}F_{\bj_1^{n_\ell}}K=H_{\bj}$ uniformly, which contradicts to SSC.
+	
+	The implications \cref{it:la}$\Leftrightarrow$\cref{it:lc} and \cref{it:la}$\Leftrightarrow$\cref{it:ld} follow by the compactness of $\Lambda^*$ \cref{lem:ExistanceAttractor} and the H\"older continuity of the dual natural projection \cref{thm:H_iAnalytic}. We leave the details for the reader.
 \end{proof}
 
-We assume throughout that the IFS $\Phi$ is \emph{uniformly contracting}, \ie there exist
-$0<c_{\min} \leq c_{\max}<1$ such that 
+\begin{lemma}\label{lem:cont}
+	Let $\Phi^*$ be the dual IFS of an analytic IFS $\Phi\in\mathfrak{S}_N$ such that $\Phi^*$ satisfies the SSC. Then there exists $\varepsilon>0$ such that for every $\Psi\in\mathfrak{S}_N$ with $d_2(\Phi,\Psi)<\varepsilon$, the dual IFS $\Psi^*$ of $\Psi$ satisfies the SSC.
+\end{lemma}
 
-In terms of the dual IFS, for an analytic IFS $\Phi$ to be conjugated to a self-similar IFS means
-precisely that its dual attractor $\Lambda^*$ is a single analytic function $H$. If $\Phi$ is a
-self-similar IFS to begin with, then $H\equiv 0$, otherwise $H$ can be different. {\color{red} What
-happens to conjugation of $H_{\bi}$?} 
+\begin{proof}
+	Let $\Phi=(f_i)_{i=1}^N\in\mathfrak{S}_N$. Let $c_{\min}$ and $c_{\max}$ as in \cref{eq:maxmincontract} for $\Phi$. Moreover, let $C>0$ be such that $|f_i''(x)|<\left|\frac{f_i''}{f_i'}(x)\right|<C$ and $\left|\frac{f_i'''(x)f_i'(x)-f_i''(x)}{f_i'(x)}\right|<C$ for every $i\in\mathcal{I}$ and $x\in[0,1]$. By using the continuity of the maps and its derivatives, one can choose $\varepsilon>0$ sufficiently small such that for every $\Psi=(g_i)_{i=1}^N\in\mathfrak{S}_N$ with $d_2(\Phi,\Psi)<\varepsilon$, 
+	$$
+	c_{\min}<|g_i'(x)|<c_{\max}\text{ and } |g_i''(x)|<\left|\frac{g_i''}{g_i'}(x)\right|<C
+	$$
+	for every $i\in\mathcal{I}$ and $x\in[0,1]$. Moreover, for every $x\in[0,1]$
+	\begin{equation}\label{eq:tec1}
+	\left|\frac{f_i''}{f_i'}(x)-\frac{g_i''}{g_i'}(x)\right|\leq \frac{c_{\max}+C}{c_{\min}^{2}}d_2(\Phi,\Psi).
+	\end{equation}
+	
+	Observe that for every $\bi\in\Sigma_*$ and $x\in[0,1]$
+	$$
+	|f_{\bi}(x)-g_{\bi}(x)|\leq\|f_{i_1}'\|_{\infty}\cdot|f_{\bi_2^{|\bi|}}(x)-g_{\bi_2^{|\bi|}}(x)|+\sup_{y\in[0,1]}|f_{i_1}(y)-g_{i_1}(y)|.
+	$$ 
+	Thus,
+	\begin{equation}\label{eq:tec2}
+		\sup_{x\in[0,1]}|f_{\bi}(x)-g_{\bi}(x)|\leq \frac{1}{1-c_{\max}}d_2(\Phi,\Psi).
+	\end{equation}
+	On the other hand, for every $\bi\in\Sigma_*$ and $x\in[0,1]$
+	\begin{align*}
+	|f_{\bi}'(x)-g_{\bi}'(x)|&\leq c_{\max}|f_{\bi_2^{|\bi|}}'(x)-g_{\bi_2^{|\bi|}}'(x)|+c_{\max}^{|\bi|-1}|f_{i_1}'(f_{\bi_2^{|\bi|}}(x))-g_{i_1}'(g_{\bi_2^{|\bi|}}(x))|\\
+	&\leq c_{\max}|f_{\bi_2^{|\bi|}}'(x)-g_{\bi_2^{|\bi|}}'(x)|+c_{\max}^{|\bi|-1}\left(d_2(\Phi,\Psi)+C|f_{\bi_2^{|\bi|}}(x)-g_{\bi_2^{|\bi|}}(x)|\right)\\
+	&\leq c_{\max}|f_{\bi_2^{|\bi|}}'(x)-g_{\bi_2^{|\bi|}}'(x)|+c_{\max}^{|\bi|-1}\frac{C+1}{1-c_{\max}}d_2(\Phi,\Psi).
+	\end{align*}
+	Thus, by induction
+	\begin{equation}\label{eq:tec3}
+	\sup_{x\in[0,1]}|f_{\bi}'(x)-g_{\bi}'(x)|\leq c_{\max}^{|\bi|-1}\frac{C+1}{1-c_{\max}}d_2(\Phi,\Psi).
+	\end{equation}
+	
+	Combining \cref{eq:tec1,eq:tec2,eq:tec3}, we get that for every $\bi\in\Sigma_*$
+\begin{align*}
+&\left|
+f'_{\bi_{|\bi|-1}^1}(x) \cdot 
+\frac{f''_{i_{|\bi|}}}{f'_{i_{|\bi|}}}(f_{\bi_{|\bi|-1}^1}(x))-
+g'_{\bi_{|\bi|-1}^1}(x) \cdot 
+\frac{g''_{i_{|\bi|}}}{g'_{i_{|\bi|}}}(g_{\bi_{|\bi|-1}^1}(x))\right|\\
+&\qquad\leq C |f'_{\bi_{|\bi|-1}^1}(x)-g'_{\bi_{|\bi|-1}^1}(x)|+c_{\max}^{|\bi|-1}\left|
+\frac{f''_{i_{|\bi|}}}{f'_{i_{|\bi|}}}(f_{\bi_{|\bi|-1}^1}(x))-
+\frac{g''_{i_{|\bi|}}}{g'_{i_{|\bi|}}}(g_{\bi_{|\bi|-1}^1}(x))\right|\\
+&\qquad\leq C |f'_{\bi_{|\bi|-1}^1}(x)-g'_{\bi_{|\bi|-1}^1}(x)|+c_{\max}^{|\bi|-1}\left(C\left|f_{\bi_{|\bi|-1}^1}(x)-
+g_{\bi_{|\bi|-1}^1}(x)\right|+\left|\frac{f_{i}''}{f_i'}(g_{\bi_{|\bi|-1}^1}(x))-\frac{g_{i}''}{g_i'}(g_{\bi_{|\bi|-1}^1}(x))\right|\right)\\
+&\qquad\leq\left(\frac{C(C+1)+C}{1-c_{\max}}+\frac{c_{\max}+C}{c_{\min}}\right)c_{\max}^{|\bi|-1}d_2(\Phi,\Psi).
+\end{align*}
+In particular, there exists $C'>0$ depending on $\Phi$ such that
+\begin{equation}\label{eq:conteq}
+|H_{\bi}(x)-\hat{H}_{\bi}(x)|\leq C'd_2(\Phi,\Psi),
+\end{equation}
+where $H_{\bi}$ denotes the dual projection of $\Phi^*$ and $\hat{H}_{\bi}$ denotes the dual projection of $\Psi^*$.
+
+Now, if the dual IFS $\Phi^*$ of $\Phi=(f_i)_{i=1}^N\in\mathfrak{S}_N$ satisfies the SSC then by \cref{lem:SSCEequiv} there exists $\delta>0$ such that 
+	$\sup_{x\in[0,1]}|H_{\bi}(x)-H_{\bj}(x)|\geq\delta$ for every $\bi,\bj\in\Sigma$ with $i_1\neq j_1$. Hence, by \cref{eq:conteq} and \cref{lem:SSCEequiv}, for every $\Psi$ with $d_2(\Phi,\Psi)<\delta/(3C')$ the dual $\Psi^*$ satisfies the SSC.	
+\end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Properties of the natural dual projection \texorpdfstring{$H_{\bi}$}{H}}
+\subsection{Further analysis of the dual natural projection \texorpdfstring{$H_{\bi}$}{H}}
 
-The following is further justification to call $H_{\bi}$ the {\color{red}natural dual OR dual natural} projection.
-\begin{proposition}\label{thm:H_iAnalytic}
-$H_{\bi}$ is analytic on $I_{\eps}$, moreover, $\Lambda^*=\{H_{\bi}(x):\, \bi\in\Sigma\}$.
-\end{proposition}
-\begin{proof}
-There exists an open bounded complex neighbourhood $U \supseteq I$ such that
-$z\mapsto f_j(z)$ is analytic on $U$ and $c_{\min}<|f_j'(z)|<c_{\max}$ for all $z\in U$ and $j\in\Sigma_1$.
-Hence $f_j(U) \subseteq U$ and
-\[
-\frac{f_j''}{f_j'},\quad f_{\bi}, \quad\text{and} \quad f'_{\bi}
-\]
-are analytic on $U$ for all $\bi\in\Sigma_*$ and $j\in\Sigma_1$.
-Since there exists $C>0$ such that
-\[
-\left|\frac{f_j''}{f_j'}\right| \leq C
-\]
-for all $j\in\Sigma_1$ and $z\in U$, we conclude that $H_{\bi|_n}$ is analytic on $U$ for
-all $\bi\in\Sigma$ and $n\in\bbN$. Further $H_{\bi|_n}$ converges uniformly to $H_{\bi}$ on $U$
-and $H_{\bi}$ is analytic on $U$ by Morera's theorem~\cite[Theorem 10.17]{Rudin_AnalysisBook}.
 
-{\color{red} Prove $\Lambda^*=\{H_{\bi}(x):\, \bi\in\Sigma\}$. A compactness argument should suffice
-for convergence of infinite words.}
-\end{proof}
 
 After establishing that $H_{\bi}$ is analytic, we wish to obtain bounds on its derivatives. To
 simplify notation we write $f^{(k)}$ to refer to the $k$-th derivative of $f$. 
@@ -1061,7 +1129,7 @@ y_{\ell}}(y_k,\dots,y_1)\cdot y_{\ell+1} +
 g_k(y_k,\dots,y_1)\cdot y_1.
 \]
 In particular, $g_2(y_2,y_1)=y_2+y_1^2$, $g_3(y_3,y_2,y_1) = y_3+3y_1y_2+y_1^3$ and so on. We are
-now ready to give a formula for $H_{\bi}^{(k)}$.
+now ready to give a formula for $H_{\bi}^{(k)}$, the $k$th derivatives of $H_{\bi}$.
 
 
 \begin{lemma}
@@ -1195,7 +1263,7 @@ Let $m = |\bi\wedge\bj|$. Again, by \cref{thm:ugly,thm:kbound},
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Proof of~\cref{thm:main}}\label{sec:ProofSufficientCond}
+\section{Proof of the sufficient condition for SESC}\label{sec:ProofSufficientCond}
 
 We need one auxiliary lemma before we can proceed with the proof of~\cref{thm:main}.
 
@@ -1229,14 +1297,14 @@ where $\xi_1\in(x,y)$, and similarly for $g(y)$ around $x$ we get
 
 
 \begin{proof}[Proof of~\cref{thm:main}]
-We prove the theorem by contradiction. Recall~\cref{def:SeparationConds} and suppose that $\Phi$ has
+We prove the theorem by contradiction. Recall~\cref{def:SESC} and suppose that $\Phi$ has
 super-exponential condensation, \emph{i.e.} there exists a sequence $(\eta_n)_n$ such that
 $\log(\eta_n)/n\to-\infty$ and there exist a subsequence $n_{\ell}\in\bbN$ and
 $\bi\neq\bj\in\Sigma_{n_\ell}$ such that
 \begin{equation}\label{eq:ExpCondensation}
   \sup_{x\in[0,1]}|f_{\bi}(x)-f_{\bj}(x)| \leq \eta_{n_\ell}.
 \end{equation}
-We need to show that there exist $\bi^*\neq\bj^*\in\Sigma\cup\Sigma_*$ for which $H_{\bi^*}(x)\equiv
+We need to show that there exist $\bi^*\neq\bj^*\in\Sigma\cup\Sigma_*$ with $|\bi^*|=|\bj^*|$ for which $H_{\bi^*}(x)\equiv
 H_{\bj^*}(x)$ for all $x\in[0,1]$ contradicting our main assumption. For the remainder of the proof
 we work with the sequence $\eta_{n_{\ell}}$ and $\bi\neq\bj\in\Sigma_{n_\ell}$ provided
 by~\cref{eq:ExpCondensation}. Let $m=m(n_{\ell})\coloneqq\max\{k\leq n_{\ell}:\, i_k\neq j_k\}$ and
@@ -1254,7 +1322,7 @@ For any $\bi\in\Sigma_*$, recall from~\cref{eq:H=f''/f'} that
 	H_{\bi}(x)= \frac{f''_{\bi_{|\bi|}^1}(x)}{f'_{\bi_{|\bi|}^1}(x)} \;\;\text{ or equivalently,
 	}\;\; H_{\bi_{|\bi|}^1}(x) = \frac{f''_{\bi}(x)}{f'_{\bi}(x)}.
 \end{equation*}
-Using~\eqref{eq:fandg}, we get that
+Using~\eqref{eq:H=f''/f'}, we get that
 \begin{equation*}
  |f_{\bi}''(x)| = \big|H_{\bi_{|\bi|}^1}(x)\cdot f_{\bi}'(x)\big|\leq C_0 \cdot c_{\max}^{|\bi|}
 \end{equation*}
@@ -1317,10 +1385,10 @@ for all $x\in I$.  Hence, using the analyticity of $H_{\bi}$ from~\cref{thm:H_iA
 that $H_{\bi^*}(x) \equiv H_{\bj^*}(x)$ for all $x\in I$ which contradicts the main assumption.
 
 Now let us assume that $|\bu^{(n_\ell)}| \to \infty$. Again by compactness, there exists
-$\bu^*\in\Sigma$ as well as $\bi^*,\bj^*\in\Sigma\cup\Sigma_*$ {\color{red} with both $|\bi^*|$ and
-$|\bj^*|$ either finite or infinite} and a
+$\bu^*\in\Sigma$ as well as $\bi^*,\bj^*\in\Sigma\cup\Sigma_*$  and a
 subsequence $n_\ell'$ such that $\bi^{(n_\ell')}\to \bi^*$ and $\bj^{(n_\ell')}\to \bj^*$ with
-$i_1^*\neq j_1^*$ as well as $f_{\bu^{(n_\ell')}}(x) \to \pi(\bu^*)$ for all $x\in[0,1]$.  Combining
+$i_1^*\neq j_1^*$ as well as $f_{\bu^{(n_\ell')}}(x) \to \pi(\bu^*)$ for all $x\in[0,1]$. Note that both $|\bi^*|$ and
+	$|\bj^*|$ might be finite or infinite, however, $|\bi^*|=|\bj^*|$ by the construction. Combining
 \cref{thm:analyticity} and \cref{thm:kbound} with~\cref{eq:DiffH_iSUperExp}, we deduce that for all
 $k$ there
 exists $\widetilde{C}_k>0$ such that for all $\ell\geq 1$ we have
@@ -1337,12 +1405,14 @@ all $k$.
 Since $H_{\bi^*}$ and $H_{\bj^*}$ are analytic by~\cref{thm:H_iAnalytic}, we get that
 $H_{\bi^*}(x)\equiv H_{\bj^*}(x)$ for all
 $x\in[0,1]$ which again contradicts our main assumption, concluding the proof of~\cref{thm:main}. 
-{\color{red} Invoke \cref{lem:SSCEequiv}}
 \end{proof}
 
+\begin{proof}[Proof of \cref{thm:DualSSC}]
+	The proof follows by \cref{lem:SSCEequiv} and \cref{thm:main}.
+\end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Proof of~\cref{thm:ESCOpenDense}}\label{sec:ProofESCOpenDense}
+\section{Existence of open and dense set of IFSs with SESC}\label{sec:ProofESCOpenDense}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Preliminaries}
@@ -1358,32 +1428,32 @@ f_{\bi_2^1}(x),\ldots,f_{\bi_{|\bi|}^1}(x)\}$.
 
 
 \begin{lemma}\label{lem:Pointsx_ij}
-If the IFS $\{f_i\}_{i=1}^N$ has no exact overlaps, then there exists a collection of points
+If the IFS $(f_i)_{i\in\mathcal{I}}$ has no exact overlaps, then there exists a collection of points
 $\{x_{\bi,\bj}\}_{(\bi,\bj)\in\mathcal{B}_n}\subseteq[0,1]$ such that
 \begin{enumerate}[(a)]
-\item $(F_{\bi}K)(x_{\bi,\bj}) < (F_{\bj}k)(x_{\bi,\bj})$ or $(F_{\bj}K)(x_{\bi,\bj}) <
-  (F_{\bi}k)(x_{\bi,\bj})$ if $(\bi,\bj)$ is not bad;  
+\item $\mathrm{conv}\big((F_{\bi}k)(x_{\bi,\bj}), (F_{\bi}K)(x_{\bi,\bj})\big) \cap \mathrm{conv}\big((F_{\bj}k)(x_{\bi,\bj}),
+	(F_{\bj}K)(x_{\bi,\bj})\big)= \varnothing$ if $(\bi,\bj)$ is not bad;  
 \item all points in $\mathcal{O}_{\bi}(x_{\bi,\bj})$ and also in $\mathcal{O}_{\bj}(x_{\bi,\bj})$
   are distinct, moreover,
   $\mathcal{O}_{\bi}(x_{\bi,\bj})\cap\mathcal{O}_{\bj}(x_{\bi,\bj})=\{x_{\bi,\bj}\}$;
 \item $\big(\mathcal{O}_{\bi}(x_{\bi,\bj})\cup \mathcal{O}_{\bj}(x_{\bi,\bj})\big) \cap
-  \big(\mathcal{O}_{\vec{h}}(x_{\vec{h},\vec{\ell}})\cup
-  \mathcal{O}_{\vec{\ell}}\,(x_{\vec{h},\vec{\ell}})\big)=\varnothing$ for every $(\bi,\bj)\neq
-  (\vec{h},\vec{\ell})\in\mathcal{B}_n$.
+  \big(\mathcal{O}_{\bh}(x_{\bh,\bk})\cup
+  \mathcal{O}_{\bk}\,(x_{\bh,\bk})\big)=\varnothing$ for every $(\bi,\bj)\neq
+  (\bk,\bh)\in\mathcal{B}_n$.
 \end{enumerate} 
 \end{lemma}
 
-\begin{proof}{\color{red}Check proof!}
+\begin{proof}
 Order the elements of $\mathcal{B}_n$ by $(\bi^{(k)},\bj^{(k)})=(i_1^{(k)},\ldots,
 i_n^{(k)};j_1^{(k)},\ldots,j_n^{(k)})$ with $k=1,\ldots,\#\mathcal{B}_n$. The points are constructed
 inductively. If $(\bi^{(1)},\bj^{(1)})$ is not bad then by definition there exists an $\hat
-x_{(\bi^{(1)},\bj^{(1)})}$ for which $(a)$ holds. Since $(a)$ is an open conditions, there exists an
+x_{(\bi^{(1)},\bj^{(1)})}$ for which $(a)$ holds. Since $(a)$ is an open condition, there exists an
 $x_{(\bi^{(1)},\bj^{(1)})}$ in the neighborhood of $\hat x_{(\bi^{(1)},\bj^{(1)})}$ for which $(b)$
 also holds. If this were not the case, then there would be $k,\ell$ such that
 $f_{(\bi^{(1)})_{\ell}^1}(x)=f_{(\bi^{(1)})_{k}^1}(x)$ for infinitely many $x$, but then analyticity
-implies that $f_{(\bi^{(1)})_{\ell}^1}(x)\equiv f_{(\bi^{(1)})_{k}^1}(x)$, which contradicts the no
+implies that $f_{(\bi^{(1)})_{\ell}^1}(x)\equiv f_{(\bi^{(1)})_{k}^1}(x)$ on $[0,1]$, which contradicts the no
 exact overlaps assumption. If $(\bi^{(1)},\bj^{(1)})$ is bad, then choose
-$x_{(\bi^{(1)},\bj^{(1)})}$ to satisfy $(b)$ (which is possible by the same argument). Thus we have
+$x_{(\bi^{(1)},\bj^{(1)})}$ to satisfy $(b)$ (which is possible by a similar argument). Thus we have
 constructed the first point $x_{(\bi^{(1)},\bj^{(1)})}$. Condition $(c)$ trivially holds with just
 the single pair $(\bi^{(1)},\bj^{(1)})$. 
 
@@ -1398,41 +1468,40 @@ A_k\coloneqq \bigcup_{\ell=0}^n \bigg( \big(f_{(\bi^{(k+1)})_{\ell}^1}\big)^{-1}
 \big(f_{(\bj^{(k+1)})_{\ell}^1}\big)^{-1} \Big( \bigcup_{m=1}^k
 \widehat{\mathcal{O}}(x_{(\bi^{(m)},\bj^{(m)})}) \Big) \bigg)
 \end{equation*}
-is also finite since all $f_{\bi}$ are strictly monotone (for $\ell=0$ it is defined to be identity
-map). By construction, any point $x\in[0,1]\setminus A_k$ chosen to be the next
-$x_{(\bi^{(k+1)},\bj^{(k+1)})}$ automatically satisfies $(c)$. If $(\bi^{(k+1)},\bj^{(k+1)})$ is not
-bad, then using that $A_k$ is finite choose $\hat x_{(\bi^{(k+1)},\bj^{(k+1)})}$ for which $(a)$
-holds. By continuity of the maps, there exists a small neighborhood of $\hat
-x_{(\bi^{(k+1)},\bj^{(k+1)})}$ where $(a)$ still holds and does not intersect $A_k$. The same
+is also finite since all $f_{\bi}$ are strictly monotone (for $\ell=0$ it is defined to be identity map). 
+
+If $(\bi^{(k+1)},\bj^{(k+1)})$ is not
+bad, then using that $A_k$ is finite and the continuity of the maps one can choose $\hat x_{(\bi^{(k+1)},\bj^{(k+1)})}\in(0,1)\setminus A_k$ for which $(a)$
+holds. By continuity of the maps, there exists a small neighbourhood of $\hat
+x_{(\bi^{(k+1)},\bj^{(k+1)})}$ in $(0,1)\setminus A_k$ where $(a)$ still holds, and by the same
 argument as before can be used to pick a $x_{(\bi^{(k+1)},\bj^{(k+1)})}$ from this small
-neighborhood for which $(a),(b),(c)$ all hold. If $(\bi^{(k+1)},\bj^{(k+1)})$ is bad, then
+neighbourhood for which $(a),(b),(c)$ all hold. If $(\bi^{(k+1)},\bj^{(k+1)})$ is bad, then
 analyticity and the no exact overlaps assumption imply again the existence of
-$x_{(\bi^{(k+1)},\bj^{(k+1)})}\in[0,1]\setminus A_k$ that satisfies $(b)$ which completes the
+$x_{(\bi^{(k+1)},\bj^{(k+1)})}\in(0,1)\setminus A_k$ that satisfies $(b)$ which completes the
 induction. 
 \end{proof}
 
 \begin{proposition}\label{prop:AnalyticBumpFunc}
-Assume $f\in \mathcal{C}^{\omega}([0,1])$ satisfies $f([0,1])\subset (0,1)$ and $0<|f'(x)|<1$ for
-every $x$. Then there exists a constant $C>0$ such that for any two finite collection of points
-$\mathcal{Y}=\{y_1<\ldots<y_M\}\subseteq[0,1]^M$ and $\mathcal{Z}=\{z_1<\ldots<
+Assume $f\in \mathcal{S}^{\omega}_\epsilon([0,1])$. Then there exists a constant $C>0$ such that for any two finite collection of points
+$\mathcal{Y}=\{y_1<\ldots<y_M\}\subseteq[0,1]^M$ and\linebreak $\mathcal{Z}=\{z_1<\ldots<
 z_Q\}\subseteq[0,1]^Q$ with $\mathcal{Y}\cap\mathcal{Z}=\varnothing$ we have the following: for
 every $\varepsilon>0$ and $\delta>0$ there exists an analytic function
-$g\in\mathcal{C}^{\omega}([0,1])$ such that
+$g\in\mathcal{S}^{\omega}_\epsilon([0,1])$ such that
 \begin{enumerate}[(i)]
 \item $g(z_i)=f(z_i)$ for every $z_i\in\mathcal{Z}$ and $g(y_i)=f(y_i)$ for every $y_i\in\mathcal{Y}$, moreover,
 \begin{equation*}
-\|g-f\|_{\infty}<\varepsilon;
+\sup_{x\in[0,1]}|g(x)-f(x)|<\varepsilon;
 \end{equation*}
 \item  $g'(z_i)=f'(z_i)$ for every $z_i\in\mathcal{Z}$ and $g'(y_i)=f'(y_i)$ for every $y_i\in\mathcal{Y}$, moreover,
 \begin{equation*}
-	\|g'-f'\|_{\infty}<\varepsilon;
+	\sup_{x\in[0,1]}|g'(x)-f'(x)|<\varepsilon;
 \end{equation*}
 \item $g''(z_i)=f''(z_i)$ for every $z_i\in\mathcal{Z}$, however,
 \begin{equation*}
 	\left| \frac{g''(y_i)}{g'(y_i)} - \frac{f''(y_i)}{f'(y_i)} \right|\geq \delta \quad\text{
 	for every } y_i\in\mathcal{Y},
 \end{equation*}
-nevertheless, $	\|g''-f''\|_{\infty}<C\cdot \delta +\varepsilon$.
+nevertheless, $	\sup_{x\in[0,1]}|g''(x)-f''(x)|<C\cdot \delta +\varepsilon$.
 \end{enumerate}
 \end{proposition}
 
@@ -1464,8 +1533,9 @@ this value and using the upper bound on $\sigma$ gives the claim.
 
 \begin{proof}[Proof of~\cref{prop:AnalyticBumpFunc}]
 During the proof we suppress $\infty$ from the norm $\|\cdot\|_{\infty}$. The argument is
-essentially a careful analysis of the function $g$ defined in~\cref{eq:BumpFunc}. Let us start by
-calculating its derivatives
+essentially a careful analysis of the function $g$ defined in~\cref{eq:BumpFunc}. Let us first observe that $g$ is complex analytic on $\mathcal{B}_{2\epsilon}$, and so, satisfies the assumption \cref{it:a}.
+
+Let us now calculate the derivatives of $g$. Clearly,
 \begin{equation*}
 	g'= f'\cdot e^{\varphi\cdot \psi\cdot A} + f\cdot e^{\varphi\cdot \psi\cdot A}\big(
 	\varphi'\cdot \psi\cdot A + \varphi\cdot \psi'\cdot A +\varphi\cdot \psi\cdot A' \big),
@@ -1474,9 +1544,9 @@ where
 \begin{align*}
 	\varphi'(x)&= \sum_{i=1}^{M} 2(x-y_i) \prod_{y_j\in\mathcal{Y}\setminus\{y_i\}} (x-y_j)^2, \\
 	\psi'(x)&= \sum_{i=1}^{Q} 4(x-z_i)^3 \prod_{z_j\in\mathcal{Z}\setminus\{z_i\}} (x-z_j)^4, \\
-	A'(x)&= -2\cdot \sum_{i=1}^{M} a_i \frac{x-y_i}{\eta_i} e^{\frac{-(x-y_i)^2}{\eta_i}},
+	A'(x)&= -2\cdot \sum_{i=1}^{M} a_i \frac{x-y_i}{\eta_i} e^{\frac{-(x-y_i)^2}{\eta_i}}.
 \end{align*}
-moreover,
+Moreover,
 \begin{multline*}%\label{eq:gSecondDerivative}
 	g'' = f''  e^{\varphi \psi A} + 2f'e^{\varphi \psi A}\big( \varphi' \psi A + \varphi \psi' A
 	+\varphi \psi A' \big) + f e^{\varphi \psi A}\big( \varphi' \psi A + \varphi \psi' A
@@ -1558,7 +1628,7 @@ norms can be handled together:
 \end{equation*}
 by~\cref{eq:BoundA(x)} and $(C2)$ (with the choice $p=3, q=-1$ and $c=8Qa_i$). These bounds already
 imply that $\|g-f\|\leq (e^{\varepsilon}-1)\cdot \|f\|$ and $\|g'-f'\|\leq
-(e^{\varepsilon}-1)\cdot\|f'(x)\|+3\varepsilon e^{\varepsilon} \cdot\|f(x)\|$.
+(e^{\varepsilon}-1)\cdot\|f'(x)\|+3\varepsilon e^{\varepsilon} \cdot\|f(x)\|$. Also, by choosing the values of $\eta_i$ possibly larger, one can ensure that $g(\overline{\mathcal{B}_\epsilon})\subseteq\mathcal{B}_\epsilon$ and $0<|g'(x)|<1$ for every $x\in\overline{\mathcal{B}_\epsilon}$, hence, $g$ satisfies \cref{it:b} and \cref{it:c}, and in particular, $g\in\mathcal{S}_\epsilon^\omega([0,1])$.
 
 The remaining three norms, $\|\varphi'' \psi A\|,\|\varphi \psi A''\|$ and $\|\varphi' \psi A'\|$
 require additional care. The trivial bounds can not be blindly used in some of the expressions when
@@ -1771,118 +1841,126 @@ We may assume by choosing $\eta_i$ even smaller if necessary that the product of
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Proof of~\cref{thm:ESCOpenDense}}
 
-{\color{red}Still need to write down open property}
-
-{\color{red}Proof of denseness} The idea is to apply~\cref{prop:AnalyticBumpFunc} to each map $f_i$
+The idea is to apply~\cref{prop:AnalyticBumpFunc} to each map $f_i$
 of the IFS with appropriately chosen collection of points $\mathcal{Y}_i$ and $\mathcal{Z}_i$
-using~\cref{lem:Pointsx_ij} to get the maps $\{g_i\}_{i=1}^N$. We then lift the IFS
-$\{g_i\}_{i=1}^N$ as in~\cref{eq:LiftedIFS} to obtain the IFS $\{G_i\}_{i=1}^N$ and show that this
-IFS satisfies the SSP. Then~\cref{thm:ESCOpenDense} follows immediately from~\cref{thm:main}.
+using~\cref{lem:Pointsx_ij} to get the maps $(g_i)_{i\in\mathcal{I}}$. We then lift the IFS
+$(g_i)_{i\in\mathcal{I}}$ as in~\cref{eq:LiftedIFS} to obtain the dual IFS $(G_i)_{i\in\mathcal{I}}$ and show that this
+IFS satisfies the SSC. Then~\cref{thm:ESCOpenDense} follows immediately from~\cref{thm:DualSSC} and \cref{lem:cont}.
 
-Throughout $n\geq 1$ is arbitrary but fixed. Recall,
-$\mathcal{B}_n=\{(\bi,\bj)\in\Sigma_n\times\Sigma_n:\, i_1<j_1\}$. Assume the points
-$\{x_{\bi,\bj}:\, (\bi,\bj)\in\mathcal{B}_n\}$ are as in~\cref{lem:Pointsx_ij}. Initially,
-$\mathcal{Y}_i=\mathcal{Z}_i=\varnothing$. If $(\bi,\bj)\in\mathcal{B}_n$ is bad, recall
-\cref{eq:DefBad}, then either $(F_{\bj}k)(x_{\bi,\bj})<
-(F_{\bi}k)(x_{\bi,\bj})<(F_{\bj}K)(x_{\bi,\bj})$ or $(F_{\bi}k)(x_{\bi,\bj})<
-(F_{\bj}k)(x_{\bi,\bj})<(F_{\bi}K)(x_{\bi,\bj})$. In the first case, $x_{\bi,\bj}$ is added to
-$\mathcal{Y}_{i_1}$ and $\mathcal{Z}_{j_1}$, while in the second case, $x_{\bi,\bj}$ is added to
-$\mathcal{Z}_{i_1}$ and $\mathcal{Y}_{j_1}$. If $(\bi,\bj)\in\mathcal{B}_n$ is not bad, then
-$x_{\bi,\bj}$ is added to both $\mathcal{Z}_{i_1}$ and $\mathcal{Z}_{j_1}$. In addition, for all
-$i=1,\ldots,N$, we add to $\mathcal{Z}_i$ the set
-\begin{equation*}
-\bigcup_{(\bi,\bj)\in\mathcal{B}_n} \big(\mathcal{O}_{\bi}(x_{\bi,\bj})\cup
-\mathcal{O}_{\bj}(x_{\bi,\bj})\big)\setminus\{x_{\bi,\bj}\},
-\end{equation*}
-where recall $\mathcal{O}_{\bi}(x)= \{x,f_{i_1}(x), f_{i_2i_1}(x),\ldots,f_{i_{|\bi|}\ldots
-i_1}(x)\}$. This completes the construction of $\mathcal{Y}_i$ and $\mathcal{Z}_i$. We also choose
-$\delta\coloneqq c_{\max}^n(K-k)$ and $\varepsilon<\delta$ so small such that... {\color{red}this I
-didn't quite get.} We are now ready to apply~\cref{prop:AnalyticBumpFunc}.
+\begin{proof}[Proof of \cref{thm:ESCOpenDense}] 
+By \cref{thm:DualSSC}, it is enough to show that the set $\{\Phi\in\mathfrak{S}_N:\Phi^*\text{ satisfies the SSC}\}$ is open and dense in $\mathfrak{S}_N$ in with respect to the metric $d_2$. By \cref{lem:cont}, the set is open, and so, it is enough to show that it is dense.
 
-To each $f_i$ and $\mathcal{Y}_i, \mathcal{Z}_i$ we obtain a $g_i$ which satisfies the properties
-listed in~\cref{prop:AnalyticBumpFunc} with the $\delta$ and $\varepsilon$ defined above. We lift
-each $g_i$ as in~\cref{eq:LiftedIFS}, i.e. 
-\begin{equation*}
-(G_ih)(x)\coloneqq g'_i(x)\cdot h(g_i(x)) + \frac{g''_i(x)}{g'_i(x)}
-\end{equation*}
-and recall its iterates from~\eqref{eq:IteratesLiftedIFS}.
+Let $\delta>0$ and $\Phi=(f_i)_{i\in\mathcal{I}}\in\mathfrak{S}_N$ be arbitrary but fixed. Choose $n\geq 1$ such that $c_{\max}^n(K-k)<\delta/3$, where $k<K$ is chosen such that $F_i(k,K)\subseteq(k,K)$ for every $i\in\mathcal{I}$, where $\Phi^*=(F_i)_{i\in\mathcal{I}}$ is the dual IFS of $\Phi$. Recall,
+$\mathcal{B}_n=\{(\bi,\bj)\in\Sigma_n\times\Sigma_n:\, i_1<j_1\}$. Let 
+$\{x_{\bi,\bj}:\, (\bi,\bj)\in\mathcal{B}_n\}$ be points as in~\cref{lem:Pointsx_ij}. 
 
-By the construction of $g_i$, on one hand,
+For every $i\in\mathcal{I}$, we define a partition of two elements $\{\mathcal{Y}_i, \mathcal{Z}_i\}$ of $\bigcup_{(\bi,\bj)\in\mathcal{B}_n} \big(\mathcal{O}_{\bi}(x_{\bi,\bj})\cup
+\mathcal{O}_{\bj}(x_{\bi,\bj})\big)$, where recall $\mathcal{O}_{\bi}(x)= \{x,f_{i_1}(x), f_{i_2i_1}(x),\ldots,f_{i_{|\bi|}\ldots
+	i_1}(x)\}$, as follows:
+\begin{itemize}
+	\item $x_{\bi,\bj}\in\mathcal{Y}_{i_1}$ and $x_{\bi,\bj}\in\mathcal{Z}_{j_1}$ if $(\bi,\bj)\in\mathcal{B}_n$ is bad and  $(F_{\bi}k)(x_{\bi,\bj})\in\mathrm{conv}\left((F_{\bj}k)(x_{\bi,\bj}),(F_{\bj}K)(x_{\bi,\bj})\right)$;
+	\item $x_{\bi,\bj}\in\mathcal{Z}_{i_1}$ and $x_{\bi,\bj}\in\mathcal{Y}_{j_1}$ if $(\bi,\bj)\in\mathcal{B}_n$ is bad and  $(F_{\bi}k)(x_{\bi,\bj})\notin\mathrm{conv}\left((F_{\bj}k)(x_{\bi,\bj}),(F_{\bj}K)(x_{\bi,\bj})\right)$;
+	\item $x_{\bi,\bj}\in\mathcal{Z}_{i_1}$ and $x_{\bi,\bj}\in\mathcal{Z}_{j_1}$ if $(\bi,\bj)\in\mathcal{B}_n$ is not bad;
+	\item $y\in\mathcal{Z}_{i_1}$ and $y\in\mathcal{Z}_{j_1}$ for every $y\in\bigcup_{(\bi,\bj)\in\mathcal{B}_n} \big(\mathcal{O}_{\bi}(x_{\bi,\bj})\cup
+	\mathcal{O}_{\bj}(x_{\bi,\bj})\big)\setminus\{x_{\bi,\bj}\}$.
+\end{itemize}
+Recall that by \cref{eq:DefBad} either $(F_{\bi}k)(x_{\bi,\bj})\in\mathrm{conv}\left((F_{\bj}k)(x_{\bi,\bj}),(F_{\bj}K)(x_{\bi,\bj})\right)$ or 
+$(F_{\bj}k)(x_{\bi,\bj})\in\mathrm{conv}\left((F_{\bi}k)(x_{\bi,\bj}),(F_{\bi}K)(x_{\bi,\bj})\right)$. Hence, the sets $\mathcal{Y}_i$ and $\mathcal{Z}_i$ are well defined. We are now ready to apply~\cref{prop:AnalyticBumpFunc}.
+
+To each $f_i$ and $\mathcal{Y}_i, \mathcal{Z}_i$ we obtain a map $g_i\in\mathcal{S}_\epsilon^\omega([0,1])$ which satisfies the properties
+listed in~\cref{prop:AnalyticBumpFunc} with the choice $\varepsilon=\delta$, and let $\Psi=(g_i)_{i\in\mathcal{I}}\in\mathfrak{S}_N$. We construct the dual IFS $\Psi^*=(G_i)_{i\in\mathcal{I}}$ of $\Psi$ as in \cref{eq:LiftedIFS}, i.e. 
 \begin{equation*}
-(G_{\bi}h)(x_{\bi,\bj})=(F_{\bi}h)(x_{\bi,\bj}) \; \text{ if } x_{\bi,\bj}\in\mathcal{Z}_{i_1}, 
+(G_ih)(x)\coloneqq g'_i(x)\cdot h(g_i(x)) + \frac{g''_i(x)}{g'_i(x)}.
 \end{equation*}
-likewise, $(G_{\bj}h)(x_{\bi,\bj})=(F_{\bj}h)(x_{\bi,\bj})$ if $x_{\bi,\bj}\in\mathcal{Z}_{j_1}$. On
-the other hand, {\color{red}not quite precise}
+
+By \cref{prop:AnalyticBumpFunc}, if $(\bi,\bj)\in\mathcal{B}_n$ is not bad then $x_{\bi,\bj}\in\mathcal{Z}_{i_1}$ and $x_{\bi,\bj}\in\mathcal{Z}_{j_1}$. Hence,
 \begin{equation*}
+(G_{\bi}h)(x_{\bi,\bj})=(F_{\bi}h)(x_{\bi,\bj}) \text{ and } (G_{\bj}h)(x_{\bi,\bj})=(F_{\bj}h)(x_{\bi,\bj})\text{ for every }h\in\mathcal{C}_\epsilon^\omega([0,1]),
+\end{equation*}
+and in particular, $\mathrm{conv}\big((G_{\bi}k)(x_{\bi,\bj}), (G_{\bi}K)(x_{\bi,\bj})\big) \cap \mathrm{conv}\big((G_{\bj}k)(x_{\bi,\bj}),
+(G_{\bj}K)(x_{\bi,\bj})\big)=\varnothing$, or equivalently, $G_{\bi}(k,K)\cap G_{\bj}(k,K)=\varnothing$.
+
+Let us now suppose that $(\bi,\bj)\in\mathcal{B}_n$ is bad. Without loss of generality, we may assume that $x_{\bi,\bj}\in\mathcal{Y}_{i_1}$ and $x_{\bi,\bj}\in\mathcal{Z}_{j_1}$. Then
+\begin{equation*}
+	(F_{\bi_2^{|\bi|}}h)(f_{i_1}(x_{\bi,\bj}))=(G_{\bi_2^{|\bi|}}h)(g_{i_1}(x_{\bi,\bj})) \text{ and } (F_{\bj}h)(x_{\bi,\bj})=(G_{\bj}h)(x_{\bi,\bj})\text{ for every }h\in\mathcal{C}_\epsilon^\omega([0,1]),
+\end{equation*}
+and so,
+\begin{equation}\label{eq:finstep}
 \big|(G_{\bi}h)(x_{\bi,\bj})-(F_{\bi}h)(x_{\bi,\bj})\big| = \left|
 \frac{g_{i_1}''(x_{\bi,\bj})}{g_{i_1}'(x_{\bi,\bj})} -
-\frac{f_{i_1}''(x_{\bi,\bj})}{f_{i_1}'(x_{\bi,\bj})} \right|\geq \delta \; \text{ if }
-x_{\bi,\bj}\in\mathcal{Y}_{i_1},
-\end{equation*}
-and similarly, $\big|(G_{\bj}h)(x_{\bi,\bj})-(F_{\bj}h)(x_{\bi,\bj})\big|\geq \delta$ if
-$x_{\bi,\bj}\in\mathcal{Y}_{j_1}$. The choice of $\delta$ implies that regardless of whether
-$(\bi,\bj)\in\mathcal{B}_n$ is bad or not we can conclude that $G_{\bi}(k,K)\cap
-G_{\bj}(k,K)=\varnothing$. Therefore, $\{G_i\}_{i=1}^N$ satisfies the SSP, hence, $\{g_i\}_{i=1}^N$
-satisfies the SESC by~\cref{thm:main}. Moreover,
-$\|f_i-g_i\|_{\mathcal{C}^2}<3\delta=3c_{\max}^n(K-k)$ which can be made arbitrarily small by
-choosing $n$ large enough. This concludes the proof of~\cref{thm:ESCOpenDense}.   
+\frac{f_{i_1}''(x_{\bi,\bj})}{f_{i_1}'(x_{\bi,\bj})} \right|\geq \delta\text{ for every }h\in\mathcal{C}_\epsilon^\omega([0,1]).
+\end{equation}
+Since $\mathrm{conv}\left((F_{\bj}k)(x_{\bi,\bj}),(F_{\bj}K)(x_{\bi,\bj})\right)=\mathrm{conv}\left((G_{\bj}k)(x_{\bi,\bj}),(G_{\bj}K)(x_{\bi,\bj})\right)$ has length strictly less than $\delta/3$, and $(F_{\bi}h)(x_{\bi,\bj})\in\mathrm{conv}\left((F_{\bj}k)(x_{\bi,\bj}),(F_{\bj}K)(x_{\bi,\bj})\right)$, \cref{eq:finstep} implies that 
+$$
+\mathrm{dist}\left((G_{\bi}k)(x_{\bi,\bj})),\mathrm{conv}\left((G_{\bj}k)(x_{\bi,\bj}),(G_{\bj}K)(x_{\bi,\bj})\right)\right)>2\delta/3. 
+$$
+On the other hand, $|(G_{\bi}k)(x_{\bi,\bj}))-(G_{\bi}K)(x_{\bi,\bj}))|\leq c_{\max}^n(K-k)<\delta/3$, and so 
+$$
+\mathrm{dist}\left((G_{\bi}K)(x_{\bi,\bj})),\mathrm{conv}\left((G_{\bj}k)(x_{\bi,\bj}),(G_{\bj}K)(x_{\bi,\bj})\right)\right)>\delta/3. 
+$$
+This clearly implies that  $G_{\bi}(k,K)\cap G_{\bj}(k,K)=\varnothing$. Finally, \cref{thm:ESCOpenDense} concludes by \cref{lem:SSCEequiv}.   
+\end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Proof of~\cref{thm:SubConjugation}}\label{sec:ProofConjugation}
+\section{Conjugation to self-similar IFS}\label{sec:ProofConjugation}
 
-Assume that $\Phi=\{f_i\}_{i\in\Sigma_1}$ is a uniformly contracting analytic IFS whose attractor is
-not a singleton. Suppose $i\in\Sigma_1$ and write $i^{n}=\underbrace{ii\ldots i}_{n \text{ times}}$
-for $n\in\mathbb{N}\cup\{\infty\}$. Then
-\[
-H_{i^{\infty}}(x)=\sum_{k=0}^\infty\frac{f_i''}{f_i'}(f_{i^k}(x))\cdot f'_{i^k}(x)
-\]
-by definition~\cref{eq:H_i(x)}. Assuming that the fixed point of $f_i$ is $p$, we can integrate
-\[
-\int_p^x H_{i^{\infty}}(y)dy=\sum_{k=0}^\infty\left(\log\left(f'_i(f_{i^k}(x))\right)-\log
-f_i'(p)\right)=\log\left(\prod_{k=0}^\infty\frac{f'_i(f_{i^k}(x))}{f'_i(p)}\right),
-\]
-by analyticity, hence,
-\[
-e^{\int_p^x H_f(y)dy}=\lim_{n\to\infty}\frac{f'_{i^n}(x)}{(f_i'(p))^n}.
-\]
-We now define the analytic function
-\[
-g(x)\coloneqq\int_p^xe^{\int_p^z H_{i^{\infty}}(y)dy}dz=\lim_{n\to\infty}\frac{f_{i^n}(x)-p}{(f_i'(p))^n}.
-\]
-Observe that $g(p)=0$ and $g'(p)=1$, moreover, $g$ is the solution of the second-degree ordinary
-differential equation
-\[
-g''(x)=H_{i^{\infty}}(x)g'(x).
-\]
-We claim that conjugation of $f_i$ by $g$ is an affine map, \ie $g(f_i(x))=r\cdot g(x)+t$ for some
-$r\neq0$ and $t\in\bbR$. Indeed,
-\begin{equation*}
-g(f_i(x)) = \lim_{n\to\infty}\frac{f_{i^{n+1}}(x)-p}{(f_i'(p))^n} = f_i'(p)\cdot g(x).
-\end{equation*}
-More generally, letting $\hat{g}(x)=a\cdot g(x)+b$ for some $a\neq0$ and $b\in\bbR$, then
-\[
-\hat{g}(f_i(x))=a\cdot g(f_i(x))+b=a\cdot f_i'(p) g(x)+b=f_i'(p)\cdot \hat{g}(x)+b(1-f_i'(p)).
-\]
-Thus, $f_i$ is conjugated to the linear map $x\mapsto f_i'(p)\cdot x+b(1-f_i'(p))$ for any value of
-$b$. Conjugating the IFS $\Phi$ with $\hat{g}$ establishes the first assertion
-of~\cref{thm:SubConjugation}.
+%In terms of the dual IFS, for an analytic IFS $\Phi$ to be conjugated to a self-similar IFS means
+%precisely that its dual attractor $\Lambda^*$ is a single analytic function $H$. If $\Phi$ is a
+%self-similar IFS to begin with, then $H\equiv 0$, otherwise $H$ can be different. {\color{red} What
+%	happens to conjugation of $H_{\bi}$?} 
 
-We prove the remaining two claims of~\cref{thm:SubConjugation} separately. {\color{red} Needs work
-(left it as was written down earlier)}
+Let $f\in\mathcal{S}_\epsilon^\omega([0,1])$ be arbitrary but fixed. Along the lines of \cref{eq:H_i(x)}, let us define the map
+\begin{equation}\label{eq:H}
+\hat{H}_f(x)\coloneq\sum_{k=0}^\infty\frac{f''}{f'}(f^{\circ k}(x))\cdot (f^{\circ k})'(x),
+\end{equation}
+where $f^{\circ k}$ denotes the self-composition of $f$ $k$-times. Analogously to the proof of \cref{thm:H_iAnalytic}, $\hat{H}\in\mathcal{C}^\omega_\epsilon([0,1])$. 
 
-\begin{proof}[Proof of~\cref{thm:SubConjugation} part $1$]
-One direction
+Let us begin the proof of \cref{thm:SubConjugation} with the following observation.
 
-Let $\{f_i\}_{i}$ be an IFS such that $H_{f_i}\equiv H_{f_j}\equiv H$ for every $i\neq j$. Let $p_i$
-be the fixed point of $f_i$, and let
-$g$ be an arbitrary solution of the equation $g''=Hg'$. Then
-$$
-g(f_i(x))=f_i'(p_i)x+g(p_i)(1-f_i'(p_i)).
-$$
+\begin{lemma}\label{lem:conj0}
+	Let $f\in\mathcal{S}_\epsilon^\omega([0,1])$. Then for every $a,b\in\mathbb{R}$ there exists an invertible map $g\in\mathcal{C}^\omega_\epsilon([0,1])$ such that $g''(x)=\hat{H}_f(x)g'(x)$, $g(p)=a$ and $g'(p)=b$, where $p$ is the unique fixed point of $f$ in $[0,1]$ and $\hat{H}_f$ is defined in \cref{eq:H}. 
+	
+	Moreover, for every $g\colon[0,1]\to\mathbb{R}$ such that $g''(x)\equiv \hat{H}_f(x)g'(x)$
+	$$
+	g(f(x))=f'(p)g(x)+g(p)(1-f'(p)).
+	$$
+\end{lemma}
 
-Other direction
+\begin{proof}
+	Using the analyticity of $\hat{H}$, we get that the map
+	$g(x)=a\int_p^xe^{\int_p^z \hat{H}(y)dy}dz+b$ is in $\mathcal{C}^\omega_\epsilon([0,1])$ with $g(p)=a$ and $g'(p)=b$.
+	
+	Now, integrating $\hat{H}$	
+	\[
+	\int_p^x \hat{H}(y)dy=\sum_{k=0}^\infty\left(\log\left(f'(f^{\circ k}(x))\right)-\log
+	f'(p)\right)=\log\left(\prod_{k=0}^\infty\frac{f'(f^{\circ k}(x))}{f'(p)}\right).
+	\]
+	Moreover, letting
+	\[
+	\hat{g}(x)\coloneqq\int_p^xe^{\int_p^z \hat{H}(y)dy}dz,
+	\]
+	and using the previous equation, we get that 
+	\begin{equation}\label{eq:ghat}
+	\hat{g}(x)=\lim_{n\to\infty}\frac{(f^{\circ n})(x)-p}{(f'(p))^n}
+	\end{equation}
+	is also analytic. 
+	
+	Using \cref{eq:ghat}, it is easy to see that $\hat{g}(f(x))\equiv f'(p)\hat{g}(x)$. Also, for any map $g$ with $g''(x)\equiv \hat{H}_f(x)g'(x)$, we have $g(x)\equiv g'(p)\hat{g}(x)+g(p)$ for every $x\in[0,1]$. Thus,
+	\[
+	g(f(x))=g'(p)\cdot \hat{g}(f(x))+g(p)=g'(p)\cdot f'(p) \hat{g}(x)+g(p)=f'(p)\cdot g(x)+g(p)(1-f'(p)),
+	\]
+	which had to be proven.
+\end{proof}
 
-	Let $p_{\bi}$ be the fixed point of $f_{\bi}$ for some $\bi\in\Sigma_*$. Then,
+\begin{proof}[Proof of~\cref{thm:SubConjugation}]
+	Let $\Phi=(f_i)_{i\in\mathcal{I}}\in\mathfrak{S}_N$. The first assertion of \cref{thm:SubConjugation} follows by applying \cref{lem:conj0} for $f_1$ and considering the IFS $(g\circ f_i\circ g^{-1})_{i\in\mathcal{I}}$.
+	
+	The assertion \cref{it:conj2} of \cref{thm:SubConjugation} clearly follows by \cref{it:conj1}, so we finish the proof by showing \cref{it:conj1}.
+	
+	Let $\Phi=(f_i)_{i\in\mathcal{I}}\in\mathfrak{S}_N$. First, suppose that $H(x)\coloneqq H_{\bi}(x)\equiv H_{\bj}(x)$ for every $\bi,\bj\in\Sigma$, where $H_{\bi}$ is the dual natural projection defined in \cref{eq:H_i(x)}. Then $H(x)=H_{(i)^{\infty}}=\hat{H}_{f_i}$ for every $i\in\mathcal{I}$. Hence, by \cref{lem:conj0} there exists $g\colon[0,1]\to\mathbb{R}$ analytic such that $g''(x)\equiv H(x)g'(x)$, and $g(f_i(x))=f_i'(p_i)g(x)+g(p_i)(1-f_i'(p_i))$ for every $i\in\mathcal{I}$, where $f_i(p_i)=p_i$.
+	
+	Finally, let us suppose that $\Phi=(f_i)_{i\in\mathcal{I}}\in\mathfrak{S}_N$ is conjugated to a self-similar IFS $(x\mapsto \lambda_ix+t_i)_{i\in\mathcal{I}}$ by the invertible analytic map $g\colon[0,1]\to\mathbb{R}$. Let $p_{\bi}$ be the fixed point of $f_{\bi}$ for every $\bi\in\Sigma_*$. 
+	Then,
 \[
 g(f_{\bi}(x)) = \lambda_{\bi} g(x) + t_{\bi}
 \quad\text{and}\quad
@@ -1897,37 +1975,31 @@ g'(f_{\bi}(x))\cdot f_{\bi}'(x) = \lambda_{\bi} g'(x)
 Since $|g'(p_{\bi})|>0$ we must have $f'_{\bi}(p_{\bi}) = \lambda_{\bi}$.
 Differentiating again we get
 \[
-g''(f_{\bi}(x))\cdot f'_{\bi}(x)^2 +g'(f_{\bi}(x))\cdot f''_{\bi}(x) = \lambda_{\bi} g''(x)
+g''(f_{\bi}(x))\cdot f'_{\bi}(x)^2 +g'(f_{\bi}(x))\cdot f''_{\bi}(x) = \lambda_{\bi} g''(x)\text{ for every }x\in[0,1]
 \]
-and
+and by Using \cref{eq:H=f''/f'}, we have that
 \[
 \frac{g''(p_{\bi})}{g'(p_{\bi})} =
 \frac{f_{\bi}''(p_{\bi})}{f_{\bi}'(p_{\bi})(1-f'_{\bi}(p_{\bi}))}
-=\frac{H_{\bbi}(p_{\bi})}{1-f'_{\bi}(p_{\bi})}.
+=\frac{H_{\bi_{|\bi|}^1}(p_{\bi})}{1-f'_{\bi}(p_{\bi})}.
 \]
-Now let $\bi,\bj\in\Sigma$ be arbitrary but fixed. Let $\bk_n = \bi|_n \bbj|_n$, where $\bbj|_n =
-j_nj_{n-1}\dots j_1$.
-Then $p_{\bk_n}\to \pi(\bi)$ as $n\to\infty$ and so
+Now, let $\bi,\bj\in\Sigma$ be arbitrary but fixed, and let $\bk_n = \bi_1^{n} \bj_n^1$. Then $p_{\bk_n}\to \pi(\bi)$ as $n\to\infty$, where we recall that $\pi\colon\Sigma\to\mathbb{R}$ is the natural projection of $\Phi$. Furthermore, by \cref{thm:H_iAnalytic} and by $f'_{\bk_n}(p_{\bk_n})\to0$ as $n\to\infty$
 \[
 \frac{g''(p_{\bk_n})}{g'(p_{\bk_n})}
-=\frac{H_{\bj|_n \bbi|_n}(p_{\bk_n})}{1-f'_{\bk_n}(p_{\bk_n})}
+=\frac{H_{\bj_1^n \bi_n^1}(p_{\bk_n})}{1-f'_{\bk_n}(p_{\bk_n})}
 \to
 H_{\bj}(\pi(\bi))\quad \text{as}\quad n\to\infty.
 \]
-However, the left-hand side converges to $g''(\pi(\bi))/g'(\pi(\bi))$ and so we get $H_{\bj}(x) =
-H_{\bk}(x)$ for any choice of $\bj,\bk$. Since $\bi$ was also arbitrary, we get $H_{\bj}(x) =
-H_{\bk}(x)$ on an uncountable set and by analyticity, $H_{\bi}(x)\equiv H_{\bk}(x)$ for all $x\in I$
-and all $\bj,\bk\in \Sigma\cup \Sigma_*$.
+However, the left-hand side converges to $g''(\pi(\bi))/g'(\pi(\bi))$, and so, we get 
+$$
+\frac{g''}{g'}(\pi(\bi))=H_{\bj}(\pi(\bi))
+$$
+for every $\bi,\bj\in\Sigma$. In particular, $H_{\bj}(\pi(\bi))=H_{\bk}(\pi(\bi))$ for every $\bi,\bj,\bk\in\Sigma$. Since the attractor of $\Phi$ is not a singleton (i.e. uncountable), the maps $H_{\bj}$ are analytic, we have that $H_{\bj}(x)\equiv H_{\bk}(x)$ for all $\bj,\bk\in \Sigma$.
 \end{proof}
 
-\begin{proof}[Proof of~\cref{thm:SubConjugation} part $2$]
-
-
-By considering subsystems, we may assume without loss of generality that $\Phi =
-\{f_i\}_{i\in\Sigma_1}$ is conjugated to a self-similar IFS.
-We show that $H_{\bi}(x) \equiv H_{\bj}(x)$ for all $\bi,\bj\in\Sigma$.
+\begin{proof}[Proof of \cref{thm:DualConj}]
+	The claim follows by \cref{thm:SubConjugation} and \cref{thm:H_iAnalytic}.
 \end{proof}
-
 
 \bibliographystyle{abbrv}
 \bibliography{biblio_ConfESC}
