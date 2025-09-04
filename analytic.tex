@@ -301,10 +301,9 @@ pagebackref=true]{hyperref}
 
 \title{On exponential separation of analytic self-conformal sets on the real line}
 
-\author{Bal\'azs B\'ar\'any\footnote{BB acknowledges support from grant NKFI~K142169, and grant NKFI KKP144059 "Fractal geometry and applications" Research Group.}\\(BME) \and Istv\'an
-  Kolossv\'ary\footnote{IK is supported by the European Research Council Marie Sk\l odowska--Curie Actions Postdoctoral Fellowship $\#101109013$ and the Hungarian NRDI Office grant K142169.}\\ (R\'enyi Institute) \and Sascha
-Troscheit\footnote{ST acknowledges travel funding from the Lisa \& Carl--Gustav Esseens Mathematics
-Fund.} \\(Uppsala)}
+\author{Bal\'azs B\'ar\'any\\(BME) \and Istv\'an
+  Kolossv\'ary\\ (R\'enyi Institute) \and Sascha
+Troscheit \\(Uppsala)}
 \date{\today}
 
 
@@ -334,11 +333,11 @@ H-1111 Budapest, Hungary.}\par\nopagebreak
 \frenchspacing
 \maketitle
 
-{\color{red}
-How can keywords, MSC appear at bottom footnote in this style? Should funding be taken to the end with an Acknowledgemnet section? \\
-2020 Mathematics Subject Classification.  Primary 28A80; Secondary 37C45 \\
-Key words and phrases. Analytic iterated function system, exponential separation condition, dimension drop conjecture, dual IFS, conjugation to self-similar IFS, ?? 
-}
+%{\color{red}
+%How can keywords, MSC appear at bottom footnote in this style? Should funding be taken to the end with an Acknowledgemnet section? \\
+%2020 Mathematics Subject Classification.  Primary 28A80; Secondary 37C45 \\
+%Key words and phrases. Analytic iterated function system, exponential separation condition, dimension drop conjecture, dual IFS, conjugation to self-similar IFS, ?? 
+%}
 
 \begin{abstract}
 In a recent preprint Rapaport showed that the there is no dimension drop for
@@ -352,25 +351,6 @@ self-similar IFS.
 \end{abstract}
 
 
-%{{\color{blue}
-%\textbf{Things to do:}
-%MSC2020 classification, keywords, funding. Some minor adjustments and
-%\begin{description}
-%\item[\cref{sec:intro}] Introduce notation for conformal IFS, affine and analytic map, dim of
-%  measure, self-conformal measure at start. Define $\mathcal{C}^2$ topology. Give motivation for why
-%  conjugation is important. 
-%\item Prove~\cref{lem:ExistanceAttractor}. Remark about attractor on more general spaces?
-%  We need to prove \cref{lem:SSCEequiv}. Finish proof of~\cref{thm:H_iAnalytic}. 
-%\item[\cref{sec:ProofSufficientCond}] In proof of~\cref{thm:main} deal with $|\bu^{(n_\ell)}| \to
-%  \infty$ case using~\cref{lem:SSCEequiv}.
-%\item[\cref{sec:ProofESCOpenDense}] In proof of~\cref{thm:ESCOpenDense}, open property needs to be
-%  written down and dense property needs some polishing.
-%\item[\cref{sec:ProofConjugation}] Argument for equivalences in proof of~\cref{thm:SubConjugation}
-%  need to be written down.
-%\end{description}
-%}
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %	INTRODUCTION
@@ -378,7 +358,7 @@ self-similar IFS.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Introduction and main results} \label{sec:intro}
+\section{Introduction and main results}
 The geometric properties of attractors of iterated function systems have been extensively studied in recent
 decades.
 An iterated function system (IFS) $\Phi$ is a finite collection of strictly contracting self-maps
@@ -454,17 +434,26 @@ separation condition to general
 analytic self-conformal iterated function systems. Furthermore, under this condition, Rapaport
 showed that the dimension of the set and the measure does not drop.
 For analytically parametrised systems of analytic self-conformal IFSs, Rapaport verified that the
-ESC holds for almost every choice of parameter in the sense of packing dimension {\color{red}Is this not just Hausdorff? See\cite[Corollay 1.4]{Rapaport_SelfConfESC25arXiv}}.
+ESC holds for almost every choice of parameter in the sense of Hausdorff dimension.
+%{\color{red}Is this not just Hausdorff? See\cite[Corollay 1.4]{Rapaport_SelfConfESC25arXiv}}.
 However, he could not provide any concrete examples other than those already known.
 
-The {\color{red} main? (there are other purposes as well)} purpose of this article is to provide verifiable sufficient conditions that guarantee that the
+The main purpose of this article is to provide verifiable sufficient conditions that guarantee that the
 ESC holds. Further, we show that this property holds for an open and dense set of IFSs with respect to the
-$\mathcal{C}^2$ topology. {\color{red} Should we also mention conjugation to self-sim? or that doesn't fit with the narrative here}
+$\mathcal{C}^2$ topology. We will also explore when analytic self-conformal IFS can be conjugated to
+self-similar systems.
+%{\color{red} Should we also mention conjugation to self-sim? or that doesn't fit with the narrative here}
+
+\paragraph{Acknowledgements.} BB acknowledges support from grant NKFI~K142169, and grant NKFI
+KKP144059 \textit{Fractal geometry and applications} Research Group. IK is supported by the European
+Research Council Marie Sk\l odowska-Curie Actions Postdoctoral Fellowship $\#101109013$ and the
+Hungarian NRDI Office grant K142169. ST acknowledges funding from the Lisa \& Carl-Gustav
+Esseens Mathematics Fund.
 
 \subsection{Notations and main results}
 For convenience we write $I=[0,1]$.
 Throughout, we fix $\epsilon>0$ and  we define the class $\mathcal{S}^\omega_\epsilon(I)$
-consisting of maps $f:\mathbb{R}\to\mathbb{R}$ with the following properties: {\color{red} Is this meant to be the same as $\mathcal{C}^\omega_\epsilon(I)$ at start of section 2.1? If so, should stay consistent}
+consisting of maps $f:\mathbb{R}\to\mathbb{R}$ with the following properties:
 \begin{enumerate}[a)]
   \item\label{it:a} $f$ is complex analytic in the open $\epsilon$ complex neighbourhood
     $\mathcal{B}_{2\epsilon}$ of  $I$,
@@ -482,7 +471,7 @@ and separable space.
 We also consider the space $\mathfrak{S}_N$ of cardinality $N$ IFSs $\Phi=(f_i)_{i=1}^N$ of maps $f_i\in
 \mathcal{S}^\omega_\epsilon([0,1])$. With slight abuse of notation, let
 $$
-d_2((f_i)_{i=1}^N,(g_i)_{i=1}^N)\coloneqq\max_{i\in\mathcal{I}}d_2(f_i,g_i) {\color{red} \text{ should this be over } i,j \text{ indices separately?}}
+d_2((f_i)_{i=1}^N,(g_i)_{i=1}^N)\coloneqq\max_{i,j\in\mathcal{I}}d_2(f_i,g_j)
 $$
 be the $\mathcal{C}^2$ metric on the space of IFSs $\mathfrak{S}_N$.
 
@@ -560,8 +549,7 @@ main result says that the property that an analytic IFS satisfies the SESC is a 
 a topological sense.
 
 \begin{theorem}\label{thm:ESCOpenDense}
-  The set of IFSs $\{\Phi \colon \Phi\text{ satisfies SESC}\}\subseteq \mathfrak{S}_N$ satisfying the
-  SESC {\color{red} Do we need to repeat SESC?} contains an open and
+  The set of IFSs $\{\Phi \colon \Phi\text{ satisfies SESC}\}\subseteq \mathfrak{S}_N$ contains an open and
   dense subset in the $\mathcal{C}^2$ topology.
 \end{theorem}
 Our second main result provides a sufficient condition under which an analytic IFS satisfies the
@@ -583,8 +571,9 @@ and $\bi_m^0$ are the empty word $\emptyset$. By default, if we simply write
 $\bi\in\Sigma_*\cup\Sigma$ then the subscripts are understood to be in increasing order starting
 from 1 until $|\bi|$. The concatenation of two finite words is $\bi\bj$, while slightly abusing
 notation $\bi^{\infty}\in \Sigma$ is the infinite word obtained by concatenating $\bi\in\Sigma_*$
-infinitely many times. We define the cylinder sets {\color{red} Are they actually used anywhere? Doesn't seem so..}
-$$[\bi_m^n] \coloneqq \big\{\bj\in\Sigma :\, \bj_1^{|m-n|+1} = \bi_m^n\big\}.$$  
+infinitely many times. 
+%We define the cylinder sets {\color{red} Are they actually used anywhere? Doesn't seem so..}
+%$$[\bi_m^n] \coloneqq \big\{\bj\in\Sigma :\, \bj_1^{|m-n|+1} = \bi_m^n\big\}.$$  
 For any $\bi\in \Sigma\cup\Sigma_*$, we introduce the function 
 \begin{equation}\label{eq:H_i(x)}
 H_{\bi}(x)=H_{\bi_{1}^{|\bi|}}(x) \coloneqq \sum_{n=1}^{|\bi|}
@@ -674,7 +663,8 @@ sense, has no dimension drop.
 Another potential direction to consider is that of $L^q$ dimensions, a more fine-grained notion that
 captures the measure's regularity.  Building on the methods of~\cite{Hochman_SelfSimESC_Annals},
 Shmerkin~\cite{Shmerkin_LqSelfSim_Annals} showed that a natural analogue of \cref{thm:RapaportMain}
-exists for the $L^q$ dimension of self-similar measures. {\color{red} Is there anything to say about self-conformal measures? Otherwise it feels a bit like just hanging out there but not going anywhere}
+exists for the $L^q$ dimension of self-similar measures.
+%{\color{red} Is there anything to say about self-conformal measures? Otherwise it feels a bit like just hanging out there but not going anywhere}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Concrete examples}\label{sec:examples}
@@ -762,9 +752,6 @@ IFS of linear fractional transformations with such a common fixed point structur
 However, he studied the dimension of the attractor via sufficiently large subsystems, and it was not
 verified that the IFS itself satisfies the ESC.
 
-%{\color{red} Do we want to try to calculate/approximate the conformal similarity dimension of the
-%attractor?}
-
 
 %\subsubsection{Dimension theoretic consequences revisited}
 %
@@ -819,7 +806,7 @@ In particular, $\Phi$
 f_{j}(x) = g^{-1}(\lambda_j g(x) + t_j)
 \]
 for all $j\in\mathcal{I}$.
-\begin{definition}\label{def:subconjugation}
+\begin{definition}
   We say that the IFS $\Phi = (f_i)_{i\in\mathcal{I}} \in\mathfrak{S}_N$ is 
   \emph{sub-conjugated} to a self-similar IFS if there exist distinct words $\bi,\bj\in\Sigma_*$ of
   the same length such that $\{f_{\bi},f_{\bj}\}$ is conjugated to a self-similar IFS.
@@ -1081,12 +1068,12 @@ f'_{\bi_{|\bi|-1}^1}(x) \cdot
 \frac{f''_{i_{|\bi|}}}{f'_{i_{|\bi|}}}(f_{\bi_{|\bi|-1}^1}(x))-
 g'_{\bi_{|\bi|-1}^1}(x) \cdot 
 \frac{g''_{i_{|\bi|}}}{g'_{i_{|\bi|}}}(g_{\bi_{|\bi|-1}^1}(x))\right|\\
-&\qquad\leq C |f'_{\bi_{|\bi|-1}^1}(x)-g'_{\bi_{|\bi|-1}^1}(x)|+c_{\max}^{|\bi|-1}\left|
+&\leq C |f'_{\bi_{|\bi|-1}^1}(x)-g'_{\bi_{|\bi|-1}^1}(x)|+c_{\max}^{|\bi|-1}\left|
 \frac{f''_{i_{|\bi|}}}{f'_{i_{|\bi|}}}(f_{\bi_{|\bi|-1}^1}(x))-
 \frac{g''_{i_{|\bi|}}}{g'_{i_{|\bi|}}}(g_{\bi_{|\bi|-1}^1}(x))\right|\\
-&\qquad\leq C |f'_{\bi_{|\bi|-1}^1}(x)-g'_{\bi_{|\bi|-1}^1}(x)|+c_{\max}^{|\bi|-1}\left(C\left|f_{\bi_{|\bi|-1}^1}(x)-
-g_{\bi_{|\bi|-1}^1}(x)\right|+\left|\frac{f_{i}''}{f_i'}(g_{\bi_{|\bi|-1}^1}(x))-\frac{g_{i}''}{g_i'}(g_{\bi_{|\bi|-1}^1}(x))\right|\right)\\
-&\qquad\leq\left(\frac{C(C+1)+C}{1-c_{\max}}+\frac{c_{\max}+C}{c_{\min}}\right)c_{\max}^{|\bi|-1}d_2(\Phi,\Psi).
+&\leq C |f'_{\bi_{|\bi|-1}^1}(x)-g'_{\bi_{|\bi|-1}^1}(x)|+c_{\max}^{|\bi|-1}\left(C\left|f_{\bi_{|\bi|-1}^1}(x)-
+g_{\bi_{|\bi|-1}^1}(x)\right|\hspace{-1pt}+\hspace{-1pt}\left|\frac{f_{i}''}{f_i'}(g_{\bi_{|\bi|-1}^1}(x))-\frac{g_{i}''}{g_i'}(g_{\bi_{|\bi|-1}^1}(x))\right|\right)\\
+&\leq\left(\frac{C(C+1)+C}{1-c_{\max}}+\frac{c_{\max}+C}{c_{\min}}\right)c_{\max}^{|\bi|-1}d_2(\Phi,\Psi).
 \end{align*}
 In particular, there exists $C'>0$ depending on $\Phi$ such that
 \begin{equation}\label{eq:conteq}
@@ -1446,8 +1433,12 @@ $\{x_{\bi,\bj}\}_{(\bi,\bj)\in\mathcal{B}_n}\subseteq[0,1]$ such that
 \end{lemma}
 
 \begin{proof}
-Order the elements of $\mathcal{B}_n$ by $(\bi^{(k)},\bj^{(k)})=(i_1^{(k)},\ldots,
-i_n^{(k)};j_1^{(k)},\ldots,j_n^{(k)})$ with $k=1,\ldots,\#\mathcal{B}_n$. The points are constructed
+We first establish an order on the elements of $\mathcal{B}_n$ by setting
+\[
+  (\bi^{(k)},\bj^{(k)})=(i_1^{(k)},\ldots,
+i_n^{(k)};j_1^{(k)},\ldots,j_n^{(k)}),
+\]
+where $k=1,\ldots,\#\mathcal{B}_n$. The points are constructed
 inductively. If $(\bi^{(1)},\bj^{(1)})$ is not bad then by definition there exists an $\hat
 x_{(\bi^{(1)},\bj^{(1)})}$ for which $(a)$ holds. Since $(a)$ is an open condition, there exists an
 $x_{(\bi^{(1)},\bj^{(1)})}$ in the neighborhood of $\hat x_{(\bi^{(1)},\bj^{(1)})}$ for which $(b)$
@@ -1484,8 +1475,9 @@ induction.
 \end{proof}
 
 \begin{proposition}\label{prop:AnalyticBumpFunc}
-Assume $f\in \mathcal{S}^{\omega}_\epsilon([0,1])$. Then there exists a constant $C>0$ such that for any two finite collection of points
-$\mathcal{Y}=\{y_1<\ldots<y_M\}\subseteq[0,1]^M$ and\linebreak $\mathcal{Z}=\{z_1<\ldots<
+Let $f\in \mathcal{S}^{\omega}_\epsilon([0,1])$. There exists a constant $C>0$ such that for
+any two finite collection of points
+$\mathcal{Y}=\{y_1<\ldots<y_M\}\subseteq[0,1]^M$ and $\mathcal{Z}=\{z_1<\ldots<
 z_Q\}\subseteq[0,1]^Q$ with $\mathcal{Y}\cap\mathcal{Z}=\varnothing$ we have the following: for
 every $\varepsilon>0$ and $\delta>0$ there exists an analytic function
 $g\in\mathcal{S}^{\omega}_\epsilon([0,1])$ such that
@@ -1850,7 +1842,9 @@ $(g_i)_{i\in\mathcal{I}}$ as in~\cref{eq:LiftedIFS} to obtain the dual IFS $(G_i
 IFS satisfies the SSC. Then~\cref{thm:ESCOpenDense} follows immediately from~\cref{thm:DualSSC} and \cref{lem:cont}.
 
 \begin{proof}[Proof of \cref{thm:ESCOpenDense}] 
-By \cref{thm:DualSSC}, it is enough to show that the set $\{\Phi\in\mathfrak{S}_N:\Phi^*\text{ satisfies the SSC}\}$ is open and dense in $\mathfrak{S}_N$ in with respect to the metric $d_2$. By \cref{lem:cont}, the set is open, and so, it is enough to show that it is dense.
+By \cref{thm:DualSSC}, it is enough to show that the set $\{\Phi\in\mathfrak{S}_N:\Phi^*\text{
+satisfies the SSC}\}$ is open and dense in $\mathfrak{S}_N$ in with respect to the metric $d_2$. The
+set is open by \cref{lem:cont} and so it is enough to show that it is dense.
 
 Let $\delta>0$ and $\Phi=(f_i)_{i\in\mathcal{I}}\in\mathfrak{S}_N$ be arbitrary but fixed. Choose $n\geq 1$ such that $c_{\max}^n(K-k)<\delta/3$, where $k<K$ is chosen such that $F_i(k,K)\subseteq(k,K)$ for every $i\in\mathcal{I}$, where $\Phi^*=(F_i)_{i\in\mathcal{I}}$ is the dual IFS of $\Phi$. Recall,
 $\mathcal{B}_n=\{(\bi,\bj)\in\Sigma_n\times\Sigma_n:\, i_1<j_1\}$. Let 
@@ -1860,8 +1854,16 @@ For every $i\in\mathcal{I}$, we define a partition of two elements $\{\mathcal{Y
 \mathcal{O}_{\bj}(x_{\bi,\bj})\big)$, where recall $\mathcal{O}_{\bi}(x)= \{x,f_{i_1}(x), f_{i_2i_1}(x),\ldots,f_{i_{|\bi|}\ldots
 	i_1}(x)\}$, as follows:
 \begin{itemize}
-	\item $x_{\bi,\bj}\in\mathcal{Y}_{i_1}$ and $x_{\bi,\bj}\in\mathcal{Z}_{j_1}$ if $(\bi,\bj)\in\mathcal{B}_n$ is bad and  $(F_{\bi}k)(x_{\bi,\bj})\in\mathrm{conv}\left((F_{\bj}k)(x_{\bi,\bj}),(F_{\bj}K)(x_{\bi,\bj})\right)$;
-	\item $x_{\bi,\bj}\in\mathcal{Z}_{i_1}$ and $x_{\bi,\bj}\in\mathcal{Y}_{j_1}$ if $(\bi,\bj)\in\mathcal{B}_n$ is bad and  $(F_{\bi}k)(x_{\bi,\bj})\notin\mathrm{conv}\left((F_{\bj}k)(x_{\bi,\bj}),(F_{\bj}K)(x_{\bi,\bj})\right)$;
+	\item $x_{\bi,\bj}\in\mathcal{Y}_{i_1}$ and $x_{\bi,\bj}\in\mathcal{Z}_{j_1}$ if
+	  $(\bi,\bj)\in\mathcal{B}_n$ is bad and  
+	  \[
+	    (F_{\bi}k)(x_{\bi,\bj})\in\mathrm{conv}\left((F_{\bj}k)(x_{\bi,\bj}),(F_{\bj}K)(x_{\bi,\bj})\right);
+	  \]
+	\item $x_{\bi,\bj}\in\mathcal{Z}_{i_1}$ and $x_{\bi,\bj}\in\mathcal{Y}_{j_1}$ if
+	  $(\bi,\bj)\in\mathcal{B}_n$ is bad and  
+	  \[
+	    (F_{\bi}k)(x_{\bi,\bj})\notin\mathrm{conv}\left((F_{\bj}k)(x_{\bi,\bj}),(F_{\bj}K)(x_{\bi,\bj})\right);
+	  \]
 	\item $x_{\bi,\bj}\in\mathcal{Z}_{i_1}$ and $x_{\bi,\bj}\in\mathcal{Z}_{j_1}$ if $(\bi,\bj)\in\mathcal{B}_n$ is not bad;
 	\item $y\in\mathcal{Z}_{i_1}$ and $y\in\mathcal{Z}_{j_1}$ for every $y\in\bigcup_{(\bi,\bj)\in\mathcal{B}_n} \big(\mathcal{O}_{\bi}(x_{\bi,\bj})\cup
 	\mathcal{O}_{\bj}(x_{\bi,\bj})\big)\setminus\{x_{\bi,\bj}\}$.
