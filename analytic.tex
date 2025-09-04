@@ -334,6 +334,12 @@ H-1111 Budapest, Hungary.}\par\nopagebreak
 \frenchspacing
 \maketitle
 
+{\color{red}
+How can keywords, MSC appear at bottom footnote in this style? Should funding be taken to the end with an Acknowledgemnet section? \\
+2020 Mathematics Subject Classification.  Primary 28A80; Secondary 37C45 \\
+Key words and phrases. Analytic iterated function system, exponential separation condition, dimension drop conjecture, dual IFS, conjugation to self-similar IFS, ?? 
+}
+
 \begin{abstract}
 In a recent preprint Rapaport showed that the there is no dimension drop for
 exponentially separated analytic IFSs on the real line. We show that the set of such exponentially
@@ -373,19 +379,18 @@ self-similar IFS.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction and main results} \label{sec:intro}
-The geometric properties of attractors of iterated function has been extensively studied in the last
+The geometric properties of attractors of iterated function systems have been extensively studied in recent
 decades.
-An iterated function system $\Phi$ is a finite collection of strictly contracting self-maps
-$(f_i)_{i\in\mathcal{I}}$ on a complete separable metric space $X$. By a result of Hutchinson
-\cite{Hutchinson_Attractor_81}, there exists a unique non-empty compact set $\Lambda$ satisfying the
+An iterated function system (IFS) $\Phi$ is a finite collection of strictly contracting self-maps
+$(f_i)_{i\in\mathcal{I}}$ on a complete separable metric space $X$. By a result of Hutchinson~\cite{Hutchinson_Attractor_81}, there exists a unique non-empty compact set $\Lambda$ satisfying the
 invariance
 \begin{equation}\label{eq:Hutchinson}
   \Lambda = \bigcup_{i\in\mathcal{I}} f_i(\Lambda).
 \end{equation}
-Similarly, one can consider measures invariant under this relation, in the following sense:
-Given a non-degenerate probability vector $\mathbf{p}=(p_i)_{i\in\mathcal{I}}$, \ie
+Similarly, one can consider measures invariant under this relation in the following sense.
+Given an IFS and a non-degenerate probability vector $\mathbf{p}=(p_i)_{i\in\mathcal{I}}$, \ie
 $\sum_{i\in\mathcal{I}}p_i=1$ and all $p_i>0$, there exists a unique Borel probability measure
-$\mu_{\mathbf{p}}$ with compact support such that
+$\mu_{\mathbf{p}}$ supported on $\Lambda$ such that
 \begin{equation}\label{eq:conformaMeasure}
 \mu_{\mathbf{p}}=\sum_{i \in \mathcal{I}} p_i \cdot \mu_{\mathbf{p}} \circ f_i^{-1}.
 \end{equation}
@@ -400,9 +405,9 @@ condition (OSC), and provided a formula for the dimension of the sets depending 
 contraction ratios of the similarities. In particular, the OSC holds under the stronger assumption
 of the strong separation condition (SSC). We say that the IFS $\Phi=(f_i)_{i\in \mathcal{I}}$
 satisfies the SSC if
-\begin{equation}\label{eq:SSC}
+\begin{equation*}%\label{eq:SSC}
   f_i(\Lambda)\cap f_j(\Lambda) = \varnothing\quad\text{whenever}\quad i\neq j.
-\end{equation}
+\end{equation*}
 Hutchinson also showed that this value provides an upper bound for
 the dimension regardless of the overlaps of images of $\Lambda$ under the $f_i$.  Bowen
 \cite{Bowen75} and Ruelle \cite{Ruelle2004} extended this result to attractors of
@@ -417,12 +422,12 @@ dimension drop conjecture) whether this is the only mechanism for a dimension dr
 Simon \cite{Simon1996}.  It was since verified that the conformality dimension coincides with the
 Hausdorff dimension, at least typically, for several notions of typicality.
 
-Simon, Solomyak, and Urba\'nski \cite{SimonSolomyakUrbanski1,SimonSolomyakUrbanski2} considered
-parametrised families of $C^{1+\alpha}$ and showed that under some technical assumptions
+Simon, Solomyak, and Urba\'nski \cite{SimonSolomyakUrbanski2,SimonSolomyakUrbanski1} considered
+parametrised families of $C^{1+\alpha}$ IFSs and showed that under some technical assumptions
 (transversality condition) there is no dimension drop for the set and measure for almost every
 parameter with respect to the Lebesgue measure. Relying on transversality methods, Simon and
 Solomyak \cite{SimonSolomyak02} showed that for self-similar sets the set of exceptions where a
-dimension drop occurs on a meagre set in the Baire category sense. 
+dimension drop occurs is a meagre set in the Baire category sense. 
 
 Other approaches, involving different notions of dimension or separation conditions were also
 considered, see
@@ -433,7 +438,7 @@ Henderson, Olson, and Robinson \cite{FHOR2015}; and Angelevska, K\"aenm\"aki, an
 A major breakthrough was made by Hochman \cite{Hochman_SelfSimESC_Annals} who showed that no
 dimension drop occurs for self-similar sets and measures on the line under the
 assumption of the exponential separation condition (ESC).
-The ESC is a condition that is satisfied under many natural assumption and also holds for many typical
+The ESC is a condition that is satisfied under many natural assumptions and also holds for many typical
 systems including those described above. 
 For instance, it was shown in~\cite{Hochman_SelfSimESC_Annals}
 that if the parameters defining the self-similar IFS $\Phi$ are algebraic and $\Phi$ has no exact
@@ -449,17 +454,17 @@ separation condition to general
 analytic self-conformal iterated function systems. Furthermore, under this condition, Rapaport
 showed that the dimension of the set and the measure does not drop.
 For analytically parametrised systems of analytic self-conformal IFSs, Rapaport verified that the
-ESC holds for almost every choice of parameter in the sense of packing dimension.
+ESC holds for almost every choice of parameter in the sense of packing dimension {\color{red}Is this not just Hausdorff? See\cite[Corollay 1.4]{Rapaport_SelfConfESC25arXiv}}.
 However, he could not provide any concrete examples other than those already known.
 
-The purpose of this article is to provide verifiable sufficient conditions that guarantee that the
+The {\color{red} main? (there are other purposes as well)} purpose of this article is to provide verifiable sufficient conditions that guarantee that the
 ESC holds. Further, we show that this property holds for an open and dense set of IFSs with respect to the
-$\mathcal{C}^2$ topology.
+$\mathcal{C}^2$ topology. {\color{red} Should we also mention conjugation to self-sim? or that doesn't fit with the narrative here}
 
-\subsection{Notations and Main Results}
+\subsection{Notations and main results}
 For convenience we write $I=[0,1]$.
-Throughout we fix $\epsilon>0$ and  we define the class of $\mathcal{S}^\omega_\epsilon(I)$
-consisting of maps $f:\mathbb{R}\to\mathbb{R}$ with the following properties:
+Throughout, we fix $\epsilon>0$ and  we define the class $\mathcal{S}^\omega_\epsilon(I)$
+consisting of maps $f:\mathbb{R}\to\mathbb{R}$ with the following properties: {\color{red} Is this meant to be the same as $\mathcal{C}^\omega_\epsilon(I)$ at start of section 2.1? If so, should stay consistent}
 \begin{enumerate}[a)]
   \item\label{it:a} $f$ is complex analytic in the open $\epsilon$ complex neighbourhood
     $\mathcal{B}_{2\epsilon}$ of  $I$,
@@ -472,12 +477,12 @@ We write
   d_2(f,g) = \sup_{x\in I} |f(x)-g(x)|+\sup_{x\in I} |f'(x)-g'(x)| +\sup_{x\in I} |f''(x)-g''(x)|,
 \]
 for the $\mathcal{C}^2$ metric and equip the space $\mathcal{S}^\omega_\epsilon(I)$ with the
-$\mathcal{C}^2$ topology induced by the $d_2$. We note that this space is Polish, i.e.\ a complete
+$\mathcal{C}^2$ topology induced by $d_2$. We note that this space is Polish, \ie a complete
 and separable space.
 We also consider the space $\mathfrak{S}_N$ of cardinality $N$ IFSs $\Phi=(f_i)_{i=1}^N$ of maps $f_i\in
 \mathcal{S}^\omega_\epsilon([0,1])$. With slight abuse of notation, let
 $$
-d_2((f_i)_{i=1}^N,(g_i)_{i=1}^N)\coloneq\max_{i\in\mathcal{I}}d_2(f_i,g_i)
+d_2((f_i)_{i=1}^N,(g_i)_{i=1}^N)\coloneqq\max_{i\in\mathcal{I}}d_2(f_i,g_i) {\color{red} \text{ should this be over } i,j \text{ indices separately?}}
 $$
 be the $\mathcal{C}^2$ metric on the space of IFSs $\mathfrak{S}_N$.
 
@@ -488,12 +493,12 @@ $\Sigma_0=\{\emptyset\}$ is just the empty word. The length of $\bi\in\Sigma_k$ 
 $\bi\in\Sigma$ it is $|\bi|=\infty$. We denote the set of all finite words by $\Sigma_* =
 \bigcup_{k=0}^\infty \Sigma_k$. For any finite word $(i_1,\dots,i_n)\in\Sigma_*$, we write
 \[
-f_{i_1,\dots,i_n}\coloneq f_{i_1}\circ \dots \circ f_{i_n},
+f_{i_1,\dots,i_n}\coloneqq f_{i_1}\circ \dots \circ f_{i_n},
 \]
 where by convention $f_{\emptyset}=\mathrm{Id}$. The natural projection $\pi\colon\Sigma\to\bbR$ defined by
-\[
+\begin{equation}\label{eq:natProj}
 \pi(\bi)\coloneqq\lim_{n\to\infty}f_{i_1,\dots,i_n}(0)
-\]
+\end{equation}
 satisfies $\pi(\Sigma)=\Lambda$, where $\Lambda$ is the attractor satisfying the invariance in
 \cref{eq:Hutchinson}. 
 Following Rapaport \cite{Rapaport_SelfConfESC25arXiv}, we formally define the exponential separation
@@ -506,7 +511,7 @@ condition for analytic self-conformal IFSs.
     \sup_{x\in[0,1]} |f_{\bi}(x)-f_{\bj}(x)| \geq c^n
   \]
   for all distinct $\bi,\bj\in\Sigma_n$. If the ESC does not hold,
-  then we say that $\Phi$ has \emph{super-exponential condensation}; 	
+  then we say that $\Phi$ has \emph{super-exponential condensation}.	
   %\ie there exists a sequence
   %$(\eta_n)_n$ such that $\log(\eta_n)/n\to-\infty$ with the property that
   %\[
@@ -556,7 +561,7 @@ a topological sense.
 
 \begin{theorem}\label{thm:ESCOpenDense}
   The set of IFSs $\{\Phi \colon \Phi\text{ satisfies SESC}\}\subseteq \mathfrak{S}_N$ satisfying the
-  SESC contains an open and
+  SESC {\color{red} Do we need to repeat SESC?} contains an open and
   dense subset in the $\mathcal{C}^2$ topology.
 \end{theorem}
 Our second main result provides a sufficient condition under which an analytic IFS satisfies the
@@ -578,7 +583,7 @@ and $\bi_m^0$ are the empty word $\emptyset$. By default, if we simply write
 $\bi\in\Sigma_*\cup\Sigma$ then the subscripts are understood to be in increasing order starting
 from 1 until $|\bi|$. The concatenation of two finite words is $\bi\bj$, while slightly abusing
 notation $\bi^{\infty}\in \Sigma$ is the infinite word obtained by concatenating $\bi\in\Sigma_*$
-infinitely many times. We define the cylinder sets
+infinitely many times. We define the cylinder sets {\color{red} Are they actually used anywhere? Doesn't seem so..}
 $$[\bi_m^n] \coloneqq \big\{\bj\in\Sigma :\, \bj_1^{|m-n|+1} = \bi_m^n\big\}.$$  
 For any $\bi\in \Sigma\cup\Sigma_*$, we introduce the function 
 \begin{equation}\label{eq:H_i(x)}
@@ -628,9 +633,8 @@ the Lyapunov exponent associated to $\mathbf{p}$ and $\Phi$,
 where $\mu_{\mathbf{p}}$ is the self-conformal measure defined in \cref{eq:conformaMeasure}.
 For $t\geq 0$, we define the pressure function
 \begin{equation*}
-P(t)=P_{\Phi}(t):=\lim _{n \rightarrow \infty} \frac{1}{n} \log \sum_{(i_1,\ldots,i_n) \in
-\mathcal{I}^n} \Big(\sup_{x\in[0,1]} \big|(f_{i_1}\circ \dots \circ
-f_{i_n})^{\prime}(x)\big|\Big)^t,
+P(t)=P_{\Phi}(t):=\lim _{n \rightarrow \infty} \frac{1}{n} \log \sum_{\bi \in
+\mathcal{I}^n} \Big(\sup_{x\in[0,1]} \big|(f_{\bi_1^n})^{\prime}(x)\big|\Big)^t,
 \end{equation*}
 which is well defined by sub-additivity. It is convex, strictly decreasing and continuous, moreover,
 there exists a unique real $s(\Phi)$ for which $P(s(\Phi))=0$.
@@ -646,7 +650,7 @@ For any self-conformal set and self-conformal measure supported on it, the bound
 \min\{1, H(\mathbf{p})/\chi\} \text{ for every } \mathbf{p},
 \end{equation} 
 hold, regardless of possible overlaps between the pieces $f_i(\Lambda)$.
-Here, we denote by $\dim_{\mathrm H}$ the Hausdorff dimension of a set an measure, see
+Here, we denote by $\dim_{\mathrm H}$ the Hausdorff dimension of a set and measure, see
 \cite{FalconerBook} for definitions and basic properties.
 
 Rapaport's main result of \cite{Rapaport_SelfConfESC25arXiv}
@@ -670,7 +674,7 @@ sense, has no dimension drop.
 Another potential direction to consider is that of $L^q$ dimensions, a more fine-grained notion that
 captures the measure's regularity.  Building on the methods of~\cite{Hochman_SelfSimESC_Annals},
 Shmerkin~\cite{Shmerkin_LqSelfSim_Annals} showed that a natural analogue of \cref{thm:RapaportMain}
-exists for the $L^q$ dimension of self-similar measures.
+exists for the $L^q$ dimension of self-similar measures. {\color{red} Is there anything to say about self-conformal measures? Otherwise it feels a bit like just hanging out there but not going anywhere}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Concrete examples}\label{sec:examples}
@@ -685,10 +689,10 @@ exceptional set of parameters or not.
 In the following, we give an easy to verify sufficient condition and demonstrate on
 an explicit analytic IFS that it satisfies the SESC. 
 
-Let
+Given an IFS $\Phi=(f_i)_{i\in\mathcal{I}}\in\mathfrak{S}_N$ let
 \begin{equation}\label{eq:maxmincontract}
-  c_{\min} := \inf\big\{ |f'(x)|:\, f\in\Phi, x\in[0,1] \big\} \quad\text{and}\quad
-  c_{\max}:=\sup\big\{ |f'(x)|:\, f\in\Phi, x\in[0,1] \big\}.
+  c_{\min} := \inf_{\substack{x\in[0,1] \\ i\in\mathcal{I}}} |f_i'(x)| \quad\text{and}\quad
+  c_{\max}:=\sup_{\substack{x\in[0,1] \\ i\in\mathcal{I}}} |f_i'(x)|.
 \end{equation}
 We note that by compactness arguments $0<c_{\min} \leq c_{\max} <1$.
 
@@ -736,10 +740,10 @@ by our assumption.
 \end{proof}
 
 We demonstrate \cref{prop:example} on an example. Consider the IFS $\Phi=(f_1,f_2,f_3)$ with
-\begin{equation}\label{eq:exampleIFS}
+\begin{equation*}%\label{eq:exampleIFS}
 f_1(x)\coloneqq \frac{x}{8}, \quad f_2(x)\coloneqq \frac{x}{8} + \frac{x^2}{32}, \text{ and } \quad
 f_3(x)\coloneqq \frac{x}{16} + \frac{x^2}{32} + \frac{29}{32}. 
-\end{equation}
+\end{equation*}
 Cylinder sets certainly overlap heavily since $f_1$ and $f_2$ have common fixed point at $x=0$,
 while $f_3$ has fixed point at $x=1$. Simple calculations show that $c_{\max}=3/16$, moreover,
 \begin{equation*}
@@ -753,12 +757,11 @@ SESC, and by \cref{cor:dim}, we obtain $\dim_{\rm H}\Lambda=s(\Phi)$, where $s(\
 conformality dimension of $\Phi$, and $\dim \mu_{\mathbf{p}} =  H(\mathbf{p})/\chi$ for
 every $\mathbf{p}$, defined in the previous section. 
 
-Let us note that Solomyak~\cite{Solomyak24} has already gave an example of a non-linear conformal
+Let us note that Solomyak~\cite{Solomyak24} has already given an example of a non-linear conformal
 IFS of linear fractional transformations with such a common fixed point structure.
 However, he studied the dimension of the attractor via sufficiently large subsystems, and it was not
 verified that the IFS itself satisfies the ESC.
 
-% and from~\cref{thm:SubConjugation} that it is not sub-conjugated to any self-similar IFS.
 %{\color{red} Do we want to try to calculate/approximate the conformal similarity dimension of the
 %attractor?}
 
@@ -793,7 +796,7 @@ verified that the IFS itself satisfies the ESC.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Conjugation to self-similar systems}\label{sec:ConjLinSys}
-As we remarked above, the assumption of \cref{thm:main} cannot be satisfied for linear systems and
+As we remarked above, assumption \eqref{eq:H_iSSC} of \cref{thm:main} cannot be satisfied for linear systems since
 $H_{\bi}(x)=0$ for all $\bi\in \Sigma$ and $x \in I$.
 Crucially, the functions $H_{\bi}(x)$ have a stronger relation to the linearity and linearisability
 of an analytic IFS, although the definition may not at first glance reveal this.
@@ -807,15 +810,15 @@ decay of self-conformal measures, see
 \begin{definition}\label{def:conjugation}
   We say that the IFS $\Phi = (f_i)_{i\in\mathcal{I}} \in\mathfrak{S}_N$ is 
 \emph{conjugated} to another IFS $\Psi$ if there exists an analytic, invertible
-  $g:[0,1]\to\bbR$ such that $\Psi=\{g\circ f_i\circ g^{-1}\}_{i\in\Sigma_1}$. 
+  $g:[0,1]\to\bbR$ such that $\Psi=\{g\circ f_i\circ g^{-1}\}_{i\in\mathcal{I}}$. 
 \end{definition}
 In particular, $\Phi$
   is conjugated to a self-similar IFS if there exist $\lambda_i
-\in(-1,1)\setminus\{0\}$, $t_i\in\bbR$ with $i\in\Sigma_1$ such that
+\in(-1,1)\setminus\{0\}$, $t_i\in\bbR$ with $i\in\mathcal{I}$ such that
 \[
 f_{j}(x) = g^{-1}(\lambda_j g(x) + t_j)
 \]
-for all $j\in\Sigma_1$.
+for all $j\in\mathcal{I}$.
 \begin{definition}\label{def:subconjugation}
   We say that the IFS $\Phi = (f_i)_{i\in\mathcal{I}} \in\mathfrak{S}_N$ is 
   \emph{sub-conjugated} to a self-similar IFS if there exist distinct words $\bi,\bj\in\Sigma_*$ of
@@ -875,23 +878,23 @@ Any analytic IFS which has super-exponential condensation but no exact overlaps 
 sub-conjugated to a self-similar IFS.
 \end{conjecture}
 
-We remark that analytic IFS with an exact overlap are sub-conjugated to self-similar IFSs, see \cref{thm:DualConj} and \cref{sec:ProofConjugation}.
-
+We remark that any analytic IFS with an exact overlap is sub-conjugated to a self-similar IFS, see \cref{thm:DualConj} and \cref{sec:ProofConjugation}.
 
 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{The key idea: the dual IFS induced by analytic functions}\label{sec:DualIFSFull}
 The central idea of our work is to construct a `dual' IFS on the space of analytic functions, derived from
-the mappings in the original IFS on $[0,1]$.
+the mappings of the original IFS on $[0,1]$.
 We believe this notion is of general interest in its own right and a systematic study of it could
 assist in tackling other problems in the future as well.
 
 \subsection{Basic definitions and properties}
 
 Let $\mathcal{C}_\epsilon^\omega([0,1])$ be the set of complex analytic maps $f$ on
-$\mathcal{B}_{\epsilon}$ such that $f\colon I \to \mathbb{R}$. We equip $\mathcal{C}_\epsilon^\omega([0,1])$ with the supremum norm $\|.\|_\infty$ over $\mathcal{B}_\epsilon$. Given an analytic IFS $\Phi=(f_i)_{i=1}^N\in\mathfrak{S}_N$, we `lift' each map $f_i$ to an operator $F_i:
+$\mathcal{B}_{\epsilon}$ such that $f\colon I \to \mathbb{R}$. We equip $\mathcal{C}_\epsilon^\omega([0,1])$ with the supremum norm $\|\cdot\|_\infty$ over $\mathcal{B}_\epsilon$. Given an analytic IFS $\Phi=(f_i)_{i=1}^N\in\mathfrak{S}_N$, we `lift' each map $f_i$ to an operator $F_i:
 \mathcal{C}^{\omega}_\epsilon([0,1]) \to \mathcal{C}_\epsilon^{\omega}([0,1])$ acting on the space of analytic
 functions by the formula
 \begin{equation}\label{eq:LiftedIFS}
@@ -900,10 +903,10 @@ functions by the formula
 We call $\Phi^*\coloneqq\{F_i\}_{i=1}^N$ the \emph{dual IFS} of $\Phi$. The operator $F_i$ can be
 considered as a contractive affinity map and $\Phi^*$ as self-affine IFS on $\mathcal{C}_\epsilon^\omega([0,1])$.
 Indeed, $F_i$ is a translation of the linear operator $h\mapsto f'_i(x)\cdot h(f_i(x))$, and each $F_i$ is clearly a
-strict contraction in the supremum norm since $\|F_ig-F_ih\|_{\infty}\leq \|f'_i\|_{\infty}\cdot\|g-h\|_{\infty}$, where $\|f_i\|_\infty<1$ by our assumption \cref{it:c}.
+strict contraction in the supremum norm since $\|F_ig-F_ih\|_{\infty}\leq \|f'_i\|_{\infty}\cdot\|g-h\|_{\infty}$, where $\|f_i'\|_\infty<1$ by our assumption \cref{it:c}.
 
 Our objective now is to establish some basic properties about the dual IFS. We first justify calling $\Phi^*$ an IFS by showing that it has an
-attractor. We will use the convention that if $A\subset \mathcal{C}^{\omega}_\epsilon([0,1])$, then
+attractor. We use the convention that if $A\subset \mathcal{C}^{\omega}_\epsilon([0,1])$, then
 \begin{equation*}
 	F_iA \coloneqq \{F_i h:\, h\in A\}.
 \end{equation*}
@@ -923,7 +926,7 @@ $$
 $$
 and $\mathcal{C}_{\epsilon}^{\omega}([0,1])=\bigcup_{L=1}^\infty\mathcal{C}_{\epsilon,L}^{\omega}([0,1])$. It is well-known that the space of continuous and bounded maps is complete with respect to the supremum distance. By applying Morera's Theorem~\cite[Theorem 10.17]{Rudin_AnalysisBook}, it follows that $\mathcal{C}_{\epsilon,L}^{\omega}([0,1])$ is a complete and separable metric space for every $L>1$.	
 	
-Since $\|F_ih\|_\infty\leq\|\frac{f_i''}{f_i'}\|_\infty+\|f_i'\|_\infty\|h\|_\infty$, there exists $L>0$ sufficiently large such that $\|F_ih\|_\infty\leq K$ if $\|h\|_\infty\leq K$. Hence, the claim of the lemma follows by \cite{Hutchinson_Attractor_81}.
+Since $\|F_ih\|_\infty\leq\|f_i'' / f_i'\|_\infty+\|f_i'\|_\infty\|h\|_\infty$, there exists $L>0$ sufficiently large such that $\|F_ih\|_\infty\leq K$ if $\|h\|_\infty\leq K$. {\color{red} Is $K$ supposed to be $L$?} Hence, the claim of the lemma follows by \cite{Hutchinson_Attractor_81}.
 \end{proof}
 
 Using the dual IFS $\Phi^*$ and the attractor $\Lambda^*$ of the dual IFS, Theorem~\ref{thm:main} can be restated in the following elegant form.
@@ -931,7 +934,7 @@ Using the dual IFS $\Phi^*$ and the attractor $\Lambda^*$ of the dual IFS, Theor
 	An IFS $\Phi\in\mathfrak{S}_N$ satisfies the SESC if its dual IFS $\Phi^*$ satisfies the SSC.
 \end{theorem}
 
-\cref{thm:SubConjugation} has also an equivalent formalisation as follows:
+\cref{thm:SubConjugation} also has an equivalent formalisation as follows:
 
 \begin{theorem}\label{thm:DualConj}
 	An IFS $\Phi\in\mathfrak{S}_N$ can be conjugated to a self-similar IFS if and only if the attractor of its dual IFS $\Phi^*$ is a singleton. 
@@ -939,32 +942,31 @@ Using the dual IFS $\Phi^*$ and the attractor $\Lambda^*$ of the dual IFS, Theor
 	Moreover, an IFS $\Phi\in\mathfrak{S}_N$ can be sub-conjugated to a self-similar IFS if and only if its dual IFS $\Phi^*$ has an exact overlap.
 \end{theorem}
 
-Let us recall the strong separation condition (SSC) in the context of dual IFS $\Phi^*$. The SSC holds if $F_i\Lambda^*\cap F_j\Lambda^*=\varnothing$ for every $i\neq j$ in $\mathcal{I}$, that is, there is no $h\in\Lambda^*$ such that $h\in F_i\Lambda^*$ and $h\in F_j\Lambda^*$. We postpone the explicit proof of \cref{thm:DualSSC} till the end of this section.
+{\color{red} Should this be before stating the theorem?} Let us recall the strong separation condition (SSC) in the context of dual IFS $\Phi^*$. The SSC holds if $F_i\Lambda^*\cap F_j\Lambda^*=\varnothing$ for every $i\neq j$ in $\mathcal{I}$, that is, there is no $h\in\Lambda^*$ such that $h\in F_i\Lambda^*$ and $h\in F_j\Lambda^*$. We postpone the explicit proof of \cref{thm:DualSSC} till the end of this section. {\color{red} where is \cref{thm:DualConj} proved?}
 
 For $\bi\in\Sigma_*$, an induction argument readily gives that the composition
 $F_{\bi}h=F_{i_1}\circ\ldots\circ F_{i_{|\bi|}}h$ is equal to
-\begin{equation}\label{eq:IteratesLiftedIFS}
+\begin{equation*}%\label{eq:IteratesLiftedIFS}
 	(F_{\bi}h)(x) = f_{\bi_{|\bi|}^1}'(x)\cdot h(f_{\bi_{|\bi|}^1}(x)) + \sum_{n=1}^{|\bi|}
 	f'_{\bi_{n-1}^1}(x) \cdot 
 	\frac{f''_{i_n}}{f'_{i_n}}(f_{\bi_{n-1}^1}(x)).
-\end{equation}
+\end{equation*}
 Observe that for every $\bi\in\Sigma_*$, taking $h$ equal to the constant $0$ function, $(F_{\bi}0)(x)\equiv H_{\bi}(x)$ introduced
 in~\cref{eq:H_i(x)}. Moreover, for every $\bi\in\Sigma$
-\begin{equation}\label{eq:dualnatproj}
+\begin{equation*}%\label{eq:dualnatproj}
 	H_{\bi}(x)=\lim_{n\to\infty}(F_{\bi_1^n}h)(x)
-\end{equation}
-in uniform sense for every $h\in\mathcal{C}_\epsilon^\omega([0,1])$. With this interpretation the function $H_{\bi}(x)$ introduced
-in~\cref{eq:H_i(x)} is an analog of the natural projection $\pi(\bi)$, and this motivates us to call $H_{\bi}(x)$ the \emph{dual natural projection}. The following is further justification to call $H_{\bi}$ the dual natural projection.
+\end{equation*}
+in uniform sense for every $h\in\mathcal{C}_\epsilon^\omega([0,1])$. With this interpretation the function $H_{\bi}(x)$ is an analog of the natural projection $\pi(\bi)$ from~\cref{eq:natProj}, and this motivates us to call $H_{\bi}(x)$ the \emph{dual natural projection}. The following is further justification to call $H_{\bi}$ the dual natural projection.
 \begin{lemma}\label{thm:H_iAnalytic}
-	For every $\bi\in\Sigma$, $H_{\bi}\in\mathcal{C}_\epsilon^{\omega}([0,1])$. Moreover, the map $\bi\mapsto H_{\bi}$ is H\"older continuous, that is, there exists $K>0$ such that for every distinct $\bi,\bj\in\Sigma$
-	\begin{equation}\label{eq:Hcont}
+	For every $\bi\in\Sigma$, $H_{\bi}\in\mathcal{C}_\epsilon^{\omega}([0,1])$. Moreover, the map $\bi\mapsto H_{\bi}$ is H\"older continuous, that is, there exists $K>0$ such that for every distinct $\bi,\bj\in\Sigma$,
+	\begin{equation*}%\label{eq:Hcont}
 		\|H_{\bi}-H_{\bj}\|_\infty\leq c_{\max}^{|\bi\wedge\bj|}K,
-	\end{equation}
+	\end{equation*}
 	In particular, $\Lambda^*=\{H_{\bi}(x):\, \bi\in\Sigma\}$.
 \end{lemma}
 
 \begin{proof}
- From the properties \cref{it:a,it:b,it:c}, it follows that the maps
+ From the properties in \cref{it:a,it:b,it:c}, it follows that the maps
  \[
  \frac{f_j''}{f_j'},\quad f_{\bi}, \quad\text{and} \quad f'_{\bi}
  \]
@@ -1911,7 +1913,7 @@ This clearly implies that  $G_{\bi}(k,K)\cap G_{\bj}(k,K)=\varnothing$. Finally,
 
 Let $f\in\mathcal{S}_\epsilon^\omega([0,1])$ be arbitrary but fixed. Along the lines of \cref{eq:H_i(x)}, let us define the map
 \begin{equation}\label{eq:H}
-\hat{H}_f(x)\coloneq\sum_{k=0}^\infty\frac{f''}{f'}(f^{\circ k}(x))\cdot (f^{\circ k})'(x),
+\hat{H}_f(x)\coloneqq\sum_{k=0}^\infty\frac{f''}{f'}(f^{\circ k}(x))\cdot (f^{\circ k})'(x),
 \end{equation}
 where $f^{\circ k}$ denotes the self-composition of $f$ $k$-times. Analogously to the proof of \cref{thm:H_iAnalytic}, $\hat{H}\in\mathcal{C}^\omega_\epsilon([0,1])$. 
 
