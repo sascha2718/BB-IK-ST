@@ -1,4 +1,4 @@
-\documentclass[12pt,]{article}
+\documentclass[11pt,]{article}
 
 \usepackage[margin=1in]{geometry}
 \usepackage{amscd}
@@ -340,13 +340,13 @@ H-1111 Budapest, Hungary.}\par\nopagebreak
 %}
 
 \begin{abstract}
-In a recent preprint Rapaport showed that the there is no dimension drop for
+In a recent article, Rapaport showed that the there is no dimension drop for
 exponentially separated analytic IFSs on the real line. We show that the set of such exponentially
 separated IFSs in the space of analytic IFSs contains an open and dense set in the $\mathcal{C}^2$
 topology. Moreover, we give a sufficient condition for the IFS to be exponentially separated which
 allows us to construct explicit examples which are exponentially separated. The key
 technical tool is the introduction of the \emph{dual IFS} which we believe has significant interest
-in its own right. As an application we also characterise when an analytic IFS is conjugate to a
+in its own right. As an application we also characterise when an analytic IFS can be conjugated to a
 self-similar IFS. 
 \end{abstract}
 
@@ -393,7 +393,7 @@ the dimension regardless of the overlaps of images of $\Lambda$ under the $f_i$.
 \cite{Bowen75} and Ruelle \cite{Ruelle2004} extended this result to attractors of
 $\mathcal{C}^{1+\alpha}$ conformal mappings, with the natural upper bound known as the conformality
 dimension. Similar question can be asked for the measure, see Cawley and Mauldin
-\cite{CawleyMauldin92} and Patschke \cite{Patzschke97}, for the self-similar and self-conformal
+\cite{CawleyMauldin92}, and Patschke \cite{Patzschke97}, for the self-similar and self-conformal
 setting. 
 
 The actual value of the Hausdorff dimension of the attractor may drop below this natural upper
@@ -435,14 +435,13 @@ analytic self-conformal iterated function systems. Furthermore, under this condi
 showed that the dimension of the set and the measure does not drop.
 For analytically parametrised systems of analytic self-conformal IFSs, Rapaport verified that the
 ESC holds for almost every choice of parameter in the sense of Hausdorff dimension.
-%{\color{red}Is this not just Hausdorff? See\cite[Corollay 1.4]{Rapaport_SelfConfESC25arXiv}}.
 However, he could not provide any concrete examples other than those already known.
 
 The main purpose of this article is to provide verifiable sufficient conditions that guarantee that the
 ESC holds. Further, we show that this property holds for an open and dense set of IFSs with respect to the
 $\mathcal{C}^2$ topology. We will also explore when analytic self-conformal IFS can be conjugated to
 self-similar systems.
-%{\color{red} Should we also mention conjugation to self-sim? or that doesn't fit with the narrative here}
+The methods involve constructing a \emph{dual} IFS, which we believe is of independent interest. 
 
 \paragraph{Acknowledgements.} BB acknowledges support from grant NKFI~K142169, and grant NKFI
 KKP144059 \textit{Fractal geometry and applications} Research Group. IK is supported by the European
@@ -463,7 +462,7 @@ consisting of maps $f:\mathbb{R}\to\mathbb{R}$ with the following properties:
 \end{enumerate}
 We write
 \[
-  d_2(f,g) = \sup_{x\in I} |f(x)-g(x)|+\sup_{x\in I} |f'(x)-g'(x)| +\sup_{x\in I} |f''(x)-g''(x)|,
+  d_2(f,g) = \sup_{x\in I} |f(x)-g(x)|+\sup_{x\in I} |f'(x)-g'(x)| +\sup_{x\in I} |f''(x)-g''(x)|
 \]
 for the $\mathcal{C}^2$ metric and equip the space $\mathcal{S}^\omega_\epsilon(I)$ with the
 $\mathcal{C}^2$ topology induced by $d_2$. We note that this space is Polish, \ie a complete
@@ -471,7 +470,7 @@ and separable space.
 We also consider the space $\mathfrak{S}_N$ of cardinality $N$ IFSs $\Phi=(f_i)_{i=1}^N$ of maps $f_i\in
 \mathcal{S}^\omega_\epsilon([0,1])$. With slight abuse of notation, let
 $$
-d_2((f_i)_{i=1}^N,(g_i)_{i=1}^N)\coloneqq\max_{i,j\in\mathcal{I}}d_2(f_i,g_j)
+d_2((f_i)_{i=1}^N,(g_i)_{i=1}^N)\coloneqq\max_{i\in\mathcal{I}}d_2(f_i,g_i)
 $$
 be the $\mathcal{C}^2$ metric on the space of IFSs $\mathfrak{S}_N$.
 
@@ -514,7 +513,6 @@ condition for analytic self-conformal IFSs.
     \sup_{x\in[0,1]} |f_{\bi}(x)-f_{\bj}(x)| \geq c^n
   \]
   for all $\bi,\bj\in\Sigma_n$ and $n\in\bbN$, where $\bi\neq\bj$. 
-
   If the SESC does not hold, \ie there exist a sequence $(\eta_n)_n$ and a subsequence
   $n_{\ell}\in\bbN$ and distinct words $\bi,\bj\in\Sigma_{n_\ell}$ such that
   $\log(\eta_n)/n\to-\infty$ and
@@ -572,14 +570,12 @@ $\bi\in\Sigma_*\cup\Sigma$ then the subscripts are understood to be in increasin
 from 1 until $|\bi|$. The concatenation of two finite words is $\bi\bj$, while slightly abusing
 notation $\bi^{\infty}\in \Sigma$ is the infinite word obtained by concatenating $\bi\in\Sigma_*$
 infinitely many times. 
-%We define the cylinder sets {\color{red} Are they actually used anywhere? Doesn't seem so..}
-%$$[\bi_m^n] \coloneqq \big\{\bj\in\Sigma :\, \bj_1^{|m-n|+1} = \bi_m^n\big\}.$$  
 For any $\bi\in \Sigma\cup\Sigma_*$, we introduce the function 
 \begin{equation}\label{eq:H_i(x)}
 H_{\bi}(x)=H_{\bi_{1}^{|\bi|}}(x) \coloneqq \sum_{n=1}^{|\bi|}
-\frac{f''_{i_n}}{f'_{i_n}}(f_{\bi_{n-1}^1}(x))\cdot f'_{\bi_{n-1}^1}(x).
+\frac{f''_{i_n}}{f'_{i_n}}(f_{\bi_{n-1}^1}(x))\cdot f'_{\bi_{n-1}^1}(x),
 \end{equation}
-The order of the indices is important. At this point the motivation for $H_{\bi}(x)$ may be unclear,
+where the order of the indices is important. At this point the motivation for $H_{\bi}(x)$ may be unclear,
 but will be made apparent in~\cref{sec:DualIFSFull}. 
 We can now state our second main result.
 \begin{theorem}
@@ -610,11 +606,11 @@ discussing a link to conjugation with self-similar IFSs.
 
 \subsubsection{Dimension theoretic consequences}
 Given a non-degenerate probability vector $\mathbf{p}$ and a self-conformal IFS $\Phi\in
-\mathfrak{S}_N$, we define the entropy of $\mathbf{p}$,
+\mathfrak{S}_N$, we define the entropy of $\mathbf{p}$ by
 \begin{equation*}
 H(\mathbf{p})\coloneqq -\sum_{i\in\mathcal{I}} p_i\log p_i;
 \end{equation*}
-the Lyapunov exponent associated to $\mathbf{p}$ and $\Phi$,
+the Lyapunov exponent associated to $\mathbf{p}$ and $\Phi$ by
 \begin{equation*}
 \chi=\chi(\Phi,\mathbf{p}):=-\sum_{i \in \mathcal{I}} p_i \int \log \big|f_{i}^{'}(x)\big|
 \mathrm{d} \mu_{\mathbf{p}}(x),
@@ -663,12 +659,12 @@ sense, has no dimension drop.
 Another potential direction to consider is that of $L^q$ dimensions, a more fine-grained notion that
 captures the measure's regularity.  Building on the methods of~\cite{Hochman_SelfSimESC_Annals},
 Shmerkin~\cite{Shmerkin_LqSelfSim_Annals} showed that a natural analogue of \cref{thm:RapaportMain}
-exists for the $L^q$ dimension of self-similar measures.
-%{\color{red} Is there anything to say about self-conformal measures? Otherwise it feels a bit like just hanging out there but not going anywhere}
+exists for the $L^q$ dimension of self-similar measures. We believe that an analogous typicality
+result may hold here.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Concrete examples}\label{sec:examples}
-Similarly to the self-similar setting, it would be desirable to have conditions under which one
+Similar to the self-similar setting, it would be desirable to have conditions under which one
 could determine whether a concrete IFS or a parametrised family of IFSs satisfies the (S)ESC or not
 also in the analytic setting. Rapaport~\cite[Corollary 1.4]{Rapaport_SelfConfESC25arXiv}, based on a
 result of Solomyak and Takahashi~\cite{SolomyakTakahashi_IMRN21}, showed that under a mild
@@ -678,13 +674,15 @@ which this result applies, however, it still does not explicitly say whether an 
 exceptional set of parameters or not. 
 In the following, we give an easy to verify sufficient condition and demonstrate on
 an explicit analytic IFS that it satisfies the SESC. 
+{\color{red}Add here that progress in the Hochman direction is impossible and this is good what we
+are doing}
 
 Given an IFS $\Phi=(f_i)_{i\in\mathcal{I}}\in\mathfrak{S}_N$ let
 \begin{equation}\label{eq:maxmincontract}
   c_{\min} := \inf_{\substack{x\in[0,1] \\ i\in\mathcal{I}}} |f_i'(x)| \quad\text{and}\quad
   c_{\max}:=\sup_{\substack{x\in[0,1] \\ i\in\mathcal{I}}} |f_i'(x)|.
 \end{equation}
-We note that by compactness arguments $0<c_{\min} \leq c_{\max} <1$.
+We note that by compactness arguments, $0<c_{\min} \leq c_{\max} <1$.
 
 \begin{proposition}\label{prop:example}
 Let $\Phi=(f_i)_{i\in\mathcal{I}}\in\mathfrak{S}_N$ be an IFS. Suppose that there exists $\alpha>0$
@@ -706,7 +704,7 @@ the SESC by~\cref{thm:main}.
 \end{proposition}
 
 \begin{proof}
-  Let $\bi,\bj \in\Sigma\cup\Sigma^*$ with $|\bi|=|\bj|$ be distinct such that $|\bi\wedge \bj|=k$. It
+  Let $\bi,\bj \in\Sigma\cup\Sigma^*$ be distinct words such that $|\bi|=|\bj|$ and $|\bi\wedge \bj|=k$. It
   follows from~\cref{eq:H_i(x)} that
   \begin{equation*}
     H_{\bi}(x)-H_{\bj}(x) = f_{\bi_k^1}'(x)\cdot \big( H_{\bi_{k+1}^{|\bi|}}(f_{\bi_k^1}(x)) -
@@ -724,7 +722,7 @@ Since $i_{k+1}\neq j_{k+1}$, for the particular choice of $x_{i_{k+1},j_{k+1}}$,
 \frac{f_{j_{k+1}}''(x_{i_{k+1},j_{k+1}})}{f_{j_{k+1}}'(x_{i_{k+1},j_{k+1}})} \right| - 2
 \sum_{n=k+2}^{\infty}\; \sup_{x\in[0,1]} \big| f_{\bi_{n-1}^{k+1}}'(x) \big| \cdot \sup_{x\in[0,1]}
 \left| \frac{f_{i_n}''(x)}{f_{i_n}'(x)} \right| \\
-&\geq \alpha -  \frac{2\beta\cdot c_{\max}}{1-c_{\max}} >0
+&\geq \alpha -  2\frac{c_{\max}}{1-c_{\max}}\cdot \beta >0
 \end{align*}
 by our assumption.
 \end{proof}
@@ -913,9 +911,11 @@ $$
 $$
 and $\mathcal{C}_{\epsilon}^{\omega}([0,1])=\bigcup_{L=1}^\infty\mathcal{C}_{\epsilon,L}^{\omega}([0,1])$. It is well-known that the space of continuous and bounded maps is complete with respect to the supremum distance. By applying Morera's Theorem~\cite[Theorem 10.17]{Rudin_AnalysisBook}, it follows that $\mathcal{C}_{\epsilon,L}^{\omega}([0,1])$ is a complete and separable metric space for every $L>1$.	
 	
-Since $\|F_ih\|_\infty\leq\|f_i'' / f_i'\|_\infty+\|f_i'\|_\infty\|h\|_\infty$, there exists $L>0$ sufficiently large such that $\|F_ih\|_\infty\leq K$ if $\|h\|_\infty\leq K$. {\color{red} Is $K$ supposed to be $L$?} Hence, the claim of the lemma follows by \cite{Hutchinson_Attractor_81}.
+Since $\|F_ih\|_\infty\leq\|f_i'' / f_i'\|_\infty+\|f_i'\|_\infty\|h\|_\infty$, there exists $L>0$ sufficiently large such that $\|F_ih\|_\infty\leq L$ if $\|h\|_\infty\leq L$. Hence, the claim of the lemma follows by \cite{Hutchinson_Attractor_81}.
 \end{proof}
-
+Let us recall the strong separation condition (SSC) in the context of dual IFS $\Phi^*$. The SSC
+holds if $F_i\Lambda^*\cap F_j\Lambda^*=\varnothing$ for every $i\neq j$ in $\mathcal{I}$, that is,
+there is no $h\in\Lambda^*$ such that $h\in F_i\Lambda^*$ and $h\in F_j\Lambda^*$.
 Using the dual IFS $\Phi^*$ and the attractor $\Lambda^*$ of the dual IFS, Theorem~\ref{thm:main} can be restated in the following elegant form.
 \begin{theorem}\label{thm:DualSSC}
 	An IFS $\Phi\in\mathfrak{S}_N$ satisfies the SESC if its dual IFS $\Phi^*$ satisfies the SSC.
@@ -929,7 +929,8 @@ Using the dual IFS $\Phi^*$ and the attractor $\Lambda^*$ of the dual IFS, Theor
 	Moreover, an IFS $\Phi\in\mathfrak{S}_N$ can be sub-conjugated to a self-similar IFS if and only if its dual IFS $\Phi^*$ has an exact overlap.
 \end{theorem}
 
-{\color{red} Should this be before stating the theorem?} Let us recall the strong separation condition (SSC) in the context of dual IFS $\Phi^*$. The SSC holds if $F_i\Lambda^*\cap F_j\Lambda^*=\varnothing$ for every $i\neq j$ in $\mathcal{I}$, that is, there is no $h\in\Lambda^*$ such that $h\in F_i\Lambda^*$ and $h\in F_j\Lambda^*$. We postpone the explicit proof of \cref{thm:DualSSC} till the end of this section. {\color{red} where is \cref{thm:DualConj} proved?}
+We postpone the explicit proof of \cref{thm:DualSSC} until the end of this section and
+\cref{thm:DualConj} until \cref{sec:ProofConjugation}.
 
 For $\bi\in\Sigma_*$, an induction argument readily gives that the composition
 $F_{\bi}h=F_{i_1}\circ\ldots\circ F_{i_{|\bi|}}h$ is equal to
@@ -1686,152 +1687,6 @@ every $x$, we have shown that $I(x)\leq C\cdot\delta+\varepsilon$ for some const
 only $f$. This completes the bound for $\| \varphi'' \psi A\|$. 
 \end{proof}
 
-\begin{comment}"Old proof, really the same, just got slightly restructured"
-\begin{proof}[Proof of~\cref{prop:AnalyticBumpFunc}]
-The argument is essentially a careful analysis of the function $g$ defined in~\cref{eq:BumpFunc} with the choice 
-\begin{equation}\label{eq:a_iChoice}
-a_i = \frac{\delta \cdot |f'(y_i)|}{2  \cdot |f(y_i)|}
-\Big(\prod_{y_j\in\mathcal{Y}\setminus\{y_i\}} (y_i - y_j)^2 \cdot \prod_{z_j\in\mathcal{Z}} (y_i -
-z_j)^4 \Big)^{-1}
-\end{equation}
-and 
-\begin{equation}\label{eq:eta_iBound1}
-\eta_i\leq \min\bigg\{ \underbrace{\frac{\varepsilon \cdot C(2,0)}{M a_i}}_{(C1)},\;
-\underbrace{\Big(\frac{\varepsilon e^{1/2}\sqrt{2}}{2M^2 a_i}\Big)^2}_{(C2)},\;
-\underbrace{\frac{\varepsilon e}{4QMa_i}}_{(C3)},\; \underbrace{\Big( \frac{\varepsilon (2e/3)^{3/2}
-}{2 Ma_i} \Big)^2}_{(C4)} \bigg\}
-\end{equation}
-for every $i=1,\ldots,M$. We will make further compatible restrictions on $\eta_i$ later in the proof.
-
-By construction $\varphi(y_i) = \varphi'(y_i) =0$ for every $ y_i\in\mathcal{Y}$ and $\psi(z_i) =
-\psi'(z_i) = \psi''(z_i)=0$ for every $z_i\in\mathcal{Z}$, hence,
-\begin{equation*}
-g(y_i)=f(y_i) \text{ and } g'(y_i)=f'(y_i) \text{ for every } y_i\in\mathcal{Y},
-\end{equation*}
-moreover,
-\begin{equation*}
-g(z_i)=f(z_i),\, g'(z_i)=f'(z_i) \,\text{ and } g''(z_i)=f''(z_i) \;\text{ for every } z_i\in\mathcal{Z}.
-\end{equation*}
-
-We use that $|x-y_i|\leq 1$ and $|x-z_i|\leq 1$ throughout the proof without further mention. Since
-$\varphi(x)\cdot \psi(x)\cdot A(x)\geq 0$, we see that
-\begin{equation*}
-|g(x)-f(x)| = f(x)\big( e^{\varphi(x)\cdot \psi(x)\cdot A(x)} -1 \big) \,\text{ for every } x\in[0,1].
-\end{equation*}
-We can bound the exponent
-\begin{equation*}
-\sup_{x\in[0,1]} \varphi(x)\cdot \psi(x)\cdot A(x) \leq \sup_{x\in[0,1]} \sum_{i=1}^{M} a_i\cdot
-(x-y_i)^2 \cdot e^{\frac{-(x-y_i)^2}{\eta_i}} \leq \varepsilon,
-%\stackrel{\eqref{eq:BoundA(x)}}{\leq} \sum_{i=1}^{M} a_i\cdot \eta_i \cdot e^{-1}
-\stackrel{(C1)}{\leq} \varepsilon,
-\end{equation*}
-where the last inequality follows from applying~\cref{eq:BoundA(x)} and $(C1)$ to each summand. This shows that $\|g-f\|_{\infty}$ can be made arbitrarily small.
-
-Let us now turn to the difference $g'-f'$. Differentiation of $g$ immediately shows that
-\begin{equation*}
-g'-f'= f'\cdot \big(e^{\varphi\cdot \psi\cdot A}-1\big) + f\cdot e^{\varphi\cdot \psi\cdot A}\big( \varphi'\cdot \psi\cdot A + \varphi\cdot \psi'\cdot A +\varphi\cdot \psi\cdot A' \big),
-\end{equation*}
-where
-\begin{align*}
-\varphi'(x)&= \sum_{i=1}^{M} 2(x-y_i) \prod_{y_j\in\mathcal{Y}\setminus\{y_i\}} (x-y_j)^2, \\
-\psi'(x)&= \sum_{i=1}^{Q} 4(x-z_i)^3 \prod_{z_j\in\mathcal{Z}\setminus\{z_i\}} (x-z_j)^4, \\
-A'(x)&= -2\cdot \sum_{i=1}^{M} a_i \frac{x-y_i}{\eta_i} e^{\frac{-(x-y_i)^2}{\eta_i}}.
-\end{align*}
-We can use the bound from the previous step to see that
-\begin{equation*}
-|g'(x)-f'(x)| \leq |f'(x)|(e^{\varepsilon}-1)+|f(x)|\cdot e^{\varepsilon}\cdot\big( |\varphi'\cdot \psi\cdot A| + |\varphi\cdot \psi'\cdot A| +|\varphi\cdot \psi\cdot A'| \big).
-\end{equation*}
-We bound the three terms in the last parenthesis separately. Since $|\varphi'|\leq 2M|x-y_i|$, we obtain
-\begin{equation*}
-|\varphi'\cdot \psi\cdot A| \leq \sum_{i=1}^M 2Ma_i|x-y_i| \cdot e^{\frac{-(x-y_i)^2}{\eta_i}} \stackrel{\eqref{eq:BoundA(x)}}{\leq} \sum_{i=1}^M 2Ma_i \frac{\eta_i^{1/2}}{\sqrt{2}}\cdot e^{-1/2} \stackrel{(C2)}{\leq}  \varepsilon.
-\end{equation*}
-For the second term we simply use that $|\psi'|\leq 4Q$:
-\begin{equation*}
-|\varphi\cdot \psi'\cdot A| \leq \sum_{i=1}^M 4Qa_i\cdot |x-y_i|^2\cdot e^{\frac{-(x-y_i)^2}{\eta_i}} \stackrel{\eqref{eq:BoundA(x)}}{\leq} \sum_{i=1}^M 4Qa_ie^{-1}\eta_i \stackrel{(C3)}{\leq}  \varepsilon.
-\end{equation*}
-As for the final term
-\begin{equation*}
-|\varphi\cdot \psi\cdot A'|\leq \sum_{i=1}^{M} 2a_i \frac{|x-y_i|^3}{\eta_i} e^{\frac{-(x-y_i)^2}{\eta_i}} \stackrel{\eqref{eq:BoundA(x)}}{\leq} \sum_{i=1}^M 2 \frac{a_i}{\eta_i} \frac{3^{3/2}\eta_i^{3/2}}{2^{3/2}}\cdot e^{-3/2} \stackrel{(C4)}{\leq}  \varepsilon.
-\end{equation*}
-Combining all the bounds we obtain $\|g'-f'\|_{\infty}\leq (e^{\varepsilon}-1)\cdot\|f'(x)\|_{\infty}+3\varepsilon e^{\varepsilon} \cdot\|f(x)\|_{\infty}$.
-
-Dealing with the second derivative of $g$ is the most tedious. It is equal to
-\begin{multline}\label{eq:gSecondDerivative}
-	g'' = f''  e^{\varphi \psi A} + 2f'e^{\varphi \psi A}\big( \varphi' \psi A + \varphi \psi' A +\varphi \psi A' \big) + f e^{\varphi \psi A}\big( \varphi' \psi A + \varphi \psi' A +\varphi \psi A' \big)^2 \\
-	+ f e^{\varphi \psi A}\big( \varphi'' \psi A + \varphi \psi'' A +\varphi \psi A'' +2\varphi' \psi' A + 2\varphi' \psi A' +2\varphi \psi' A'\big),
-\end{multline}
-where
-\begin{align}
-\varphi''(x)&= 2\sum_{i=1}^{M}  \prod_{\substack{y_j\in\mathcal{Y}\\ y_j\neq y_i}} (x-y_j)^2+ 4\sum_{i=1}^{M} (x-y_i) \sum_{\substack{k=1\\k\neq i}}^{M} (x-y_k) \prod_{\substack{y_j\in\mathcal{Y} \\ y_j\notin\{y_i,y_k\}}} (x-y_j)^2, \label{eq:phi''} \\
-\psi''(x)&= 12\sum_{i=1}^{Q} (x-z_i)^2 \prod_{\substack{z_j\in\mathcal{Z} \\ z_j\neq z_i}} (x-z_j)^4 + 16\sum_{i=1}^{Q} (x-z_i)^3 \sum_{\substack{k=1\\k\neq i}}^{Q} (x-z_k)^3 \prod_{\substack{z_j\in\mathcal{Z} \\ z_j\notin \{z_i,z_k\}}} (x-z_j)^4 \nonumber \\
-A''(x)&= 2\cdot \sum_{i=1}^{M} a_i \Big( \frac{2(x-y_i)^2}{\eta_i^2} -\frac{1}{\eta_i} \Big) e^{\frac{-(x-y_i)^2}{\eta_i}}. \nonumber
-\end{align}
-Since $\varphi''(y_i)\neq 0$, let us evaluate
-\begin{align*}
-g''(y_i) &= f''(y_i) + f(y_i)\varphi''(y_i)\psi(y_i)A(y_i) \\
-&=  f''(y_i) + 2f(y_i) \prod_{\substack{y_j\in\mathcal{Y}\\ y_j\neq y_i}} (y_i-y_j)^2  \prod_{z_j\in\mathcal{Z}} (y_i-z_j)^4 \bigg( a_i+ \sum_{\substack{j=1 \\ j\neq i}}^{M} a_j\cdot e^{\frac{-(y_i-y_j)^2}{\eta_j}} \bigg).
-\end{align*}
-Dividing both sides by $f'(y_i)=g'(y_i)$ and rearranging we get
-\begin{equation*}
-\left| \frac{g''(y_i)}{g'(y_i)} - \frac{f''(y_i)}{f'(y_i)} \right|\geq 2a_i\cdot \frac{|f(y_i)|}{|f'(y_i)|}\prod_{y_j\in\mathcal{Y}\setminus\{y_i\}} (y_i-y_j)^2  \prod_{z_j\in\mathcal{Z}} (y_i-z_j)^4 \stackrel{\eqref{eq:a_iChoice}}{\geq} \delta
-\end{equation*}
-for all $y_i\in\mathcal{Y}$ as required.
-
-It remains to bound $\|g''-f''\|_{\infty}$. We now make further restrictions on $\eta_i$. Let us assume that $\eta_i$ is so small such that besides satisfying~\cref{eq:eta_iBound1} it also satisfies all of the following:
-\begin{equation*}
-\eta_i\leq \min \bigg\{ \underbrace{ \frac{\varepsilon e}{(16Q^2+12Q)Ma_i} }_{(C5)}, \underbrace{ \Big( \frac{\varepsilon \sqrt{2e}}{16QM^2a_i} \Big)^2 }_{(C6)}, \underbrace{ \Big( \frac{\varepsilon (2e/3)^{3/2}}{16QMa_i} \Big)^2 }_{(C7)}, \underbrace{ \Big( \frac{\varepsilon\sqrt{2e}}{4M^3a_i} \Big)^2 }_{(C8)}, \underbrace{ \frac{\varepsilon e}{2M^2a_i} }_{(C9)} \bigg\}
-\end{equation*}
-and
-\begin{equation}\label{eq:eta1/3Bound}
-\eta_i^{1/3} < \frac{1}{2} \min\big\{ y_{i+1}-y_i, y_i-y_{i-1} \big\},
-\end{equation}
-for every $i=1,\ldots,M$, recall $y_i$ are in increasing order. Furthermore, assume
-\begin{equation}\label{eq:etaOtherBound}
-\sum_{i=1}^M 8a_i(\eta_i^{-2}+\eta_i^{-1}+1)\cdot e^{-\eta_i^{-1/3}} < \varepsilon.
-\end{equation}
-Clearly all these conditions can be simultaneously satisfied.
-
-Using previous calculations, we see from~\cref{eq:gSecondDerivative} that
-\begin{multline*}
-\|g'' -f''\|_{\infty}= (e^{\varepsilon}-1)\cdot \|f''\|_{\infty} + 6\varepsilon e^{\varepsilon}\cdot \|f'\|_{\infty} + 9\varepsilon^2 e^{\varepsilon}\cdot \|f\|_{\infty} \\
-	+ e^{\varepsilon}\cdot \|f\|_{\infty} \cdot \| \varphi'' \psi A + \varphi \psi'' A +\varphi \psi A'' +2\varphi' \psi' A + 2\varphi' \psi A' +2\varphi \psi' A' \|_{\infty}.
-\end{multline*}
-We bound each term in the last norm separately. To see that 
-\begin{equation*}
-\max\big\{ \|\varphi \psi'' A\|_{\infty}, \|2\varphi' \psi' A\|_{\infty}, \|2\varphi \psi' A'\|_{\infty}\big\}\leq \varepsilon,
-\end{equation*}
-just use the trivial bounds, then apply~\cref{eq:BoundA(x)} with the appropriate $p$ and finally use $(C5)$, $(C6)$, $(C7)$, respectively. The other terms require additional care. The trivial bounds can not be blindly used in some of the expressions when $x$ is too close to one of the $y_i$. 
-
-First consider $\| \varphi'' \psi A\|_{\infty}$. Since the second term in~\cref{eq:phi''} of $\varphi''(x)$ is bounded from above by $4M^2\cdot|x-y_i|$ for every $i=1,\ldots,M$ and $\psi(x)\leq 1$, we can bound
-\begin{equation*}
-|\varphi''(x)\cdot \psi(x)\cdot A(x)|\leq  \bigg| 2\psi(x)\cdot A(x)\cdot \sum_{i=1}^{M}  \prod_{\substack{y_j\in\mathcal{Y}\\ y_j\neq y_i}} (x-y_j)^2 \bigg| + 4M^2\cdot \sum_{i=1}^{M} a_i|x-y_i| \cdot e^{\frac{-(x-y_i)^2}{\eta_i}}.
-\end{equation*}
-The second term is $\leq \varepsilon$ because we can apply~\eqref{eq:BoundA(x)} and $(C8)$. The first term is a double sum which we split into two parts
-\begin{equation*}
-\underbrace{2\psi(x)\cdot  \sum_{i=1}^{M} a_i e^{\frac{-(x-y_i)^2}{\eta_i}} \prod_{\substack{y_j\in\mathcal{Y}\\ y_j\neq y_i}} (x-y_j)^2}_{=: I(x)} +
-2 \sum_{k=1}^{M}  a_k  e^{\frac{-(x-y_k)^2}{\eta_k}} \underbrace{\sum_{\substack{i=1 \\ i\neq k}}^{M} \prod_{\substack{y_j\in\mathcal{Y}\\ y_j\neq y_i}} (x-y_j)^2}_{\leq M(x-y_k)^2}.
-\end{equation*} 
-We can apply~\cref{eq:BoundA(x)} again to the second term and then $(C9)$ to see that the second term is $\leq \varepsilon$. What remains is to bound $I(x)$. This is where we distinguish whether $x$ is close to a $y_i$ or not. Recall, we assume~\cref{eq:eta1/3Bound}. If $x$ is not too close to any of the $y_i$ in the sense that $x\in\bigcap_{i=1}^M (y_i-\eta_i^{1/3}, y_i+\eta_i^{1/3})^C$, then we use the trivial bounds
-\begin{equation*}
-I(x) \leq \sum_{i=1}^{M} 2a_ie^{-\eta_i^{-1/3}} \stackrel{\eqref{eq:etaOtherBound}}{<} \varepsilon.
-\end{equation*}
-So assume $x\in(y_i-\eta_i^{1/3}, y_i+\eta_i^{1/3})$ for some $y_i\in\mathcal{Y}$. Since $x$ is still far enough from the other $y_j$, we just use the same bound there:
-\begin{equation*}
-I(x) \leq 2a_i \psi(x) \prod_{y_j\in\mathcal{Y}\setminus\{y_i\}} (x-y_j)^2 + \sum_{\substack{j=1 \\ j\neq i}}^{M} 2a_j e^{-\eta_j^{-1/3}} \stackrel{\eqref{eq:etaOtherBound}}{<} \varepsilon + 2a_i \psi(x) \prod_{y_j\in\mathcal{Y}\setminus\{y_i\}} (x-y_j)^2.
-\end{equation*}
-In the final term, we substitute the value of $a_i$ from~\cref{eq:a_iChoice} and $\psi(x)$ to get
-\begin{align*}
-I(x)&\leq \delta \cdot \frac{|f'(y_i)|}{|f(y_i)|} \prod_{\substack{y_j\in\mathcal{Y} \\ y_j\neq y_i}} \frac{(x-y_j)^2}{(y_i - y_j)^2}  \prod_{z_j\in\mathcal{Z}} \frac{(x-z_j)^4}{(y_i - z_j)^4} \\
-&\stackrel{\eqref{eq:eta1/3Bound}}{\leq}  \delta \cdot \frac{|f'(y_i)|}{|f(y_i)|}\prod_{\substack{y_j\in\mathcal{Y} \\ y_j\neq y_i}}\!\! \Big( 1+\frac{\eta_i^{1/3}}{|y_i-y_j|} \Big)^2 \prod_{z_j\in\mathcal{Z}}\!\! \Big( 1+\frac{\eta_i^{1/3}}{|y_i-z_j|} \Big)^4. 
-\end{align*}
-We may assume by choosing $\eta_i$ even smaller if necessary that the product of the final two products is at most say 2. Since we also assume that $f([0,1])\subset (0,1)$ and $0<|f'(x)|<1$ for every $x$, we have shown that $I(x)\leq C\cdot\delta+\varepsilon$ for some constant $C>0$ depending only $f$. This completes the bound for $\| \varphi'' \psi A\|_{\infty}$. 
-
-{\color{red} Quick finish: The argument for bounding $\| \varphi \psi A''\|_{\infty}$ and $2\| \varphi' \psi A'\|_{\infty}$ is completely analogous and is omitted. Or we need to add another 1.5-2 pages. If omitted, then we can change condition~\cref{eq:etaOtherBound} slightly.}
-%\begin{equation*}
-%	\prod_{y_j\in\mathcal{Y}\setminus\{y_i\}} \Big( 1+\frac{\eta_i^{1/3}}{|y_i-y_j|} \Big)^2 \prod_{z_j\in\mathcal{Z}} \Big( 1+\frac{\eta_i^{1/3}}{|y_i-z_j|} \Big)^4<2,
-%\end{equation*}
-\end{proof}
-\end{comment}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Proof of~\cref{thm:ESCOpenDense}}
 
@@ -1842,7 +1697,7 @@ $(g_i)_{i\in\mathcal{I}}$ as in~\cref{eq:LiftedIFS} to obtain the dual IFS $(G_i
 IFS satisfies the SSC. Then~\cref{thm:ESCOpenDense} follows immediately from~\cref{thm:DualSSC} and \cref{lem:cont}.
 
 \begin{proof}[Proof of \cref{thm:ESCOpenDense}] 
-By \cref{thm:DualSSC}, it is enough to show that the set $\{\Phi\in\mathfrak{S}_N:\Phi^*\text{
+By \cref{thm:DualSSC}, it is enough to show that $\{\Phi\in\mathfrak{S}_N:\Phi^*\text{
 satisfies the SSC}\}$ is open and dense in $\mathfrak{S}_N$ in with respect to the metric $d_2$. The
 set is open by \cref{lem:cont} and so it is enough to show that it is dense.
 
@@ -1868,8 +1723,13 @@ For every $i\in\mathcal{I}$, we define a partition of two elements $\{\mathcal{Y
 	\item $y\in\mathcal{Z}_{i_1}$ and $y\in\mathcal{Z}_{j_1}$ for every $y\in\bigcup_{(\bi,\bj)\in\mathcal{B}_n} \big(\mathcal{O}_{\bi}(x_{\bi,\bj})\cup
 	\mathcal{O}_{\bj}(x_{\bi,\bj})\big)\setminus\{x_{\bi,\bj}\}$.
 \end{itemize}
-Recall that by \cref{eq:DefBad} either $(F_{\bi}k)(x_{\bi,\bj})\in\mathrm{conv}\left((F_{\bj}k)(x_{\bi,\bj}),(F_{\bj}K)(x_{\bi,\bj})\right)$ or 
-$(F_{\bj}k)(x_{\bi,\bj})\in\mathrm{conv}\left((F_{\bi}k)(x_{\bi,\bj}),(F_{\bi}K)(x_{\bi,\bj})\right)$. Hence, the sets $\mathcal{Y}_i$ and $\mathcal{Z}_i$ are well defined. We are now ready to apply~\cref{prop:AnalyticBumpFunc}.
+Recall that by \cref{eq:DefBad} either 
+\[
+  (F_{\bi}k)(x_{\bi,\bj})\in\mathrm{conv}\left((F_{\bj}k)(x_{\bi,\bj}),(F_{\bj}K)(x_{\bi,\bj})\right)
+  \quad\text{or}\quad 
+  (F_{\bj}k)(x_{\bi,\bj})\in\mathrm{conv}\left((F_{\bi}k)(x_{\bi,\bj}),(F_{\bi}K)(x_{\bi,\bj})\right).
+\]
+Hence, the sets $\mathcal{Y}_i$ and $\mathcal{Z}_i$ are well defined. We are now ready to apply~\cref{prop:AnalyticBumpFunc}.
 
 To each $f_i$ and $\mathcal{Y}_i, \mathcal{Z}_i$ we obtain a map $g_i\in\mathcal{S}_\epsilon^\omega([0,1])$ which satisfies the properties
 listed in~\cref{prop:AnalyticBumpFunc} with the choice $\varepsilon=\delta$, and let $\Psi=(g_i)_{i\in\mathcal{I}}\in\mathfrak{S}_N$. We construct the dual IFS $\Psi^*=(G_i)_{i\in\mathcal{I}}$ of $\Psi$ as in \cref{eq:LiftedIFS}, i.e. 
