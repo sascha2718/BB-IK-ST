@@ -5,7 +5,7 @@
 \usepackage{amssymb}
 \usepackage{amsmath}
 \usepackage{amsthm}
-\usepackage{enumerate}
+\usepackage{enumitem}
 %\usepackage{tikz}
 %\usetikzlibrary{external}
 %\tikzexternalize
@@ -31,7 +31,7 @@ pagebackref=true]{hyperref}
 \usepackage{comment}
 
 \usepackage[capitalise]{cleveref}
-
+\crefname{enumi}{}{}
 %\usepackage{refcheck}
 %%%making refcheck recognise cref
 %%%% Infrastructure    
@@ -325,7 +325,7 @@ H-1111 Budapest, Hungary.}\par\nopagebreak
 
 
   S.~Troscheit, \textsc{Department of Mathematics, Box 480, 751 06 Uppsala University, Sweden.}\par\nopagebreak
-  \textit{E-mail address}, S.~Troscheit: \texttt{sascha.troscheit@math.uu.se}
+  \textit{E-mail address}, S.~TroschRight\cref{it:la}$\Leftarrow$\cref{it:lb} \texttt{sascha.troscheit@math.uu.se}
 }}
 
 \begin{document}
@@ -457,7 +457,7 @@ Esseens Mathematics Fund.
 For convenience we write $I=[0,1]$.
 Throughout, we fix $\epsilon>0$ and  we define the class $\mathcal{S}^\omega_\epsilon(I)$
 consisting of maps $f:\mathbb{R}\to\mathbb{R}$ with the following properties:
-\begin{enumerate}[a)]
+\begin{enumerate}[label=(\Alph*)]
   \item\label{it:a} $f$ is complex analytic in the open $\epsilon$ complex neighbourhood
     $\mathcal{B}_{2\epsilon}$ of  $I$,
   \item\label{it:b} $f(I) \subseteq I$ and $f(\overline{\mathcal{B}_{\epsilon}}) \subseteq
@@ -666,8 +666,11 @@ sense, has no dimension drop.
 Another potential direction to consider is that of $L^q$ dimensions, a more fine-grained notion that
 captures the measure's regularity.  Building on the methods of~\cite{Hochman_SelfSimESC_Annals},
 Shmerkin~\cite{Shmerkin_LqSelfSim_Annals} showed that a natural analogue of \cref{thm:RapaportMain}
-exists for the $L^q$ dimension of self-similar measures. We believe that an analogous typicality
-result may hold here.
+exists for the $L^q$ dimension of self-similar measures. This does not extend to
+self-conformal measures in general. In the example below we give an explicit example of an IFS that
+satisfies the SESC and a lengthy calculation (omitted) shows that measures in a small neighbourhood
+of the natural measure exhibit a dimension drop for large $q$.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Concrete examples}\label{sec:examples}
@@ -837,7 +840,7 @@ the function $H_{\bi}$ introduced in~\cref{eq:H_i(x)}.
 \begin{theorem}\label{thm:SubConjugation}
   Any $\Phi\in\mathfrak{S}_N$ is conjugated to another analytic IFS which has at least one similarity map. 
   Moreover, assuming that the attractor of $\Phi$ is not a singleton then 
-  \begin{enumerate}
+  \begin{enumerate}[label=(\alph*)]
     \item\label{it:conj1} $\Phi$ is conjugated to a self-similar IFS if and only if for every
       $\bi,\bj\in\Sigma$,
       \[
@@ -910,8 +913,8 @@ norm since $\|F_ig-F_ih\|_{\infty}\leq \|f'_i\|_{\infty}\cdot\|g-h\|_{\infty}$, 
 $\|f_i'\|_\infty<1$ by our assumption \cref{it:c}.
 
 Our objective now is to establish some basic properties about the dual IFS. We first justify calling
-$\Phi^*$ an IFS by showing that it has an
-attractor. We use the convention that if $A\subset \mathcal{C}^{\omega}_\epsilon([0,1])$, then
+$\Phi^*$ an IFS by showing that it has an attractor. We use the convention that if $A\subset
+\mathcal{C}^{\omega}_\epsilon([0,1])$, then
 \begin{equation*}
 	F_iA \coloneqq \{F_i h:\, h\in A\}.
 \end{equation*}
@@ -1051,7 +1054,7 @@ right.}\label{fig:Cylinders}
 
 \begin{lemma}\label{lem:SSCEequiv}
 The following statements are equivalent: 
-\begin{enumerate}[a)]
+\begin{enumerate}[label=(\alph*)]
 \item\label{it:la} the dual IFS $\Phi^*$ satisfies the SSC;
 \item\label{it:lb} there exist $k<K$ and $n\geq1$ such that $F_{i}(k,K)\subseteq(k,K)$ for every
   $i\in\mathcal{I}$ and for every $\bi,\bj\in\Sigma_n$ with $i_1\neq j_1$ we have
@@ -1067,9 +1070,9 @@ The following statements are equivalent:
 
 
 \begin{proof}
-  \cref{it:la}$\Leftrightarrow$\cref{it:lb}: Let $k<K$ be such that
+  \cref{it:lb}$\Rightarrow$\cref{it:la}: Let $k<K$ be such that
   $F_{i}\overline{(k,K)}\subseteq(k,K)$, and so, $\Lambda^*\subseteq(k,K)$. Thus, the
-  implication \cref{it:la}$\Leftarrow$\cref{it:lb} is clear. For the other direction, let us
+  implication  is clear. For the other direction, \cref{it:la}$\Rightarrow$\cref{it:lb}, let us
   argue by contradiction. That is, for every $n\geq1$ there exist $\bi,\bj\in\Sigma_n$ with
   $i_1\neq j_1$ such that $F_{\bi}(k,K)\cap F_{\bj}(k,K)\neq\varnothing$. By the compactness
   of $\Sigma$, there exist a subsequence $n_\ell$ and $\bi,\bj\in\Sigma$ with $i_1\neq j_1$
@@ -1501,14 +1504,14 @@ f_{\bi_2^1}(x),\ldots,f_{\bi_{|\bi|}^1}(x)\}$.
 \begin{lemma}\label{lem:Pointsx_ij}
 If the IFS $(f_i)_{i\in\mathcal{I}}$ has no exact overlaps, then there exists a collection of points
 $\{x_{\bi,\bj}\}_{(\bi,\bj)\in\mathcal{B}_n}\subseteq[0,1]$ such that
-\begin{enumerate}[(a)]
-\item $\mathrm{conv}\big((F_{\bi}k)(x_{\bi,\bj}), (F_{\bi}K)(x_{\bi,\bj})\big) \cap
+\begin{enumerate}[label=(\alph*)]
+  \item\label{it:lla} $\mathrm{conv}\big((F_{\bi}k)(x_{\bi,\bj}), (F_{\bi}K)(x_{\bi,\bj})\big) \cap
   \mathrm{conv}\big((F_{\bj}k)(x_{\bi,\bj}),
 	(F_{\bj}K)(x_{\bi,\bj})\big)= \varnothing$ if $(\bi,\bj)$ is not bad;  
-\item all points in $\mathcal{O}_{\bi}(x_{\bi,\bj})$ and also in $\mathcal{O}_{\bj}(x_{\bi,\bj})$
+      \item\label{it:llb} all points in $\mathcal{O}_{\bi}(x_{\bi,\bj})$ and also in $\mathcal{O}_{\bj}(x_{\bi,\bj})$
   are distinct, moreover,
   $\mathcal{O}_{\bi}(x_{\bi,\bj})\cap\mathcal{O}_{\bj}(x_{\bi,\bj})=\{x_{\bi,\bj}\}$;
-\item $\big(\mathcal{O}_{\bi}(x_{\bi,\bj})\cup \mathcal{O}_{\bj}(x_{\bi,\bj})\big) \cap
+\item\label{it:llc} $\big(\mathcal{O}_{\bi}(x_{\bi,\bj})\cup \mathcal{O}_{\bj}(x_{\bi,\bj})\big) \cap
   \big(\mathcal{O}_{\bh}(x_{\bh,\bk})\cup
   \mathcal{O}_{\bk}\,(x_{\bh,\bk})\big)=\varnothing$ for every $(\bi,\bj)\neq
   (\bk,\bh)\in\mathcal{B}_n$.
@@ -1523,18 +1526,18 @@ i_n^{(k)};j_1^{(k)},\ldots,j_n^{(k)}),
 \]
 where $k=1,\ldots,\#\mathcal{B}_n$. The points are constructed
 inductively. If $(\bi^{(1)},\bj^{(1)})$ is not bad then by definition there exists an $\hat
-x_{(\bi^{(1)},\bj^{(1)})}$ for which $(a)$ holds. Since $(a)$ is an open condition, there exists an
-$x_{(\bi^{(1)},\bj^{(1)})}$ in the neighborhood of $\hat x_{(\bi^{(1)},\bj^{(1)})}$ for which $(b)$
+x_{(\bi^{(1)},\bj^{(1)})}$ for which \cref{it:lla} holds. Since \cref{it:lla} is an open condition, there exists an
+$x_{(\bi^{(1)},\bj^{(1)})}$ in the neighborhood of $\hat x_{(\bi^{(1)},\bj^{(1)})}$ for which \cref{it:llb}
 also holds. If this were not the case, then there would be $k,\ell$ such that
 $f_{(\bi^{(1)})_{\ell}^1}(x)=f_{(\bi^{(1)})_{k}^1}(x)$ for infinitely many $x$, but then analyticity
 implies that $f_{(\bi^{(1)})_{\ell}^1}(x)\equiv f_{(\bi^{(1)})_{k}^1}(x)$ on $[0,1]$, which contradicts the no
 exact overlaps assumption. If $(\bi^{(1)},\bj^{(1)})$ is bad, then choose
-$x_{(\bi^{(1)},\bj^{(1)})}$ to satisfy $(b)$ (which is possible by a similar argument). Thus we have
-constructed the first point $x_{(\bi^{(1)},\bj^{(1)})}$. Condition $(c)$ trivially holds with just
+$x_{(\bi^{(1)},\bj^{(1)})}$ to satisfy \cref{it:llb} (which is possible by a similar argument). Thus we have
+constructed the first point $x_{(\bi^{(1)},\bj^{(1)})}$. Condition \cref{it:llc} trivially holds with just
 the single pair $(\bi^{(1)},\bj^{(1)})$. 
 
 We continue by induction. Assume that $x_{(\bi^{(1)},\bj^{(1)})},\ldots,x_{(\bi^{(k)},\bj^{(k)})}$
-have already been constructed (for some $k\geq 1$) so that $(a),(b),(c)$ all hold. The set
+have already been constructed (for some $k\geq 1$) so that \cref{it:lla,it:llb,it:llc} all hold. The set
 $\bigcup_{m=1}^k \widehat{\mathcal{O}}(x_{(\bi^{(m)},\bj^{(m)})})$ is finite, where we use the
 shorthand  $\widehat{\mathcal{O}}(x_{\bi,\bj})\coloneqq\big(\mathcal{O}_{\bi}(x_{\bi,\bj})\cup
 \mathcal{O}_{\bj}(x_{\bi,\bj})\big)$. Then the set
@@ -1548,13 +1551,13 @@ is also finite since all $f_{\bi}$ are strictly monotone (for $\ell=0$ it is def
 
 If $(\bi^{(k+1)},\bj^{(k+1)})$ is not
 bad, then using that $A_k$ is finite and the continuity of the maps one can choose $\hat
-x_{(\bi^{(k+1)},\bj^{(k+1)})}\in(0,1)\setminus A_k$ for which $(a)$
+x_{(\bi^{(k+1)},\bj^{(k+1)})}\in(0,1)\setminus A_k$ for which \cref{it:lla}
 holds. By continuity of the maps, there exists a small neighbourhood of $\hat
-x_{(\bi^{(k+1)},\bj^{(k+1)})}$ in $(0,1)\setminus A_k$ where $(a)$ still holds, and by the same
+x_{(\bi^{(k+1)},\bj^{(k+1)})}$ in $(0,1)\setminus A_k$ where \cref{it:lla} still holds, and by the same
 argument as before can be used to pick a $x_{(\bi^{(k+1)},\bj^{(k+1)})}$ from this small
-neighbourhood for which $(a),(b),(c)$ all hold. If $(\bi^{(k+1)},\bj^{(k+1)})$ is bad, then
+neighbourhood for which \cref{it:lla,it:llb,it:llc} all hold. If $(\bi^{(k+1)},\bj^{(k+1)})$ is bad, then
 analyticity and the no exact overlaps assumption imply again the existence of
-$x_{(\bi^{(k+1)},\bj^{(k+1)})}\in(0,1)\setminus A_k$ that satisfies $(b)$ which completes the
+$x_{(\bi^{(k+1)},\bj^{(k+1)})}\in(0,1)\setminus A_k$ that satisfies \cref{it:llb} which completes the
 induction. 
 \end{proof}
 
@@ -1565,7 +1568,7 @@ $\mathcal{Y}=\{y_1<\ldots<y_M\}\subseteq[0,1]^M$ and $\mathcal{Z}=\{z_1<\ldots<
 z_Q\}\subseteq[0,1]^Q$ with $\mathcal{Y}\cap\mathcal{Z}=\varnothing$ we have the following: for
 every $\varepsilon>0$ and $\delta>0$ there exists an analytic function
 $g\in\mathcal{S}^{\omega}_\epsilon([0,1])$ such that
-\begin{enumerate}[(i)]
+\begin{enumerate}[label=(\roman*)]
 \item $g(z_i)=f(z_i)$ for every $z_i\in\mathcal{Z}$ and $g(y_i)=f(y_i)$ for every $y_i\in\mathcal{Y}$, moreover,
 \begin{equation*}
 \sup_{x\in[0,1]}|g(x)-f(x)|<\varepsilon;
