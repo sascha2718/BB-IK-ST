@@ -709,7 +709,22 @@ the SESC by~\cref{thm:main}.
 \end{proposition}
 
 \begin{proof}
-  Let $\bi,\bj \in\Sigma\cup\Sigma^*$ be distinct words such that $|\bi|=|\bj|$ and $|\bi\wedge \bj|=k$. It
+First, let us show that for every $\bi,\bj\in\Sigma\cup\Sigma_*$ with $i_1\neq j_1$ we have for every non-degenerate closed interval $J\subseteq[0,1]$
+\begin{equation}\label{eq:posallint}
+	\sup_{x\in J} |H_{\bi}(x) - H_{\bj}(x)| > 0.
+\end{equation} 
+Since $i_{1}\neq j_{1}$, for the particular choice of $x_{i_{1},j_{1}}$, we can bound 
+\begin{align*}
+	|H_{\bi}(x_{i_{1},j_{1}}) - H_{\bj}(x_{i_{1},j_{1}})| 
+	&\geq \left| \frac{f_{i_{1}}''(x_{i_{1},j_{1}})}{f_{i_{1}}'(x_{i_{1},j_{1}})} -
+	\frac{f_{j_{1}}''(x_{i_{1},j_{1}})}{f_{j_{1}}'(x_{i_{1},j_{1}})} \right| - 2
+	\sum_{n=k+2}^{\infty}\; \sup_{x\in[0,1]} \big| f_{\bi_{n-1}^{1}}'(x) \big| \cdot \sup_{x\in[0,1]}
+	\left| \frac{f_{i_n}''(x)}{f_{i_n}'(x)} \right| \\
+	&\geq \alpha -  2\frac{c_{\max}}{1-c_{\max}}\cdot \beta >0
+\end{align*}
+by our assumption. Hence, $H_{\bi}\not\equiv H_{\bj}$ and using the analyticity of the maps (which will be verified later in \cref{thm:H_iAnalytic}) \cref{eq:posallint} follows.
+	
+Now, let $\bi,\bj \in\Sigma\cup\Sigma^*$ be distinct words such that $|\bi|=|\bj|$ and $|\bi\wedge \bj|=k$. It
   follows from~\cref{eq:H_i(x)} that
   \begin{equation*}
     H_{\bi}(x)-H_{\bj}(x) = f_{\bi_k^1}'(x)\cdot \big( H_{\bi_{k+1}^{|\bi|}}(f_{\bi_k^1}(x)) -
@@ -720,16 +735,7 @@ for every $x\in[0,1]$. As a result,
 |H_{\bi}(x)-H_{\bj}(x)| \geq c_{\min}^k\cdot \big| H_{\bi_{k+1}^{|\bi|}}(f_{\bi_k^1}(x)) -
 H_{\bj_{k+1}^{|\bj|}}(f_{\bi_k^1}(x)) \big|.
 \end{equation*}
-Since $i_{k+1}\neq j_{k+1}$, for the particular choice of $x_{i_{k+1},j_{k+1}}$, we can further bound 
-\begin{align*}
-|H_{\bi}&(x_{i_{k+1},j_{k+1}}) - H_{\bj}(x_{i_{k+1},j_{k+1}})|\cdot c_{\min}^{-k} \\
-&\geq \left| \frac{f_{i_{k+1}}''(x_{i_{k+1},j_{k+1}})}{f_{i_{k+1}}'(x_{i_{k+1},j_{k+1}})} -
-\frac{f_{j_{k+1}}''(x_{i_{k+1},j_{k+1}})}{f_{j_{k+1}}'(x_{i_{k+1},j_{k+1}})} \right| - 2
-\sum_{n=k+2}^{\infty}\; \sup_{x\in[0,1]} \big| f_{\bi_{n-1}^{k+1}}'(x) \big| \cdot \sup_{x\in[0,1]}
-\left| \frac{f_{i_n}''(x)}{f_{i_n}'(x)} \right| \\
-&\geq \alpha -  2\frac{c_{\max}}{1-c_{\max}}\cdot \beta >0
-\end{align*}
-by our assumption.
+Taking supremum over $x\in[0,1]$ in both sides, the claim of the proposition follows by \cref{eq:posallint}.
 \end{proof}
 
 We demonstrate \cref{prop:example} on an example. Consider the IFS $\Phi=(f_1,f_2,f_3)$ with
