@@ -587,7 +587,7 @@ but will be made apparent in~\cref{sec:DualIFSFull}.
 We can now state our second main result.
 \begin{theorem}
   \label{thm:main}
-  Let $\Phi\in\mathfrak{S}_N$. If for all distinct $\bi,\bj \in\Sigma\cup\Sigma^*$ with $|\bi|=|\bj|$ we have
+  Let $\Phi\in\mathfrak{S}_N$. If for all distinct $\bi,\bj \in\Sigma\cup\Sigma_*$ with $|\bi|=|\bj|$ we have
 \begin{equation}\label{eq:H_iSSC}
     \sup_{x\in[0,1]} |H_{\bi}(x) - H_{\bj}(x)| > 0,
 \end{equation}
@@ -707,7 +707,7 @@ Then $\beta>0$ and if $\alpha > 2\beta\cdot c_{\max}/(1-c_{\max})$, we have
 $
 \sup_{x\in[0,1]} |H_{\bi}(x) - H_{\bj}(x)| > 0 
 $
-for all distinct $\bi,\bj \in\Sigma\cup\Sigma^*$ with $|\bi|=|\bj|$. In particular, $\Phi$ satisfies
+for all distinct $\bi,\bj \in\Sigma\cup\Sigma_*$ with $|\bi|=|\bj|$. In particular, $\Phi$ satisfies
 the SESC by~\cref{thm:main}.
 \end{proposition}
 
@@ -727,7 +727,7 @@ Since $i_{1}\neq j_{1}$, for the particular choice of $x_{i_{1},j_{1}}$, we can 
 \end{align*}
 by our assumption. Hence, $H_{\bi}\not\equiv H_{\bj}$ and using the analyticity of the maps (which will be verified later in \cref{thm:H_iAnalytic}) \cref{eq:posallint} follows.
 	
-Now, let $\bi,\bj \in\Sigma\cup\Sigma^*$ be distinct words such that $|\bi|=|\bj|$ and $|\bi\wedge \bj|=k$. It
+Now, let $\bi,\bj \in\Sigma\cup\Sigma_*$ be distinct words such that $|\bi|=|\bj|$ and $|\bi\wedge \bj|=k$. It
   follows from~\cref{eq:H_i(x)} that
   \begin{equation*}
     H_{\bi}(x)-H_{\bj}(x) = f_{\bi_k^1}'(x)\cdot \big( H_{\bi_{k+1}^{|\bi|}}(f_{\bi_k^1}(x)) -
@@ -969,7 +969,7 @@ can be restated in the following elegant form.
 	only if its dual IFS $\Phi^*$ has an exact overlap.
 \end{theorem}
 
-We postpone the explicit proof of \cref{thm:DualSSC} until the end of this section and
+We postpone the explicit proof of \cref{thm:DualSSC} until the end of~\cref{sec:ProofSufficientCond} and
 \cref{thm:DualConj} until \cref{sec:ProofConjugation}.
 
 For $\bi\in\Sigma_*$, an induction argument readily gives that the composition
@@ -994,7 +994,7 @@ further justifies this nomenclature.
 	Moreover, the map $\bi\mapsto H_{\bi}$ is H\"older continuous, that is, there exists $K>0$
 	such that for every distinct $\bi,\bj\in\Sigma$,
 	\begin{equation*}%\label{eq:Hcont}
-		\|H_{\bi}-H_{\bj}\|_\infty\leq c_{\max}^{|\bi\wedge\bj|}K,
+		\|H_{\bi}-H_{\bj}\|_\infty\leq c_{\max}^{|\bi\wedge\bj|}K.
 	\end{equation*}
 	In particular, $\Lambda^*=\{H_{\bi}(x):\, \bi\in\Sigma\}$.
 \end{lemma}
@@ -1312,7 +1312,7 @@ $|\bi\wedge\bj|<\min\{|\bi|,|\bj|\}$,
 \[
 \big|H_{\bi}^{(k)}(x) - H_{\bj}^{(k)}(x)\big| \leq 2C_k\cdot c_{\max}^{|\bi\wedge\bj|},
 \]
-where $C_k>0$ are as defined in \cref{thm:kbound}. 
+where the $C_k>0$ are as defined in \cref{thm:kbound}. 
 \end{lemma}
 \begin{proof}
   Let $m = |\bi\wedge\bj|$. Again, by \cref{thm:ugly,thm:kbound},
@@ -1376,7 +1376,7 @@ where $\xi_1\in(x,y)$, and similarly for $g(y)$ around $x$ we get
 
 \begin{proof}[Proof of~\cref{thm:main}]
 We prove the theorem by contradiction. Recall~\cref{def:SESC} and suppose that $\Phi$ has
-super-exponential condensation, \emph{i.e.} there exists a sequence $(\eta_n)_n$ such that
+weak super-exponential condensation, \emph{i.e.} there exists a sequence $(\eta_n)_n$ such that
 $\log(\eta_n)/n\to-\infty$ and there exist a subsequence $n_{\ell}\in\bbN$ and
 $\bi\neq\bj\in\Sigma_{n_\ell}$ such that
 \begin{equation}\label{eq:ExpCondensation}
@@ -1508,7 +1508,7 @@ f_{\bi_2^1}(x),\ldots,f_{\bi_{|\bi|}^1}(x)\}$.
 
 
 \begin{lemma}\label{lem:Pointsx_ij}
-If the IFS $(f_i)_{i\in\mathcal{I}}$ has no exact overlaps, then there exists a collection of points
+If the IFS $(f_i)_{i\in\mathcal{I}}\in\mathfrak{S}_N$ has no exact overlaps, then there exists a collection of points
 $\{x_{\bi,\bj}\}_{(\bi,\bj)\in\mathcal{B}_n}\subseteq[0,1]$ such that
 \begin{enumerate}[label=(\alph*)]
   \item\label{it:lla} $\mathrm{conv}\big((F_{\bi}k)(x_{\bi,\bj}), (F_{\bi}K)(x_{\bi,\bj})\big) \cap
@@ -1720,7 +1720,7 @@ norms can be handled together:
 by~\cref{eq:BoundA(x)} and $(C2)$ (with the choice $p=3, q=-1$ and $c=8Qa_i$). These bounds already
 imply that $\|g-f\|\leq (e^{\varepsilon}-1)\cdot \|f\|$ and $\|g'-f'\|\leq
 (e^{\varepsilon}-1)\cdot\|f'(x)\|+3\varepsilon e^{\varepsilon} \cdot\|f(x)\|$. Also, by choosing the
-values of $\eta_i$ possibly larger, one can ensure that
+values of $\eta_i$ possibly {\color{red}larger?}, one can ensure that
 $g(\overline{\mathcal{B}_\epsilon})\subseteq\mathcal{B}_\epsilon$ and $0<|g'(x)|<1$ for every
 $x\in\overline{\mathcal{B}_\epsilon}$, hence, $g$ satisfies \cref{it:b} and \cref{it:c}, and in
 particular, $g\in\mathcal{S}_\epsilon^\omega([0,1])$.
@@ -1773,10 +1773,10 @@ still far enough from the other $y_j$, we just use the same bound there:
 \end{equation*}
 In the final term, we substitute the value of $a_i$ from~\cref{eq:a_iChoice} and $\psi(x)$ to get
 \begin{align*}
-	I(x)&\leq \delta \cdot \frac{|f'(y_i)|}{|f(y_i)|} \prod_{\substack{y_j\in\mathcal{Y} \\
+	I(x)&\leq {\color{red}\varepsilon+ } \delta \cdot \frac{|f'(y_i)|}{|f(y_i)|} \prod_{\substack{y_j\in\mathcal{Y} \\
 	y_j\neq y_i}} \frac{(x-y_j)^2}{(y_i - y_j)^2}  \prod_{z_j\in\mathcal{Z}}
 	\frac{(x-z_j)^4}{(y_i - z_j)^4} \\
-	&\stackrel{\eqref{eq:eta1/3Bound}}{\leq}  \delta \cdot
+	&\stackrel{\eqref{eq:eta1/3Bound}}{\leq}  {\color{red}\varepsilon+ } \delta \cdot
 	\frac{|f'(y_i)|}{|f(y_i)|}\prod_{\substack{y_j\in\mathcal{Y} \\ y_j\neq y_i}}\!\! \Big(
 	1+\frac{\eta_i^{1/3}}{|y_i-y_j|} \Big)^2 \prod_{z_j\in\mathcal{Z}}\!\! \Big(
       1+\frac{\eta_i^{1/3}}{|y_i-z_j|} \Big)^4. 
@@ -1800,7 +1800,7 @@ IFS satisfies the SSC. Then~\cref{thm:ESCOpenDense} follows immediately from~\cr
 
 \begin{proof}[Proof of \cref{thm:ESCOpenDense}] 
 By \cref{thm:DualSSC}, it is enough to show that $\{\Phi\in\mathfrak{S}_N:\Phi^*\text{
-satisfies the SSC}\}$ is open and dense in $\mathfrak{S}_N$ in with respect to the metric $d_2$. The
+satisfies the SSC}\}$ is open and dense in $\mathfrak{S}_N$ with respect to the metric $d_2$. The
 set is open by \cref{lem:cont} and so it is enough to show that it is dense.
 
 Let $\delta>0$ and $\Phi=(f_i)_{i\in\mathcal{I}}\in\mathfrak{S}_N$ be arbitrary but fixed. Choose
@@ -1810,10 +1810,9 @@ dual IFS of $\Phi$. Recall that,
 $\mathcal{B}_n=\{(\bi,\bj)\in\Sigma_n\times\Sigma_n:\, i_1<j_1\}$. Let 
 $\{x_{\bi,\bj}:\, (\bi,\bj)\in\mathcal{B}_n\}$ be points as in~\cref{lem:Pointsx_ij}. 
 
-For every $i\in\mathcal{I}$, we define a partition of two elements $\{\mathcal{Y}_i,
-  \mathcal{Z}_i\}$ of $\bigcup_{(\bi,\bj)\in\mathcal{B}_n} \big(\mathcal{O}_{\bi}(x_{\bi,\bj})\cup
-  \mathcal{O}_{\bj}(x_{\bi,\bj})\big)$, where $\mathcal{O}_{\bi}(x)= \{x,f_{i_1}(x),
-  f_{i_2i_1}(x),\ldots,f_{i_{|\bi|}\ldots i_1}(x)\}$, as follows:
+Recall $\mathcal{O}_{\bi}(x)= \{x,f_{i_1}(x), f_{i_2i_1}(x),\ldots,f_{i_{|\bi|}\ldots i_1}(x)\}$. For every $i\in\mathcal{I}$, we define a partition of $\bigcup_{(\bi,\bj)\in\mathcal{B}_n} \big(\mathcal{O}_{\bi}(x_{\bi,\bj})\cup
+\mathcal{O}_{\bj}(x_{\bi,\bj})\big)$ consisting of two elements $\{\mathcal{Y}_i,
+  \mathcal{Z}_i\}$ as follows:
 \begin{itemize}
 	\item $x_{\bi,\bj}\in\mathcal{Y}_{i_1}$ and $x_{\bi,\bj}\in\mathcal{Z}_{j_1}$ if
 	  $(\bi,\bj)\in\mathcal{B}_n$ is bad and  
@@ -1990,7 +1989,7 @@ and by Using \cref{eq:H=f''/f'}, we have that
 \]
 Now, let $\bi,\bj\in\Sigma$ be arbitrary but fixed, and let $\bk_n = \bi_1^{n} \bj_n^1$. Then
 $p_{\bk_n}\to \pi(\bi)$ as $n\to\infty$, where we recall that $\pi\colon\Sigma\to\mathbb{R}$ is the
-natural projection of $\Phi$. Furthermore, by \cref{thm:H_iAnalytic} and by
+natural projection of $\Phi$ defined in~\cref{eq:natProj}. Furthermore, by \cref{thm:H_iAnalytic} and by
 $f'_{\bk_n}(p_{\bk_n})\to0$ as $n\to\infty$
 \[
 \frac{g''(p_{\bk_n})}{g'(p_{\bk_n})}
