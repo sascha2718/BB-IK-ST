@@ -292,6 +292,8 @@ pagebackref=true]{hyperref}
 
 \allowdisplaybreaks
 
+\numberwithin{equation}{section}
+
 %\setlength{\parindent}{0pt} %--Uncomment to not indent paragraphs
 %\linespread{2} %-- Uncomment for double spacing
 
@@ -325,7 +327,7 @@ H-1111 Budapest, Hungary.}\par\nopagebreak
 
 
   S.~Troscheit, \textsc{Department of Mathematics, Box 480, 751 06 Uppsala University, Sweden.}\par\nopagebreak
-  \textit{E-mail address}, S.~TroschRight\cref{it:la}$\Leftarrow$\cref{it:lb} \texttt{sascha.troscheit@math.uu.se}
+  \textit{E-mail address}, S.~Troscheit: \texttt{sascha.troscheit@math.uu.se}
 }}
 
 \begin{document}
@@ -476,7 +478,8 @@ We also consider the space $\mathfrak{S}_N$ of cardinality $N$ IFSs $\Phi=(f_i)_
 $$
 d_2((f_i)_{i=1}^N,(g_i)_{i=1}^N)\coloneqq\max_{i\in\mathcal{I}}d_2(f_i,g_i)
 $$
-be the $\mathcal{C}^2$ metric on the space of IFSs $\mathfrak{S}_N$. {\color{red} Note that an IFS is an ordered tuple of maps, hence the single maximising index.}
+be the $\mathcal{C}^2$ metric on the space of IFSs $\mathfrak{S}_N$. Note that we consider an IFS to
+be an ordered tuple of maps, hence the single maximising index.
 
 From the finite alphabet $\mathcal{I}\coloneqq\{1,\ldots,N\}$ we construct infinite words
 $\bi=(i_1,i_2,i_3,\dots) \in\Sigma \coloneqq \mathcal{I}^{\bbN}$ and finite words
@@ -1237,8 +1240,8 @@ of~\cref{eq:fandg} we get
 =\sum_{\ell=0}^{k-2}\frac{\partial g_{k-1}}{\partial
 y_{\ell}}\big(H_{\bi}^{(k-2)},\dots,H_{\bi}(x)\big) \cdot H_{\bi}^{(l+1)}(x).
 \]
-In the second term on the left hand side we use the induction hypothesis~\cref{eq:fandg} for $k$
-and~\cref{eq:H=f''/f'} to see that
+We use the induction hypothesis~\cref{eq:fandg} in the second term on the left hand side for $k$
+and \cref{eq:H=f''/f'} to see that
 \[
 \frac{f_{\bi_{|\bi|}^1}^{(k)}(x)}{f_{\bi_{|\bi|}^1}'(x)}\cdot
 \frac{f_{\bi_{|\bi|}^1}''(x)}{f_{\bi_{|\bi|}^1}'(x)}
@@ -1889,10 +1892,6 @@ This clearly implies that  $G_{\bi}(k,K)\cap G_{\bj}(k,K)=\varnothing$. Finally,
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conjugation to self-similar IFS}\label{sec:ProofConjugation}
 
-%In terms of the dual IFS, for an analytic IFS $\Phi$ to be conjugated to a self-similar IFS means
-%precisely that its dual attractor $\Lambda^*$ is a single analytic function $H$. If $\Phi$ is a
-%self-similar IFS to begin with, then $H\equiv 0$, otherwise $H$ can be different. {\color{red} What
-%	happens to conjugation of $H_{\bi}$?} 
 
 Let $f\in\mathcal{S}_\epsilon^\omega([0,1])$ be arbitrary but fixed. Along the lines of \cref{eq:H_i(x)}, let us define the map
 \begin{equation}\label{eq:H}
