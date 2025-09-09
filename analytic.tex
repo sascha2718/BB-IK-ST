@@ -16,6 +16,19 @@
 %% You can also manually run this by calling
 %%   pdflatex -shell-escape filename.tex
 %%
+
+
+\usepackage[backend=biber,
+style=trad-abbrv,
+            backref=true,
+            backrefstyle=three,
+            hyperref=true,
+	    url=false,
+	    isbn=false,
+	    doi=false,
+	    sortcites]{biblatex}
+\addbibresource{biblio_ConfESC.bib}
+
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.16}
 \usepackage{wrapfig, caption}
@@ -25,8 +38,7 @@
 \usepackage[font=small,labelfont=bf]{caption}
 \usepackage{xcolor}
 \usepackage{mathtools}
-\usepackage[colorlinks=true, linkcolor=blue, citecolor=blue,
-pagebackref=true]{hyperref}
+\usepackage[colorlinks=true, linkcolor=blue, citecolor=blue]{hyperref}
 %\usepackage{ulem}
 \usepackage{comment}
 
@@ -1150,6 +1162,7 @@ The following statements are equivalent:
     \sup_{x\in[0,1]}|f_{\bi}'(x)-g_{\bi}'(x)|\leq c_{\max}^{|\bi|-1}\frac{C+1}{1-c_{\max}}d_2(\Phi,\Psi).
   \end{equation}
 
+  \clearpage
   Combining \cref{eq:tec1,eq:tec2,eq:tec3}, we get that for every $\bi\in\Sigma_*$
   \begin{align*}
 &\left|
@@ -1344,6 +1357,7 @@ where the $C_k>0$ are as defined in \cref{thm:kbound}.
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
 \section{Proof of the sufficient condition for SESC}\label{sec:ProofSufficientCond}
 
 We need one auxiliary lemma before we can proceed with the proof of~\cref{thm:main}.
@@ -2009,8 +2023,7 @@ maps $H_{\bj}$ are analytic, we have that $H_{\bj}(x)\equiv H_{\bk}(x)$ for all 
 	The claim follows by \cref{thm:SubConjugation} and \cref{thm:H_iAnalytic}.
 \end{proof}
 
-\bibliographystyle{abbrv}
-\bibliography{biblio_ConfESC}
+\printbibliography
 
 
 

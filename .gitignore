@@ -21,3 +21,5 @@ dropbox/*
 dropbox
 *.bbl
 *.blg
+*.bcf
+*.xml
