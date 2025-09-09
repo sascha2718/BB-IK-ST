@@ -1,0 +1,130 @@
+\documentclass[11pt,]{article}
+
+\usepackage[margin=1in]{geometry}
+%\usepackage{amscd}
+%\usepackage{amssymb}
+%\usepackage{amsmath}
+%\usepackage{amsthm}
+%\usepackage{enumitem}
+%\usepackage{tikz}
+%\usetikzlibrary{external}
+%\tikzexternalize
+%% This pre-compiles tikz pictures so that they do not have to be compiled every time.
+%% For this to work you need to activate the flag:
+%%   -shell-escape
+%%
+%% You can also manually run this by calling
+%%   pdflatex -shell-escape filename.tex
+%%
+
+%\usepackage[colorlinks=true, linkcolor=blue, citecolor=blue]{hyperref}
+
+
+\usepackage[backend=biber,
+%style=trad-abbrv,
+            backref=true,
+            backrefstyle=three,
+ %           hyperref=true,
+	    url=false,
+	    isbn=false,
+	    doi=false,
+	    sortcites]{biblatex}
+\addbibresource{biblio_ConfESC.bib}
+
+%\usepackage{pgfplots}
+%\pgfplotsset{compat=1.16}
+%\usepackage{wrapfig, caption}
+%\usepackage{framed}
+%\usepackage{float}
+%\usetikzlibrary{arrows}
+%\usepackage[font=small,labelfont=bf]{caption}
+%\usepackage{xcolor}
+%\usepackage{mathtools}
+%\usepackage{ulem}
+%\usepackage{comment}
+
+%\usepackage[capitalise]{cleveref}
+%\crefname{enumi}{}{}
+%\usepackage{refcheck}
+%%%making refcheck recognise cref
+%%%% Infrastructure    
+%\makeatletter
+%\newcommand{\refcheckizelist}[1]{%
+%  \expandafter\let\csname @@\string#1\endcsname#1%
+%  \expandafter\DeclareRobustCommand\csname relax\string#1\endcsname[1]{%
+%    \csname @@\string#1\endcsname{##1}% typeset as usual
+%    \@for\rc@tmp:=##1\do{\wrtusdrf{\rc@tmp}}% loop over comma list
+%  }%
+%  \expandafter\let\expandafter#1\csname relax\string#1\endcsname
+%}
+%\makeatother
+%
+%
+%
+%
+%%%% Now we add the reference commands we want refcheck to be aware of
+%\refcheckizelist{\cref}
+%\refcheckizelist{\Cref}
+%
+%
+
+%\setlength{\parindent}{0pt} %--Uncomment to not indent paragraphs
+%\linespread{2} %-- Uncomment for double spacing
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                   END OF MACROS                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{On exponential separation of analytic self-conformal sets on the real line}
+
+\author{Bal\'azs B\'ar\'any\\(BME) \and Istv\'an
+  Kolossv\'ary\\ (R\'enyi Institute) \and Sascha
+Troscheit \\(Uppsala)}
+\date{\today}
+
+
+\begin{document}
+
+\frenchspacing
+\maketitle
+
+%{\color{red}
+%How can keywords, MSC appear at bottom footnote in this style? Should funding be taken to the end with an Acknowledgemnet section? \\
+%2020 Mathematics Subject Classification.  Primary 28A80; Secondary 37C45 \\
+%Key words and phrases. Analytic iterated function system, exponential separation condition,
+%dimension drop conjecture, dual IFS, conjugation to self-similar IFS, ?? 
+%}
+
+\begin{abstract}
+In a recent article, Rapaport showed that the there is no dimension drop for
+exponentially separated analytic IFSs on the real line. We show that the set of such exponentially
+separated IFSs in the space of analytic IFSs contains an open and dense set in the $\mathcal{C}^2$
+topology. Moreover, we give a sufficient condition for the IFS to be exponentially separated which
+allows us to construct explicit examples which are exponentially separated. The key
+technical tool is the introduction of the \emph{dual IFS} which we believe has significant interest
+in its own right. As an application we also characterise when an analytic IFS can be conjugated to a
+self-similar IFS. 
+\end{abstract}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%	INTRODUCTION
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction and main results}
+The geometric properties of attractors of iterated function systems have been extensively studied in recent
+decades.
+An iterated function system (IFS) $\Phi$ is a finite collection of strictly contracting self-maps
+$(f_i)_{i\in\mathcal{I}}$ on a complete separable metric space $X$. By a result of
+Hutchinson~\cite{Hutchinson_Attractor_81}, there exists a unique non-empty compact set $\Lambda$
+satisfying the
+invarianc
+
+\printbibliography
+
+
+
+\end{document}

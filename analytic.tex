@@ -465,7 +465,7 @@ The methods involve constructing a \emph{dual} IFS, which we believe is of indep
 KKP144059 \textit{Fractal geometry and applications} Research Group. IK is supported by the European
 Research Council Marie Sk\l odowska-Curie Actions Postdoctoral Fellowship $\#101109013$ and the
 Hungarian NRDI Office grant K142169. ST acknowledges funding from the Lisa \& Carl-Gustav
-Esseens Mathematics Fund.
+Esseen's Mathematics Fund.
 
 \subsection{Notations and main results}
 For convenience we write $I=[0,1]$.
@@ -522,11 +522,6 @@ condition for analytic self-conformal IFSs.
   \]
   for all distinct $\bi,\bj\in\Sigma_n$. If the ESC does not hold,
   then we say that $\Phi$ has \emph{super-exponential condensation}.	
-  %\ie there exists a sequence
-  %$(\eta_n)_n$ such that $\log(\eta_n)/n\to-\infty$ with the property that
-  %\[
-  %\sup_{x\in[0,1]}|f_{\bi}(x)-f_{\bj}(x)| \leq \eta_{n},
-  %\]
 \end{definition}
 \begin{definition}\label{def:SESC}
   We say that the IFS $\Phi=(f_i)_{i\in\mathcal{I}}$ 
@@ -554,12 +549,6 @@ We remark that the separation conditions satisfy the implications
   \text{SSC $\Rightarrow$ SESC $\Rightarrow$ ESC
   $\Rightarrow$ no exact overlaps.} 
 \]
-%In full generality, it is not difficult to see that equality holds
-%in~\cref{eq:DimUpperBound} under the SSC, however, an obvious obstruction is for $\Phi$ to have
-%exact overlaps. In fact, the \emph{dimension drop conjecture} asserts that in the self-similar
-%setting this is the only way for there to be strict inequality in~\cref{eq:DimUpperBound}. 
-%A very active area of research within fractal geometry has been to confirm the conjecture for weaker
-%separation conditions than the SSC.
 
 
 
@@ -647,9 +636,6 @@ which is well defined by sub-additivity. It is convex, strictly decreasing and c
 there exists a unique real $s(\Phi)$ for which $P(s(\Phi))=0$.
 Following~\cite[Chapter~14]{BaranySimonSolomyak_Book23}, we call $s(\Phi)$ the \emph{conformality
 dimension} associated to $\Phi$. 
-%For a self-similar IFS, $\chi=-\sum_{i \in
-%\mathcal{I}}p_i\log |r_i|$ and $s(\Phi)$ is the unique solution to the equation $\sum_{i \in
-%\mathcal{I}}|r_i|^{s(\Phi)}=1$.
 
 For any self-conformal set and self-conformal measure supported on it, the bounds
 \begin{equation}\label{eq:DimUpperBound}
@@ -711,7 +697,6 @@ We note that by compactness arguments, $0<c_{\min} \leq c_{\max} <1$.
 Let $\Phi=(f_i)_{i\in\mathcal{I}}\in\mathfrak{S}_N$ be an IFS. Suppose that there exists $\alpha>0$
 such that for each $i\neq j\in\mathcal{I}$ there exists $x_{i,j}\in[0,1]$ with
 \begin{equation*}
-%\inf_{\substack{x\in[0,1] \\ i\neq j\in\Sigma_1}}
 \left| \frac{f_i''(x_{i,j})}{f_i'(x_{i,j})} - \frac{f_j''(x_{i,j})}{f_j'(x_{i,j})} \right| \geq \alpha . 
 \end{equation*}
 Let
@@ -785,32 +770,6 @@ natural measure is strictly smaller than the conformality dimension $s(\Phi)$. H
 dimension did not drop for every $q>0$ then by \cite[Lemma~1.7]{Shmerkin_LqSelfSim_Annals} the local
 dimension at every point would be at least $s(\Phi)$, which is a contradiction. We leave the details
 for the interested reader.
-
-%\subsubsection{Dimension theoretic consequences revisited}
-%
-%
-%
-%The example in \cref{eq:exampleIFS} 
-%
-%A different direction to generalise the result of~\cite{Hochman_SelfSimESC_Annals} is to consider
-%the $L^q$ dimension of a self-similar measure which is a standard tool in multifractal analysis that
-%quantifies irregularities in the distribution of a measure. Given $q>1$, the $L^q$ dimension of a
-%Borel probability measure $\nu$ on $\mathbb{R}$ is 
-%\begin{equation*}
-%D(\nu, q)\coloneqq\liminf _{n \rightarrow \infty} \frac{-\log \sum_{j \in \mathbb{Z}}
-%\nu\left(\left[j \cdot 2^{-n},(j+1) \cdot 2^{-n}\right)\right)}{(q-1) n} .
-%\end{equation*}
-%Similarly to~\cref{eq:DimUpperBound}, there is a natural upper bound 
-%\begin{equation}\label{eq:LqUpperBound}
-%	D(\mu_{\mathbf{p}}, q) \leq \min \left\{\frac{T(\mu_{\mathbf{p}}, q)}{q-1} ,1\right\}
-%\end{equation}
-%which always holds, where $T(\mu_{\mathbf{p}}, q)$ is the unique solution to the equation
-%\begin{equation*}
-%	\sum_{i \in \mathcal{I}} p_i^q\left|r_i\right|^{-T(\mu_{\mathbf{p}}, q)}=1 .
-%\end{equation*}
-%Building on the methods of~\cite{Hochman_SelfSimESC_Annals},
-%Shmerkin~\cite{Shmerkin_LqSelfSim_Annals}  showed that there is equality in~\cref{eq:LqUpperBound}
-%for all self-similar measures and $q>1$ whenever the ESC holds. 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
