@@ -108,6 +108,7 @@ style=trad-abbrv,
 
 
 
+\newcommand{\change}[1]{{\color{green!60!black}#1}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % THE DEFINITION OF A NEW FAMILY OF FONTS AND RELATED COMMANDS %
@@ -461,7 +462,10 @@ $\mathcal{C}^2$ topology. We will also explore when analytic self-conformal IFS 
 self-similar systems.
 The methods involve constructing a \emph{dual} IFS, which we believe is of independent interest. 
 
-\paragraph{Acknowledgements.} BB acknowledges support from grant NKFI~K142169, and grant NKFI
+\paragraph{Acknowledgements.} \mbox{}\change{The authors would like to thank Amir Algom for pointing out various
+useful references on conjugation of analytic IFSs to self-similar IFSs.}
+
+BB acknowledges support from grant NKFI~K142169, and grant NKFI
 KKP144059 \textit{Fractal geometry and applications} Research Group. IK is supported by the European
 Research Council Marie Sk\l odowska-Curie Actions Postdoctoral Fellowship $\#101109013$ and the
 Hungarian NRDI Office grant K142169. ST acknowledges funding from the Lisa \& Carl-Gustav
@@ -782,8 +786,8 @@ although the definition may not at first glance reveal this.  The functions $H_{
 determine whether an analytic IFS can be transformed into a
 self-similar one through a change of coordinates.
 The problem of being conjugated to a linear IFS played a significant role in the study of Fourier
-decay of self-conformal measures, see
-\cite{AlgomEtal_LogFourierDecaySelfConf_JLMS,BakerBanaji_PolyFourierDecay} and \cite[Corollary 1.2 part
+decay of self-conformal measures, \change{see
+\cite{AlgomHertzWang23,AlgomEtal_LogFourierDecaySelfConf_JLMS,BakerBanaji_PolyFourierDecay}} and \cite[Corollary 1.2 part
 3.]{AlgomEtal_PointwiseNormalityFDecaySelfSonf_AdvMath21}.
 
 \begin{definition}\label{def:conjugation}
@@ -815,7 +819,11 @@ for all $j\in\mathcal{I}$.
 \end{remark}
 
 We give a characterisation of when an analytic IFS is (sub-)conjugated to a self-similar IFS using
-the function $H_{\bi}$ introduced in~\cref{eq:H_i(x)}.
+the function $H_{\bi}$ introduced in~\cref{eq:H_i(x)}. \change{We point out that Algom, Rodriguez
+  Hertz, and Wang \cite[Claim 6.1]{AlgomHertzWang23} already gave a dichotomy stating that 
+  either (a) there is a analytic conjugation to a self-similar IFS or (b) that any such conjugation
+  cannot even be $\mathcal{C}^2$. Our result can be considered
+complementary, as we give a checkable condition when we are conjugated to a self-similar system.}
 
 \begin{theorem}\label{thm:SubConjugation}
   Any $\Phi\in\mathfrak{S}_N$ is conjugated to another analytic IFS which has at least one similarity map. 
@@ -838,8 +846,25 @@ the function $H_{\bi}$ introduced in~\cref{eq:H_i(x)}.
 \end{theorem}
 \cref{thm:SubConjugation} is proved in~\cref{sec:ProofConjugation}.
 
+\change{A strongly related condition is that of uniform non-integrability (UNI) introduced by
+Dolgopyat and Chernov, which was used in the IFS context by Baker and Sahlsten to determine Fourier
+decay of measures, see \cite{BakerSahlsten23} and references therein.
+In our terminology, the UNI condition is equivalent to the existence of 
+$\bi,\bj\in\Sigma$ such that 
+$\inf_{x\in I} |H_{\bi}(x) -H_{\bj}(x)| >0$, which is clearly stronger than the negation of
+\cref{it:conj1} in \cref{thm:SubConjugation}.
+}
 
-Let us return to the discussion of the dimension drop conjecture. Recall
+\change{
+\begin{remark}
+  Let us note that in \cref{it:conj1} one only needs to check that $H_{i^\infty}(x)\equiv
+  H_{j^\infty}(x)$ for all $i,j \in\mathcal{I}$ and $x\in I$.
+  This may not be clear at this point, but will be immediate after the introduction of the dual IFS
+  and \cref{thm:DualConj}.
+\end{remark}
+}
+
+We return to the discussion of the dimension drop conjecture. Recall
 that the ESC implies that the IFS has no exact overlaps. For some time it was an important open
 problem whether there exists a self-similar IFS which has no exact overlaps but has super
 exponential condensation. Independently of each other, using different methods,
@@ -1121,7 +1146,6 @@ The following statements are equivalent:
     \sup_{x\in[0,1]}|f_{\bi}'(x)-g_{\bi}'(x)|\leq c_{\max}^{|\bi|-1}\frac{C+1}{1-c_{\max}}d_2(\Phi,\Psi).
   \end{equation}
 
-  \clearpage
   Combining \cref{eq:tec1,eq:tec2,eq:tec3}, we get that for every $\bi\in\Sigma_*$
   \begin{align*}
 &\left|
