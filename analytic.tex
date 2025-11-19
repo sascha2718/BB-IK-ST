@@ -775,6 +775,76 @@ dimension did not drop for every $q>0$ then by \cite[Lemma~1.7]{Shmerkin_LqSelfS
 dimension at every point would be at least $s(\Phi)$, which is a contradiction. We leave the details
 for the interested reader.
 
+\change{------- Some thoughts. New `theorem' about polynomials (IK thinks sections 1.2.2 and 1.2.3 should be switched and proof should probably be separate section at the end of paper)-----------}
+
+There is something we need to consider. We have the condition in \cref{eq:H_iSSC} which is sufficient to show SESC. We should remark that it is far from necessary because whenever there exists two finite words $\bi\neq\bj$ such that $f_{\bi_{|\bi|}^{1}}(x) = \lambda\cdot f_{\bj_{|\bj|}^{1}}(x) + t$ for some $|\lambda|\neq 0$ and $t\in\mathbb{R}$ (it is saying something like two different compositions of functions are a scaled and translated copy of each other), then $H_{\bi}(x)\equiv H_{\bj}(x)$ for all $x\in[0,1]$, so in particular \cref{eq:H_iSSC} does not hold. However, the IFS could still very easily satisfy even the SSC. So here is some kind of new ``separation condition'' which is much weaker than exact overlaps, but can also fail for systems with SSC. 
+
+So $H$ can not distinguish between two such compositions. What could be a refinement? It seems that this is the problem we run into in our theorem attempt for polynomials. We could introduce a condition something like for every fnite length $\bi\neq\bj$ and every $|\lambda|\neq 0$ and $t\in\mathbb{R}$ we assume that there exists an $x\in[0,1]$ such that $f_{\bi_{|\bi|}^{1}}(x) \neq \lambda\cdot f_{\bj_{|\bj|}^{1}}(x) + t$. {\color{red}How checkable is this condition?? For example, for polynomial IFS, if this is true on the first level, then is it true for all compositions?} It does not seem at all that if $f_{\bi_{|\bi|}^{1}}(x) = \lambda\cdot f_{\bj_{|\bj|}^{1}}(x) + t$, then there is a conjugating function that conjugates both $f_{\bi_{|\bi|}^{1}}$ and $f_{\bj_{|\bj|}^{1}}$ simultaneously to a linear function. {\color{red} The theorem will definitely need to be restated.}
+
+\begin{theorem}
+Let $\Phi=(f_i)_{i\in\mathcal{I}}\in\mathfrak{S}_N$ be an IFS consisting of polynomials
+\begin{equation*}
+f_i(x) = \sum_{n=0}^{N_i} a_n^{(i)}\cdot x^n
+\end{equation*}
+that is not sub-conjugated to a self-similar IFS, where $\mathrm{deg} f_i=N_i$. Assume that for any $\bi\neq\bj\in\Sigma_\ast$ with $|\bi|=|\bj|$ and for every $|\lambda|\neq 0$ and $t\in\bbR$ there exists $x\in[0,1]$ such that $f_{\bi}(x)\neq \lambda f_{\bj}(x) +t$.   Then $\Phi$ satisfies the SESC. 
+%there is a dichotomy:
+%\begin{equation*}
+%\text{either }\quad \Phi \text{ } \quad \text{ or } \quad \Phi \text{ has exact overlaps}.
+%\end{equation*}
+\end{theorem}
+
+ 
+\begin{proof}
+In light of \cref{thm:main}, we calculate the difference $|H_{\bi}(x) - H_{\bj}(x)|$ for all distinct $\bi,\bj \in\Sigma\cup\Sigma_*$ with $|\bi|=|\bj|$. First assume $|\bi|=|\bj|<\infty$. Then \cref{eq:H=f''/f'} implies that
+\begin{equation*}
+|H_{\bi}(x) - H_{\bj}(x)|
+= \left| \frac{f''_{\bi_{|\bi|}^1}(x)}{f'_{\bi_{|\bi|}^1}(x)} - \frac{f''_{\bj_{|\bj|}^1}(x)}{f'_{\bj_{|\bj|}^1}(x)} \right|
+= \left| \frac{f''_{\bi_{|\bi|}^1}(x)\cdot f'_{\bj_{|\bj|}^1}(x) - f''_{\bj_{|\bj|}^1}(x) \cdot f'_{\bi_{|\bi|}^1}(x)}{ f'_{\bi_{|\bi|}^1}(x) \cdot f'_{\bj_{|\bj|}^1}(x)} \right|.
+\end{equation*}
+The composition
+\begin{equation*}
+f_{\bi_{|\bi|}^1}(x) = \sum_{k=0}^{N_{\bi}} a_k^{(\bi)}\cdot x^k
+\end{equation*}
+is also a polynomial of degree $N_{\bi}=\prod_{k=1}^{|\bi|}N_{i_k}$ with $|a_1^{(\bi)}|\neq0$ since $|f'_{\bi_{|\bi|}^1}(x)|\in(0,1)$ for all $x\in[0,1]$. During the proof, slightly abusing notation, we simply write $f_{\bi}=f_{\bi_{|\bi|}^1}$. Therefore, both $f''_{\bi}\cdot f'_{\bj}$ and $f'_{\bi}\cdot f''_{\bj}$ are polynomials of degree $N_{\bi}+N_{\bj}-3$. More specifically,
+\begin{equation*}
+f''_{\bi}(x)\cdot f'_{\bj}(x) = \sum_{k=0}^{N_{\bi}+N_{\bj}-3} \Big( \sum_{\ell=0}^{k} (\ell+2)(\ell+1)a_{\ell+2}^{(\bi)}\cdot (k-\ell+1)a_{k-\ell+1}^{(\bj)} \Big) \cdot x^k,
+\end{equation*}
+where we set $a_k^{(\bi)}=0$ for all $k>N_{\bi}$ and similarly $a_k^{(\bj)}=0$ for all $k>N_{\bj}$.
+
+Since $\Phi$ is not sub-conjugated to a self-similar IFS, either $f''_{\bi}(x)\cdot f'_{\bj}(x) = f'_{\bi}(x)\cdot f''_{\bj}(x)$ for at most  $N_{\bi}+N_{\bj}-3$ points $x\in[0,1]$, in which case $\sup_{x\in[0,1]} |H_{\bi}(x) - H_{\bj}(x)| > 0$ automatically holds; or $f''_{\bi}(x)\cdot f'_{\bj}(x) = f'_{\bi}(x)\cdot f''_{\bj}(x)$ for every $x\in[0,1]$, in which case the corresponding coefficients of the two polynomials must be the same, \ie for every $0\leq k\leq N_{\bi}+N_{\bj}-3$,
+\begin{equation}\label{eq:EqualCoeffs}
+\sum_{\ell=0}^{k} (\ell+2)(\ell+1)a_{\ell+2}^{(\bi)}\cdot (k-\ell+1)a_{k-\ell+1}^{(\bj)}
+= \sum_{\ell'=0}^{k} (\ell'+2)(\ell'+1)a_{\ell'+2}^{(\bj)}\cdot (k-\ell'+1)a_{k-\ell'+1}^{(\bi)}.
+\end{equation}
+We show that in this case $f_{\bi_{|\bi|}^1}(x) = \frac{a_1^{(\bi)}}{a_1^{(\bj)}}\cdot f_{\bj_{|\bj|}^1}(x) +a_0^{(\bi)} -\frac{a_1^{(\bi)}}{a_1^{(\bj)}}\cdot a_0^{(\bj)}$.
+\begin{claim}\label{thm:Claim}
+If $\Phi$ is not sub-conjugated to a self-similar IFS and \cref{eq:EqualCoeffs} holds, then $N_{\bi}=N_{\bj}$, moreover,  $a_m^{(\bi)}=\frac{a_1^{(\bi)}}{a_1^{(\bj)}}\cdot a_{m}^{(\bj)}$ for every $1\leq m\leq N_{\bi}$.
+\end{claim}
+\begin{proof}[Proof of \cref{thm:Claim}]
+Without loss of generality we assume that $N_{\bj}\geq \max\{N_{\bi},2\}$. and we introduce $\gamma=a_1^{(\bi)}/a_1^{(\bj)}\neq 0$. The proof goes by induction on $m$. From $k=0$ in \cref{eq:EqualCoeffs} we see that $2 a_2^{(\bi)}a_1^{(\bj)}=2 a_2^{(\bj)}a_1^{(\bi)}$. Since $a_2^{(\bj)}\neq0$, we obtain that $a_2^{(\bi)}\neq 0$, hence, $N_{\bi}\geq 2$. Furthermore, $a_2^{(\bi)}=\gamma a_2^{(\bj)}$ which confirms the claim for $m=2$.
+
+For the induction hypothesis we assume that for some $M< N_{\bj}$ the following holds: $a_m^{(\bi)}=\gamma a_{m}^{(\bj)}$ for every $1\leq m\leq M$. We need to prove that $a_{M+1}^{(\bi)}=\gamma a_{M+1}^{(\bj)}$. Using \cref{eq:EqualCoeffs} for $k=M-1$, we get 
+\begin{multline*}
+M(M+1)\cdot a_{M+1}^{(\bi)}a_1^{(\bj)}+\sum_{\ell=0}^{M-2} (\ell+2)(\ell+1)a_{\ell+2}^{(\bi)}\cdot (k-\ell+1)a_{k-\ell+1}^{(\bj)} \\
+= M(M+1)\cdot a_{M+1}^{(\bj)}a_1^{(\bi)}+ \sum_{\ell'=0}^{M-2} (\ell'+2)(\ell'+1)a_{\ell'+2}^{(\bj)}\cdot (k-\ell'+1)a_{k-\ell'+1}^{(\bi)}.
+\end{multline*}
+The two sums cancel each other out term by term because of the induction hypothesis, which leaves us with $a_{M+1}^{(\bi)}a_1^{(\bj)}=a_{M+1}^{(\bj)}a_1^{(\bi)}$. Since $M<N_{\bj}$, we have $a_{M+1}^{(\bj)}\neq0$, which implies that $a_{M+1}^{(\bi)}\neq 0$ and in particular $a_{M+1}^{(\bi)}=\gamma a_{M+1}^{(\bj)}$. 
+\end{proof}
+Having established \cref{thm:Claim}, we immediately see that
+\begin{equation*}
+	f_{\bi_{|\bi|}^1}(x) = a_0^{(\bi)}+\sum_{k=1}^{N_{\bi}} a_k^{(\bi)}\cdot x^k = a_0^{(\bi)} + \frac{a_1^{(\bi)}}{a_1^{(\bj)}}\cdot  \sum_{k=1}^{N_{\bj}} a_k^{(\bj)}\cdot x^k = \frac{a_1^{(\bi)}}{a_1^{(\bj)}}\cdot f_{\bj_{|\bj|}^1}(x) +a_0^{(\bi)} -\frac{a_1^{(\bi)}}{a_1^{(\bj)}}\cdot a_0^{(\bj)},
+\end{equation*}
+which contradicts our assumption. Hence, it is not possible that $f''_{\bi}(x)\cdot f'_{\bj}(x) = f'_{\bi}(x)\cdot f''_{\bj}(x)$ for every $x\in[0,1]$.
+
+{\color{red} Is it possible to deduce something more concrete about $a_0^{(\bi)}, a_0^{(\bj)}$ and $\gamma$??}
+
+{\color{red} Still missing argument when $|\bi|=|\bj|=\infty$.}
+
+{\color{red} This is simply not true} Since $\Phi$ is not sub-conjugated to a self-similar IFS, it follows that $\gamma=1$ and that $a_0^{(\bi)}=a_0^{(\bj)}$. Thus, we have shown that $\Phi$ has the exact overlap $f_{\bi_{|\bi|}^1} \equiv f_{\bj_{|\bj|}^1}$.
+
+\end{proof}
+
+\change{------- End of proof for new theorem about polynomials -----------}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
