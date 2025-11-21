@@ -108,7 +108,6 @@ style=trad-abbrv,
 
 
 
-\newcommand{\change}[1]{{\color{green!60!black}#1}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % THE DEFINITION OF A NEW FAMILY OF FONTS AND RELATED COMMANDS %
@@ -285,7 +284,7 @@ style=trad-abbrv,
 \newcommand{\comp}{^{\mathsf{c}}}
 \newcommand{\nopar}{{\parfillskip=0pt \par}}
 
-\newcommand{\rfootnote}[1]{\footnote{\color{red}#1}}
+\newcommand{\rfootnote}[1]{\footnote{\color{green!60!black}#1}}
 
 
 \DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
@@ -462,8 +461,8 @@ $\mathcal{C}^2$ topology. We will also explore when analytic self-conformal IFS 
 self-similar systems.
 The methods involve constructing a \emph{dual} IFS, which we believe is of independent interest. 
 
-\paragraph{Acknowledgements.} \mbox{}\change{The authors would like to thank Amir Algom for pointing out various
-useful references on conjugation of analytic IFSs to self-similar IFSs.}
+\paragraph{Acknowledgements.} The authors would like to thank Amir Algom for pointing out various
+useful references on conjugation of analytic IFSs to self-similar IFSs.
 
 BB acknowledges support from grant NKFI~K142169, and grant NKFI
 KKP144059 \textit{Fractal geometry and applications} Research Group. IK is supported by the European
@@ -716,7 +715,8 @@ the SESC by~\cref{thm:main}.
 \end{proposition}
 
 \begin{proof}
-First, let us show that for every $\bi,\bj\in\Sigma\cup\Sigma_*$ with $i_1\neq j_1$ we have for every non-degenerate closed interval $J\subseteq[0,1]$
+First, let us show that for every $\bi,\bj\in\Sigma\cup\Sigma_*$ with $i_1\neq j_1$ we have for
+every non-degenerate closed interval $J\subseteq[0,1]$
 \begin{equation}\label{eq:posallint}
 	\sup_{x\in J} |H_{\bi}(x) - H_{\bj}(x)| > 0.
 \end{equation} 
@@ -729,7 +729,8 @@ Since $i_{1}\neq j_{1}$, for the particular choice of $x_{i_{1},j_{1}}$, we can 
 	\left| \frac{f_{i_n}''(x)}{f_{i_n}'(x)} \right| \\
 	&\geq \alpha -  2\frac{c_{\max}}{1-c_{\max}}\cdot \beta >0
 \end{align*}
-by our assumption. Hence, $H_{\bi}\not\equiv H_{\bj}$ and using the analyticity of the maps (which will be verified later in \cref{thm:H_iAnalytic}) \cref{eq:posallint} follows.
+by our assumption. Hence, $H_{\bi}\not\equiv H_{\bj}$ and using the analyticity of the maps (which
+will be verified later in \cref{thm:H_iAnalytic}) \cref{eq:posallint} follows.
 	
 Now, let $\bi,\bj \in\Sigma\cup\Sigma_*$ be distinct words such that $|\bi|=|\bj|$ and $|\bi\wedge \bj|=k$. It
   follows from~\cref{eq:H_i(x)} that
@@ -774,19 +775,40 @@ natural measure is strictly smaller than the conformality dimension $s(\Phi)$. H
 dimension did not drop for every $q>0$ then by \cite[Lemma~1.7]{Shmerkin_LqSelfSim_Annals} the local
 dimension at every point would be at least $s(\Phi)$, which is a contradiction. We leave the details
 for the interested reader.
+\rfootnote{------- Some thoughts. New `theorem' about polynomials (IK thinks sections 1.2.2 and
+1.2.3 should be switched and proof should probably be separate section at the end of
+paper)-----------}
 
-\change{------- Some thoughts. New `theorem' about polynomials (IK thinks sections 1.2.2 and 1.2.3 should be switched and proof should probably be separate section at the end of paper)-----------}
+There is something we need to consider. We have the condition in \cref{eq:H_iSSC} which is
+sufficient to show SESC. We should remark that it is far from necessary because whenever there
+exists two finite words $\bi\neq\bj$ such that $f_{\bi_{|\bi|}^{1}}(x) = \lambda\cdot
+f_{\bj_{|\bj|}^{1}}(x) + t$ for some $|\lambda|\neq 0$ and $t\in\mathbb{R}$ (it is saying something
+like two different compositions of functions are a scaled and translated copy of each other), then
+$H_{\bi}(x)\equiv H_{\bj}(x)$ for all $x\in[0,1]$, so in particular \cref{eq:H_iSSC} does not hold.
+However, the IFS could still very easily satisfy even the SSC. So here is some kind of new
+``separation condition'' which is much weaker than exact overlaps, but can also fail for systems
+with SSC. 
 
-There is something we need to consider. We have the condition in \cref{eq:H_iSSC} which is sufficient to show SESC. We should remark that it is far from necessary because whenever there exists two finite words $\bi\neq\bj$ such that $f_{\bi_{|\bi|}^{1}}(x) = \lambda\cdot f_{\bj_{|\bj|}^{1}}(x) + t$ for some $|\lambda|\neq 0$ and $t\in\mathbb{R}$ (it is saying something like two different compositions of functions are a scaled and translated copy of each other), then $H_{\bi}(x)\equiv H_{\bj}(x)$ for all $x\in[0,1]$, so in particular \cref{eq:H_iSSC} does not hold. However, the IFS could still very easily satisfy even the SSC. So here is some kind of new ``separation condition'' which is much weaker than exact overlaps, but can also fail for systems with SSC. 
-
-So $H$ can not distinguish between two such compositions. What could be a refinement? It seems that this is the problem we run into in our theorem attempt for polynomials. We could introduce a condition something like for every fnite length $\bi\neq\bj$ and every $|\lambda|\neq 0$ and $t\in\mathbb{R}$ we assume that there exists an $x\in[0,1]$ such that $f_{\bi_{|\bi|}^{1}}(x) \neq \lambda\cdot f_{\bj_{|\bj|}^{1}}(x) + t$. {\color{red}How checkable is this condition?? For example, for polynomial IFS, if this is true on the first level, then is it true for all compositions?} It does not seem at all that if $f_{\bi_{|\bi|}^{1}}(x) = \lambda\cdot f_{\bj_{|\bj|}^{1}}(x) + t$, then there is a conjugating function that conjugates both $f_{\bi_{|\bi|}^{1}}$ and $f_{\bj_{|\bj|}^{1}}$ simultaneously to a linear function. {\color{red} The theorem will definitely need to be restated.}
+So $H$ can not distinguish between two such compositions. What could be a refinement? It seems that
+this is the problem we run into in our theorem attempt for polynomials. We could introduce a
+condition something like for every fnite length $\bi\neq\bj$ and every $|\lambda|\neq 0$ and
+$t\in\mathbb{R}$ we assume that there exists an $x\in[0,1]$ such that $f_{\bi_{|\bi|}^{1}}(x) \neq
+\lambda\cdot f_{\bj_{|\bj|}^{1}}(x) + t$. {\color{red}How checkable is this condition?? For example,
+for polynomial IFS, if this is true on the first level, then is it true for all compositions?} It
+does not seem at all that if $f_{\bi_{|\bi|}^{1}}(x) = \lambda\cdot f_{\bj_{|\bj|}^{1}}(x) + t$,
+then there is a conjugating function that conjugates both $f_{\bi_{|\bi|}^{1}}$ and
+$f_{\bj_{|\bj|}^{1}}$ simultaneously to a linear function. {\color{red} The theorem will definitely
+need to be restated.}
 
 \begin{theorem}
 Let $\Phi=(f_i)_{i\in\mathcal{I}}\in\mathfrak{S}_N$ be an IFS consisting of polynomials
 \begin{equation*}
 f_i(x) = \sum_{n=0}^{N_i} a_n^{(i)}\cdot x^n
 \end{equation*}
-that is not sub-conjugated to a self-similar IFS, where $\mathrm{deg} f_i=N_i$. Assume that for any $\bi\neq\bj\in\Sigma_\ast$ with $|\bi|=|\bj|$ and for every $|\lambda|\neq 0$ and $t\in\bbR$ there exists $x\in[0,1]$ such that $f_{\bi}(x)\neq \lambda f_{\bj}(x) +t$.   Then $\Phi$ satisfies the SESC. 
+that is not sub-conjugated to a self-similar IFS, where $\mathrm{deg} f_i=N_i$. Assume that for any
+$\bi\neq\bj\in\Sigma_\ast$ with $|\bi|=|\bj|$ and for every $|\lambda|\neq 0$ and $t\in\bbR$ there
+exists $x\in[0,1]$ such that $f_{\bi}(x)\neq \lambda f_{\bj}(x) +t$.   Then $\Phi$ satisfies the
+SESC. 
 %there is a dichotomy:
 %\begin{equation*}
 %\text{either }\quad \Phi \text{ } \quad \text{ or } \quad \Phi \text{ has exact overlaps}.
@@ -795,56 +817,85 @@ that is not sub-conjugated to a self-similar IFS, where $\mathrm{deg} f_i=N_i$. 
 
  
 \begin{proof}
-In light of \cref{thm:main}, we calculate the difference $|H_{\bi}(x) - H_{\bj}(x)|$ for all distinct $\bi,\bj \in\Sigma\cup\Sigma_*$ with $|\bi|=|\bj|$. First assume $|\bi|=|\bj|<\infty$. Then \cref{eq:H=f''/f'} implies that
+In light of \cref{thm:main}, we calculate the difference $|H_{\bi}(x) - H_{\bj}(x)|$ for all
+distinct $\bi,\bj \in\Sigma\cup\Sigma_*$ with $|\bi|=|\bj|$. First assume $|\bi|=|\bj|<\infty$. Then
+\cref{eq:H=f''/f'} implies that
 \begin{equation*}
 |H_{\bi}(x) - H_{\bj}(x)|
-= \left| \frac{f''_{\bi_{|\bi|}^1}(x)}{f'_{\bi_{|\bi|}^1}(x)} - \frac{f''_{\bj_{|\bj|}^1}(x)}{f'_{\bj_{|\bj|}^1}(x)} \right|
-= \left| \frac{f''_{\bi_{|\bi|}^1}(x)\cdot f'_{\bj_{|\bj|}^1}(x) - f''_{\bj_{|\bj|}^1}(x) \cdot f'_{\bi_{|\bi|}^1}(x)}{ f'_{\bi_{|\bi|}^1}(x) \cdot f'_{\bj_{|\bj|}^1}(x)} \right|.
+= \left| \frac{f''_{\bi_{|\bi|}^1}(x)}{f'_{\bi_{|\bi|}^1}(x)} -
+\frac{f''_{\bj_{|\bj|}^1}(x)}{f'_{\bj_{|\bj|}^1}(x)} \right|
+= \left| \frac{f''_{\bi_{|\bi|}^1}(x)\cdot f'_{\bj_{|\bj|}^1}(x) - f''_{\bj_{|\bj|}^1}(x) \cdot
+f'_{\bi_{|\bi|}^1}(x)}{ f'_{\bi_{|\bi|}^1}(x) \cdot f'_{\bj_{|\bj|}^1}(x)} \right|.
 \end{equation*}
 The composition
 \begin{equation*}
 f_{\bi_{|\bi|}^1}(x) = \sum_{k=0}^{N_{\bi}} a_k^{(\bi)}\cdot x^k
 \end{equation*}
-is also a polynomial of degree $N_{\bi}=\prod_{k=1}^{|\bi|}N_{i_k}$ with $|a_1^{(\bi)}|\neq0$ since $|f'_{\bi_{|\bi|}^1}(x)|\in(0,1)$ for all $x\in[0,1]$. During the proof, slightly abusing notation, we simply write $f_{\bi}=f_{\bi_{|\bi|}^1}$. Therefore, both $f''_{\bi}\cdot f'_{\bj}$ and $f'_{\bi}\cdot f''_{\bj}$ are polynomials of degree $N_{\bi}+N_{\bj}-3$. More specifically,
+is also a polynomial of degree $N_{\bi}=\prod_{k=1}^{|\bi|}N_{i_k}$ with $|a_1^{(\bi)}|\neq0$ since
+$|f'_{\bi_{|\bi|}^1}(x)|\in(0,1)$ for all $x\in[0,1]$. During the proof, slightly abusing notation,
+we simply write $f_{\bi}=f_{\bi_{|\bi|}^1}$. Therefore, both $f''_{\bi}\cdot f'_{\bj}$ and
+$f'_{\bi}\cdot f''_{\bj}$ are polynomials of degree $N_{\bi}+N_{\bj}-3$. More specifically,
 \begin{equation*}
-f''_{\bi}(x)\cdot f'_{\bj}(x) = \sum_{k=0}^{N_{\bi}+N_{\bj}-3} \Big( \sum_{\ell=0}^{k} (\ell+2)(\ell+1)a_{\ell+2}^{(\bi)}\cdot (k-\ell+1)a_{k-\ell+1}^{(\bj)} \Big) \cdot x^k,
+f''_{\bi}(x)\cdot f'_{\bj}(x) = \sum_{k=0}^{N_{\bi}+N_{\bj}-3} \Big( \sum_{\ell=0}^{k}
+(\ell+2)(\ell+1)a_{\ell+2}^{(\bi)}\cdot (k-\ell+1)a_{k-\ell+1}^{(\bj)} \Big) \cdot x^k,
 \end{equation*}
 where we set $a_k^{(\bi)}=0$ for all $k>N_{\bi}$ and similarly $a_k^{(\bj)}=0$ for all $k>N_{\bj}$.
 
-Since $\Phi$ is not sub-conjugated to a self-similar IFS, either $f''_{\bi}(x)\cdot f'_{\bj}(x) = f'_{\bi}(x)\cdot f''_{\bj}(x)$ for at most  $N_{\bi}+N_{\bj}-3$ points $x\in[0,1]$, in which case $\sup_{x\in[0,1]} |H_{\bi}(x) - H_{\bj}(x)| > 0$ automatically holds; or $f''_{\bi}(x)\cdot f'_{\bj}(x) = f'_{\bi}(x)\cdot f''_{\bj}(x)$ for every $x\in[0,1]$, in which case the corresponding coefficients of the two polynomials must be the same, \ie for every $0\leq k\leq N_{\bi}+N_{\bj}-3$,
+Since $\Phi$ is not sub-conjugated to a self-similar IFS, either $f''_{\bi}(x)\cdot f'_{\bj}(x) =
+f'_{\bi}(x)\cdot f''_{\bj}(x)$ for at most  $N_{\bi}+N_{\bj}-3$ points $x\in[0,1]$, in which case
+$\sup_{x\in[0,1]} |H_{\bi}(x) - H_{\bj}(x)| > 0$ automatically holds; or $f''_{\bi}(x)\cdot
+f'_{\bj}(x) = f'_{\bi}(x)\cdot f''_{\bj}(x)$ for every $x\in[0,1]$, in which case the corresponding
+coefficients of the two polynomials must be the same, \ie for every $0\leq k\leq N_{\bi}+N_{\bj}-3$,
 \begin{equation}\label{eq:EqualCoeffs}
 \sum_{\ell=0}^{k} (\ell+2)(\ell+1)a_{\ell+2}^{(\bi)}\cdot (k-\ell+1)a_{k-\ell+1}^{(\bj)}
 = \sum_{\ell'=0}^{k} (\ell'+2)(\ell'+1)a_{\ell'+2}^{(\bj)}\cdot (k-\ell'+1)a_{k-\ell'+1}^{(\bi)}.
 \end{equation}
-We show that in this case $f_{\bi_{|\bi|}^1}(x) = \frac{a_1^{(\bi)}}{a_1^{(\bj)}}\cdot f_{\bj_{|\bj|}^1}(x) +a_0^{(\bi)} -\frac{a_1^{(\bi)}}{a_1^{(\bj)}}\cdot a_0^{(\bj)}$.
+We show that in this case $f_{\bi_{|\bi|}^1}(x) = \frac{a_1^{(\bi)}}{a_1^{(\bj)}}\cdot
+f_{\bj_{|\bj|}^1}(x) +a_0^{(\bi)} -\frac{a_1^{(\bi)}}{a_1^{(\bj)}}\cdot a_0^{(\bj)}$.
 \begin{claim}\label{thm:Claim}
-If $\Phi$ is not sub-conjugated to a self-similar IFS and \cref{eq:EqualCoeffs} holds, then $N_{\bi}=N_{\bj}$, moreover,  $a_m^{(\bi)}=\frac{a_1^{(\bi)}}{a_1^{(\bj)}}\cdot a_{m}^{(\bj)}$ for every $1\leq m\leq N_{\bi}$.
+If $\Phi$ is not sub-conjugated to a self-similar IFS and \cref{eq:EqualCoeffs} holds, then
+$N_{\bi}=N_{\bj}$, moreover,  $a_m^{(\bi)}=\frac{a_1^{(\bi)}}{a_1^{(\bj)}}\cdot a_{m}^{(\bj)}$ for
+every $1\leq m\leq N_{\bi}$.
 \end{claim}
 \begin{proof}[Proof of \cref{thm:Claim}]
-Without loss of generality we assume that $N_{\bj}\geq \max\{N_{\bi},2\}$. and we introduce $\gamma=a_1^{(\bi)}/a_1^{(\bj)}\neq 0$. The proof goes by induction on $m$. From $k=0$ in \cref{eq:EqualCoeffs} we see that $2 a_2^{(\bi)}a_1^{(\bj)}=2 a_2^{(\bj)}a_1^{(\bi)}$. Since $a_2^{(\bj)}\neq0$, we obtain that $a_2^{(\bi)}\neq 0$, hence, $N_{\bi}\geq 2$. Furthermore, $a_2^{(\bi)}=\gamma a_2^{(\bj)}$ which confirms the claim for $m=2$.
+Without loss of generality we assume that $N_{\bj}\geq \max\{N_{\bi},2\}$. and we introduce
+$\gamma=a_1^{(\bi)}/a_1^{(\bj)}\neq 0$. The proof goes by induction on $m$. From $k=0$ in
+\cref{eq:EqualCoeffs} we see that $2 a_2^{(\bi)}a_1^{(\bj)}=2 a_2^{(\bj)}a_1^{(\bi)}$. Since
+$a_2^{(\bj)}\neq0$, we obtain that $a_2^{(\bi)}\neq 0$, hence, $N_{\bi}\geq 2$. Furthermore,
+$a_2^{(\bi)}=\gamma a_2^{(\bj)}$ which confirms the claim for $m=2$.
 
-For the induction hypothesis we assume that for some $M< N_{\bj}$ the following holds: $a_m^{(\bi)}=\gamma a_{m}^{(\bj)}$ for every $1\leq m\leq M$. We need to prove that $a_{M+1}^{(\bi)}=\gamma a_{M+1}^{(\bj)}$. Using \cref{eq:EqualCoeffs} for $k=M-1$, we get 
+For the induction hypothesis we assume that for some $M< N_{\bj}$ the following holds:
+$a_m^{(\bi)}=\gamma a_{m}^{(\bj)}$ for every $1\leq m\leq M$. We need to prove that
+$a_{M+1}^{(\bi)}=\gamma a_{M+1}^{(\bj)}$. Using \cref{eq:EqualCoeffs} for $k=M-1$, we get 
 \begin{multline*}
-M(M+1)\cdot a_{M+1}^{(\bi)}a_1^{(\bj)}+\sum_{\ell=0}^{M-2} (\ell+2)(\ell+1)a_{\ell+2}^{(\bi)}\cdot (k-\ell+1)a_{k-\ell+1}^{(\bj)} \\
-= M(M+1)\cdot a_{M+1}^{(\bj)}a_1^{(\bi)}+ \sum_{\ell'=0}^{M-2} (\ell'+2)(\ell'+1)a_{\ell'+2}^{(\bj)}\cdot (k-\ell'+1)a_{k-\ell'+1}^{(\bi)}.
+M(M+1)\cdot a_{M+1}^{(\bi)}a_1^{(\bj)}+\sum_{\ell=0}^{M-2} (\ell+2)(\ell+1)a_{\ell+2}^{(\bi)}\cdot
+(k-\ell+1)a_{k-\ell+1}^{(\bj)} \\
+= M(M+1)\cdot a_{M+1}^{(\bj)}a_1^{(\bi)}+ \sum_{\ell'=0}^{M-2}
+(\ell'+2)(\ell'+1)a_{\ell'+2}^{(\bj)}\cdot (k-\ell'+1)a_{k-\ell'+1}^{(\bi)}.
 \end{multline*}
-The two sums cancel each other out term by term because of the induction hypothesis, which leaves us with $a_{M+1}^{(\bi)}a_1^{(\bj)}=a_{M+1}^{(\bj)}a_1^{(\bi)}$. Since $M<N_{\bj}$, we have $a_{M+1}^{(\bj)}\neq0$, which implies that $a_{M+1}^{(\bi)}\neq 0$ and in particular $a_{M+1}^{(\bi)}=\gamma a_{M+1}^{(\bj)}$. 
+The two sums cancel each other out term by term because of the induction hypothesis, which leaves us
+with $a_{M+1}^{(\bi)}a_1^{(\bj)}=a_{M+1}^{(\bj)}a_1^{(\bi)}$. Since $M<N_{\bj}$, we have
+$a_{M+1}^{(\bj)}\neq0$, which implies that $a_{M+1}^{(\bi)}\neq 0$ and in particular
+$a_{M+1}^{(\bi)}=\gamma a_{M+1}^{(\bj)}$. 
 \end{proof}
 Having established \cref{thm:Claim}, we immediately see that
 \begin{equation*}
-	f_{\bi_{|\bi|}^1}(x) = a_0^{(\bi)}+\sum_{k=1}^{N_{\bi}} a_k^{(\bi)}\cdot x^k = a_0^{(\bi)} + \frac{a_1^{(\bi)}}{a_1^{(\bj)}}\cdot  \sum_{k=1}^{N_{\bj}} a_k^{(\bj)}\cdot x^k = \frac{a_1^{(\bi)}}{a_1^{(\bj)}}\cdot f_{\bj_{|\bj|}^1}(x) +a_0^{(\bi)} -\frac{a_1^{(\bi)}}{a_1^{(\bj)}}\cdot a_0^{(\bj)},
+	f_{\bi_{|\bi|}^1}(x) = a_0^{(\bi)}+\sum_{k=1}^{N_{\bi}} a_k^{(\bi)}\cdot x^k = a_0^{(\bi)} +
+	\frac{a_1^{(\bi)}}{a_1^{(\bj)}}\cdot  \sum_{k=1}^{N_{\bj}} a_k^{(\bj)}\cdot x^k =
+	\frac{a_1^{(\bi)}}{a_1^{(\bj)}}\cdot f_{\bj_{|\bj|}^1}(x) +a_0^{(\bi)}
+	-\frac{a_1^{(\bi)}}{a_1^{(\bj)}}\cdot a_0^{(\bj)},
 \end{equation*}
-which contradicts our assumption. Hence, it is not possible that $f''_{\bi}(x)\cdot f'_{\bj}(x) = f'_{\bi}(x)\cdot f''_{\bj}(x)$ for every $x\in[0,1]$.
+which contradicts our assumption. Hence, it is not possible that $f''_{\bi}(x)\cdot f'_{\bj}(x) =
+f'_{\bi}(x)\cdot f''_{\bj}(x)$ for every $x\in[0,1]$.
 
-{\color{red} Is it possible to deduce something more concrete about $a_0^{(\bi)}, a_0^{(\bj)}$ and $\gamma$??}
-
-{\color{red} Still missing argument when $|\bi|=|\bj|=\infty$.}
-
-{\color{red} This is simply not true} Since $\Phi$ is not sub-conjugated to a self-similar IFS, it follows that $\gamma=1$ and that $a_0^{(\bi)}=a_0^{(\bj)}$. Thus, we have shown that $\Phi$ has the exact overlap $f_{\bi_{|\bi|}^1} \equiv f_{\bj_{|\bj|}^1}$.
+\rfootnote{Is it possible to deduce something more concrete about $a_0^{(\bi)}, a_0^{(\bj)}$ and $\gamma$??}
+\rfootnote{Still missing argument when $|\bi|=|\bj|=\infty$.}
+\rfootnote{This is simply not true} Since $\Phi$ is not sub-conjugated to a self-similar IFS, it
+follows that $\gamma=1$ and that $a_0^{(\bi)}=a_0^{(\bj)}$. Thus, we have shown that $\Phi$ has the
+exact overlap $f_{\bi_{|\bi|}^1} \equiv f_{\bj_{|\bj|}^1}$.
 
 \end{proof}
-
-\change{------- End of proof for new theorem about polynomials -----------}
+\rfootnote{------- End of proof for new theorem about polynomials -----------}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -856,8 +907,8 @@ although the definition may not at first glance reveal this.  The functions $H_{
 determine whether an analytic IFS can be transformed into a
 self-similar one through a change of coordinates.
 The problem of being conjugated to a linear IFS played a significant role in the study of Fourier
-decay of self-conformal measures, \change{see
-\cite{AlgomHertzWang23,AlgomEtal_LogFourierDecaySelfConf_JLMS,BakerBanaji_PolyFourierDecay}} and \cite[Corollary 1.2 part
+decay of self-conformal measures, see
+\cite{AlgomHertzWang23,AlgomEtal_LogFourierDecaySelfConf_JLMS,BakerBanaji_PolyFourierDecay} and \cite[Corollary 1.2 part
 3.]{AlgomEtal_PointwiseNormalityFDecaySelfSonf_AdvMath21}.
 
 \begin{definition}\label{def:conjugation}
@@ -889,11 +940,11 @@ for all $j\in\mathcal{I}$.
 \end{remark}
 
 We give a characterisation of when an analytic IFS is (sub-)conjugated to a self-similar IFS using
-the function $H_{\bi}$ introduced in~\cref{eq:H_i(x)}. \change{We point out that Algom, Rodriguez
-  Hertz, and Wang \cite[Claim 6.1]{AlgomHertzWang23} already gave a dichotomy stating that 
-  either (a) there is a analytic conjugation to a self-similar IFS or (b) that any such conjugation
-  cannot even be $\mathcal{C}^2$. Our result can be considered
-complementary, as we give a checkable condition when we are conjugated to a self-similar system.}
+the function $H_{\bi}$ introduced in~\cref{eq:H_i(x)}. We point out that Algom, Rodriguez
+Hertz, and Wang \cite[Claim 6.1]{AlgomHertzWang23} already gave a dichotomy stating that 
+either (a) there is a analytic conjugation to a self-similar IFS or (b) that any such conjugation
+cannot even be $\mathcal{C}^2$. Our result can be considered
+complementary, as we give a checkable condition when we are conjugated to a self-similar system.
 
 \begin{theorem}\label{thm:SubConjugation}
   Any $\Phi\in\mathfrak{S}_N$ is conjugated to another analytic IFS which has at least one similarity map. 
@@ -916,23 +967,21 @@ complementary, as we give a checkable condition when we are conjugated to a self
 \end{theorem}
 \cref{thm:SubConjugation} is proved in~\cref{sec:ProofConjugation}.
 
-\change{A strongly related condition is that of uniform non-integrability (UNI) introduced by
+A strongly related condition is that of uniform non-integrability (UNI) introduced by
 Dolgopyat and Chernov, which was used in the IFS context by Baker and Sahlsten to determine Fourier
 decay of measures, see \cite{BakerSahlsten23} and references therein.
 In our terminology, the UNI condition is equivalent to the existence of 
 $\bi,\bj\in\Sigma$ such that 
 $\inf_{x\in I} |H_{\bi}(x) -H_{\bj}(x)| >0$, which is clearly stronger than the negation of
 \cref{it:conj1} in \cref{thm:SubConjugation}.
-}
 
-\change{
+
 \begin{remark}
   Let us note that in \cref{it:conj1} one only needs to check that $H_{i^\infty}(x)\equiv
   H_{j^\infty}(x)$ for all $i,j \in\mathcal{I}$ and $x\in I$.
   This may not be clear at this point, but will be immediate after the introduction of the dual IFS
   and \cref{thm:DualConj}.
 \end{remark}
-}
 
 We return to the discussion of the dimension drop conjecture. Recall
 that the ESC implies that the IFS has no exact overlaps. For some time it was an important open
@@ -1880,7 +1929,9 @@ dual IFS of $\Phi$. Recall that,
 $\mathcal{B}_n=\{(\bi,\bj)\in\Sigma_n\times\Sigma_n:\, i_1<j_1\}$. Let 
 $\{x_{\bi,\bj}:\, (\bi,\bj)\in\mathcal{B}_n\}$ be points as in~\cref{lem:Pointsx_ij}. 
 
-Recall $\mathcal{O}_{\bi}(x)= \{x,f_{i_1}(x), f_{i_2i_1}(x),\ldots,f_{i_{|\bi|}\ldots i_1}(x)\}$. For every $i\in\mathcal{I}$, we define a partition of $\bigcup_{(\bi,\bj)\in\mathcal{B}_n} \big(\mathcal{O}_{\bi}(x_{\bi,\bj})\cup
+Recall $\mathcal{O}_{\bi}(x)= \{x,f_{i_1}(x), f_{i_2i_1}(x),\ldots,f_{i_{|\bi|}\ldots i_1}(x)\}$.
+For every $i\in\mathcal{I}$, we define a partition of $\bigcup_{(\bi,\bj)\in\mathcal{B}_n}
+\big(\mathcal{O}_{\bi}(x_{\bi,\bj})\cup
 \mathcal{O}_{\bj}(x_{\bi,\bj})\big)$ consisting of two elements $\{\mathcal{Y}_i,
   \mathcal{Z}_i\}$ as follows:
 \begin{itemize}
@@ -1894,8 +1945,10 @@ Recall $\mathcal{O}_{\bi}(x)= \{x,f_{i_1}(x), f_{i_2i_1}(x),\ldots,f_{i_{|\bi|}\
 	  \[
 	    (F_{\bi}k)(x_{\bi,\bj})\notin\mathrm{conv}\left((F_{\bj}k)(x_{\bi,\bj}),(F_{\bj}K)(x_{\bi,\bj})\right);
 	  \]
-	\item $x_{\bi,\bj}\in\mathcal{Z}_{i_1}$ and $x_{\bi,\bj}\in\mathcal{Z}_{j_1}$ if $(\bi,\bj)\in\mathcal{B}_n$ is not bad;
-	\item $y\in\mathcal{Z}_{i_1}$ and $y\in\mathcal{Z}_{j_1}$ for every $y\in\bigcup_{(\bi,\bj)\in\mathcal{B}_n} \big(\mathcal{O}_{\bi}(x_{\bi,\bj})\cup
+	\item $x_{\bi,\bj}\in\mathcal{Z}_{i_1}$ and $x_{\bi,\bj}\in\mathcal{Z}_{j_1}$ if
+	  $(\bi,\bj)\in\mathcal{B}_n$ is not bad;
+	\item $y\in\mathcal{Z}_{i_1}$ and $y\in\mathcal{Z}_{j_1}$ for every
+	  $y\in\bigcup_{(\bi,\bj)\in\mathcal{B}_n} \big(\mathcal{O}_{\bi}(x_{\bi,\bj})\cup
 	\mathcal{O}_{\bj}(x_{\bi,\bj})\big)\setminus\{x_{\bi,\bj}\}$.
 \end{itemize}
 Recall that by \cref{eq:DefBad} either 
@@ -1960,11 +2013,13 @@ This clearly implies that  $G_{\bi}(k,K)\cap G_{\bj}(k,K)=\varnothing$. Finally,
 \section{Conjugation to self-similar IFS}\label{sec:ProofConjugation}
 
 
-Let $f\in\mathcal{S}_\epsilon^\omega([0,1])$ be arbitrary but fixed. Along the lines of \cref{eq:H_i(x)}, let us define the map
+Let $f\in\mathcal{S}_\epsilon^\omega([0,1])$ be arbitrary but fixed. Along the lines of
+\cref{eq:H_i(x)}, let us define the map
 \begin{equation}\label{eq:H}
 \hat{H}_f(x)\coloneqq\sum_{k=0}^\infty\frac{f''}{f'}(f^{\circ k}(x))\cdot (f^{\circ k})'(x),
 \end{equation}
-where $f^{\circ k}$ denotes the self-composition of $f$ $k$-times. Analogously to the proof of \cref{thm:H_iAnalytic}, $\hat{H}\in\mathcal{C}^\omega_\epsilon([0,1])$. 
+where $f^{\circ k}$ denotes the self-composition of $f$ $k$-times. Analogously to the proof of
+\cref{thm:H_iAnalytic}, $\hat{H}\in\mathcal{C}^\omega_\epsilon([0,1])$. 
 
 Let us begin the proof of \cref{thm:SubConjugation} with the following observation.
 
