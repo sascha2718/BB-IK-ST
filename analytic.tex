@@ -356,7 +356,7 @@ H-1111 Budapest, Hungary.}\par\nopagebreak
 %}
 
 \begin{abstract}
-In a recent article, Rapaport showed that the there is no dimension drop for
+In a recent article, Rapaport showed that there is no dimension drop for
 exponentially separated analytic IFSs on the real line. We show that the set of such exponentially
 separated IFSs in the space of analytic IFSs contains an open and dense set in the $\mathcal{C}^2$
 topology. Moreover, we give a sufficient condition for the IFS to be exponentially separated which
@@ -410,7 +410,7 @@ Hutchinson also showed that this value provides an upper bound for
 the dimension regardless of the overlaps of images of $\Lambda$ under the $f_i$.  Bowen
 \cite{Bowen75} and Ruelle \cite{Ruelle2004} extended this result to attractors of
 $\mathcal{C}^{1+\alpha}$ conformal mappings, with the natural upper bound known as the conformality
-dimension. Similar question can be asked for the measure, see Cawley and Mauldin
+dimension. Similar questions can be asked for the measure, see Cawley and Mauldin
 \cite{CawleyMauldin92}, and Patschke \cite{Patzschke97}, for the self-similar and self-conformal
 setting. 
 
@@ -477,7 +477,8 @@ Throughout, we fix $\epsilon>0$ and  we define the class $\mathcal{S}^\omega_\ep
 consisting of maps $f:\mathbb{R}\to\mathbb{R}$ with the following properties:
 \begin{enumerate}[label=(\Alph*)]
   \item\label{it:a} $f$ is complex analytic in the open $\epsilon$ complex neighbourhood
-    $\mathcal{B}_{2\epsilon}$ of  $I$,
+    $\mathcal{B}_{2\epsilon}$ of  $I$, where $\mathcal{B}_{\delta}\coloneqq\{z\in\mathbb{C}:\exists
+    x\in I,\, |z-x|<\delta\}$,
   \item\label{it:b} $f(I) \subseteq I$ and $f(\overline{\mathcal{B}_{\epsilon}}) \subseteq
     \mathcal{B}_{\epsilon}$,
   \item\label{it:c} $0<|f'(x)|<1$ for all $x\in\overline{\mathcal{B}_{\epsilon}}$.
@@ -574,7 +575,7 @@ $n\neq m\in\mathbb{N}$,
 	\bi_m^n\coloneqq
 	\begin{cases}
 		(i_m,i_{m+1},\ldots,i_{n-1},i_n), &\text{if } m<n; \\
-		(i_m,i_{m-1},\ldots,i_{n+1},i_n,) &\text{if } m>n,
+		(i_m,i_{m-1},\ldots,i_{n+1},i_n) &\text{if } m>n,
 	\end{cases}
 \end{equation*}
 where $|\bi|\geq\max\{m,n\}$. This will most often be used in the form $\bi_1^n=(i_1,\ldots,i_n)$ or
@@ -665,7 +666,7 @@ Combining our \cref{thm:ESCOpenDense} with~\cref{thm:RapaportMain} immediately g
   The set $\{\Phi \colon \Phi \text{ satisfies equality in \cref{eq:DimUpperBound}}\}\subseteq
   \mathfrak{S}_N$ contains an open and dense subset in the $\mathcal{C}^2$ topology.
 \end{corollary}
-This can be interpreted as follows; a typical analytic self-conformal IFS, in a strong topological
+This can be interpreted as follows: a typical analytic self-conformal IFS, in a strong topological
 sense, has no dimension drop.
 
 Another potential direction to consider is that of $L^q$ dimensions, a more fine-grained notion that
@@ -726,7 +727,7 @@ Since $i_{1}\neq j_{1}$, for the particular choice of $x_{i_{1},j_{1}}$, we can 
 	|H_{\bi}(x_{i_{1},j_{1}}) - H_{\bj}(x_{i_{1},j_{1}})| 
 	&\geq \left| \frac{f_{i_{1}}''(x_{i_{1},j_{1}})}{f_{i_{1}}'(x_{i_{1},j_{1}})} -
 	\frac{f_{j_{1}}''(x_{i_{1},j_{1}})}{f_{j_{1}}'(x_{i_{1},j_{1}})} \right| - 2
-	\sum_{n=k+2}^{\infty}\; \sup_{x\in[0,1]} \big| f_{\bi_{n-1}^{1}}'(x) \big| \cdot \sup_{x\in[0,1]}
+	\sum_{n=2}^{\infty}\; \sup_{x\in[0,1]} \big| f_{\bi_{n-1}^{1}}'(x) \big| \cdot \sup_{x\in[0,1]}
 	\left| \frac{f_{i_n}''(x)}{f_{i_n}'(x)} \right| \\
 	&\geq \alpha -  2\frac{c_{\max}}{1-c_{\max}}\cdot \beta >0
 \end{align*}
@@ -859,7 +860,7 @@ $N_{\bi}=N_{\bj}$, moreover,  $a_m^{(\bi)}=\frac{a_1^{(\bi)}}{a_1^{(\bj)}}\cdot 
 every $1\leq m\leq N_{\bi}$.
 \end{claim}
 \begin{proof}[Proof of \cref{thm:Claim}]
-Without loss of generality we assume that $N_{\bj}\geq \max\{N_{\bi},2\}$. and we introduce
+Without loss of generality we assume that $N_{\bj}\geq \max\{N_{\bi},2\}$ and introduce
 $\gamma=a_1^{(\bi)}/a_1^{(\bj)}\neq 0$. The proof goes by induction on $m$. From $k=0$ in
 \cref{eq:EqualCoeffs} we see that $2 a_2^{(\bi)}a_1^{(\bj)}=2 a_2^{(\bj)}a_1^{(\bi)}$. Since
 $a_2^{(\bj)}\neq0$, we obtain that $a_2^{(\bi)}\neq 0$, hence, $N_{\bi}\geq 2$. Furthermore,
@@ -1125,19 +1126,19 @@ further justifies this nomenclature.
  \]
  are analytic on $\mathcal{B}_{2\epsilon}$ for all $\bi\in\Sigma_*$ and $j\in\mathcal{I}$. Hence,
  there exists $C>0$ such that
-	\[
-	\left|\frac{f_j''}{f_j'}(z)\right| \leq C\text{ and }0<c_{\min}\leq|f_j'(z)|\leq c_{\max}<1
-	\]
-	for all $j\in\mathcal{I}$ and $z\in\mathcal{B}_{\epsilon}$, $H_{\bi_1^n}$ converges
-	uniformly to $H_{\bi}$ on $\mathcal{B}_{\epsilon}$ and $H_{\bi}$ is analytic on
-	$\mathcal{B}_{\epsilon}$ by Morera's theorem~\cite[Theorem 10.17]{Rudin_AnalysisBook}. In
-	particular, there exists $K>0$ such that $\|H_{\bi}\|_\infty\leq K$ for every
-	$\bi\in\Sigma$. Hence, $$
-	\|H_{\bi}-H_{\bj}\|_\infty\leq c_{\max}^{|\bi\wedge\bj|}2K.
-	$$
-	Using the H\"older-continuity, $\{H_{\bi}(x):\, \bi\in\Sigma\}$ is compact, invariant with
-	respect to the dual IFS $\Phi^*$, and by the uniqueness of the attractor,
-	\cref{lem:ExistanceAttractor}, the last assertion follows.
+ \[
+   \left|\frac{f_j''}{f_j'}(z)\right| \leq C\text{ and }0<c_{\min}\leq|f_j'(z)|\leq c_{\max}<1
+ \]
+ for all $j\in\mathcal{I}$ and $z\in\mathcal{B}_{\epsilon}$, $H_{\bi_1^n}$ converges
+ uniformly to $H_{\bi}$ on $\mathcal{B}_{\epsilon}$ and $H_{\bi}$ is analytic on
+ $\mathcal{B}_{\epsilon}$ by Morera's theorem~\cite[Theorem 10.17]{Rudin_AnalysisBook}. In
+ particular, there exists $K>0$ such that $\|H_{\bi}\|_\infty\leq K$ for every
+ $\bi\in\Sigma$. Hence, $$
+ \|H_{\bi}-H_{\bj}\|_\infty\leq c_{\max}^{|\bi\wedge\bj|}2K.
+ $$
+ Using the H\"older-continuity, $\{H_{\bi}(x):\, \bi\in\Sigma\}$ is compact, invariant with
+ respect to the dual IFS $\Phi^*$, and by the uniqueness of the attractor,
+ \cref{lem:ExistanceAttractor}, the last assertion follows.
 \end{proof}
 
 
@@ -1215,8 +1216,8 @@ The following statements are equivalent:
   uniformly, which contradicts to SSC.
 
   The implications \cref{it:la}$\Leftrightarrow$\cref{it:lc} and
-  \cref{it:la}$\Leftrightarrow$\cref{it:ld} follow by the compactness of $\Lambda^*$
-  \cref{lem:ExistanceAttractor} and the H\"older continuity of the dual natural projection
+  \cref{it:la}$\Leftrightarrow$\cref{it:ld} follow by the compactness of $\Lambda^*$,
+  \cref{lem:ExistanceAttractor}, and the H\"older continuity of the dual natural projection,
   \cref{thm:H_iAnalytic}. We leave the details for the reader.
 \end{proof}
 
@@ -1230,7 +1231,7 @@ The following statements are equivalent:
   Let $\Phi=(f_i)_{i=1}^N\in\mathfrak{S}_N$. Let $c_{\min}$ and $c_{\max}$ as in
   \cref{eq:maxmincontract} for $\Phi$. Moreover, let $C>0$ be such that
   $|f_i''(x)|<\left|\frac{f_i''}{f_i'}(x)\right|<C$ and
-  $\left|\frac{f_i'''(x)f_i'(x)-f_i''(x)}{f_i'(x)}\right|<C$ for every $i\in\mathcal{I}$ and
+  $\left|\frac{f_i'''(x)f_i'(x)-(f_i''(x))^2}{(f_i'(x))^2}\right|<C$ for every $i\in\mathcal{I}$ and
   $x\in[0,1]$. By using the continuity of the maps and its derivatives, one can choose
   $\varepsilon>0$ sufficiently small such that for every $\Psi=(g_i)_{i=1}^N\in\mathfrak{S}_N$ with
   $d_2(\Phi,\Psi)<\varepsilon$, 
@@ -1263,7 +1264,7 @@ The following statements are equivalent:
   \end{align*}
   Thus, by induction
   \begin{equation}\label{eq:tec3}
-    \sup_{x\in[0,1]}|f_{\bi}'(x)-g_{\bi}'(x)|\leq c_{\max}^{|\bi|-1}\frac{C+1}{1-c_{\max}}d_2(\Phi,\Psi).
+    \sup_{x\in[0,1]}|f_{\bi}'(x)-g_{\bi}'(x)|\leq |\bi|\cdot c_{\max}^{|\bi|-1}\frac{C+1}{1-c_{\max}}d_2(\Phi,\Psi).
   \end{equation}
 
   Combining \cref{eq:tec1,eq:tec2,eq:tec3}, we get that for every $\bi\in\Sigma_*$
@@ -1278,7 +1279,7 @@ g'_{\bi_{|\bi|-1}^1}(x) \cdot
 \frac{g''_{i_{|\bi|}}}{g'_{i_{|\bi|}}}(g_{\bi_{|\bi|-1}^1}(x))\right|\\
 &\leq C |f'_{\bi_{|\bi|-1}^1}(x)-g'_{\bi_{|\bi|-1}^1}(x)|+c_{\max}^{|\bi|-1}\left(C\left|f_{\bi_{|\bi|-1}^1}(x)-
 g_{\bi_{|\bi|-1}^1}(x)\right|\hspace{-1pt}+\hspace{-1pt}\left|\frac{f_{i}''}{f_i'}(g_{\bi_{|\bi|-1}^1}(x))-\frac{g_{i}''}{g_i'}(g_{\bi_{|\bi|-1}^1}(x))\right|\right)\\
-&\leq\left(\frac{C(C+1)+C}{1-c_{\max}}+\frac{c_{\max}+C}{c_{\min}}\right)c_{\max}^{|\bi|-1}d_2(\Phi,\Psi).
+&\leq\left(\frac{|\bi|\cdot C(C+1)+C}{1-c_{\max}}+\frac{c_{\max}+C}{c_{\min}^2}\right)c_{\max}^{|\bi|-1}d_2(\Phi,\Psi).
   \end{align*}
   In particular, there exists $C'>0$ depending on $\Phi$ such that
 \begin{equation}\label{eq:conteq}
@@ -1354,7 +1355,7 @@ of~\cref{eq:fandg} we get
 \frac{f_{\bi_{|\bi|}^1}^{(k)}(x)}{f_{\bi_{|\bi|}^1}'(x)}\cdot
 \frac{f_{\bi_{|\bi|}^1}''(x)}{f_{\bi_{|\bi|}^1}'(x)}
 =\sum_{\ell=0}^{k-2}\frac{\partial g_{k-1}}{\partial
-y_{\ell}}\big(H_{\bi}^{(k-2)},\dots,H_{\bi}(x)\big) \cdot H_{\bi}^{(l+1)}(x).
+y_{\ell}}\big(H_{\bi}^{(k-2)},\dots,H_{\bi}(x)\big) \cdot H_{\bi}^{(\ell+1)}(x).
 \]
 We use the induction hypothesis~\cref{eq:fandg} in the second term on the left hand side for $k$
 and \cref{eq:H=f''/f'} to see that
@@ -1370,7 +1371,7 @@ Substituting this back, after rearranging the inductive step is proved for $k+1$
 g_{k-1}(H_{\bi}^{(k-2)}(x),\dots, H_{\bi}(x)) \cdot H_{\bi}(x)
 +
 \sum_{\ell=0}^{k-2}\frac{\partial g_{k-1}}{\partial
-y_{\ell}}\big(H_{\bi}^{(k-2)},\dots,H_{\bi}(x)\big) \cdot H_{\bi}^{(l+1)}(x)
+y_{\ell}}\big(H_{\bi}^{(k-2)},\dots,H_{\bi}(x)\big) \cdot H_{\bi}^{(\ell+1)}(x)
 \\
 &=
 g_{k}(H_{\bi}^{(k-1)}(x), \dots, H_{\bi}(x)).
@@ -1412,7 +1413,7 @@ By \cref{thm:ugly},
 \big|H_{\bi}^{(k)}(x)\big| \leq \sum_{\pi\in\Pi_{k+1}}\sum_{n=1}^{|\bi|} D_{|\pi|} \cdot
 c_{\max}^{(n-1)|\pi|} \cdot \prod_{B\in\pi}
 E_{|B|-1}
-= \sum_{\pi\in\Pi_{k+1}} \frac{D_{|\pi|}\cdot \prod_{B\in\pi}E_{|B|-1}}{1-c_{\max}^{|\pi|}}
+\leq \sum_{\pi\in\Pi_{k+1}} \frac{D_{|\pi|}\cdot \prod_{B\in\pi}E_{|B|-1}}{1-c_{\max}^{|\pi|}}
 \]
 and the statement follows.
 \end{proof}
@@ -1460,7 +1461,6 @@ where the $C_k>0$ are as defined in \cref{thm:kbound}.
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\clearpage
 \section{Proof of the sufficient condition for SESC}\label{sec:ProofSufficientCond}
 
 We need one auxiliary lemma before we can proceed with the proof of~\cref{thm:main}.
@@ -2103,7 +2103,7 @@ Differentiating again we get
 g''(f_{\bi}(x))\cdot f'_{\bi}(x)^2 +g'(f_{\bi}(x))\cdot f''_{\bi}(x) = \lambda_{\bi} g''(x)\text{
 for every }x\in[0,1]
 \]
-and by Using \cref{eq:H=f''/f'}, we have that
+and by using \cref{eq:H=f''/f'}, we have that
 \[
 \frac{g''(p_{\bi})}{g'(p_{\bi})} =
 \frac{f_{\bi}''(p_{\bi})}{f_{\bi}'(p_{\bi})(1-f'_{\bi}(p_{\bi}))}
