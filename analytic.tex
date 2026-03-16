@@ -693,10 +693,12 @@ an explicit analytic IFS that it satisfies the SESC.
 
 Given an IFS $\Phi=(f_i)_{i\in\mathcal{I}}\in\mathfrak{S}_N$ let
 \begin{equation}\label{eq:maxmincontract}
-  c_{\min} := \inf_{\substack{x\in[0,1] \\ i\in\mathcal{I}}} |f_i'(x)| \quad\text{and}\quad
-  c_{\max}:=\sup_{\substack{x\in[0,1] \\ i\in\mathcal{I}}} |f_i'(x)|.
+  c_{\min} := \inf_{\substack{x\in\overline{\mathcal{B}_{\epsilon}} \\ i\in\mathcal{I}}}
+  |f_i'(x)| \quad\text{and}\quad
+  c_{\max}:=\sup_{\substack{x\in\overline{\mathcal{B}_{\epsilon}} \\ i\in\mathcal{I}}}
+  |f_i'(x)|.
 \end{equation}
-We note that by compactness arguments, $0<c_{\min} \leq c_{\max} <1$.
+We note that by \cref{it:c} and compactness, $0<c_{\min} \leq c_{\max} <1$.
 
 \begin{proposition}\label{prop:example}
 Let $\Phi=(f_i)_{i\in\mathcal{I}}\in\mathfrak{S}_N$ be an IFS. Suppose that there exists $\alpha>0$
@@ -754,14 +756,15 @@ f_1(x)\coloneqq \frac{x}{8}, \quad f_2(x)\coloneqq \frac{x}{8} + \frac{x^2}{32},
 f_3(x)\coloneqq \frac{x}{16} + \frac{x^2}{32} + \frac{29}{32}. 
 \end{equation*}
 Cylinder sets certainly overlap heavily since $f_1$ and $f_2$ have common fixed point at $x=0$,
-while $f_3$ has fixed point at $x=1$. Simple calculations show that $c_{\max}=3/16$, moreover,
+while $f_3$ has fixed point at $x=1$. Since the maps are polynomials, for $\epsilon>0$
+sufficiently small we have $c_{\max}<1/5$. Moreover,
 \begin{equation*}
 \sup_{\substack{x\in[0,1] \\ i\in\mathcal{I}}} \left| \frac{f_i''(x)}{f_i'(x)} \right| \leq
 \sup_{x\in[0,1]} \max\Big\{\frac{1}{1+x},\, \frac{1}{2+x} \Big\} = 1 \quad\text{ and }\quad
 \min_{i\neq j\in\mathcal{I}}\left| \frac{f_i''(0)}{f_i'(0)} - \frac{f_j''(0)}{f_j'(0)} \right| \geq
 \frac{1}{2} .
 \end{equation*}
-Since $1/2-2\cdot 1\cdot 3/13>0$, it follows from~\cref{prop:example} that $\Phi$ satisfies the
+Since $c_{\max}<1/5$ implies $2\beta\cdot c_{\max}/(1-c_{\max})<1/2=\alpha$, it follows from~\cref{prop:example} that $\Phi$ satisfies the
 SESC, and by \cref{cor:dim}, we obtain $\dim_{\rm H}\Lambda=s(\Phi)$, where $s(\Phi)$ is the
 conformality dimension of $\Phi$, and $\dim \mu_{\mathbf{p}} =  H(\mathbf{p})/\chi$ for
 every $\mathbf{p}$, defined in the previous section. 
