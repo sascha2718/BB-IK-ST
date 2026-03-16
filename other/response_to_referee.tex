@@ -1,0 +1,178 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+
+\newcommand{\referee}[1]{\textbf{Referee:} \textit{#1}}
+\newcommand{\response}[1]{\textbf{Response:} #1}
+\newcommand{\placeholder}[1]{{\color{red}\textbf{[TODO: #1]}}}
+
+\begin{document}
+
+\begin{center}
+  {\Large\bfseries Response to Referee Report}\\[6pt]
+  {\large On exponential separation of analytic self-conformal sets on the real line}\\[4pt]
+  B\'ar\'any, Kolosv\'ary, and Troscheit
+\end{center}
+
+\bigskip
+
+\noindent We thank the referee for their careful reading of our paper and the many helpful suggestions.
+Below we address all comments point by point.  All corrections have been implemented in the revised manuscript.
+
+\bigskip
+
+\section*{Major issue}
+
+\referee{The only detail I did not fully understand occurs in the proof of Theorem 1.12, where the authors apply Lemma 4.1, which requires the IFS to have no exact overlaps, but you pick an arbitrary IFS. I may be misunderstanding something here, but it would be helpful if the authors clarified this point.}
+
+\response{Thank you for catching this omission. We believe the referee is referring to Theorem~1.4, where Lemma~4.1 is applied in the density part of the proof. Since we are proving density, we may assume without loss of generality that the given IFS~$\Phi$ has no exact overlaps: if it does, an arbitrarily small perturbation removes them, and the argument then proceeds for this perturbed system. We have added an explicit sentence to the proof to clarify this point.}
+
+\section*{Additional changes since submission}
+
+In addition to the corrections suggested by the referee, the following changes have been made to the manuscript since the version submitted in September 2025:
+
+\begin{itemize}
+  \item We added an acknowledgement thanking Amir Algom for pointing out useful references on conjugation of analytic IFSs to self-similar IFSs.
+
+  \item In Section~1.2.3 (Conjugation to self-similar systems), we added a reference to Algom, Rodriguez Hertz, and Wang \cite{AlgomHertzWang23} and their dichotomy result (Claim~6.1 of that paper), noting that our characterisation is complementary.
+
+  \item We added a paragraph on the uniform non-integrability (UNI) condition of Dolgopyat and Chernov, explaining its relation to our dual IFS framework: the UNI condition is equivalent to $\inf_{x\in I} |H_{\mathbf{i}}(x) - H_{\mathbf{j}}(x)| > 0$ for some $\mathbf{i},\mathbf{j}\in\Sigma$, which is strictly stronger than the negation of the conjugation characterisation in Theorem~1.14.
+
+  \item Several minor typos (``the there'' $\to$ ``there'', ``Similar question'' $\to$ ``Similar questions'', ``and by Using'' $\to$ ``and by using'', trailing comma removal) were fixed independently.
+\end{itemize}
+
+
+\section*{Minor corrections}
+
+\begin{enumerate}
+  \item \referee{Page 3, maybe it would be good to add explicitly $\mathcal{B}_\epsilon = \{z\in\mathbb{C} : \exists x\in [0,1],\, |z-x|<\varepsilon\}$.}
+
+  \response{Done. We now define $\mathcal{B}_\delta$ explicitly when it first appears in condition~(A).}
+
+  \item \referee{Page 4, there is a misplaced comma in the definition $i_n^m$.}
+
+  \response{Fixed. The trailing comma in the $m > n$ case has been removed.}
+
+  \item \referee{Page 6, first sentence after Corollary 1.7, maybe there is a misplaced semicolon.}
+
+  \response{Changed to a colon.}
+
+  \item \referee{Page 7, line 3, Theorem 2.4 should be Lemma 2.4.}
+
+  \response{All internal cross-references now use \texttt{\textbackslash cref\{\}}, which automatically generates the correct environment name. This issue and comments 5, 6, 9, 10, 15, 17, 19, 20, 22, 23, 24, 27, 28, and 30 are all resolved by this change.}
+
+  \item \referee{Page 7, example after proposition 1.8, change Theorem 1.8 to Proposition 1.8 and Theorem 1.7 by Corollary 1.7.}
+
+  \response{See response to comment 4.}
+
+  \item \referee{Page 8, Theorem 1.9 should be definition 1.9.}
+
+  \response{See response to comment 4.}
+
+  \item \referee{Page 10, Lemma 2.4, perhaps the bound $0 < c_{\min} \leq |f_j'(z)| \leq c_{\max} < 1$ does not hold for all $z$ in an open neighbourhood of $[0,1]$.}
+
+  \response{We have redefined $c_{\min}$ and $c_{\max}$ globally as
+  \[
+    c_{\min} := \inf_{\substack{x\in\overline{\mathcal{B}_\epsilon}\\ i\in\mathcal{I}}} |f_i'(x)|
+    \quad\text{and}\quad
+    c_{\max} := \sup_{\substack{x\in\overline{\mathcal{B}_\epsilon}\\ i\in\mathcal{I}}} |f_i'(x)|,
+  \]
+  taking the infimum/supremum over the closure of $\mathcal{B}_\epsilon$ instead of $[0,1]$. The bounds $0 < c_{\min} \leq c_{\max} < 1$ follow from condition~(C) and compactness. The resulting estimates throughout the paper may be slightly weaker (since $c_{\max}$ may be larger and $c_{\min}$ may be smaller), but all arguments remain valid. The example in Section~1.2.1 has been updated accordingly.}
+
+  \item \referee{Page 12, line 5, there is a missing comma after ``\ldots\ compactness of $\Lambda^*$''.}
+
+  \response{Fixed. Commas have been added around the relevant cross-references.}
+
+  \item \referee{Page 12, line 5, change Theorem 2.1 by Lemma 2.1.}
+
+  \response{See response to comment 4.}
+
+  \item \referee{Page 12, line 6, change Theorem 2.4 by Lemma 2.4.}
+
+  \response{See response to comment 4.}
+
+  \item \referee{Page 12, second line of proof of Lemma 2.6, the derivative formula should have $(f_i'(x))^2$ in the denominator.}
+
+  \response{Fixed. The denominator now correctly reads $(f_i'(x))^2$.}
+
+  \item \referee{Page 12, Eq (2.5), by induction there is a missing factor $|\mathbf{i}|$.}
+
+  \response{Fixed. The factor $|\mathbf{i}|$ has been added.}
+
+  \item \referee{Page 13, before Eq (2.6), $c_{\min}$ should be $c_{\min}^2$.}
+
+  \response{Fixed. Changed to $c_{\min}^2$.}
+
+  \item \referee{Page 13, before Eq (2.6), add the missing factor $|\mathbf{i}|$.}
+
+  \response{Fixed. The factor $|\mathbf{i}|$ has been added (together with the correction in comment 13).}
+
+  \item \referee{Page 13, change Theorem 2.5 by Lemma 2.5 twice.}
+
+  \response{See response to comment 4.}
+
+  \item \referee{Page 15, end of proof of Lemma 2.8, change equality by inequality.}
+
+  \response{Fixed. The final equality in the chain has been changed to $\leq$.}
+
+  \item \referee{Page 15, change Theorem by Lemma four times.}
+
+  \response{See response to comment 4.}
+
+  \item \referee{Page 16, perhaps you need to state that $\eta_\ell < 1/4$.}
+
+  \response{Done. We now explicitly state: ``Since $\eta_{n_\ell}\to 0$ super-exponentially, we may assume $\eta_{n_\ell} < 1/4$ for all $\ell$.''}
+
+  \item \referee{Page 17, change Theorem by Lemma 7 times.}
+
+  \response{See response to comment 4.}
+
+  \item \referee{Page 17, line $-4$, change Theorem by Corollary.}
+
+  \response{See response to comment 4.}
+
+  \item \referee{Page 18, proof of Lemma 4.1, perhaps is better to use another letter to distinguish the index $k$ from the real number $k$ that defines the cylinder.}
+
+  \response{Done. We have renamed the enumeration index from $k$ to $r$ throughout the proof of Lemma~4.1 to avoid confusion with the cylinder function $k$.}
+
+  \item \referee{Page 19, change Theorem 4.2 by Proposition 4.2.}
+
+  \response{See response to comment 4.}
+
+  \item \referee{Page 22, lines $-4$, $-3$, $-1$, change Theorem by Lemma or Proposition accordingly.}
+
+  \response{See response to comment 4.}
+
+  \item \referee{Page 23, change Theorem 4.2 by Proposition 4.2.}
+
+  \response{See response to comment 4.}
+
+  \item \referee{Page 23, to apply Lemma 4.1 we need the IFS to have no exact overlaps, however you pick an arbitrary IFS.}
+
+  \response{See response to the major issue above. We have added an explicit justification in the proof that we may assume the IFS has no exact overlaps.}
+
+  \item \referee{Page 24, line 2, I think that $(F_{\mathbf{i}}h)(x_{\mathbf{i},\mathbf{j}})$ should be $(F_{\mathbf{i}}k)(x_{\mathbf{i},\mathbf{j}})$.}
+
+  \response{Fixed. Changed $h$ to $k$.}
+
+  \item \referee{Page 24, change Theorem 2.4 and Theorem 2.5 by Lemma 2.4 and Lemma 2.5 respectively.}
+
+  \response{See response to comment 4.}
+
+  \item \referee{Page 25, line 2, change Theorem 5.1 by Lemma 5.1.}
+
+  \response{See response to comment 4.}
+
+  \item \referee{Page 25, line 3, this assertion only became clear after reading the next paragraph.}
+
+  \response{We have clarified this passage. It now reads: ``The assertion (b) of Theorem~1.14 follows by applying~(a) to the sub-IFS $(f_{\mathbf{i}}, f_{\mathbf{j}})$, so we finish the proof by showing~(a).''}
+
+  \item \referee{Page 25, change Theorem 2.4 by Lemma 2.4 twice.}
+
+  \response{See response to comment 4.}
+
+\end{enumerate}
+
+\end{document}
