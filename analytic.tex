@@ -1533,8 +1533,9 @@ by \cref{thm:kbound}. Moreover,
   |f_{\bi}'''(x)| = \big|g_2(H_{\bi_{|\bi|}^1}'(x),H_{\bi_{|\bi|}^1}(x))\cdot f_{\bi}'(x)\big| \leq
   E_2\cdot c_{\max}^{|\bi|}
 \end{equation*}
-by the definition of $E_k$ in~\cref{eq:E_k}. Together with~\cref{thm:analyticity} these bounds imply that
-for the particular choice of $\bi,\bj$ in~\cref{eq:ExpCondensation} we have 
+by the definition of $E_k$ in~\cref{eq:E_k}. Since $\eta_{n_\ell}\to 0$ super-exponentially, we may
+assume $\eta_{n_\ell}<1/4$ for all $\ell$. Together with~\cref{thm:analyticity} these bounds imply
+that for the particular choice of $\bi,\bj$ in~\cref{eq:ExpCondensation} we have
 \begin{align*}
  \sup_{x\in[0,1]}|f_{\bi}'(x) - f_{\bj}'(x)| &\leq (2+C_0 c_{\max}^{n_\ell})\sqrt{\eta_{n_\ell}}; \\
  \sup_{x\in[0,1]}|f_{\bi}''(x) - f_{\bj}''(x)| &\leq (2+E_2c_{\max}^{n_\ell})\sqrt{2+C_0
@@ -1650,10 +1651,10 @@ $\{x_{\bi,\bj}\}_{(\bi,\bj)\in\mathcal{B}_n}\subseteq[0,1]$ such that
 \begin{proof}
 We first establish an order on the elements of $\mathcal{B}_n$ by setting
 \[
-  (\bi^{(k)},\bj^{(k)})=(i_1^{(k)},\ldots,
-i_n^{(k)};j_1^{(k)},\ldots,j_n^{(k)}),
+  (\bi^{(r)},\bj^{(r)})=(i_1^{(r)},\ldots,
+i_n^{(r)};j_1^{(r)},\ldots,j_n^{(r)}),
 \]
-where $k=1,\ldots,\#\mathcal{B}_n$. The points are constructed
+where $r=1,\ldots,\#\mathcal{B}_n$. The points are constructed
 inductively. If $(\bi^{(1)},\bj^{(1)})$ is not bad then by definition there exists an $\hat
 x_{(\bi^{(1)},\bj^{(1)})}$ for which \cref{it:lla} holds. Since \cref{it:lla} is an open condition, there exists an
 $x_{(\bi^{(1)},\bj^{(1)})}$ in the neighborhood of $\hat x_{(\bi^{(1)},\bj^{(1)})}$ for which \cref{it:llb}
@@ -1663,31 +1664,31 @@ implies that $f_{(\bi^{(1)})_{\ell}^1}(x)\equiv f_{(\bi^{(1)})_{k}^1}(x)$ on $[0
 exact overlaps assumption. If $(\bi^{(1)},\bj^{(1)})$ is bad, then choose
 $x_{(\bi^{(1)},\bj^{(1)})}$ to satisfy \cref{it:llb} (which is possible by a similar argument). Thus we have
 constructed the first point $x_{(\bi^{(1)},\bj^{(1)})}$. Condition \cref{it:llc} trivially holds with just
-the single pair $(\bi^{(1)},\bj^{(1)})$. 
+the single pair $(\bi^{(1)},\bj^{(1)})$.
 
-We continue by induction. Assume that $x_{(\bi^{(1)},\bj^{(1)})},\ldots,x_{(\bi^{(k)},\bj^{(k)})}$
-have already been constructed (for some $k\geq 1$) so that \cref{it:lla,it:llb,it:llc} all hold. The set
-$\bigcup_{m=1}^k \widehat{\mathcal{O}}(x_{(\bi^{(m)},\bj^{(m)})})$ is finite, where we use the
+We continue by induction. Assume that $x_{(\bi^{(1)},\bj^{(1)})},\ldots,x_{(\bi^{(r)},\bj^{(r)})}$
+have already been constructed (for some $r\geq 1$) so that \cref{it:lla,it:llb,it:llc} all hold. The set
+$\bigcup_{m=1}^r \widehat{\mathcal{O}}(x_{(\bi^{(m)},\bj^{(m)})})$ is finite, where we use the
 shorthand  $\widehat{\mathcal{O}}(x_{\bi,\bj})\coloneqq\big(\mathcal{O}_{\bi}(x_{\bi,\bj})\cup
 \mathcal{O}_{\bj}(x_{\bi,\bj})\big)$. Then the set
 \begin{equation*}
-A_k\coloneqq \bigcup_{\ell=0}^n \bigg( \big(f_{(\bi^{(k+1)})_{\ell}^1}\big)^{-1} \Big(
-\bigcup_{m=1}^k \widehat{\mathcal{O}}(x_{(\bi^{(m)},\bj^{(m)})}) \Big) \cup
-\big(f_{(\bj^{(k+1)})_{\ell}^1}\big)^{-1} \Big( \bigcup_{m=1}^k
+A_r\coloneqq \bigcup_{\ell=0}^n \bigg( \big(f_{(\bi^{(r+1)})_{\ell}^1}\big)^{-1} \Big(
+\bigcup_{m=1}^r \widehat{\mathcal{O}}(x_{(\bi^{(m)},\bj^{(m)})}) \Big) \cup
+\big(f_{(\bj^{(r+1)})_{\ell}^1}\big)^{-1} \Big( \bigcup_{m=1}^r
 \widehat{\mathcal{O}}(x_{(\bi^{(m)},\bj^{(m)})}) \Big) \bigg)
 \end{equation*}
-is also finite since all $f_{\bi}$ are strictly monotone (for $\ell=0$ it is defined to be identity map). 
+is also finite since all $f_{\bi}$ are strictly monotone (for $\ell=0$ it is defined to be identity map).
 
-If $(\bi^{(k+1)},\bj^{(k+1)})$ is not
-bad, then using that $A_k$ is finite and the continuity of the maps one can choose $\hat
-x_{(\bi^{(k+1)},\bj^{(k+1)})}\in(0,1)\setminus A_k$ for which \cref{it:lla}
+If $(\bi^{(r+1)},\bj^{(r+1)})$ is not
+bad, then using that $A_r$ is finite and the continuity of the maps one can choose $\hat
+x_{(\bi^{(r+1)},\bj^{(r+1)})}\in(0,1)\setminus A_r$ for which \cref{it:lla}
 holds. By continuity of the maps, there exists a small neighbourhood of $\hat
-x_{(\bi^{(k+1)},\bj^{(k+1)})}$ in $(0,1)\setminus A_k$ where \cref{it:lla} still holds, and by the same
-argument as before can be used to pick a $x_{(\bi^{(k+1)},\bj^{(k+1)})}$ from this small
-neighbourhood for which \cref{it:lla,it:llb,it:llc} all hold. If $(\bi^{(k+1)},\bj^{(k+1)})$ is bad, then
+x_{(\bi^{(r+1)},\bj^{(r+1)})}$ in $(0,1)\setminus A_r$ where \cref{it:lla} still holds, and by the same
+argument as before can be used to pick a $x_{(\bi^{(r+1)},\bj^{(r+1)})}$ from this small
+neighbourhood for which \cref{it:lla,it:llb,it:llc} all hold. If $(\bi^{(r+1)},\bj^{(r+1)})$ is bad, then
 analyticity and the no exact overlaps assumption imply again the existence of
-$x_{(\bi^{(k+1)},\bj^{(k+1)})}\in(0,1)\setminus A_k$ that satisfies \cref{it:llb} which completes the
-induction. 
+$x_{(\bi^{(r+1)},\bj^{(r+1)})}\in(0,1)\setminus A_r$ that satisfies \cref{it:llb} which completes the
+induction.
 \end{proof}
 
 \begin{proposition}\label{prop:AnalyticBumpFunc}
@@ -2001,7 +2002,7 @@ and so,
 Since
 $\mathrm{conv}\left((F_{\bj}k)(x_{\bi,\bj}),(F_{\bj}K)(x_{\bi,\bj})\right)=\mathrm{conv}\left((G_{\bj}k)(x_{\bi,\bj}),(G_{\bj}K)(x_{\bi,\bj})\right)$
 has length strictly less than $\delta/3$, and
-$(F_{\bi}h)(x_{\bi,\bj})\in\mathrm{conv}\left((F_{\bj}k)(x_{\bi,\bj}),(F_{\bj}K)(x_{\bi,\bj})\right)$,
+$(F_{\bi}k)(x_{\bi,\bj})\in\mathrm{conv}\left((F_{\bj}k)(x_{\bi,\bj}),(F_{\bj}K)(x_{\bi,\bj})\right)$,
 \cref{eq:finstep} implies that 
 $$
 \mathrm{dist}\left((G_{\bi}k)(x_{\bi,\bj})),\mathrm{conv}\left((G_{\bj}k)(x_{\bi,\bj}),(G_{\bj}K)(x_{\bi,\bj})\right)\right)>2\delta/3. 
@@ -2073,8 +2074,9 @@ Let us begin the proof of \cref{thm:SubConjugation} with the following observati
 	\cref{thm:SubConjugation} follows by applying \cref{lem:conj0} for $f_1$ and considering the
 	IFS $(g\circ f_i\circ g^{-1})_{i\in\mathcal{I}}$.
 	
-	The assertion \cref{it:conj2} of \cref{thm:SubConjugation} clearly follows by
-	\cref{it:conj1}, so we finish the proof by showing \cref{it:conj1}.
+	The assertion \cref{it:conj2} of \cref{thm:SubConjugation} follows by
+	applying \cref{it:conj1} to the sub-IFS $(f_{\bi},f_{\bj})$, so we finish the proof by
+	showing \cref{it:conj1}.
 	
 	Let $\Phi=(f_i)_{i\in\mathcal{I}}\in\mathfrak{S}_N$. First, suppose that $H(x)\coloneqq
 	H_{\bi}(x)\equiv H_{\bj}(x)$ for every $\bi,\bj\in\Sigma$, where $H_{\bi}$ is the dual
