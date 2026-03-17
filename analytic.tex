@@ -42,9 +42,43 @@ style=trad-abbrv,
 \usepackage[colorlinks=true, linkcolor=blue, citecolor=blue]{hyperref}
 %\usepackage{ulem}
 \usepackage{comment}
+\usepackage{etoolbox}
 
 \usepackage[capitalise]{cleveref}
 \crefname{enumi}{}{}
+\crefname{theorem}{Theorem}{Theorems}
+\crefname{corollary}{Corollary}{Corollaries}
+\crefname{proposition}{Proposition}{Propositions}
+\crefname{lemma}{Lemma}{Lemmas}
+\crefname{claim}{Claim}{Claims}
+\crefname{conjecture}{Conjecture}{Conjectures}
+\crefname{problem}{Problem}{Problems}
+\crefname{question}{Question}{Questions}
+\crefname{definition}{Definition}{Definitions}
+\crefname{remark}{Remark}{Remarks}
+\crefname{example}{Example}{Examples}
+% Fix cleveref type detection for shared theorem counter.
+% \refstepcounter{theorem} is used for all environments, so cleveref
+% thinks everything is a "theorem". We patch \label within each environment
+% to explicitly specify the correct type.
+\makeatletter
+\newcommand{\crefpatch}[1]{%
+  \AtBeginEnvironment{#1}{%
+    \let\orig@label\label
+    \renewcommand{\label}[1]{\orig@label[#1]{##1}}%
+  }%
+}
+\crefpatch{corollary}
+\crefpatch{proposition}
+\crefpatch{lemma}
+\crefpatch{claim}
+\crefpatch{conjecture}
+\crefpatch{problem}
+\crefpatch{question}
+\crefpatch{definition}
+\crefpatch{remark}
+\crefpatch{example}
+\makeatother
 %\usepackage{refcheck}
 %%%making refcheck recognise cref
 %%%% Infrastructure    
