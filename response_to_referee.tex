@@ -21,7 +21,7 @@
 \begin{center}
   {\Large\bfseries Response to Referee Reports}\\[6pt]
   {\large On exponential separation of analytic self-conformal sets on the real line}\\[4pt]
-  B\'ar\'any, Kolosv\'ary, and Troscheit
+  B\'ar\'any, Kolossv\'ary, and Troscheit
 \end{center}
 
 \bigskip
@@ -62,7 +62,7 @@ an explicit sentence to the proof to clarify this point.}
 \item \textbf{3.} Changed semicolon to colon after Corollary~1.7.
 
 \item \textbf{4, 5, 6, 9, 10, 15, 17, 19, 20, 22, 23, 24, 27, 28, 30.}
-All internal cross-references use \texttt{\textbackslash cref\{\}}, and there was a bug in the
+All internal cross-references used \texttt{\textbackslash cref\{\}}, and there was a bug in the
 compilation when these labels were generated. These issues have now been resolved.
 
 \item \textbf{7.} Redefined $c_{\min}$ and $c_{\max}$ globally over
@@ -113,7 +113,13 @@ In addition to the corrections suggested by the referee, the following changes h
 manuscript since the version submitted in September 2025:
 
 \begin{itemize}
-  \item In Theorem 2.3, we corrected the second statement to accurately reflect hat having
+  \item  We believe the analyticity condition is a natural and essential choice: it is required by the methods
+    of Rapaport, as well as our own. Relaxing to less regularity, even just $C^\infty$,
+    poses separate challenges and invalidates some results. 
+    In the introduction, we now include a short discussion on the choice of analytic maps and
+    references to phenomena occurring in the irregular non-analytic case.
+
+  \item In Theorem 2.3, we corrected the second statement to accurately reflect that having
     a common fixed point is the right restatement of Theorem 1.12.
 
   \item We added an acknowledgement thanking Amir Algom for pointing out useful references on
@@ -123,7 +129,7 @@ manuscript since the version submitted in September 2025:
     Rodriguez Hertz, and Wang \cite{AlgomHertzWang23} and their dichotomy result (Claim~6.1 of that
     paper), noting that our characterisation is complementary.
 
-  \item We added a paragraph on the uniform non-integrability (UNI) condition of Dolgopyat and
+  \item As suggested by Amir Algom, we added a paragraph on the uniform non-integrability (UNI) condition of Dolgopyat and
     Chernov, explaining its relation to our dual IFS framework: the UNI condition is equivalent to
     $\inf_{x\in I} |H_{\mathbf{i}}(x) - H_{\mathbf{j}}(x)| > 0$ for some
     $\mathbf{i},\mathbf{j}\in\Sigma$, which is strictly stronger than the negation of the
